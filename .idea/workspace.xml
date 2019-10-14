@@ -1,7 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4d2935da-1f9e-4348-a12e-628192142797" name="Default Changelist" comment="" />
+    <list default="true" id="4d2935da-1f9e-4348-a12e-628192142797" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/root_folder/app/Http/Controllers/HomeController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/root_folder/database/migrations/2019_10_14_060523_create_posts_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/root_folder/database/migrations/2019_10_14_061308_create_comments_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/root_folder/resources/views/auth/login.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/root_folder/resources/views/auth/passwords/email.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/root_folder/resources/views/auth/passwords/reset.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/root_folder/resources/views/auth/register.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/root_folder/resources/views/auth/verify.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/root_folder/resources/views/home.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/root_folder/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/lazycode.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/lazycode.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/root_folder/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/root_folder/routes/web.php" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -9,6 +28,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="ComposerSettings">
+    <pharConfigPath>$PROJECT_DIR$/root_folder/composer.json</pharConfigPath>
     <execution>
       <executable />
     </execution>
@@ -20,15 +40,107 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="JsFlowSettings">
     <service-enabled>true</service-enabled>
     <exe-path />
     <other-services-enabled>true</other-services-enabled>
     <auto-save>true</auto-save>
   </component>
-  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 7.3.10" />
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 7.3.10">
+    <include_path>
+      <path value="$PROJECT_DIR$/root_folder/vendor/symfony/polyfill-iconv" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/symfony/polyfill-php73" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/symfony/polyfill-ctype" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/symfony/polyfill-php72" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/phpunit/phpunit" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/phpunit/php-text-template" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/phpunit/php-code-coverage" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/phpunit/php-file-iterator" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/phar-io/version" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/phpspec/prophecy" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/phpunit/php-timer" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/phpunit/php-token-stream" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/mockery/mockery" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/monolog/monolog" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/myclabs/deep-copy" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/phar-io/manifest" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/dnoegel/php-xdg-base-dir" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/egulias/email-validator" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/laravel/tinker" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/laravel/framework" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/league/flysystem" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/nesbot/carbon" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/ramsey/uuid" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/vlucas/phpdotenv" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/filp/whoops" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/opis/closure" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/nikic/php-parser" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/erusev/parsedown" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/psr/container" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/psr/log" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/psr/simple-cache" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/psy/psysh" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/composer" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/phpdocumentor/reflection-docblock" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/jakub-onderka/php-console-color" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/jakub-onderka/php-console-highlighter" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/phpdocumentor/reflection-common" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/phpdocumentor/type-resolver" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/nunomaduro/collision" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/swiftmailer/swiftmailer" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/tijsverkoyen/css-to-inline-styles" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/dragonmantank/cron-expression" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/sebastian/resource-operations" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/webmozart/assert" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/beyondcode/laravel-dump-server" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/fzaninotto/faker" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/sebastian/recursion-context" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/sebastian/version" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/sebastian/environment" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/sebastian/exporter" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/sebastian/object-enumerator" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/sebastian/object-reflector" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/sebastian/code-unit-reverse-lookup" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/sebastian/diff" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/paragonie/random_compat" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/phpoption/phpoption" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/sebastian/comparator" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/sebastian/global-state" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/doctrine/inflector" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/doctrine/instantiator" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/hamcrest/hamcrest-php" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/fideloper/proxy" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/doctrine/lexer" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/symfony/polyfill-mbstring" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/theseer/tokenizer" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/symfony/http-foundation" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/symfony/process" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/symfony/debug" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/symfony/console" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/symfony/http-kernel" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/symfony/mime" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/symfony/routing" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/symfony/service-contracts" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/symfony/polyfill-intl-idn" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/symfony/css-selector" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/symfony/event-dispatcher-contracts" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/symfony/finder" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/symfony/translation" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/symfony/translation-contracts" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/symfony/event-dispatcher" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/symfony/var-dumper" />
+    </include_path>
+  </component>
   <component name="ProjectId" id="1S57GDZ1TtytB43LlINJq0PHt8B" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -66,12 +178,29 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1570841504262</updated>
-      <workItem from="1570841505627" duration="7125000" />
+      <workItem from="1570841505627" duration="8008000" />
+      <workItem from="1571022253980" duration="9914000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand>
