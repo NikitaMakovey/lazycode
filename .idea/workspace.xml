@@ -2,24 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4d2935da-1f9e-4348-a12e-628192142797" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/root_folder/app/Http/Controllers/HomeController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/root_folder/database/migrations/2019_10_14_060523_create_posts_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/root_folder/database/migrations/2019_10_14_061308_create_comments_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/root_folder/resources/views/auth/login.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/root_folder/resources/views/auth/passwords/email.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/root_folder/resources/views/auth/passwords/reset.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/root_folder/resources/views/auth/register.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/root_folder/resources/views/auth/verify.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/root_folder/resources/views/home.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/root_folder/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/lazycode.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/lazycode.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/root_folder/database/migrations/2019_10_13_102532_create_categories_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/root_folder/database/migrations/2019_10_15_102607_create_comment_transactions_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/root_folder/database/migrations/2019_10_15_102620_create_post_transactions_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/root_folder/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/root_folder/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/root_folder/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/database/migrations/2019_10_14_060523_create_posts_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/root_folder/database/migrations/2019_10_14_060523_create_posts_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/resources/js/components/ExampleComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/root_folder/resources/js/components/ExampleComponent.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/root_folder/resources/views/home.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -179,7 +170,7 @@
       <option name="presentableId" value="Default" />
       <updated>1570841504262</updated>
       <workItem from="1570841505627" duration="8008000" />
-      <workItem from="1571022253980" duration="9914000" />
+      <workItem from="1571022253980" duration="14609000" />
     </task>
     <servers />
   </component>

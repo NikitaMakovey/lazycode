@@ -17,17 +17,19 @@ class CreatePostsTable extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            $table->string('category')->index();
+            $table->unsignedSmallInteger('category_id')->index();
             $table->bigInteger('post_author_id');
             $table->longText('post_body');
-            $table->unsignedBigInteger('post_up')->default(0);
-            $table->unsignedBigInteger('post_down')->default(0);
             $table->integer('count_comments')->default(0);
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP(0)'));
             $table
                 ->foreign('post_author_id')
                 ->references('id')
                 ->on('users');
+            $table
+                ->foreign('category_id')
+                ->references('id')
+                ->on('categories');
         });
     }
 
