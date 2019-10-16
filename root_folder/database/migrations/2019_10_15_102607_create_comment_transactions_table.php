@@ -17,7 +17,6 @@ class CreateCommentTransactionsTable extends Migration
             $table->bigInteger('comment_id');
             $table->bigInteger('username_id');
             $table->index(['comment_id', 'username_id']);
-            $table->bigInteger('comment_author_id')->index();
             $table->boolean('vote')->nullable();
             $table->timestamps();
             $table
@@ -26,10 +25,6 @@ class CreateCommentTransactionsTable extends Migration
                 ->on('comments');
             $table
                 ->foreign('username_id')
-                ->references('id')
-                ->on('users');
-            $table
-                ->foreign('comment_author_id')
                 ->references('id')
                 ->on('users');
         });
