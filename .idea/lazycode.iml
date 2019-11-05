@@ -2,8 +2,12 @@
 <module type="WEB_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/root_folder/app" isTestSource="false" packagePrefix="App\" />
+      <sourceFolder url="file://$MODULE_DIR$/root_folder/tests" isTestSource="true" packagePrefix="Tests\" />
       <excludeFolder url="file://$MODULE_DIR$/root_folder/vendor/beyondcode/laravel-dump-server" />
+      <excludeFolder url="file://$MODULE_DIR$/root_folder/vendor/cocur/slugify" />
       <excludeFolder url="file://$MODULE_DIR$/root_folder/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/root_folder/vendor/cviebrock/eloquent-sluggable" />
       <excludeFolder url="file://$MODULE_DIR$/root_folder/vendor/dnoegel/php-xdg-base-dir" />
       <excludeFolder url="file://$MODULE_DIR$/root_folder/vendor/doctrine/inflector" />
       <excludeFolder url="file://$MODULE_DIR$/root_folder/vendor/doctrine/instantiator" />
@@ -19,6 +23,7 @@
       <excludeFolder url="file://$MODULE_DIR$/root_folder/vendor/jakub-onderka/php-console-highlighter" />
       <excludeFolder url="file://$MODULE_DIR$/root_folder/vendor/laravel/framework" />
       <excludeFolder url="file://$MODULE_DIR$/root_folder/vendor/laravel/tinker" />
+      <excludeFolder url="file://$MODULE_DIR$/root_folder/vendor/laravelcollective/html" />
       <excludeFolder url="file://$MODULE_DIR$/root_folder/vendor/league/flysystem" />
       <excludeFolder url="file://$MODULE_DIR$/root_folder/vendor/mockery/mockery" />
       <excludeFolder url="file://$MODULE_DIR$/root_folder/vendor/monolog/monolog" />

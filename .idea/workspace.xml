@@ -2,22 +2,144 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4d2935da-1f9e-4348-a12e-628192142797" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/root_folder/public/css/app.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/root_folder/public/js/app.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/root_folder/public/mix-manifest.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/root_folder/resources/js/router.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/root_folder/resources/views/layouts/example.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lazycode.ru/app/Category.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lazycode.ru/app/Comment.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lazycode.ru/app/CommentVote.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lazycode.ru/app/Http/Controllers/Auth/ConfirmPasswordController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lazycode.ru/app/Http/Controllers/CategoryController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lazycode.ru/app/Http/Controllers/CommentController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lazycode.ru/app/Http/Controllers/CommentVoteController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lazycode.ru/app/Http/Controllers/PostController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lazycode.ru/app/Http/Controllers/PostVoteController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lazycode.ru/app/Http/Controllers/UserController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lazycode.ru/app/Post.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lazycode.ru/app/PostVote.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lazycode.ru/database/factories/CategoryFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lazycode.ru/database/factories/CommentFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lazycode.ru/database/factories/CommentVoteFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lazycode.ru/database/factories/PostFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lazycode.ru/database/factories/PostVoteFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lazycode.ru/database/factories/VoteFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lazycode.ru/database/migrations/2019_08_19_000000_create_failed_jobs_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lazycode.ru/database/migrations/2019_11_03_114054_create_comments_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lazycode.ru/database/migrations/2019_11_04_045525_create_post_votes_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lazycode.ru/database/migrations/2019_11_04_045549_create_comment_votes_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lazycode.ru/public/css/app.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lazycode.ru/resources/js/app.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lazycode.ru/resources/sass/_variables.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lazycode.ru/resources/sass/app.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lazycode.ru/resources/views/auth/passwords/confirm.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lazycode.ru/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/lazycode.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/lazycode.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/root_folder/app/Http/Controllers/AppController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/database/migrations/2019_10_15_102607_create_comment_transactions_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/root_folder/database/migrations/2019_10_15_102607_create_comment_transactions_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/database/migrations/2019_10_15_102620_create_post_transactions_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/root_folder/database/migrations/2019_10_15_102620_create_post_transactions_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/root_folder/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/root_folder/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/root_folder/resources/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/resources/js/components/ExampleComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/root_folder/resources/js/components/ExampleComponent.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/resources/js/views/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/root_folder/resources/js/views/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/root_folder/resources/views/home.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/root_folder/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/.editorconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/.env.example" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/.gitattributes" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/.gitattributes" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/.styleci.yml" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/.styleci.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/app/Console/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/app/Console/Kernel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/app/Exceptions/Handler.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/app/Exceptions/Handler.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/app/Http/Controllers/AppController.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/app/Http/Controllers/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/app/Http/Controllers/Auth/ForgotPasswordController.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/app/Http/Controllers/Auth/ForgotPasswordController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/app/Http/Controllers/Auth/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/app/Http/Controllers/Auth/ResetPasswordController.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/app/Http/Controllers/Auth/ResetPasswordController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/app/Http/Controllers/Auth/VerificationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/app/Http/Controllers/Auth/VerificationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/app/Http/Controllers/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/app/Http/Controllers/Controller.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/app/Http/Kernel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/app/Http/Middleware/Authenticate.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/app/Http/Middleware/Authenticate.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/app/Http/Middleware/CheckForMaintenanceMode.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/app/Http/Middleware/CheckForMaintenanceMode.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/app/Http/Middleware/EncryptCookies.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/app/Http/Middleware/EncryptCookies.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/app/Http/Middleware/RedirectIfAuthenticated.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/app/Http/Middleware/RedirectIfAuthenticated.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/app/Http/Middleware/TrimStrings.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/app/Http/Middleware/TrimStrings.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/app/Http/Middleware/TrustProxies.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/app/Http/Middleware/TrustProxies.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/app/Http/Middleware/VerifyCsrfToken.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/app/Http/Middleware/VerifyCsrfToken.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/app/Providers/AppServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/app/Providers/AuthServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/app/Providers/AuthServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/app/Providers/BroadcastServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/app/Providers/BroadcastServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/app/Providers/EventServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/app/Providers/EventServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/app/Providers/RouteServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/app/Providers/RouteServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/app/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/artisan" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/artisan" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/bootstrap/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/bootstrap/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/bootstrap/cache/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/bootstrap/cache/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/config/auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/config/auth.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/config/broadcasting.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/config/broadcasting.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/config/cache.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/config/cache.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/config/database.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/config/database.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/config/filesystems.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/config/filesystems.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/config/hashing.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/config/hashing.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/config/logging.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/config/logging.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/config/mail.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/config/mail.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/config/queue.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/config/queue.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/config/services.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/config/services.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/config/session.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/config/session.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/config/view.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/config/view.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/database/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/database/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/database/factories/UserFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/database/factories/UserFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/database/migrations/2014_10_12_100000_create_password_resets_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/database/migrations/2014_10_12_100000_create_password_resets_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/database/migrations/2019_10_13_102532_create_categories_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/database/migrations/2019_11_03_113755_create_categories_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/database/migrations/2019_10_14_060523_create_posts_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/database/migrations/2019_11_03_113756_create_posts_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/database/migrations/2019_10_14_061308_create_comments_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/database/migrations/2019_10_15_102607_create_comment_transactions_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/database/migrations/2019_10_15_102620_create_post_transactions_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/database/seeds/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/phpunit.xml" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/phpunit.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/public/.htaccess" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/public/.htaccess" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/public/css/app.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/public/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/public/favicon.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/public/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/public/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/public/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/public/mix-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/public/robots.txt" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/public/robots.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/public/web.config" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/public/web.config" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/resources/js/app.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/resources/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/resources/js/bootstrap.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/resources/js/components/ExampleComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/resources/js/components/ExampleComponent.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/resources/js/router.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/resources/js/views/App.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/resources/lang/en/auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/resources/lang/en/auth.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/resources/lang/en/pagination.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/resources/lang/en/pagination.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/resources/lang/en/passwords.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/resources/lang/en/passwords.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/resources/lang/en/validation.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/resources/lang/en/validation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/resources/sass/app.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/resources/views/auth/login.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/resources/views/auth/passwords/email.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/resources/views/auth/passwords/email.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/resources/views/auth/passwords/reset.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/resources/views/auth/passwords/reset.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/resources/views/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/resources/views/auth/register.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/resources/views/auth/verify.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/resources/views/auth/verify.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/resources/views/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/resources/views/layouts/example.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/resources/views/welcome.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/routes/channels.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/routes/channels.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/routes/console.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/routes/console.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/routes/web.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/server.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/server.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/storage/app/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/storage/app/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/storage/app/public/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/storage/app/public/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/storage/framework/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/storage/framework/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/storage/framework/cache/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/storage/framework/cache/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/storage/framework/cache/data/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/storage/framework/cache/data/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/storage/framework/sessions/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/storage/framework/sessions/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/storage/framework/testing/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/storage/framework/testing/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/storage/framework/views/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/storage/framework/views/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/storage/logs/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/storage/logs/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/tests/CreatesApplication.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/tests/CreatesApplication.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/tests/Feature/ExampleTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/tests/Feature/ExampleTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/tests/TestCase.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/tests/TestCase.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/tests/Unit/ExampleTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/tests/Unit/ExampleTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/root_folder/webpack.mix.js" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/webpack.mix.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -25,7 +147,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/root_folder/composer.json</pharConfigPath>
     <execution>
       <executable />
@@ -34,8 +156,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Vue Single File Component" />
         <option value="JavaScript File" />
+        <option value="Vue Single File Component" />
       </list>
     </option>
   </component>
@@ -131,6 +253,9 @@
       <path value="$PROJECT_DIR$/root_folder/vendor/symfony/translation-contracts" />
       <path value="$PROJECT_DIR$/root_folder/vendor/symfony/event-dispatcher" />
       <path value="$PROJECT_DIR$/root_folder/vendor/symfony/var-dumper" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/cocur/slugify" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/cviebrock/eloquent-sluggable" />
+      <path value="$PROJECT_DIR$/root_folder/vendor/laravelcollective/html" />
     </include_path>
   </component>
   <component name="ProjectId" id="1S57GDZ1TtytB43LlINJq0PHt8B" />
@@ -139,8 +264,10 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="PluginDummyText.Genre" value="scifi" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -148,12 +275,231 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="watcher.settings" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/root_folder/resources/js/views" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/root_folder/resources/js/views" />
     </key>
+  </component>
+  <component name="RestClientSettings">
+    <option name="REQUEST_HISTORY">
+      <list>
+        <RestClientRequest>
+          <option name="biscuits">
+            <list>
+              <Biscuit>
+                <option name="date" value="1571410174000" />
+                <option name="domain" value="localhost" />
+                <option name="name" value="XSRF-TOKEN" />
+                <option name="path" value="/" />
+                <option name="value" value="eyJpdiI6IkkrOGI5K0hqZGRcL0UyNHU4MjE4Q1d3PT0iLCJ2YWx1ZSI6ImVhNys4RUNmVll4QUJpeDM1bmhLVVVyeVRmaFVLYXQ4c0tBMVp1YWdMSGZ2VXV1M3hJZ25kWGtBbFZyYTFVbmUiLCJtYWMiOiJkNTAzMzk1MjRiY2RjNGZjMDk3ODg1N2RmMGM3OTZhNjNlODZhNmU2NWEwM2ExNmY0MWMxOWJlNzkxOTdjODA4In0%3D" />
+              </Biscuit>
+              <Biscuit>
+                <option name="date" value="1571410174000" />
+                <option name="domain" value="localhost" />
+                <option name="name" value="laravel_session" />
+                <option name="path" value="/" />
+                <option name="value" value="eyJpdiI6IjQ5ZTJpYXg5VzN6RzdMMWlyTUhudHc9PSIsInZhbHVlIjoiMkZUOVRaRHE3Q0haazFXTktTZDh4N3RnKzlXMTRicEQ0RkFpb3ZKU0ZDbWJiRHY2NDFseWZwQnBzeDRRMHJqMiIsIm1hYyI6IjE1NDY5MjZlOWU4NDIwMmQzM2VkZWZiYmRmODNkM2I5ZmE0NzhkYjlhOGRhMjdhMjc2YjY4MjJjNjZjOTkxYWIifQ%3D%3D" />
+              </Biscuit>
+            </list>
+          </option>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost:8000" />
+          <option name="urlPath" value="/etwedfdsg" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="biscuits">
+            <list>
+              <Biscuit>
+                <option name="date" value="1571410170000" />
+                <option name="domain" value="localhost" />
+                <option name="name" value="XSRF-TOKEN" />
+                <option name="path" value="/" />
+                <option name="value" value="eyJpdiI6Ik9wM0VPOGttYU9ST3d0SzRJK3ZCcnc9PSIsInZhbHVlIjoiODlReFpEVjFXR0FudFhsOTgyZk95N1BvSDE4bEhEUDI4eDNCUitielhtaktTRHFDbmpoemdaQkFCWE1qUHVUbiIsIm1hYyI6IjFiNzc0NGM3M2FlNWYzYTE4NWViYmEwOGNhZjY4MGQ4OThlNDViNzQ2NjMxYjAxY2IyMDYzNGY0NjRkOGY5MDgifQ%3D%3D" />
+              </Biscuit>
+              <Biscuit>
+                <option name="date" value="1571410170000" />
+                <option name="domain" value="localhost" />
+                <option name="name" value="laravel_session" />
+                <option name="path" value="/" />
+                <option name="value" value="eyJpdiI6Ik4wUG1iejRLa3RTODlpZ3R2cFIrSUE9PSIsInZhbHVlIjoicHgrN2pnM0RcL2NUb0xDVm5Zb09zdkpOK0dmV0hINmtlVGNPVnV1YllKYlErc0pXVDh1Z0R2SkZqOUE5NkVUR0wiLCJtYWMiOiJkMzVjM2U2MmRkN2Y5ZjFlNmJjZTY0OGMzMmEyMjQxYzc2OTc1ZjNhY2I0NmZjN2UyMGU1ZWZiNGU2NDcyNTYwIn0%3D" />
+              </Biscuit>
+            </list>
+          </option>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost:8000" />
+          <option name="urlPath" value="/etwedfdsg" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="biscuits">
+            <list>
+              <Biscuit>
+                <option name="date" value="1571410165000" />
+                <option name="domain" value="localhost" />
+                <option name="name" value="XSRF-TOKEN" />
+                <option name="path" value="/" />
+                <option name="value" value="eyJpdiI6IklcL3d5Z2lFcXR5SkMyZFRGUlpGWmR3PT0iLCJ2YWx1ZSI6InprMVNWME5TaTRVdG83M011dUYyVnUrVFUzeHRJaFErN25sYnJsMDVcL2dLSkR1b2ExUUtXZEpBWW43cjdSZHg2IiwibWFjIjoiOTBiZTUxOGU5ZDZiOTNhOGYzZWUzYjFkYzcwMzFmMjQxYjIxNGNiODhhMTkzMjI4YWE2ZDViZjgzZGZjNzI1ZSJ9" />
+              </Biscuit>
+              <Biscuit>
+                <option name="date" value="1571410165000" />
+                <option name="domain" value="localhost" />
+                <option name="name" value="laravel_session" />
+                <option name="path" value="/" />
+                <option name="value" value="eyJpdiI6InY2anVNYmxFVzR6QWtrV1pYeWw2OHc9PSIsInZhbHVlIjoiNHhwRTk5VlZsNzlYaks0VklqWUVHczUrY1Z6VVwvTzJFZEwrV2hRb29cL3FMVmp0eWx4dm14WHVnNGlWVWwwZjNNIiwibWFjIjoiM2Q5YTc4MDNjZThkMjE2MWFhMDkxYzQwMzNhMmFhZjE0MDE5YjY0OTJlYjNiYmUxZDIzYWRhMTk5OTcwNTJmZSJ9" />
+              </Biscuit>
+            </list>
+          </option>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost:8000" />
+          <option name="urlPath" value="/home" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="biscuits">
+            <list>
+              <Biscuit>
+                <option name="date" value="1571410149000" />
+                <option name="domain" value="localhost" />
+                <option name="name" value="XSRF-TOKEN" />
+                <option name="path" value="/" />
+                <option name="value" value="eyJpdiI6Ikw0VmVTbGVzSU1RRzE3a3BGemdTMmc9PSIsInZhbHVlIjoiN3hEXC9Tdm5NK0NNT1wvTkF0NFBJM3luYjFaMlNvbmpseUZYcFc0blEwNjJDXC9pYzlxY2VTZW5Qd2R0VXpNVXAwdiIsIm1hYyI6ImZkYzllOTQzNGE5OWQ0ZDczYzU2MGMwMzVhNmQ0ZTE0YjUyOTNlYzc3ZjlmODI4ZjI1MjU2ZjgyNTU0MTNhZDIifQ%3D%3D" />
+              </Biscuit>
+              <Biscuit>
+                <option name="date" value="1571410149000" />
+                <option name="domain" value="localhost" />
+                <option name="name" value="laravel_session" />
+                <option name="path" value="/" />
+                <option name="value" value="eyJpdiI6ImV1VDNlSHpKeHJxTDU3bUNNTEdzRFE9PSIsInZhbHVlIjoieGsxdzQ4MHlEelN2XC8rekg0ZCtxMVdxcmYrRDRyWmVFVUtsQVpMUm1PNU5MWXc5OHgrNk5MRWFhK1RXWUtFRmMiLCJtYWMiOiI5Mzk5YWFiMGJjZDBkYTMyNzA1NjE2MDYyNmY1NDdmMjA1N2RiODIyZWJlZWU0MzJkNDEzYWQ2NzI4YjNjZWI0In0%3D" />
+              </Biscuit>
+            </list>
+          </option>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost:8000" />
+          <option name="urlPath" value="/index" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="biscuits">
+            <list>
+              <Biscuit>
+                <option name="date" value="1571410124000" />
+                <option name="domain" value="localhost" />
+                <option name="name" value="XSRF-TOKEN" />
+                <option name="path" value="/" />
+                <option name="value" value="eyJpdiI6ImZ3YXQ2NHRybEtHczdneEZsYzFzT1E9PSIsInZhbHVlIjoiemppampjTHpRM2Rac2FEbVhhN1VKYjlHYUU4SERvb1ByVWo4RG9uUmZLWjFiVExIN052T1FPMlFHRkcxUllYbSIsIm1hYyI6IjM0YmVhMmViZTk1N2IxZjI0MGQzZTdhNTBmOGRlODMwNTgxYjAyZDFiMjAzNDc2MWQ1MzE3ZDgwNmU1MTVmYjAifQ%3D%3D" />
+              </Biscuit>
+              <Biscuit>
+                <option name="date" value="1571410124000" />
+                <option name="domain" value="localhost" />
+                <option name="name" value="laravel_session" />
+                <option name="path" value="/" />
+                <option name="value" value="eyJpdiI6IlYzRmRSTmtQWmRyTk50cWhraUYxWXc9PSIsInZhbHVlIjoiUVRrc0JaWjhaNlVqSzVVR21qbFp1ZDJJVkw5QzFFbXM5NTdmUEhVc2lPclBPWk1TMjR5b2FuUUkrRU8zXC9jc1YiLCJtYWMiOiJmMjk5MzVkMzlmMWFiMGEwOGNlYjg3ZDkxNzEwNjI3Y2VkYmY5YjNjZjMzMzQ4OGIzZGUyODY1ZTBiYzhiMTMzIn0%3D" />
+              </Biscuit>
+            </list>
+          </option>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost:8000" />
+          <option name="urlPath" value="/example" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost:8000" />
+          <option name="urlPath" value="/resources" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+      </list>
+    </option>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -178,7 +524,18 @@
       <option name="presentableId" value="Default" />
       <updated>1570841504262</updated>
       <workItem from="1570841505627" duration="8008000" />
-      <workItem from="1571022253980" duration="20049000" />
+      <workItem from="1571022253980" duration="23299000" />
+      <workItem from="1571292160989" duration="1445000" />
+      <workItem from="1571315055306" duration="7253000" />
+      <workItem from="1571890590678" duration="3268000" />
+      <workItem from="1572048913846" duration="1081000" />
+      <workItem from="1572169622427" duration="21000" />
+      <workItem from="1572387231307" duration="739000" />
+      <workItem from="1572387992261" duration="2677000" />
+      <workItem from="1572406627438" duration="1174000" />
+      <workItem from="1572560029134" duration="2724000" />
+      <workItem from="1572684084973" duration="6200000" />
+      <workItem from="1572834719532" duration="8842000" />
     </task>
     <servers />
   </component>
