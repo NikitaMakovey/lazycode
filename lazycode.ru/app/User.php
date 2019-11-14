@@ -61,37 +61,37 @@ class User extends Authenticatable
 
     public static function add($field)
     {
-        $user = new static;
-        $user->fill($field);
-        $user->password = bcrypt($field['password']);
-        $user->save();
+//        $user = new static;
+//        $user->fill($field);
+//        $user->password = bcrypt($field['password']);
+//        $user->save();
     }
 
     public function edit($fields)
     {
-        $this->fill($fields);
-        $this->password = bcrypt($fields['password']);
-        $this->save();
+//        $this->fill($fields);
+//        $this->password = bcrypt($fields['password']);
+//        $this->save();
     }
 
     public function remove()
     {
-        $this->delete();
+        //$this->delete();
     }
 
     public function uploadAvatar($image)
     {
         if ($image == null) { return; }
-        Storage::delete('uploads/' . $this->image);
-        $filename = Str::random(60) . '.' . $image->extension();
-        $image->saveAs('uploads', $filename);
-        $this->image = $filename;
-        $this->save();
+//        Storage::delete('uploads/' . $this->image);
+//        $filename = Str::random(60) . '.' . $image->extension();
+//        $image->saveAs('uploads', $filename);
+//        $this->image = $filename;
+//        $this->save();
     }
 
     public function getAvatar()
     {
-        if ($this->image == null) { return '/img/no_img_user.jpg'; }
-        return '/uploads/' . $this->image;
+//        if ($this->image == null) { return '/img/no_img_user.jpg'; }
+//        return '/uploads/' . $this->image;
     }
 }

@@ -23,6 +23,6 @@ class Comment extends Model
 
     public function remove()
     {
-        $this->delete();
+        //$this->delete();
     }
 }

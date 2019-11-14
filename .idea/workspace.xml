@@ -2,144 +2,144 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4d2935da-1f9e-4348-a12e-628192142797" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/lazycode.ru/app/Category.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lazycode.ru/app/Comment.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lazycode.ru/app/CommentVote.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lazycode.ru/app/Http/Controllers/Auth/ConfirmPasswordController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lazycode.ru/app/Http/Controllers/CategoryController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lazycode.ru/app/Http/Controllers/CommentController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lazycode.ru/app/Http/Controllers/CommentVoteController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lazycode.ru/app/Http/Controllers/PostController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lazycode.ru/app/Http/Controllers/PostVoteController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lazycode.ru/app/Http/Controllers/UserController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lazycode.ru/app/Post.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lazycode.ru/app/PostVote.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lazycode.ru/database/factories/CategoryFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lazycode.ru/database/factories/CommentFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lazycode.ru/database/factories/CommentVoteFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lazycode.ru/database/factories/PostFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lazycode.ru/database/factories/PostVoteFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lazycode.ru/database/factories/VoteFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lazycode.ru/database/migrations/2019_08_19_000000_create_failed_jobs_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lazycode.ru/database/migrations/2019_11_03_114054_create_comments_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lazycode.ru/database/migrations/2019_11_04_045525_create_post_votes_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lazycode.ru/database/migrations/2019_11_04_045549_create_comment_votes_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lazycode.ru/public/css/app.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lazycode.ru/resources/js/app.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lazycode.ru/resources/sass/_variables.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lazycode.ru/resources/sass/app.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lazycode.ru/resources/views/auth/passwords/confirm.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lazycode.ru/routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/lazycode.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/lazycode.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/.editorconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/.env.example" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/.gitattributes" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/.styleci.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/app/Category.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/app/Console/Kernel.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/app/Exceptions/Handler.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/app/Http/Controllers/Auth/ConfirmPasswordController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/app/Http/Controllers/Auth/ForgotPasswordController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/app/Http/Controllers/Auth/ResetPasswordController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/app/Http/Controllers/Auth/VerificationController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/app/Http/Controllers/CategoryController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/app/Http/Controllers/Controller.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/app/Http/Controllers/HomeController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/app/Http/Controllers/PostController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/app/Http/Controllers/UserController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/app/Http/Kernel.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/app/Http/Middleware/Authenticate.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/app/Http/Middleware/CheckForMaintenanceMode.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/app/Http/Middleware/EncryptCookies.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/app/Http/Middleware/RedirectIfAuthenticated.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/app/Http/Middleware/TrimStrings.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/app/Http/Middleware/TrustProxies.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/app/Http/Middleware/VerifyCsrfToken.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/app/Post.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/app/Providers/AppServiceProvider.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/app/Providers/AuthServiceProvider.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/app/Providers/BroadcastServiceProvider.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/app/Providers/EventServiceProvider.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/app/Providers/RouteServiceProvider.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/app/User.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/artisan" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/bootstrap/app.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/bootstrap/cache/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/composer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/composer.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/config/app.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/config/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/config/broadcasting.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/config/cache.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/config/database.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/config/filesystems.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/config/hashing.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/config/logging.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/config/mail.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/config/queue.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/config/services.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/config/session.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/config/view.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/database/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/database/factories/CategoryFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/database/factories/PostFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/database/factories/UserFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/database/migrations/2014_10_12_100000_create_password_resets_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/database/migrations/2019_08_19_000000_create_failed_jobs_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/database/migrations/2019_11_12_041013_create_categories_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/database/migrations/2019_11_12_041918_create_posts_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/database/seeds/DatabaseSeeder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/phpunit.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/public/.htaccess" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/public/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/public/fonts/vendor/@fortawesome/fontawesome-free/webfa-brands-400.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/public/fonts/vendor/@fortawesome/fontawesome-free/webfa-brands-400.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/public/fonts/vendor/@fortawesome/fontawesome-free/webfa-brands-400.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/public/fonts/vendor/@fortawesome/fontawesome-free/webfa-brands-400.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/public/fonts/vendor/@fortawesome/fontawesome-free/webfa-brands-400.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/public/fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/public/fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/public/fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/public/fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/public/fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/public/img/admin-icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/public/img/admin.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/public/img/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/public/img/man.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/public/img/softtware-engineer.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/public/index.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/public/robots.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/public/web.config" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/resources/js/app.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/resources/js/bootstrap.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/resources/js/components/Blog.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/resources/js/components/Categories.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/resources/js/components/Post.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/resources/js/components/Posts.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/resources/js/components/Profile.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/resources/js/components/Users.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/resources/lang/en/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/resources/lang/en/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/resources/lang/en/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/resources/lang/en/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/resources/sass/app.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/resources/views/auth/login.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/resources/views/auth/passwords/confirm.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/resources/views/auth/passwords/email.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/resources/views/auth/passwords/reset.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/resources/views/auth/register.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/resources/views/auth/verify.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/resources/views/home.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/resources/views/layouts/master.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/resources/views/welcome.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/routes/api.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/routes/channels.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/routes/console.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/routes/web.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/server.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/storage/app/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/storage/app/public/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/storage/framework/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/storage/framework/cache/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/storage/framework/cache/data/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/storage/framework/sessions/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/storage/framework/testing/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/storage/framework/views/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/storage/logs/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/tests/CreatesApplication.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/tests/Feature/ExampleTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/tests/TestCase.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/tests/Unit/ExampleTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/webpack.mix.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/.editorconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/.env.example" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/.gitattributes" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/.gitattributes" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/.styleci.yml" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/.styleci.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/app/Console/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/app/Console/Kernel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/app/Exceptions/Handler.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/app/Exceptions/Handler.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/app/Http/Controllers/AppController.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/app/Http/Controllers/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/app/Http/Controllers/Auth/ForgotPasswordController.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/app/Http/Controllers/Auth/ForgotPasswordController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/app/Http/Controllers/Auth/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/app/Http/Controllers/Auth/ResetPasswordController.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/app/Http/Controllers/Auth/ResetPasswordController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/app/Http/Controllers/Auth/VerificationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/app/Http/Controllers/Auth/VerificationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/app/Http/Controllers/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/app/Http/Controllers/Controller.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/app/Http/Kernel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/app/Http/Middleware/Authenticate.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/app/Http/Middleware/Authenticate.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/app/Http/Middleware/CheckForMaintenanceMode.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/app/Http/Middleware/CheckForMaintenanceMode.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/app/Http/Middleware/EncryptCookies.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/app/Http/Middleware/EncryptCookies.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/app/Http/Middleware/RedirectIfAuthenticated.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/app/Http/Middleware/RedirectIfAuthenticated.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/app/Http/Middleware/TrimStrings.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/app/Http/Middleware/TrimStrings.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/app/Http/Middleware/TrustProxies.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/app/Http/Middleware/TrustProxies.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/app/Http/Middleware/VerifyCsrfToken.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/app/Http/Middleware/VerifyCsrfToken.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/app/Providers/AppServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/app/Providers/AuthServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/app/Providers/AuthServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/app/Providers/BroadcastServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/app/Providers/BroadcastServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/app/Providers/EventServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/app/Providers/EventServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/app/Providers/RouteServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/app/Providers/RouteServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/artisan" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/artisan" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/bootstrap/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/bootstrap/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/bootstrap/cache/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/bootstrap/cache/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/config/auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/config/auth.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/config/broadcasting.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/config/broadcasting.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/config/cache.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/config/cache.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/config/database.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/config/database.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/config/filesystems.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/config/filesystems.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/config/hashing.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/config/hashing.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/config/logging.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/config/logging.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/config/mail.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/config/mail.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/config/queue.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/config/queue.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/config/services.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/config/services.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/config/session.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/config/session.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/config/view.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/config/view.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/database/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/database/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/database/factories/UserFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/database/factories/UserFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/database/migrations/2014_10_12_100000_create_password_resets_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/database/migrations/2014_10_12_100000_create_password_resets_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/database/migrations/2019_10_13_102532_create_categories_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/database/migrations/2019_11_03_113755_create_categories_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/database/migrations/2019_10_14_060523_create_posts_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/database/migrations/2019_11_03_113756_create_posts_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/database/migrations/2019_10_14_061308_create_comments_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/database/migrations/2019_10_15_102607_create_comment_transactions_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/database/migrations/2019_10_15_102620_create_post_transactions_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/database/seeds/DatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/phpunit.xml" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/phpunit.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/public/.htaccess" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/public/.htaccess" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/public/css/app.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/public/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/public/favicon.ico" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/public/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/public/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/public/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/public/mix-manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/public/robots.txt" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/public/robots.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/public/web.config" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/public/web.config" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/resources/js/app.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/resources/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/resources/js/bootstrap.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/resources/js/components/ExampleComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/resources/js/components/ExampleComponent.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/resources/js/router.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/resources/js/views/App.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/resources/lang/en/auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/resources/lang/en/auth.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/resources/lang/en/pagination.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/resources/lang/en/pagination.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/resources/lang/en/passwords.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/resources/lang/en/passwords.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/resources/lang/en/validation.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/resources/lang/en/validation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/resources/sass/app.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/resources/views/auth/login.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/resources/views/auth/passwords/email.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/resources/views/auth/passwords/email.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/resources/views/auth/passwords/reset.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/resources/views/auth/passwords/reset.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/resources/views/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/resources/views/auth/register.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/resources/views/auth/verify.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/resources/views/auth/verify.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/resources/views/home.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/resources/views/layouts/example.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/resources/views/welcome.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/routes/api.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/routes/channels.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/routes/channels.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/routes/console.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/routes/console.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/routes/web.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/server.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/server.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/storage/app/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/storage/app/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/storage/app/public/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/storage/app/public/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/storage/framework/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/storage/framework/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/storage/framework/cache/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/storage/framework/cache/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/storage/framework/cache/data/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/storage/framework/cache/data/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/storage/framework/sessions/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/storage/framework/sessions/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/storage/framework/testing/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/storage/framework/testing/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/storage/framework/views/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/storage/framework/views/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/storage/logs/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/storage/logs/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/tests/CreatesApplication.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/tests/CreatesApplication.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/tests/Feature/ExampleTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/tests/Feature/ExampleTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/tests/TestCase.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/tests/TestCase.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/tests/Unit/ExampleTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/tests/Unit/ExampleTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root_folder/webpack.mix.js" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/webpack.mix.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lazycode.ru/app/Comment.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/app/Comment.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lazycode.ru/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/app/Http/Controllers/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lazycode.ru/app/Post.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/app/Post.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lazycode.ru/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/app/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lazycode.ru/config/filesystems.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/config/filesystems.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lazycode.ru/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lazycode.ru/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lazycode.ru/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lazycode.ru/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -172,90 +172,86 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 7.3.10">
     <include_path>
-      <path value="$PROJECT_DIR$/root_folder/vendor/symfony/polyfill-iconv" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/symfony/polyfill-php73" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/symfony/polyfill-ctype" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/symfony/polyfill-php72" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/phpunit/phpunit" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/phpunit/php-text-template" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/phpunit/php-code-coverage" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/phpunit/php-file-iterator" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/phar-io/version" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/phpspec/prophecy" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/phpunit/php-timer" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/phpunit/php-token-stream" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/mockery/mockery" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/monolog/monolog" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/myclabs/deep-copy" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/phar-io/manifest" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/dnoegel/php-xdg-base-dir" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/egulias/email-validator" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/laravel/tinker" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/laravel/framework" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/league/flysystem" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/nesbot/carbon" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/ramsey/uuid" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/vlucas/phpdotenv" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/filp/whoops" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/opis/closure" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/nikic/php-parser" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/erusev/parsedown" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/psr/container" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/psr/log" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/psr/simple-cache" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/psy/psysh" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/composer" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/phpdocumentor/reflection-docblock" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/jakub-onderka/php-console-color" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/jakub-onderka/php-console-highlighter" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/phpdocumentor/reflection-common" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/phpdocumentor/type-resolver" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/nunomaduro/collision" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/swiftmailer/swiftmailer" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/tijsverkoyen/css-to-inline-styles" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/dragonmantank/cron-expression" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/sebastian/resource-operations" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/webmozart/assert" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/beyondcode/laravel-dump-server" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/fzaninotto/faker" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/sebastian/recursion-context" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/sebastian/version" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/sebastian/environment" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/sebastian/exporter" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/sebastian/object-enumerator" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/sebastian/object-reflector" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/sebastian/code-unit-reverse-lookup" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/sebastian/diff" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/paragonie/random_compat" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/phpoption/phpoption" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/sebastian/comparator" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/sebastian/global-state" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/doctrine/inflector" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/doctrine/instantiator" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/hamcrest/hamcrest-php" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/fideloper/proxy" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/doctrine/lexer" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/symfony/polyfill-mbstring" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/theseer/tokenizer" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/symfony/http-foundation" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/symfony/process" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/symfony/debug" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/symfony/console" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/symfony/http-kernel" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/symfony/mime" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/symfony/routing" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/symfony/service-contracts" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/symfony/polyfill-intl-idn" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/symfony/css-selector" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/symfony/event-dispatcher-contracts" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/symfony/finder" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/symfony/translation" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/symfony/translation-contracts" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/symfony/event-dispatcher" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/symfony/var-dumper" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/cocur/slugify" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/cviebrock/eloquent-sluggable" />
-      <path value="$PROJECT_DIR$/root_folder/vendor/laravelcollective/html" />
+      <path value="$PROJECT_DIR$/lazycode.ru/vendor/symfony/polyfill-iconv" />
+      <path value="$PROJECT_DIR$/lazycode.ru/vendor/symfony/polyfill-php73" />
+      <path value="$PROJECT_DIR$/lazycode.ru/vendor/symfony/polyfill-ctype" />
+      <path value="$PROJECT_DIR$/lazycode.ru/vendor/symfony/polyfill-php72" />
+      <path value="$PROJECT_DIR$/lazycode.ru/vendor/phpunit/phpunit" />
+      <path value="$PROJECT_DIR$/lazycode.ru/vendor/phpunit/php-text-template" />
+      <path value="$PROJECT_DIR$/lazycode.ru/vendor/phpunit/php-code-coverage" />
+      <path value="$PROJECT_DIR$/lazycode.ru/vendor/phpunit/php-file-iterator" />
+      <path value="$PROJECT_DIR$/lazycode.ru/vendor/phar-io/version" />
+      <path value="$PROJECT_DIR$/lazycode.ru/vendor/phpspec/prophecy" />
+      <path value="$PROJECT_DIR$/lazycode.ru/vendor/phpunit/php-timer" />
+      <path value="$PROJECT_DIR$/lazycode.ru/vendor/phpunit/php-token-stream" />
+      <path value="$PROJECT_DIR$/lazycode.ru/vendor/mockery/mockery" />
+      <path value="$PROJECT_DIR$/lazycode.ru/vendor/monolog/monolog" />
+      <path value="$PROJECT_DIR$/lazycode.ru/vendor/myclabs/deep-copy" />
+      <path value="$PROJECT_DIR$/lazycode.ru/vendor/phar-io/manifest" />
+      <path value="$PROJECT_DIR$/lazycode.ru/vendor/dnoegel/php-xdg-base-dir" />
+      <path value="$PROJECT_DIR$/lazycode.ru/vendor/egulias/email-validator" />
+      <path value="$PROJECT_DIR$/lazycode.ru/vendor/laravel/tinker" />
+      <path value="$PROJECT_DIR$/lazycode.ru/vendor/laravel/framework" />
+      <path value="$PROJECT_DIR$/lazycode.ru/vendor/league/flysystem" />
+      <path value="$PROJECT_DIR$/lazycode.ru/vendor/nesbot/carbon" />
+      <path value="$PROJECT_DIR$/lazycode.ru/vendor/ramsey/uuid" />
+      <path value="$PROJECT_DIR$/lazycode.ru/vendor/vlucas/phpdotenv" />
+      <path value="$PROJECT_DIR$/lazycode.ru/vendor/filp/whoops" />
+      <path value="$PROJECT_DIR$/lazycode.ru/vendor/opis/closure" />
+      <path value="$PROJECT_DIR$/lazycode.ru/vendor/nikic/php-parser" />
+      <path value="$PROJECT_DIR$/lazycode.ru/vendor/erusev/parsedown" />
+      <path value="$PROJECT_DIR$/lazycode.ru/vendor/psr/container" />
+      <path value="$PROJECT_DIR$/lazycode.ru/vendor/psr/log" />
+      <path value="$PROJECT_DIR$/lazycode.ru/vendor/psr/simple-cache" />
+      <path value="$PROJECT_DIR$/lazycode.ru/vendor/psy/psysh" />
+      <path value="$PROJECT_DIR$/lazycode.ru/vendor/composer" />
+      <path value="$PROJECT_DIR$/lazycode.ru/vendor/phpdocumentor/reflection-docblock" />
+      <path value="$PROJECT_DIR$/lazycode.ru/vendor/jakub-onderka/php-console-color" />
+      <path value="$PROJECT_DIR$/lazycode.ru/vendor/jakub-onderka/php-console-highlighter" />
+      <path value="$PROJECT_DIR$/lazycode.ru/vendor/phpdocumentor/reflection-common" />
+      <path value="$PROJECT_DIR$/lazycode.ru/vendor/phpdocumentor/type-resolver" />
+      <path value="$PROJECT_DIR$/lazycode.ru/vendor/nunomaduro/collision" />
+      <path value="$PROJECT_DIR$/lazycode.ru/vendor/swiftmailer/swiftmailer" />
+      <path value="$PROJECT_DIR$/lazycode.ru/vendor/tijsverkoyen/css-to-inline-styles" />
+      <path value="$PROJECT_DIR$/lazycode.ru/vendor/dragonmantank/cron-expression" />
+      <path value="$PROJECT_DIR$/lazycode.ru/vendor/sebastian/resource-operations" />
+      <path value="$PROJECT_DIR$/lazycode.ru/vendor/webmozart/assert" />
+      <path value="$PROJECT_DIR$/lazycode.ru/vendor/fzaninotto/faker" />
+      <path value="$PROJECT_DIR$/lazycode.ru/vendor/sebastian/recursion-context" />
+      <path value="$PROJECT_DIR$/lazycode.ru/vendor/sebastian/version" />
+      <path value="$PROJECT_DIR$/lazycode.ru/vendor/sebastian/environment" />
+      <path value="$PROJECT_DIR$/lazycode.ru/vendor/sebastian/exporter" />
+      <path value="$PROJECT_DIR$/lazycode.ru/vendor/sebastian/object-enumerator" />
+      <path value="$PROJECT_DIR$/lazycode.ru/vendor/sebastian/object-reflector" />
+      <path value="$PROJECT_DIR$/lazycode.ru/vendor/sebastian/code-unit-reverse-lookup" />
+      <path value="$PROJECT_DIR$/lazycode.ru/vendor/sebastian/diff" />
+      <path value="$PROJECT_DIR$/lazycode.ru/vendor/paragonie/random_compat" />
+      <path value="$PROJECT_DIR$/lazycode.ru/vendor/phpoption/phpoption" />
+      <path value="$PROJECT_DIR$/lazycode.ru/vendor/sebastian/comparator" />
+      <path value="$PROJECT_DIR$/lazycode.ru/vendor/sebastian/global-state" />
+      <path value="$PROJECT_DIR$/lazycode.ru/vendor/doctrine/inflector" />
+      <path value="$PROJECT_DIR$/lazycode.ru/vendor/doctrine/instantiator" />
+      <path value="$PROJECT_DIR$/lazycode.ru/vendor/hamcrest/hamcrest-php" />
+      <path value="$PROJECT_DIR$/lazycode.ru/vendor/fideloper/proxy" />
+      <path value="$PROJECT_DIR$/lazycode.ru/vendor/doctrine/lexer" />
+      <path value="$PROJECT_DIR$/lazycode.ru/vendor/symfony/polyfill-mbstring" />
+      <path value="$PROJECT_DIR$/lazycode.ru/vendor/theseer/tokenizer" />
+      <path value="$PROJECT_DIR$/lazycode.ru/vendor/symfony/http-foundation" />
+      <path value="$PROJECT_DIR$/lazycode.ru/vendor/symfony/process" />
+      <path value="$PROJECT_DIR$/lazycode.ru/vendor/symfony/debug" />
+      <path value="$PROJECT_DIR$/lazycode.ru/vendor/symfony/console" />
+      <path value="$PROJECT_DIR$/lazycode.ru/vendor/symfony/http-kernel" />
+      <path value="$PROJECT_DIR$/lazycode.ru/vendor/symfony/mime" />
+      <path value="$PROJECT_DIR$/lazycode.ru/vendor/symfony/routing" />
+      <path value="$PROJECT_DIR$/lazycode.ru/vendor/symfony/service-contracts" />
+      <path value="$PROJECT_DIR$/lazycode.ru/vendor/symfony/polyfill-intl-idn" />
+      <path value="$PROJECT_DIR$/lazycode.ru/vendor/symfony/css-selector" />
+      <path value="$PROJECT_DIR$/lazycode.ru/vendor/symfony/event-dispatcher-contracts" />
+      <path value="$PROJECT_DIR$/lazycode.ru/vendor/symfony/finder" />
+      <path value="$PROJECT_DIR$/lazycode.ru/vendor/symfony/translation" />
+      <path value="$PROJECT_DIR$/lazycode.ru/vendor/symfony/translation-contracts" />
+      <path value="$PROJECT_DIR$/lazycode.ru/vendor/symfony/event-dispatcher" />
+      <path value="$PROJECT_DIR$/lazycode.ru/vendor/symfony/var-dumper" />
     </include_path>
   </component>
   <component name="ProjectId" id="1S57GDZ1TtytB43LlINJq0PHt8B" />
@@ -275,7 +271,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
+    <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -535,7 +531,9 @@
       <workItem from="1572406627438" duration="1174000" />
       <workItem from="1572560029134" duration="2724000" />
       <workItem from="1572684084973" duration="6200000" />
-      <workItem from="1572834719532" duration="8842000" />
+      <workItem from="1572834719532" duration="13511000" />
+      <workItem from="1573071600815" duration="525000" />
+      <workItem from="1573268738927" duration="34072000" />
     </task>
     <servers />
   </component>
