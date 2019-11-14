@@ -2,144 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4d2935da-1f9e-4348-a12e-628192142797" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/bloco.ru/.editorconfig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/.env.example" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/.gitattributes" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/.styleci.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/app/Category.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/app/Console/Kernel.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/app/Exceptions/Handler.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/app/Http/Controllers/Auth/ConfirmPasswordController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/app/Http/Controllers/Auth/ForgotPasswordController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/app/Http/Controllers/Auth/ResetPasswordController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/app/Http/Controllers/Auth/VerificationController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/app/Http/Controllers/CategoryController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/app/Http/Controllers/Controller.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/app/Http/Controllers/HomeController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/app/Http/Controllers/PostController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/app/Http/Controllers/UserController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/app/Http/Kernel.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/app/Http/Middleware/Authenticate.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/app/Http/Middleware/CheckForMaintenanceMode.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/app/Http/Middleware/EncryptCookies.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/app/Http/Middleware/RedirectIfAuthenticated.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/app/Http/Middleware/TrimStrings.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/app/Http/Middleware/TrustProxies.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/app/Http/Middleware/VerifyCsrfToken.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/app/Post.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/app/Providers/AppServiceProvider.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/app/Providers/AuthServiceProvider.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/app/Providers/BroadcastServiceProvider.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/app/Providers/EventServiceProvider.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/app/Providers/RouteServiceProvider.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/app/User.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/artisan" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/bootstrap/app.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/bootstrap/cache/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/composer.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/composer.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/config/app.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/config/auth.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/config/broadcasting.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/config/cache.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/config/database.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/config/filesystems.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/config/hashing.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/config/logging.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/config/mail.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/config/queue.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/config/services.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/config/session.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/config/view.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/database/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/database/factories/CategoryFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/database/factories/PostFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/database/factories/UserFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/database/migrations/2014_10_12_100000_create_password_resets_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/database/migrations/2019_08_19_000000_create_failed_jobs_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/database/migrations/2019_11_12_041013_create_categories_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/database/migrations/2019_11_12_041918_create_posts_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/database/seeds/DatabaseSeeder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/phpunit.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/public/.htaccess" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/public/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/public/fonts/vendor/@fortawesome/fontawesome-free/webfa-brands-400.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/public/fonts/vendor/@fortawesome/fontawesome-free/webfa-brands-400.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/public/fonts/vendor/@fortawesome/fontawesome-free/webfa-brands-400.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/public/fonts/vendor/@fortawesome/fontawesome-free/webfa-brands-400.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/public/fonts/vendor/@fortawesome/fontawesome-free/webfa-brands-400.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/public/fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/public/fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/public/fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/public/fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/public/fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/public/img/admin-icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/public/img/admin.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/public/img/logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/public/img/man.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/public/img/softtware-engineer.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/public/index.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/public/robots.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/public/web.config" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/readme.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/resources/js/app.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/resources/js/bootstrap.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/resources/js/components/Blog.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/resources/js/components/Categories.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/resources/js/components/Post.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/resources/js/components/Posts.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/resources/js/components/Profile.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/resources/js/components/Users.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/resources/lang/en/auth.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/resources/lang/en/pagination.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/resources/lang/en/passwords.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/resources/lang/en/validation.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/resources/sass/app.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/resources/views/auth/login.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/resources/views/auth/passwords/confirm.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/resources/views/auth/passwords/email.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/resources/views/auth/passwords/reset.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/resources/views/auth/register.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/resources/views/auth/verify.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/resources/views/home.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/resources/views/layouts/master.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/resources/views/welcome.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/routes/api.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/routes/channels.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/routes/console.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/routes/web.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/server.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/storage/app/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/storage/app/public/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/storage/framework/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/storage/framework/cache/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/storage/framework/cache/data/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/storage/framework/sessions/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/storage/framework/testing/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/storage/framework/views/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/storage/logs/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/tests/CreatesApplication.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/tests/Feature/ExampleTest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/tests/TestCase.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/tests/Unit/ExampleTest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/webpack.mix.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lazycode.ru/app/Comment.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/app/Comment.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lazycode.ru/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/app/Http/Controllers/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lazycode.ru/app/Post.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/app/Post.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lazycode.ru/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lazycode.ru/config/filesystems.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/config/filesystems.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lazycode.ru/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lazycode.ru/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lazycode.ru/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lazycode.ru/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/lazycode.ru/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/.env.example" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/resources/views/auth/login.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/views/auth/passwords/confirm.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/resources/views/auth/passwords/confirm.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/views/auth/passwords/email.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/resources/views/auth/passwords/email.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/views/auth/passwords/reset.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/resources/views/auth/passwords/reset.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/views/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/resources/views/auth/register.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/views/auth/verify.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/resources/views/auth/verify.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/resources/views/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/resources/views/layouts/app.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -533,7 +405,7 @@
       <workItem from="1572684084973" duration="6200000" />
       <workItem from="1572834719532" duration="13511000" />
       <workItem from="1573071600815" duration="525000" />
-      <workItem from="1573268738927" duration="34072000" />
+      <workItem from="1573268738927" duration="36440000" />
     </task>
     <servers />
   </component>
