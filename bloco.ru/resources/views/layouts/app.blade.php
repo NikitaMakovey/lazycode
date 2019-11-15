@@ -18,12 +18,14 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico"/>
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="lazycode-navbar navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand logo-link" href="{{ url('/') }}">
                     {{ config('app.name', 'Lazycode') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -42,30 +44,50 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Войти') }}</a>
+                                <button type="submit" class="btn logo-button">
+                                    <a class="nav-link logo-link"
+                                       href="{{ route('login') }}">
+                                        {{ __('Войти') }}
+                                    </a>
+                                </button>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Зарегистрироваться') }}</a>
+                                    <button type="submit" class="btn logo-button">
+                                        <a class="nav-link logo-link"
+                                           href="{{ route('register') }}">
+                                            {{ __('Зарегистрироваться') }}
+                                        </a>
+                                    </button>
                                 </li>
                             @endif
                         @else
+                            <li class="nav-item">
+                                <button type="submit" class="btn logo-button">
+                                    <router-link to="/posts/create" class="nav-link logo-link">{{ __('Запостить') }}</router-link>
+                                </button>
+                            </li>
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Выйти') }}
+                                <button type="submit" class="btn logo-button">
+                                    <a id="navbarDropdown" class="logo-link nav-link dropdown-toggle"
+                                        href="{{ route('users.show', Auth::user()->username) }}"
+                                        role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                        {{ Auth::user()->username }}
+                                        <span class="caret"></span>
                                     </a>
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="{{ route('logout') }}"
+                                           onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                            {{ __('Выйти') }}
+                                        </a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            @csrf
+                                        </form>
+                                    </div>
+                                </button>
+
                             </li>
                         @endguest
                     </ul>

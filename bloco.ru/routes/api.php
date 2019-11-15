@@ -22,3 +22,4 @@ Route::apiResources([
     'categories' => 'CategoryController',
     'users' => 'UserController'
 ]);
+

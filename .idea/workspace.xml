@@ -2,16 +2,33 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4d2935da-1f9e-4348-a12e-628192142797" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/bloco.ru/public/fonts/vendor/summernote/dist/summernote.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/public/fonts/vendor/summernote/dist/summernote.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/public/fonts/vendor/summernote/dist/summernote.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/public/img/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/resources/js/components/posts/CreatePostPage.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/resources/views/main.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bloco.ru/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/.env.example" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/app/Http/Controllers/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/app/Http/Controllers/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/public/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/resources/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/resources/js/bootstrap.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/components/Blog.vue" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/resources/js/components/posts/MainPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/components/Categories.vue" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/resources/js/components/admin/Categories.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/components/Post.vue" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/resources/js/components/posts/Post.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/components/Posts.vue" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/resources/js/components/admin/Posts.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/components/Profile.vue" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/resources/js/components/admin/Profile.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/components/Users.vue" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/resources/js/components/admin/Users.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/lang/en/auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/resources/lang/en/auth.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/sass/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/resources/sass/app.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bloco.ru/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/resources/views/auth/login.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/views/auth/passwords/confirm.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/resources/views/auth/passwords/confirm.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/views/auth/passwords/email.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/resources/views/auth/passwords/email.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/views/auth/passwords/reset.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/resources/views/auth/passwords/reset.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/views/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/resources/views/auth/register.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/views/auth/verify.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/resources/views/auth/verify.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/resources/views/home.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bloco.ru/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -146,10 +163,12 @@
     <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/bloco.ru/resources/js/components/admin" />
+      <recent name="$PROJECT_DIR$/bloco.ru/resources/js/components/posts" />
       <recent name="$PROJECT_DIR$/root_folder/resources/js/views" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
+    <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/root_folder/resources/js/views" />
     </key>
   </component>
@@ -405,7 +424,8 @@
       <workItem from="1572684084973" duration="6200000" />
       <workItem from="1572834719532" duration="13511000" />
       <workItem from="1573071600815" duration="525000" />
-      <workItem from="1573268738927" duration="36440000" />
+      <workItem from="1573268738927" duration="38062000" />
+      <workItem from="1573772514421" duration="18627000" />
     </task>
     <servers />
   </component>

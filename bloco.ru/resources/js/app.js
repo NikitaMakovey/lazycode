@@ -13,12 +13,9 @@ import VueRouter from "vue-router";
 import Vue from "vue";
 import Vuex from "vuex";
 import Axios from "axios";
-import Profile from "./components/Profile";
-import Blog from "./components/Blog";
-import Users from "./components/Users";
-import Posts from "./components/Posts";
-import Categories from "./components/Categories";
-import Post from "./components/Post";
+import Main from "./components/posts/MainPage";
+import Post from "./components/posts/Post";
+import CreatePostPage from "./components/posts/CreatePostPage";
 import { Form, HasError, AlertError } from 'vform';
 
 window.Form = Form;
@@ -31,11 +28,8 @@ Vue.use(VueRouter);
 Vue.use(Vuex);
 
 let routes = [
-    { path: '/profile', component: Profile },
-    { path: '/blog', component: Blog },
-    { path: '/users', component: Users },
-    { path: '/categories', component: Categories },
-    { path: '/posts', component: Posts },
+    { path: '/', component: Main },
+    { path: '/posts/create', name: 'posts.create', component:  CreatePostPage },
     { path: '/posts/:id', name: 'post', component: Post }
 ];
 
@@ -49,6 +43,10 @@ export const store = new Vuex.Store({
     getters: {},
     mutations: {},
     actions: {},
+});
+
+$(document).ready(function() {
+    $('#content').summernote();
 });
 
 /**
