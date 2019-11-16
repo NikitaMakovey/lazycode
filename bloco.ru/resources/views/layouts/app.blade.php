@@ -18,6 +18,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/main.css') }}" rel="stylesheet">
 
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico"/>
 </head>
@@ -70,7 +71,7 @@
                             <li class="nav-item dropdown">
                                 <button type="submit" class="btn logo-button">
                                     <a id="navbarDropdown" class="logo-link nav-link dropdown-toggle"
-                                        href="{{ route('users.show', Auth::user()->username) }}"
+                                        href="{{ route('users.show', Auth::user()->id) }}"
                                         role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                         {{ Auth::user()->username }}
                                         <span class="caret"></span>

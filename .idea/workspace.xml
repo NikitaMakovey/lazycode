@@ -2,33 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4d2935da-1f9e-4348-a12e-628192142797" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/bloco.ru/public/fonts/vendor/summernote/dist/summernote.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/public/fonts/vendor/summernote/dist/summernote.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/public/fonts/vendor/summernote/dist/summernote.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/public/img/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/resources/js/components/posts/CreatePostPage.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/resources/views/main.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/public/css/main.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bloco.ru/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bloco.ru/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/app/Http/Controllers/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bloco.ru/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/app/Http/Controllers/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bloco.ru/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bloco.ru/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/public/css/app.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bloco.ru/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/public/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/resources/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/resources/js/bootstrap.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/components/Blog.vue" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/resources/js/components/posts/MainPage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/components/Categories.vue" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/resources/js/components/admin/Categories.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/components/Post.vue" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/resources/js/components/posts/Post.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/components/Posts.vue" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/resources/js/components/admin/Posts.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/components/Profile.vue" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/resources/js/components/admin/Profile.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/components/Users.vue" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/resources/js/components/admin/Users.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/lang/en/auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/resources/lang/en/auth.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/sass/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/resources/sass/app.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/resources/views/auth/login.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/components/posts/CreatePostPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/resources/js/components/posts/CreatePostPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/components/posts/MainPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/resources/js/components/posts/MainPage.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bloco.ru/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bloco.ru/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/routes/api.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bloco.ru/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -47,6 +31,7 @@
       <list>
         <option value="JavaScript File" />
         <option value="Vue Single File Component" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -153,6 +138,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -425,7 +411,7 @@
       <workItem from="1572834719532" duration="13511000" />
       <workItem from="1573071600815" duration="525000" />
       <workItem from="1573268738927" duration="38062000" />
-      <workItem from="1573772514421" duration="18627000" />
+      <workItem from="1573772514421" duration="23552000" />
     </task>
     <servers />
   </component>

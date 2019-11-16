@@ -3,9 +3,7 @@
         <div class="row">
             <div v-for="post in posts" :key="post.id">
                 <router-link :to="{ name: 'post', params: { id: post.id } }" v-bind:id="post.id">
-                    <div>
-                        {{ post }}
-                    </div>
+                    <div v-html="post.body"></div>
                 </router-link>
             </div>
         </div>
