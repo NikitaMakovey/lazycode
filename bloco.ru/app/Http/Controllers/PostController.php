@@ -59,7 +59,7 @@ class PostController extends Controller
      */
     public function show(int $id)
     {
-        return Post::find($id);
+        return Post::findOrFail($id);
     }
 
     /**

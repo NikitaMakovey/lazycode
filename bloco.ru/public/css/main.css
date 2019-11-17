@@ -45,3 +45,43 @@
     border-bottom: 1px solid #a2e3c4 !important;
     box-shadow: none !important;
 }
+
+.header-title-text {
+    font-size: 2rem;
+    color: #3C493F;
+}
+
+.posts-list {
+    color: #3C493F;
+}
+
+.vue-link {
+    color: #3C493F !important;
+    text-decoration: none;
+}
+
+.vue-link:hover {
+    color: #7E8D85 !important;
+    text-decoration: none;
+}
+
+.vue-link-button {
+    color: #3C493F !important;
+    text-decoration: none;
+}
+
+.vue-link-button:hover {
+    color: #ffffff !important;
+    text-decoration: none;
+}
+
+.post-area {
+    list-style-type: none;
+    padding: 0;
+}
+
+.post-field {
+    color: #3C493F;
+}
+
+

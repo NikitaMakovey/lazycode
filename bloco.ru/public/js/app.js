@@ -2372,6 +2372,34 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2412,23 +2440,33 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      post: {}
+      post: []
     };
   },
   methods: {
     loadPost: function loadPost() {
       var _this = this;
 
-      axios.get("api/posts/" + this.$route.params.id).then(function (_ref) {
+      var id_ = this.$route.params.id;
+      var apiRoute = "/api/posts/" + id_;
+      axios.get(apiRoute).then(function (_ref) {
         var data = _ref.data;
         return _this.post = data;
       });
     }
   },
-  created: function created() {
+  mounted: function mounted() {
     this.loadPost();
   }
 });
@@ -38972,33 +39010,108 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
-    _c(
-      "div",
-      { staticClass: "row" },
-      _vm._l(_vm.posts, function(post) {
-        return _c(
-          "div",
-          { key: post.id },
-          [
-            _c(
-              "router-link",
-              {
-                attrs: {
-                  to: { name: "post", params: { id: post.id } },
-                  id: post.id
-                }
-              },
-              [_c("div", { domProps: { innerHTML: _vm._s(post.body) } })]
-            )
-          ],
-          1
-        )
-      }),
-      0
-    )
+    _c("div", { staticClass: "index-post" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _vm._m(1),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "posts-list" },
+        _vm._l(_vm.posts, function(post) {
+          return _c("ul", { key: post.id, staticClass: "post-area" }, [
+            _c("li", { staticClass: "post-space" }, [
+              _c("article", { staticClass: "post-item" }, [
+                _c("header", { staticClass: "post-metadata" }),
+                _vm._v(" "),
+                _c(
+                  "h2",
+                  { staticClass: "post-title" },
+                  [
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "vue-link",
+                        attrs: { to: { name: "post", params: { id: post.id } } }
+                      },
+                      [
+                        _vm._v(
+                          "\n                                " +
+                            _vm._s(post.title) +
+                            "\n                            "
+                        )
+                      ]
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c("span", { staticClass: "post-category" }),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "post-body" },
+                  [
+                    _c("div", {
+                      staticClass: "post-text",
+                      domProps: { innerHTML: _vm._s(post.body) }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "vue-link-button",
+                        attrs: { to: { name: "post", params: { id: post.id } } }
+                      },
+                      [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn user-button",
+                            attrs: { type: "button" }
+                          },
+                          [
+                            _vm._v(
+                              "\n                                    Читать весь пост\n                                "
+                            )
+                          ]
+                        )
+                      ]
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c("footer", { staticClass: "post-footer" })
+              ])
+            ])
+          ])
+        }),
+        0
+      )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "sidebar" })
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "page-header" }, [
+      _c("div", { staticClass: "header-title" }, [
+        _c("span", { staticClass: "header-title-text" }, [_vm._v("Все посты")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "tabs" }, [_c("hr")])
+  }
+]
 render._withStripped = true
 
 
@@ -39021,8 +39134,23 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "row" }, [
-      _vm._v("\n        Пост " + _vm._s(this.$route.params.id) + "\n    ")
+    _c("div", { staticClass: "post-field" }, [
+      _c("header", { staticClass: "post-metadata" }),
+      _vm._v(" "),
+      _c("h1", { staticClass: "post-title" }, [
+        _vm._v("\n            " + _vm._s(this.post.title) + "\n        ")
+      ]),
+      _vm._v(" "),
+      _c("span", { staticClass: "post-category" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "post-body" }, [
+        _c("div", {
+          staticClass: "post-text",
+          domProps: { innerHTML: _vm._s(this.post.body) }
+        })
+      ]),
+      _vm._v(" "),
+      _c("footer", { staticClass: "post-footer" })
     ])
   ])
 }
