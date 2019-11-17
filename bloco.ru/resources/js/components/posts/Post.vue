@@ -9,7 +9,13 @@
             <div class="post-body">
                 <div v-html="this.post.body" class="post-text"></div>
             </div>
-            <footer class="post-footer"></footer>
+            <footer class="post-footer">
+                <router-link class="vue-link-button" :to="{ name: 'posts.edit', params: { id: this.post.id }}">
+                    <button type="button" class="btn user-button">
+                        Редактировать пост
+                    </button>
+                </router-link>
+            </footer>
         </div>
     </div>
 </template>

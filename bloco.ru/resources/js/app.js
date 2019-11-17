@@ -16,6 +16,7 @@ import Axios from "axios";
 import Main from "./components/posts/MainPage";
 import Post from "./components/posts/Post";
 import CreatePostPage from "./components/posts/CreatePostPage";
+import EditPostPage from "./components/posts/EditPostPage";
 import { Form, HasError, AlertError } from 'vform';
 
 window.Form = Form;
@@ -30,6 +31,7 @@ Vue.use(Vuex);
 let routes = [
     { path: '/', component: Main },
     { path: '/posts/create', name: 'posts.create', component:  CreatePostPage },
+    { path: '/posts/:id/edit', name: 'posts.edit', component:  EditPostPage },
     { path: '/posts/:id', name: 'post', component: Post }
 ];
 

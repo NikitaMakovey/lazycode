@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <form @submit.prevent="createPost">
+                <form @submit.prevent="updatePost">
                     <div class="form-group">
                         <textarea v-model="form.title" type="text" name="title"
                                   class="form-control" :class="{ 'is-invalid': form.errors.has('title') }"
@@ -21,7 +21,7 @@
                             v-model="form.body" name="body"
                             class="form-control" :class="{ 'is-invalid': form.errors.has('body') }"
                             api-key="29hv0shfon7y1i3ayspbk71bs3dy13lj3kxesuslq7ll3wfw"
-                            initialValue="<p>Текст Вашей статьи</p>"
+                            initialValue="1"
                             :init="{
                                  height: 500,
                                  menubar: false,
@@ -38,7 +38,7 @@
                         </editor>
                         <has-error :form="form" field="body"></has-error>
                     </div>
-                    <button type="submit" class="btn btn-primary">Запостить</button>
+                    <button type="submit" class="btn btn-primary">Отредактировать</button>
                 </form>
             </div>
         </div>
@@ -49,9 +49,10 @@
     import Editor from '@tinymce/tinymce-vue';
 
     export default {
-        name: "CreatePostPage",
+        name: "EditPostPage",
         data() {
             return {
+                post_id : null,
                 form: new Form({
                     title: '',
                     category_id: '',
@@ -64,9 +65,21 @@
             'editor': Editor
         },
         methods: {
-            createPost() {
-                this.form.post('/api/posts').then(() => (this.$router.push({path: '/'})));
+            updatePost() {
+                let patchRoute = "/api/posts/" + this.post_id;
+                this.form.patch(patchRoute, this.form).then(() => (this.$router.push({path: '/'})));
             }
+        },
+        mounted() {
+            let id = this.$route.params.id;
+            this.post_id = id;
+            let getRoute = "/api/posts/" + id;
+            axios.get(getRoute).then(function ({data}) {
+                this.form.title = data.title;
+                this.form.category_id = data.title;
+                this.form.author_id = data.author_id;
+                this.form.body = data.body;
+            });
         }
     };
 </script>

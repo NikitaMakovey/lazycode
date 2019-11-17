@@ -2,12 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4d2935da-1f9e-4348-a12e-628192142797" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/bloco.ru/resources/js/components/posts/EditPostPage.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bloco.ru/app/Http/Controllers/PostController.php" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/app/Http/Controllers/PostController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bloco.ru/public/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/public/css/main.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bloco.ru/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/components/posts/MainPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/resources/js/components/posts/MainPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/resources/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/components/posts/CreatePostPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/resources/js/components/posts/CreatePostPage.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/components/posts/Post.vue" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/resources/js/components/posts/Post.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -25,8 +27,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
-        <option value="Vue Single File Component" />
         <option value="CSS File" />
+        <option value="Vue Single File Component" />
       </list>
     </option>
   </component>
@@ -406,7 +408,8 @@
       <workItem from="1572834719532" duration="13511000" />
       <workItem from="1573071600815" duration="525000" />
       <workItem from="1573268738927" duration="38062000" />
-      <workItem from="1573772514421" duration="31531000" />
+      <workItem from="1573772514421" duration="31858000" />
+      <workItem from="1573992239627" duration="4339000" />
     </task>
     <servers />
   </component>
