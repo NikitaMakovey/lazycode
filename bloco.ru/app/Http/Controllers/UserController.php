@@ -61,7 +61,7 @@ class UserController extends Controller
      */
     public function show(int $id)
     {
-        return User::find($id);
+        return User::findOrFail($id);
     }
 
     /**
@@ -79,12 +79,29 @@ class UserController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\User  $user
+     * @param integer $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, int $id)
     {
-        //
+        //TODO: make correct validation of data
+        $this->validate($request, [
+            'name' => 'nullable',
+            'specialization' => 'nullable',
+            'image' => 'nullable',
+            'about' => 'nullable',
+        ]);
+
+        $user = User::find($id);
+
+        if ($request['name']) $user->name = $request['name'];
+        if ($request['specialization']) $user->specialization = $request['specialization'];
+        if ($request['image']) $user->image = $request['image'];
+        if ($request['about']) $user->about = $request['about'];
+
+        $user->save();
+
+        return $user;
     }
 
     /**

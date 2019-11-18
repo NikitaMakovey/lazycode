@@ -40,6 +40,7 @@
                     </div>
                     <button type="submit" class="btn btn-primary">Отредактировать</button>
                 </form>
+                <button v-on:click="deletePost" class="btn btn-danger">Уничтожить безвозвратно</button>
             </div>
         </div>
     </div>
@@ -67,7 +68,11 @@
         methods: {
             updatePost() {
                 let patchRoute = "/api/posts/" + this.post_id;
-                this.form.patch(patchRoute, this.form).then(() => (this.$router.push({path: '/'})));
+                this.form.patch(patchRoute, this.form).then(() => (this.$router.push({ path: '/' })));
+            },
+            deletePost() {
+                let deleteRoute = "/api/posts/" + this.post_id;
+                axios.delete(deleteRoute).then(() => (this.$router.push({ path: '/' })));
             }
         },
         mounted() {

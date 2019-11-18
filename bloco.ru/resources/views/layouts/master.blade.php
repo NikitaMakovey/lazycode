@@ -13,7 +13,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <title>Lazycode | Admin</title>
 
-    <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="/css/main.css">
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper" id="app">

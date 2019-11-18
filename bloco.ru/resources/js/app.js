@@ -17,6 +17,9 @@ import Main from "./components/posts/MainPage";
 import Post from "./components/posts/Post";
 import CreatePostPage from "./components/posts/CreatePostPage";
 import EditPostPage from "./components/posts/EditPostPage";
+import IndexUserPage from "./components/users/IndexUserPage";
+import User from "./components/users/User";
+import EditUserPage from "./components/users/EditUserPage";
 import { Form, HasError, AlertError } from 'vform';
 
 window.Form = Form;
@@ -32,7 +35,10 @@ let routes = [
     { path: '/', component: Main },
     { path: '/posts/create', name: 'posts.create', component:  CreatePostPage },
     { path: '/posts/:id/edit', name: 'posts.edit', component:  EditPostPage },
-    { path: '/posts/:id', name: 'post', component: Post }
+    { path: '/posts/:id', name: 'post', component: Post },
+    { path: '/users', name: 'users', component: IndexUserPage },
+    { path: '/users/:id', name: 'user', component: User },
+    { path: '/users/:id/edit', name: 'users.edit', component: EditUserPage }
 ];
 
 const router = new VueRouter({

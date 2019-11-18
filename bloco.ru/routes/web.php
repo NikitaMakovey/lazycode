@@ -17,11 +17,6 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
 Route::get('{path}', 'HomeController@index')->where('path', '([A-z/0-9]+)?'); //([A-z\d-\/_.]+)?
 
 Route::get('posts/create', 'PostController@create')->name('posts.create');

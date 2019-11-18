@@ -17,7 +17,6 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
 
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico"/>
@@ -71,12 +70,18 @@
                             <li class="nav-item dropdown">
                                 <button type="submit" class="btn logo-button">
                                     <a id="navbarDropdown" class="logo-link nav-link dropdown-toggle"
-                                        href="{{ route('users.show', Auth::user()->id) }}"
+                                        href=""
                                         role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                         {{ Auth::user()->username }}
                                         <span class="caret"></span>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                        <router-link to="/users/{{Auth::user()->id}}" class="dropdown-item">
+                                            {{ __('Профиль') }}
+                                        </router-link>
+                                        <router-link to="/users/{{Auth::user()->id}}/edit" class="dropdown-item">
+                                            {{ __('Настройки') }}
+                                        </router-link>
                                         <a class="dropdown-item" href="{{ route('logout') }}"
                                            onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -86,6 +91,10 @@
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                             @csrf
                                         </form>
+                                        <hr>
+                                        <router-link to="/users" class="dropdown-item">
+                                            {{ __('Все пользователи') }}
+                                        </router-link>
                                     </div>
                                 </button>
 

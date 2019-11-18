@@ -104,11 +104,15 @@ class PostController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Post  $post
+     * @param integer $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy(int $id)
     {
-        //
+         $post = Post::findOrFail($id);
+
+         $post->delete();
+
+         return $post;
     }
 }
