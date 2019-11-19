@@ -23,3 +23,5 @@ Route::apiResources([
     'users' => 'UserController'
 ]);
 
+Route::get('users/{id}/posts', 'UserController@userPosts')->name('users.userPosts');
+

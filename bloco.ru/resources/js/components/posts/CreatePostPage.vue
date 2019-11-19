@@ -55,7 +55,7 @@
                 form: new Form({
                     title: '',
                     category_id: '',
-                    author_id: 1,
+                    author_id: 9,
                     body: ''
                 })
             }

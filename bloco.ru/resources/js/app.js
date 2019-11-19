@@ -19,6 +19,9 @@ import CreatePostPage from "./components/posts/CreatePostPage";
 import EditPostPage from "./components/posts/EditPostPage";
 import IndexUserPage from "./components/users/IndexUserPage";
 import User from "./components/users/User";
+import UserProfile from './components/users/profile/UserProfile';
+import UserPosts from './components/users/profile/UserPosts';
+import UserComments from './components/users/profile/UserComments';
 import EditUserPage from "./components/users/EditUserPage";
 import { Form, HasError, AlertError } from 'vform';
 
@@ -37,7 +40,13 @@ let routes = [
     { path: '/posts/:id/edit', name: 'posts.edit', component:  EditPostPage },
     { path: '/posts/:id', name: 'post', component: Post },
     { path: '/users', name: 'users', component: IndexUserPage },
-    { path: '/users/:id', name: 'user', component: User },
+    { path: '/users/:id', name: 'user', component: User,
+        children: [
+            { path: '', name: 'user.about', component: UserProfile },
+            { path: 'posts', name: 'user.posts', component: UserPosts },
+            { path: 'comments', name: 'user.comments', component: UserComments }
+        ]
+    },
     { path: '/users/:id/edit', name: 'users.edit', component: EditUserPage }
 ];
 
@@ -51,6 +60,8 @@ export const store = new Vuex.Store({
     getters: {},
     mutations: {},
     actions: {},
+
+    modules: {}
 });
 
 /**

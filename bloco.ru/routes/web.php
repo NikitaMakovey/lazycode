@@ -15,9 +15,11 @@ Route::get('/', function () {
     return view('main');
 });
 
+Route::get('/admin', function () {
+    return view('layouts.master');
+})->name('admin');
+
 Auth::routes();
 
 Route::get('{path}', 'HomeController@index')->where('path', '([A-z/0-9]+)?'); //([A-z\d-\/_.]+)?
 
-Route::get('posts/create', 'PostController@create')->name('posts.create');
-Route::get('posts/edit', 'PostController@edit')->name('posts.edit');

@@ -1,7 +1,25 @@
 <template>
     <div class="container">
         <div class="post-field">
-            <header class="post-metadata"></header>
+            <header class="post-metadata">
+                <header class="post-metadata">
+                    <div style="display: block">
+                        <div class="user-meta-icon" style="display: inline-block">
+                            <router-link :to="{ name: 'user', params: { id: this.post.author_id }}" class="vue-link">
+                                <img :src="getImage(this.post.author_id)" alt="#" class="user-icon-img">
+                            </router-link>
+                        </div>
+                        <div class="user-username" style="display: inline-block">
+                            <router-link :to="{ name: 'user', params: { id: this.post.author_id }}" class="username-item-link">
+                                @{{ getUsername(this.post.author_id) }}
+                            </router-link>
+                        </div>
+                    </div>
+                    <div class="category-block" style="display: block">
+                        <span class="meta-category">{{ getCategory(this.post.category_id) }}</span>
+                    </div>
+                </header>
+            </header>
             <h1 class="post-title">
                 {{ this.post.title }}
             </h1>
@@ -24,7 +42,9 @@
     export default {
         data() {
             return {
-                post : []
+                post: [],
+                users: {},
+                categories: {}
             }
         },
         methods: {
@@ -32,10 +52,27 @@
                 let id_ = this.$route.params.id;
                 let apiRoute = "/api/posts/" + id_;
                 axios.get(apiRoute).then(({data}) => (this.post = data));
+            },
+            loadUsers() {
+                axios.get("/api/users").then(({data}) => (this.users = data));
+            },
+            loadCategories() {
+                axios.get("/api/categories").then(({data}) => (this.categories = data))
+            },
+            getUsername(id) {
+                return this.users.find(x => x.id === id).username;
+            },
+            getImage(id) {
+                return this.users.find(x => x.id === id).image;
+            },
+            getCategory(id) {
+                return this.categories.find(x => x.id === id).name;
             }
         },
         mounted() {
             this.loadPost();
+            this.loadCategories();
+            this.loadUsers();
         }
     }
 </script>

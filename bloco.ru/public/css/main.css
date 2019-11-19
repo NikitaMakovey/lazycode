@@ -45682,3 +45682,25 @@ readers do not read off random characters that represent icons */
     color: #88bfa5;
 }
 
+.meta-category {
+    font-size: 1rem;
+    color: #6f9d88 !important;
+}
+
+.category-block {
+    margin-top: 0.2rem;
+}
+
+.user-icon-img {
+    object-fit: cover;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 0.5rem;
+    border: 0.1rem solid #7E8D85;
+}
+
+.username-item-link {
+    font-size: 1.2rem;
+    color: #88bfa5 !important;
+}
+

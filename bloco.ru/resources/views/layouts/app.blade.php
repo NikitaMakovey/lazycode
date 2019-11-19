@@ -19,7 +19,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
 
-    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico"/>
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('img/favicon.ico') }}"/>
 </head>
 <body>
     <div id="app">
@@ -82,6 +82,11 @@
                                         <router-link to="/users/{{Auth::user()->id}}/edit" class="dropdown-item">
                                             {{ __('Настройки') }}
                                         </router-link>
+                                        @if (Auth::user()->is_admin)
+                                        <a class="dropdown-item" href="{{ route('admin') }}">
+                                            {{ __('Админ-панель') }}
+                                        </a>
+                                        @endif
                                         <a class="dropdown-item" href="{{ route('logout') }}"
                                            onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

@@ -19,16 +19,6 @@ class PostController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -60,17 +50,6 @@ class PostController extends Controller
     public function show(int $id)
     {
         return Post::findOrFail($id);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Post  $post
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Post $post)
-    {
-        //
     }
 
     /**

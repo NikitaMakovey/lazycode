@@ -19,16 +19,6 @@ class UserController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -65,17 +55,6 @@ class UserController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(User $user)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -84,11 +63,10 @@ class UserController extends Controller
      */
     public function update(Request $request, int $id)
     {
-        //TODO: make correct validation of data
         $this->validate($request, [
-            'name' => 'nullable',
-            'specialization' => 'nullable',
-            'image' => 'nullable',
+            'name' => 'nullable|string|max:255',
+            'specialization' => 'nullable|string|max:255',
+            'image' => 'nullable|string|max:255',
             'about' => 'nullable',
         ]);
 
@@ -100,18 +78,31 @@ class UserController extends Controller
         if ($request['about']) $user->about = $request['about'];
 
         $user->save();
-
         return $user;
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\User  $user
+     * @param integer $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy(int $id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user->delete();
+        return $user;
+    }
+
+    /**
+     * Display all posts of the user.
+     *
+     * @param integer $id
+     * @return \Illuminate\Http\Response
+     */
+    public function userPosts(int $id)
+    {
+        $user = User::findOrFail($id);
+        return $user->posts;
     }
 }

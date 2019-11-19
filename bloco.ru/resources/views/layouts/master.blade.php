@@ -66,7 +66,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </div>
                 <div class="info">
                     <a href="#" class="d-block">
-                        {{ Auth::user()->name }}
+                        {{ Auth::user()->username }}
                     </a>
                 </div>
             </div>
@@ -79,17 +79,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                     <!-- Profile -->
                     <li class="nav-item">
-                        <router-link to="/profile" class="nav-link">
+                        <a href="{{ url('/') }}" class="nav-link">
                             <i class="nav-icon fas fa-user-circle cyan"></i>
-                            <p>Профиль</p>
-                        </router-link>
-                    </li>
-                    <!-- Blog -->
-                    <li class="nav-item">
-                        <router-link to="/blog" class="nav-link">
-                            <i class="nav-icon fas fa-cubes pink"></i>
-                            <p>Блог</p>
-                        </router-link>
+                            <p>Главная страница</p>
+                        </a>
                     </li>
                     <!-- Database -->
                     <li class="nav-item has-treeview">
@@ -102,19 +95,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <router-link to="/users" class="nav-link">
+                                <router-link to="/admin/users" class="nav-link">
                                     <i class="fas fa-users nav-icon purple"></i>
                                     <p>Users</p>
                                 </router-link>
                             </li>
                             <li class="nav-item">
-                                <router-link to="/categories" class="nav-link">
+                                <router-link to="/admin/categories" class="nav-link">
                                     <i class="fas fa-splotch nav-icon purple"></i>
                                     <p>Categories</p>
                                 </router-link>
                             </li>
                             <li class="nav-item">
-                                <router-link to="/posts" class="nav-link">
+                                <router-link to="/admin/posts" class="nav-link">
                                     <i class="fas fa-list-alt nav-icon purple"></i>
                                     <p>Posts</p>
                                 </router-link>
@@ -128,13 +121,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <li class="nav-item">
                                 <a href="#" class="nav-link">
                                     <i class="fas fa-thumbs-up nav-icon purple"></i>
-                                    <p>Post votes</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="fas fa-thumbs-up nav-icon purple"></i>
-                                    <p>Comment votes</p>
+                                    <p>Votes</p>
                                 </a>
                             </li>
                         </ul>

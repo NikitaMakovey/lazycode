@@ -23,14 +23,32 @@
             <div class="user-info">
                 <div class="user-sections">
                     <ul class="section-items">
-                        <li class="section-item"><a href="#" class="user-section">Профиль</a></li>
-                        <li class="section-item"><a href="#" class="user-section">Публикации</a></li>
-                        <li class="section-item"><a href="#" class="user-section">Комментарии</a></li>
+                        <li class="section-item">
+                            <a class="user-section">
+                                <router-link :to="{ name: 'user.about' }">
+                                    Профиль
+                                </router-link>
+                            </a>
+                        </li>
+                        <li class="section-item">
+                            <a class="user-section">
+                                <router-link :to="{ name: 'user.posts' }">
+                                    Публикации
+                                </router-link>
+                            </a>
+                        </li>
+                        <li class="section-item">
+                            <a class="user-section">
+                                <router-link :to="{ name: 'user.comments' }">
+                                    Комментарии
+                                </router-link>
+                            </a>
+                        </li>
                     </ul>
                     <hr class="hr-user">
                 </div>
-                <div class="user-about">
-                    <span>{{ this.user.about }}</span>
+                <div class="view-space">
+                    <router-view></router-view>
                 </div>
             </div>
         </div>
@@ -43,6 +61,9 @@
             return {
                 user : []
             }
+        },
+        components: {
+
         },
         methods: {
             loadUser() {

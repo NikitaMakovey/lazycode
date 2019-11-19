@@ -13,7 +13,23 @@
                 <ul class="post-area" v-for="post in posts" :key="post.id">
                     <li class="post-space">
                         <article class="post-item">
-                            <header class="post-metadata"></header>
+                            <header class="post-metadata">
+                                <div style="display: block">
+                                    <div class="user-meta-icon" style="display: inline-block">
+                                        <router-link :to="{ name: 'user', params: { id: post.author_id }}" class="vue-link">
+                                            <img :src="getImage(post.author_id)" alt="#" class="user-icon-img">
+                                        </router-link>
+                                    </div>
+                                    <div class="user-username" style="display: inline-block">
+                                        <router-link :to="{ name: 'user', params: { id: post.author_id }}" class="username-item-link">
+                                            @{{ getUsername(post.author_id) }}
+                                        </router-link>
+                                    </div>
+                                </div>
+                                <div class="category-block" style="display: block">
+                                    <span class="meta-category">{{ getCategory(post.category_id) }}</span>
+                                </div>
+                            </header>
                             <h2 class="post-title">
                                 <router-link class="vue-link" :to="{ name: 'post', params: { id: post.id }}">
                                     {{ post.title }}
@@ -42,15 +58,34 @@
     export default {
         data() {
             return {
-                posts : {}
+                posts : {},
+                users : {},
+                categories : {}
             }
         },
         methods: {
             loadPosts() {
-                axios.get("api/posts").then(({data}) => (this.posts = data))
+                axios.get("api/posts").then(({data}) => (this.posts = data));
+            },
+            loadUsers() {
+                axios.get("api/users").then(({data}) => (this.users = data));
+            },
+            loadCategories() {
+                axios.get("api/categories").then(({data}) => (this.categories = data))
+            },
+            getUsername(id) {
+                return this.users.find(x => x.id === id).username;
+            },
+            getImage(id) {
+                return this.users.find(x => x.id === id).image;
+            },
+            getCategory(id) {
+                return this.categories.find(x => x.id === id).name;
             }
         },
         created() {
+            this.loadCategories();
+            this.loadUsers();
             this.loadPosts();
         }
     }
