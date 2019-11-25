@@ -1,0 +1,51 @@
+<template>
+    <v-row align="center" justify="center">
+        <v-col cols="12" sm="8" md="4">
+            <v-card class="elevation-12">
+                <v-form @submit.prevent="resetEmailSubmit">
+                    <input type="hidden" name="_token" :value="csrf_token">
+                    <v-toolbar color="#393E41" dark flat>
+                        <v-toolbar-title style="color: #F6F7EB !important;">Восстановление пароля</v-toolbar-title>
+                        <v-spacer/>
+                    </v-toolbar>
+                    <v-card-text>
+                        <v-text-field
+                            id="email" label="Ваша почта" v-model="email"
+                            name="login" type="text" required autocomplete="email"/>
+                    </v-card-text>
+                    <v-card-actions>
+                        <v-btn type="submit" style="background-color: #393E41; color: #F6F7EB !important;">Отправить</v-btn>
+                        <v-spacer/>
+                        <router-link :to="{ name: 'auth.email' }" class="vue-link">
+                            Забыли пароль?
+                        </router-link>
+                    </v-card-actions>
+                </v-form>
+            </v-card>
+        </v-col>
+    </v-row>
+</template>
+
+<script>
+    export default {
+        name: 'ResetEmail',
+        data() {
+            return {
+                email: '',
+                message: '',
+                status: 'success',
+                show: false
+            }
+        },
+        methods: {
+            resetEmailSubmit() {
+                console.log(document.head.querySelector('meta[name="csrf-token"]').getAttribute('content'));
+            }
+        },
+        computed: {
+            csrf_token() {
+                return document.head.querySelector('meta[name="csrf-token"]').getAttribute('content');
+            }
+        }
+    }
+</script>

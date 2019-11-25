@@ -53,7 +53,7 @@
         },
         methods: {
             loadUsers() {
-                axios.get("api/users").then(({data}) => (this.users = data))
+                axios.get("api/lazycode/users").then(({data}) => (this.users = data))
             }
         },
         created() {

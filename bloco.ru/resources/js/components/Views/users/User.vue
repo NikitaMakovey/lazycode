@@ -68,7 +68,7 @@
         methods: {
             loadUser() {
                 let id_ = this.$route.params.id;
-                let apiRoute = "/api/users/" + id_;
+                let apiRoute = "/api/lazycode/users/" + id_;
                 axios.get(apiRoute).then(({data}) => (this.user = data));
             }
         },

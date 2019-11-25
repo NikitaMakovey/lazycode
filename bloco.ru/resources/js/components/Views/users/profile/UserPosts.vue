@@ -38,7 +38,7 @@
         methods: {
             getPosts() {
                 let id_ = this.$route.params.id;
-                let apiRoute = "/api/users/" + id_ + "/posts";
+                let apiRoute = "/api/lazycode/users/" + id_ + "/posts";
                 axios.get(apiRoute).then(({data}) => (this.posts = data));
             },
         },

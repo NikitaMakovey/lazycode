@@ -55,6 +55,8 @@
 </template>
 
 <script>
+    import axios from 'axios';
+
     export default {
         data() {
             return {
@@ -65,13 +67,13 @@
         },
         methods: {
             loadPosts() {
-                axios.get("api/posts").then(({data}) => (this.posts = data));
+                axios.get("/api/lazycode/posts").then(({data}) => (this.posts = data));
             },
             loadUsers() {
-                axios.get("api/users").then(({data}) => (this.users = data));
+                axios.get("/api/lazycode/users").then(({data}) => (this.users = data));
             },
             loadCategories() {
-                axios.get("api/categories").then(({data}) => (this.categories = data))
+                axios.get("/api/lazycode/categories").then(({data}) => (this.categories = data))
             },
             getUsername(id) {
                 return this.users.find(x => x.id === id).username;

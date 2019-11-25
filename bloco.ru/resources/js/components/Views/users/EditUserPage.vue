@@ -58,7 +58,7 @@
         },
         methods: {
             updateUser() {
-                let patchRoute = "/api/users/" + this.user_id;
+                let patchRoute = "/api/lazycode/users/" + this.user_id;
                 this.form.patch(patchRoute, this.form)
                     .then(() => (this.$router.push({name: 'user', params: { id: this.user_id }})));
             }
@@ -66,7 +66,7 @@
         mounted() {
             let id = this.$route.params.id;
             this.user_id = id;
-            let getRoute = "/api/users/" + id;
+            let getRoute = "/api/lazycode/users/" + id;
             axios.get(getRoute).then(({data}) => (this.user = data));
         }
     }
