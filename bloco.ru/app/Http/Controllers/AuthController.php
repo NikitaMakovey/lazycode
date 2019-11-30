@@ -28,7 +28,6 @@ class AuthController extends Controller
                 $response = "Неверный пароль.";
                 return response($response, 422);
             }
-
         } else {
             $response = 'Неверные или несуществующие данные.';
             return response($response, 422);
@@ -64,7 +63,7 @@ class AuthController extends Controller
         $token = $user->createToken('vmzImL5RrH61OmETEmZZsMabDoQsEi9xjn2tRsIA')->accessToken;
         $response = ['token' => $token, 'data' => $user];
 
-        return response($response, 200);
+        return response($response, 201);
     }
 
     /**
@@ -76,7 +75,6 @@ class AuthController extends Controller
     public function logout(Request $request)
     {
         $request->user()->token()->revoke();
-
         $response = ['answer' => 'Вы успешно вышли из системы!'];
         return response($response, 200);
     }

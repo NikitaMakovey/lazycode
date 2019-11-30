@@ -85,7 +85,7 @@
         },
         methods: {
             logout() {
-                this.$store.dispatch('SIGN_OUT');
+                this.$store.dispatch('SIGN_OUT').then(() => { this.$router.push({ name: 'main' }) });
             }
         },
         computed: {

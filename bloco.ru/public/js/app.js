@@ -2719,7 +2719,13 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     logout: function logout() {
-      this.$store.dispatch('SIGN_OUT');
+      var _this = this;
+
+      this.$store.dispatch('SIGN_OUT').then(function () {
+        _this.$router.push({
+          name: 'main'
+        });
+      });
     }
   },
   computed: {
@@ -2810,7 +2816,7 @@ __webpack_require__.r(__webpack_exports__);
       form: new Form({
         title: '',
         category_id: '',
-        author_id: 9,
+        author_id: 3,
         body: ''
       })
     };
@@ -3013,13 +3019,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      posts: {},
-      users: {},
-      categories: {}
+      posts: {}
     };
   },
   methods: {
@@ -3030,42 +3038,9 @@ __webpack_require__.r(__webpack_exports__);
         var data = _ref.data;
         return _this.posts = data;
       });
-    },
-    loadUsers: function loadUsers() {
-      var _this2 = this;
-
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/lazycode/users").then(function (_ref2) {
-        var data = _ref2.data;
-        return _this2.users = data;
-      });
-    },
-    loadCategories: function loadCategories() {
-      var _this3 = this;
-
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/lazycode/categories").then(function (_ref3) {
-        var data = _ref3.data;
-        return _this3.categories = data;
-      });
-    },
-    getUsername: function getUsername(id) {
-      return this.users.find(function (x) {
-        return x.id === id;
-      }).username;
-    },
-    getImage: function getImage(id) {
-      return this.users.find(function (x) {
-        return x.id === id;
-      }).image;
-    },
-    getCategory: function getCategory(id) {
-      return this.categories.find(function (x) {
-        return x.id === id;
-      }).name;
     }
   },
   created: function created() {
-    this.loadCategories();
-    this.loadUsers();
     this.loadPosts();
   }
 });
@@ -41992,7 +41967,7 @@ var render = function() {
         "div",
         { staticClass: "posts-list" },
         _vm._l(_vm.posts, function(post) {
-          return _c("ul", { key: post.id, staticClass: "post-area" }, [
+          return _c("ul", { key: post.post_id, staticClass: "post-area" }, [
             _c("li", { staticClass: "post-space" }, [
               _c("article", { staticClass: "post-item" }, [
                 _c("header", { staticClass: "post-metadata" }, [
@@ -42009,19 +41984,13 @@ var render = function() {
                           {
                             staticClass: "vue-link",
                             attrs: {
-                              to: {
-                                name: "user",
-                                params: { id: post.author_id }
-                              }
+                              to: { name: "user", params: { id: post.user_id } }
                             }
                           },
                           [
                             _c("img", {
                               staticClass: "user-icon-img",
-                              attrs: {
-                                src: _vm.getImage(post.author_id),
-                                alt: "#"
-                              }
+                              attrs: { src: post.user_image, alt: "#" }
                             })
                           ]
                         )
@@ -42041,16 +42010,13 @@ var render = function() {
                           {
                             staticClass: "username-item-link",
                             attrs: {
-                              to: {
-                                name: "user",
-                                params: { id: post.author_id }
-                              }
+                              to: { name: "user", params: { id: post.user_id } }
                             }
                           },
                           [
                             _vm._v(
                               "\n                                        @" +
-                                _vm._s(_vm.getUsername(post.author_id)) +
+                                _vm._s(post.username) +
                                 "\n                                    "
                             )
                           ]
@@ -42068,7 +42034,7 @@ var render = function() {
                     },
                     [
                       _c("span", { staticClass: "meta-category" }, [
-                        _vm._v(_vm._s(_vm.getCategory(post.category_id)))
+                        _vm._v(_vm._s(post.category))
                       ])
                     ]
                   )
@@ -42082,12 +42048,14 @@ var render = function() {
                       "router-link",
                       {
                         staticClass: "vue-link",
-                        attrs: { to: { name: "post", params: { id: post.id } } }
+                        attrs: {
+                          to: { name: "post", params: { id: post.post_id } }
+                        }
                       },
                       [
                         _vm._v(
                           "\n                                " +
-                            _vm._s(post.title) +
+                            _vm._s(post.post_title) +
                             "\n                            "
                         )
                       ]
@@ -42104,14 +42072,28 @@ var render = function() {
                   [
                     _c("div", {
                       staticClass: "post-text",
-                      domProps: { innerHTML: _vm._s(post.body) }
+                      domProps: { innerHTML: _vm._s(post.post_body) }
                     }),
+                    _vm._v(" "),
+                    _c("div", [
+                      _c("span", [
+                        _vm._v(_vm._s(post.rating) + " "),
+                        _c("i", { staticClass: "fas fa-splotch" })
+                      ]),
+                      _vm._v(" "),
+                      _c("span", [
+                        _vm._v(_vm._s(post.count_comments) + " "),
+                        _c("i", { staticClass: "fas fa-comment" })
+                      ])
+                    ]),
                     _vm._v(" "),
                     _c(
                       "router-link",
                       {
                         staticClass: "vue-link-button",
-                        attrs: { to: { name: "post", params: { id: post.id } } }
+                        attrs: {
+                          to: { name: "post", params: { id: post.post_id } }
+                        }
                       },
                       [
                         _c(

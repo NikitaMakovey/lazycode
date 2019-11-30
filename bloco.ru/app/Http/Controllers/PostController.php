@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use App\User;
+use Illuminate\Database\Query\JoinClause;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
@@ -15,7 +17,33 @@ class PostController extends Controller
      */
     public function index()
     {
-        return Post::all();
+        $query = DB::select("SELECT 
+                    DISTINCT p.id AS post_id,
+                    p.title AS post_title,
+                    p.body AS post_body,
+                    p.created_at AS created_at,
+                    c.name AS category,
+                    u.id AS user_id,
+                    u.username AS username,
+                    u.image AS user_image,
+                    u.username AS author, 
+                    c.name AS category, 
+                    SUM(CASE WHEN v.vote = TRUE THEN 1 WHEN v.vote = FALSE THEN -1 ELSE 0 END) 
+                        OVER(PARTITION BY v.source_id) AS rating,
+                    COUNT(cm.post_id) OVER(PARTITION BY cm.post_id) AS count_comments
+                    FROM 
+                        posts p 
+                    JOIN users u 
+                        ON p.author_id = u.id
+                    JOIN categories c 
+                        ON c.id = p.category_id
+                    LEFT JOIN votes v 
+                        ON v.source_id = p.id and v.type_id = 1
+                    LEFT JOIN comments cm 
+                        ON cm.post_id = p.id
+                    ORDER BY p.created_at DESC");
+        return response($query, 200);
+
     }
 
     /**
