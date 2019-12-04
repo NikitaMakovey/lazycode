@@ -3306,6 +3306,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -42562,7 +42565,7 @@ var render = function() {
                       _c("img", {
                         staticClass: "user-icon-item",
                         staticStyle: { display: "inline-block" },
-                        attrs: { src: user.image, alt: "" }
+                        attrs: { src: user.user_image, alt: "" }
                       })
                     ]
                   ),
@@ -42625,7 +42628,14 @@ var render = function() {
                   )
                 ],
                 1
-              )
+              ),
+              _vm._v(" "),
+              _c("div", [
+                _c("span", [
+                  _vm._v(_vm._s(user.rating) + " "),
+                  _c("i", { staticClass: "fas fa-splotch" })
+                ])
+              ])
             ])
           ])
         }),

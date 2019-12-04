@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -15,7 +16,21 @@ class UserController extends Controller
      */
     public function index()
     {
-        return User::all();
+        $users = DB::select(
+            "SELECT 
+                        DISTINCT u.id AS user_id,
+                        u.username AS username,
+                        u.name AS name,
+                        u.image AS user_image,
+                        u.username AS user,
+                        SUM(CASE WHEN v.vote = TRUE THEN 1 WHEN v.vote = FALSE THEN -1 ELSE 0 END) 
+                            OVER(PARTITION BY v.direct_id) AS rating
+                    FROM 
+                        users u
+                    LEFT JOIN votes v
+                        ON v.direct_id = u.id
+                    ORDER BY rating DESC");
+        return response($users, 200);
     }
 
     /**
@@ -34,13 +49,15 @@ class UserController extends Controller
             'password' => 'required|string|min:8',
         ]);
 
-        return User::create([
+        $user =  User::create([
             'name' => $request['name'],
             'username' => $request['username'],
             'email' => $request['email'],
             'about' => $request['about'],
             'password' => Hash::make($request['password'])
         ]);
+
+        return response($user, 201);
     }
 
     /**
@@ -51,15 +68,33 @@ class UserController extends Controller
      */
     public function show(int $id)
     {
-        return User::findOrFail($id);
+        $user = DB::select(
+            "SELECT 
+                        DISTINCT u.id AS user_id,
+                        u.username AS username,
+                        u.specialization AS specialization,
+                        u.about AS about,
+                        u.name AS name,
+                        u.image AS user_image,
+                        u.username AS user,
+                        SUM(CASE WHEN v.vote = TRUE THEN 1 WHEN v.vote = FALSE THEN -1 ELSE 0 END) 
+                            OVER(PARTITION BY v.direct_id) AS rating
+                    FROM 
+                        users u
+                    LEFT JOIN votes v
+                        ON v.direct_id = u.id
+                    WHERE u.id = ?", [$id]);
+
+        return response($user, 200);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param integer $id
+     * @param Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function update(Request $request, int $id)
     {
@@ -78,7 +113,8 @@ class UserController extends Controller
         if ($request['about']) $user->about = $request['about'];
 
         $user->save();
-        return $user;
+
+        return response($user, 200);
     }
 
     /**
@@ -91,7 +127,7 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
         $user->delete();
-        return $user;
+        return response($user, 200);
     }
 
     /**
@@ -103,6 +139,18 @@ class UserController extends Controller
     public function userPosts(int $id)
     {
         $user = User::findOrFail($id);
-        return $user->posts;
+        return response($user->posts, 200);
+    }
+
+    /**
+     * Display all comments of the user.
+     *
+     * @param int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function userComments(int $id)
+    {
+        $user = User::findOrFail($id);
+        return response($user->comments, 200);
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Vote;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class VoteController extends Controller
 {
@@ -14,72 +15,58 @@ class VoteController extends Controller
      */
     public function index()
     {
-        //
+        $votes = Vote::all();
+        return response($votes, 200);
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
+     * @param Request $request
      * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function store(Request $request)
     {
-        //
-    }
+        $this->validate($request, [
+            'type_id' => 'required|integer',
+            'source_id' => 'required|integer',
+            'user_id' => 'required|integer',
+            'direct_id' => 'required|integer',
+            'vote' => 'required|bool',
+        ]);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Vote  $vote
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Vote $vote)
-    {
-        //
-    }
+        $v = $request['vote'] == 0 ? FALSE : TRUE;
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Vote  $vote
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Vote $vote)
-    {
-        //
-    }
+//        $vote = Vote::create([
+//            'type_id' => $request['type_id'],
+//            'source_id' => $request['source_id'],
+//            'user_id' => $request['user_id'],
+//            'direct_id' => $request['direct_id'],
+//            'vote' => $v,
+//        ]);
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Vote  $vote
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Vote $vote)
-    {
-        //
+        if ($request['user_id'] == $request['direct_id']) { return response(['Locked request!'], 422); }
+
+        DB::insert(
+    "INSERT INTO votes (type_id, source_id, user_id, direct_id, vote)
+            VALUES(?, ?, ?, ?, ?) ON CONFLICT(type_id, source_id, user_id) DO NOTHING",
+            [
+                $request['type_id'],
+                $request['source_id'],
+                $request['user_id'],
+                $request['direct_id'],
+                $v
+            ]);
+        return response(['Successfully created!'], 201);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Vote  $vote
+     * @param
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Vote $vote)
+    public function destroy()
     {
-        //
+       //
     }
 }

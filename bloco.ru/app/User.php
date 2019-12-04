@@ -38,8 +38,43 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    /**
+     * User's posts.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function posts()
     {
         return $this->hasMany('App\Post', 'author_id', 'id');
+    }
+
+    /**
+     * Votes that send to this user (for user's rating).
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function to_votes()
+    {
+        return $this->hasMany('App\Vote', 'direct_id', 'id');
+    }
+
+    /**
+     * Votes that this user sends (vote transactions).
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function from_votes()
+    {
+        return $this->hasMany('App\Vote', 'user_id', 'id');
+    }
+
+    /**
+     * User's comments.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function comments()
+    {
+        return $this->hasMany('App\Comment', 'author_id', 'id');
     }
 }

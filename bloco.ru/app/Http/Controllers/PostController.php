@@ -17,20 +17,21 @@ class PostController extends Controller
      */
     public function index()
     {
-        $query = DB::select("SELECT 
-                    DISTINCT p.id AS post_id,
-                    p.title AS post_title,
-                    p.body AS post_body,
-                    p.created_at AS created_at,
-                    c.name AS category,
-                    u.id AS user_id,
-                    u.username AS username,
-                    u.image AS user_image,
-                    u.username AS author, 
-                    c.name AS category, 
-                    SUM(CASE WHEN v.vote = TRUE THEN 1 WHEN v.vote = FALSE THEN -1 ELSE 0 END) 
-                        OVER(PARTITION BY v.source_id) AS rating,
-                    COUNT(cm.post_id) OVER(PARTITION BY cm.post_id) AS count_comments
+        $posts = DB::select(
+            "SELECT 
+                        DISTINCT p.id AS post_id,
+                        p.title AS post_title,
+                        p.body AS post_body,
+                        p.created_at AS created_at,
+                        c.name AS category,
+                        u.id AS user_id,
+                        u.username AS username,
+                        u.image AS user_image,
+                        u.username AS author, 
+                        c.name AS category, 
+                        SUM(CASE WHEN v.vote = TRUE THEN 1 WHEN v.vote = FALSE THEN -1 ELSE 0 END) 
+                            OVER(PARTITION BY v.source_id) AS rating,
+                        COUNT(cm.post_id) OVER(PARTITION BY cm.post_id) AS count_comments
                     FROM 
                         posts p 
                     JOIN users u 
@@ -42,15 +43,16 @@ class PostController extends Controller
                     LEFT JOIN comments cm 
                         ON cm.post_id = p.id
                     ORDER BY p.created_at DESC");
-        return response($query, 200);
+        return response($posts, 200);
 
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function store(Request $request)
     {
@@ -61,31 +63,61 @@ class PostController extends Controller
             'body' => 'required|min:10',
         ]);
 
-        return Post::create([
+        $post = Post::create([
             'title' => $request['title'],
             'category_id' => $request['category_id'],
             'author_id' => $request['author_id'],
             'body' => $request['body']
         ]);
+
+        return response($post, 201);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param integer $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show(int $id)
     {
-        return Post::findOrFail($id);
+        $post = DB::select(
+            "SELECT 
+                        DISTINCT p.id AS post_id,
+                        p.title AS post_title,
+                        p.body AS post_body,
+                        p.created_at AS created_at,
+                        c.name AS category,
+                        u.id AS user_id,
+                        u.username AS username,
+                        u.image AS user_image,
+                        u.username AS author, 
+                        c.name AS category, 
+                        SUM(CASE WHEN v.vote = TRUE THEN 1 WHEN v.vote = FALSE THEN -1 ELSE 0 END) 
+                            OVER(PARTITION BY v.source_id) AS rating,
+                        COUNT(cm.post_id) OVER(PARTITION BY cm.post_id) AS count_comments
+                    FROM 
+                        posts p 
+                    JOIN users u 
+                        ON p.author_id = u.id
+                    JOIN categories c 
+                        ON c.id = p.category_id
+                    LEFT JOIN votes v 
+                        ON v.source_id = p.id and v.type_id = 1
+                    LEFT JOIN comments cm 
+                        ON cm.post_id = p.id
+                    WHERE p.id = ?", [$id]);
+
+        return response($post, 200);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param integer $id
+     * @param Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function update(Request $request, int $id)
     {
@@ -96,7 +128,7 @@ class PostController extends Controller
             'body' => 'required|min:10',
         ]);
 
-        $post = Post::find($id);
+        $post = Post::findOrFail($id);
 
         $post->title = $request['title'];
         $post->category_id = $request['category_id'];
@@ -105,21 +137,31 @@ class PostController extends Controller
 
         $post->save();
 
-        return $post;
+        return response($post, 200);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param integer $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy(int $id)
     {
          $post = Post::findOrFail($id);
-
          $post->delete();
+         return response($post, 200);
+    }
 
-         return $post;
+    /**
+     * Display all comments of the post.
+     *
+     * @param int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function postComments(int $id)
+    {
+        $post = Post::findOrFail($id);
+        return response($post->comments, 200);
     }
 }

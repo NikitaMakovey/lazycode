@@ -25,8 +25,12 @@ Route::group(['prefix' => 'lazycode'], function () {
     Route::apiResources([
         'posts' => 'PostController',
         'categories' => 'CategoryController',
-        'users' => 'UserController'
+        'users' => 'UserController',
+        'comments' => 'CommentController',
+        'votes' => 'VoteController'
     ]);
     Route::get('users/{id}/posts', 'UserController@userPosts')->name('users.userPosts');
+    Route::get('users/{id}/comments', 'UserController@userComments')->name('users.userComments');
+    Route::get('posts/{id}/comments', 'PostController@postComments')->name('posts.postComments');
 });
 

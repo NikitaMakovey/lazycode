@@ -20,7 +20,7 @@
                     <li class="user-content">
                         <div class="user-info-data">
                             <router-link :to="{ name: 'user', params: { id: user.id }}" class="vue-link">
-                                <img :src="user.image" alt="" class="user-icon-item" style="display: inline-block">
+                                <img :src="user.user_image" alt="" class="user-icon-item" style="display: inline-block">
                             </router-link>
                             <div class="user-text-data" style="display: inline-block">
                                 <div class="user-meta-data" style="display: block">
@@ -34,6 +34,9 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <div>
+                            <span>{{ user.rating }} <i class="fas fa-splotch"></i></span>
                         </div>
                     </li>
                 </ul>

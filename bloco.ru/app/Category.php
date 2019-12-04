@@ -20,6 +20,11 @@ class Category extends Model
      */
     public $timestamps = false;
 
+    /**
+     * Category's posts.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function posts()
     {
         return $this->hasMany('App\Post', 'category_id', 'id');
