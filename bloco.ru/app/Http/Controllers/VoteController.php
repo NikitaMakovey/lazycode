@@ -34,39 +34,56 @@ class VoteController extends Controller
             'vote' => 'required|bool',
         ]);
 
-        $v = $request['vote'] == 0 ? FALSE : TRUE;
-
-//        $vote = Vote::create([
-//            'type_id' => $request['type_id'],
-//            'source_id' => $request['source_id'],
-//            'user_id' => $request['user_id'],
-//            'direct_id' => $request['direct_id'],
-//            'vote' => $v,
-//        ]);
-
         if ($request['user_id'] == $request['direct_id']) { return response(['Locked request!'], 422); }
 
-        DB::insert(
-    "INSERT INTO votes (type_id, source_id, user_id, direct_id, vote)
-            VALUES(?, ?, ?, ?, ?) ON CONFLICT(type_id, source_id, user_id) DO NOTHING",
-            [
-                $request['type_id'],
-                $request['source_id'],
-                $request['user_id'],
-                $request['direct_id'],
-                $v
-            ]);
-        return response(['Successfully created!'], 201);
+        $vote = Vote::where('type_id', $request['type_id'])
+                    ->where('source_id', $request['source_id'])
+                    ->where('user_id', $request['user_id'])
+                    ->get();
+
+        //return response(count($vote), 200);
+
+        if (!count($vote)) {
+            DB::insert(
+                "INSERT INTO votes (type_id, source_id, user_id, direct_id, vote, created_at, updated_at)
+                    VALUES (?, ?, ?, ?, ?, current_timestamp, current_timestamp) 
+                    ON CONFLICT (type_id, source_id, user_id) DO NOTHING",
+                [
+                    $request['type_id'],
+                    $request['source_id'],
+                    $request['user_id'],
+                    $request['direct_id'],
+                    $request['vote']
+                ]);
+
+            return response(['Successfully created!'], 201);
+        } else {
+            DB::update(
+                "UPDATE votes SET vote = ? AND updated_at = current_timestamp
+                    WHERE type_id = ? AND source_id = ? AND user_id = ?",
+                [
+                    $request['vote'],
+                    $request['type_id'],
+                    $request['source_id'],
+                    $request['user_id']
+                ]);
+
+            return response(['Successfully updated!'], 200);
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param
+     * @param Request $request
      * @return \Illuminate\Http\Response
      */
-    public function destroy()
+    public function destroy(Request $request)
     {
-       //
+        $vote = Vote::where('type_id', $request['type_id'])
+                    ->where('source_id', $request['source_id'])
+                    ->where('user_id', $request['user_id']);
+        $vote->delete();
+        return response($vote, 200);
     }
 }

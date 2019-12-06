@@ -18,31 +18,30 @@ class PostController extends Controller
     public function index()
     {
         $posts = DB::select(
-            "SELECT 
-                        DISTINCT p.id AS post_id,
-                        p.title AS post_title,
-                        p.body AS post_body,
-                        p.created_at AS created_at,
-                        c.name AS category,
-                        u.id AS user_id,
-                        u.username AS username,
-                        u.image AS user_image,
-                        u.username AS author, 
-                        c.name AS category, 
-                        SUM(CASE WHEN v.vote = TRUE THEN 1 WHEN v.vote = FALSE THEN -1 ELSE 0 END) 
-                            OVER(PARTITION BY v.source_id) AS rating,
-                        COUNT(cm.post_id) OVER(PARTITION BY cm.post_id) AS count_comments
-                    FROM 
-                        posts p 
-                    JOIN users u 
-                        ON p.author_id = u.id
-                    JOIN categories c 
-                        ON c.id = p.category_id
-                    LEFT JOIN votes v 
-                        ON v.source_id = p.id and v.type_id = 1
-                    LEFT JOIN comments cm 
-                        ON cm.post_id = p.id
-                    ORDER BY p.created_at DESC");
+            "SELECT
+                            p.id            AS post_id,
+                            p.title         AS post_title,
+                            p.body          AS post_body,
+                            p.created_at    AS created_at,
+                            u.id            AS user_id,
+                            u.username      AS username,
+                            u.image         AS user_image,
+                            u.username      AS author,
+                            c.name          AS category,
+                            COUNT(cm.post_id)
+                                            AS count_comments,
+                            RATING(1, p.id)
+                                            AS rating
+                    FROM
+                            posts p
+                    LEFT JOIN comments cm
+                            ON p.id = cm.post_id
+                    JOIN users u
+                            ON p.author_id = u.id
+                    JOIN categories c
+                            ON p.category_id = c.id
+                    GROUP BY p.id, u.id, c.name
+                    ORDER BY rating DESC");
         return response($posts, 200);
 
     }
@@ -82,31 +81,30 @@ class PostController extends Controller
     public function show(int $id)
     {
         $post = DB::select(
-            "SELECT 
-                        DISTINCT p.id AS post_id,
-                        p.title AS post_title,
-                        p.body AS post_body,
-                        p.created_at AS created_at,
-                        c.name AS category,
-                        u.id AS user_id,
-                        u.username AS username,
-                        u.image AS user_image,
-                        u.username AS author, 
-                        c.name AS category, 
-                        SUM(CASE WHEN v.vote = TRUE THEN 1 WHEN v.vote = FALSE THEN -1 ELSE 0 END) 
-                            OVER(PARTITION BY v.source_id) AS rating,
-                        COUNT(cm.post_id) OVER(PARTITION BY cm.post_id) AS count_comments
-                    FROM 
-                        posts p 
-                    JOIN users u 
-                        ON p.author_id = u.id
-                    JOIN categories c 
-                        ON c.id = p.category_id
-                    LEFT JOIN votes v 
-                        ON v.source_id = p.id and v.type_id = 1
-                    LEFT JOIN comments cm 
-                        ON cm.post_id = p.id
-                    WHERE p.id = ?", [$id]);
+            "SELECT
+                            p.id            AS post_id,
+                            p.title         AS post_title,
+                            p.body          AS post_body,
+                            p.created_at    AS created_at,
+                            u.id            AS user_id,
+                            u.username      AS username,
+                            u.image         AS user_image,
+                            u.username      AS author,
+                            c.name          AS category,
+                            COUNT(cm.post_id)
+                                            AS count_comments,
+                            RATING(1, p.id)
+                                            AS rating
+                    FROM
+                            posts p
+                    LEFT JOIN comments cm
+                            ON p.id = cm.post_id
+                    JOIN users u
+                            ON p.author_id = u.id
+                    JOIN categories c
+                            ON p.category_id = c.id
+                    WHERE p.id = ?
+                    GROUP BY p.id, u.id, c.name", [$id]);
 
         return response($post, 200);
     }
@@ -161,7 +159,23 @@ class PostController extends Controller
      */
     public function postComments(int $id)
     {
-        $post = Post::findOrFail($id);
-        return response($post->comments, 200);
+        $comments = DB::select(
+            "SELECT
+                            c.created_at    AS created_at,
+                            u.id            AS user_id,
+                            u.username      AS username,
+                            u.image         AS user_image,
+                            c.body          AS comment_body,
+                            RATING(2, c.id)
+                                            AS rating
+                    FROM
+                            comments c
+                    JOIN posts p
+                            ON p.id = c.post_id
+                    JOIN users u
+                            ON c.author_id = u.id
+                    WHERE p.id = ?
+                    ORDER BY c.created_at", [$id]);
+        return response($comments, 200);
     }
 }

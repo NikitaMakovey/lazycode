@@ -7,12 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 class Vote extends Model
 {
     /**
-     * The attributes that are mass assignable.
-     *
      * @var array
      */
     protected $fillable = [
         'type_id', 'source_id', 'user_id', 'direct_id', 'vote'
+    ];
+
+    /**
+     * @var array
+     */
+    protected $casts = [
+        'vote' => 'boolean'
     ];
 
     /**

@@ -15,7 +15,6 @@ class CommentController extends Controller
     public function index()
     {
         $comments = Comment::all();
-
         return response($comments, 200);
     }
 
@@ -52,7 +51,6 @@ class CommentController extends Controller
     public function show(int $id)
     {
         $comment = Comment::findOrFail($id);
-
         return response($comment, 200);
     }
 

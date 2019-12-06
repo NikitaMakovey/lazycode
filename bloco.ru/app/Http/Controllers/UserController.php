@@ -22,7 +22,6 @@ class UserController extends Controller
                         u.username AS username,
                         u.name AS name,
                         u.image AS user_image,
-                        u.username AS user,
                         SUM(CASE WHEN v.vote = TRUE THEN 1 WHEN v.vote = FALSE THEN -1 ELSE 0 END) 
                             OVER(PARTITION BY v.direct_id) AS rating
                     FROM 
@@ -76,7 +75,6 @@ class UserController extends Controller
                         u.about AS about,
                         u.name AS name,
                         u.image AS user_image,
-                        u.username AS user,
                         SUM(CASE WHEN v.vote = TRUE THEN 1 WHEN v.vote = FALSE THEN -1 ELSE 0 END) 
                             OVER(PARTITION BY v.direct_id) AS rating
                     FROM 
@@ -138,19 +136,59 @@ class UserController extends Controller
      */
     public function userPosts(int $id)
     {
-        $user = User::findOrFail($id);
-        return response($user->posts, 200);
+        $posts = DB::select(
+            "SELECT
+                            p.id            AS post_id,
+                            p.title         AS post_title,
+                            p.body          AS post_body,
+                            p.created_at    AS created_at,
+                            u.id            AS user_id,
+                            u.image         AS user_image,
+                            u.username      AS author,
+                            c.name          AS category,
+                            COUNT(cm.post_id)
+                                            AS count_comments,
+                            RATING(1, p.id)
+                                            AS rating
+                    FROM
+                            posts p
+                    LEFT JOIN comments cm
+                            ON p.id = cm.post_id
+                    JOIN users u
+                            ON p.author_id = u.id
+                    JOIN categories c
+                            ON p.category_id = c.id
+                    WHERE u.id = ?
+                    GROUP BY p.id, u.id, c.name", [$id]);
+        return response($posts, 200);
     }
 
     /**
      * Display all comments of the user.
      *
-     * @param int $id
+     * @param integer $id
      * @return \Illuminate\Http\Response
      */
     public function userComments(int $id)
     {
-        $user = User::findOrFail($id);
-        return response($user->comments, 200);
+        $comments = DB::select(
+            "SELECT
+                            p.id            AS post_id,
+                            p.title         AS post_title,
+                            u.id            AS user_id,
+                            u.username      AS username,
+                            u.image         AS user_image,
+                            c.body          AS comment_body,
+                            c.id            AS comment_id,
+                            RATING(2, c.id)
+                                            AS rating
+                    FROM
+                            comments c
+                    JOIN posts p
+                            ON p.id = c.post_id
+                    JOIN users u
+                            ON c.author_id = u.id
+                    WHERE u.id = ?", [$id]);
+        return response($comments, 200);
     }
 }
