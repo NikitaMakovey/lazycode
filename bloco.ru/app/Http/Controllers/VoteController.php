@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 class VoteController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display all votes.
      *
      * @return \Illuminate\Http\Response
      */
@@ -20,6 +20,8 @@ class VoteController extends Controller
     }
 
     /**
+     * Store or update the specified vote in storage.
+     *
      * @param Request $request
      * @return \Illuminate\Http\Response
      * @throws \Illuminate\Validation\ValidationException
@@ -73,7 +75,7 @@ class VoteController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified vote from storage.
      *
      * @param Request $request
      * @return \Illuminate\Http\Response
@@ -84,6 +86,6 @@ class VoteController extends Controller
                     ->where('source_id', $request['source_id'])
                     ->where('user_id', $request['user_id']);
         $vote->delete();
-        return response($vote, 200);
+        return response(['Successfully deleted'], 200);
     }
 }

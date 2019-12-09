@@ -30,6 +30,9 @@ import BaseLayout from "../components/Layouts/BaseLayout";
 import auth from './middleware/auth';
 import guest from './middleware/guest';
 
+// Api View
+import ApiDocs from "../components/Docs/ApiDocs";
+
 const routes = [
     { path: '/', component: BaseLayout,
         children: [
@@ -57,6 +60,7 @@ const routes = [
             { path: 'password/reset/:token', component: ResetPassword, props: true },
         ]
     },
+    { path: '/docs', component: ApiDocs },
     { path: '*', name: 'notfound', component: NotFound }
 ];
 

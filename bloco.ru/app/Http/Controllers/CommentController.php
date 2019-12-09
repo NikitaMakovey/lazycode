@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class CommentController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display all comments.
      *
      * @return \Illuminate\Http\Response
      */
@@ -19,7 +19,7 @@ class CommentController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created comment in storage.
      *
      * @param Request $request
      * @return \Illuminate\Http\Response
@@ -43,7 +43,7 @@ class CommentController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified comment.
      *
      * @param int $id
      * @return \Illuminate\Http\Response
@@ -55,7 +55,7 @@ class CommentController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified comment from storage.
      *
      * @param int $id
      * @return \Illuminate\Http\Response

@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\DB;
 class PostController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display all posts.
      *
      * @return \Illuminate\Http\Response
      */
@@ -47,7 +47,7 @@ class PostController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created post in storage.
      *
      * @param Request $request
      * @return \Illuminate\Http\Response
@@ -73,7 +73,7 @@ class PostController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified post.
      *
      * @param int $id
      * @return \Illuminate\Http\Response
@@ -110,7 +110,7 @@ class PostController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified post in storage.
      *
      * @param Request $request
      * @param int $id
@@ -139,7 +139,7 @@ class PostController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified post from storage.
      *
      * @param int $id
      * @return \Illuminate\Http\Response

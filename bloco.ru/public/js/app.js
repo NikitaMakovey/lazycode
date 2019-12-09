@@ -2561,6 +2561,182 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Docs/ApiDocs.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Docs/ApiDocs.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      docs: [{
+        id: 1,
+        method: 'GET',
+        uri: 'api/code/users',
+        action: 'UserController@index',
+        description: 'Получаю ответ с данными всех пользователей.'
+      }, {
+        id: 2,
+        method: 'GET',
+        uri: 'api/code/users/{user}',
+        action: 'UserController@show',
+        description: 'Получаю ответ с данными конкретного пользователя.'
+      }, {
+        id: 3,
+        method: 'GET',
+        uri: 'api/code/users/{user}/posts',
+        action: 'UserController@userPosts',
+        description: 'Получаю ответ с данными всех постов конкретного пользователя.'
+      }, {
+        id: 4,
+        method: 'GET',
+        uri: 'api/code/users/{user}/comments',
+        action: 'UserController@userComments',
+        description: 'Получаю ответ с данными всех комментариев конкретного пользователя..'
+      }, {
+        id: 5,
+        method: 'PUT|PATCH',
+        uri: 'api/code/users/{user}',
+        action: 'UserController@update',
+        description: 'Посылаю запрос на обновление данных конкретного пользователей.'
+      }, {
+        id: 7,
+        method: 'POST',
+        uri: 'api/register',
+        action: 'AuthController@register',
+        description: 'Посылаю запрос на создание нового пользователя.'
+      }, {
+        id: 8,
+        method: 'POST',
+        uri: 'api/login',
+        action: 'AuthController@login',
+        description: 'Посылаю запрос на проверку существующего пользователя с таким email и password.'
+      }, {
+        id: 9,
+        method: 'POST',
+        uri: 'api/logout',
+        action: 'AuthController@logout',
+        description: 'Посылаю запрос на удаление API-токена пользователя.'
+      }, {
+        id: 10,
+        method: 'GET',
+        uri: 'api/code/categories/{category}',
+        action: 'CategoryController@show',
+        description: 'Получаю ответ с данными всех постов конкретной категории.'
+      }, {
+        id: 11,
+        method: 'GET',
+        uri: 'api/code/posts',
+        action: 'PostController@index',
+        description: 'Получаю ответ с данными всех постов.'
+      }, {
+        id: 12,
+        method: 'POST',
+        uri: 'api/code/posts',
+        action: 'PostController@store',
+        description: 'Посылаю запрос на создание нового поста.'
+      }, {
+        id: 13,
+        method: 'GET',
+        uri: 'api/code/posts/{post}',
+        action: 'PostController@show',
+        description: 'Получаю ответ с данными конкретного поста.'
+      }, {
+        id: 14,
+        method: 'PUT|PATCH',
+        uri: 'api/code/posts/{post}',
+        action: 'PostController@update',
+        description: 'Посылаю запрос на обновление данных конкретного поста.'
+      }, {
+        id: 15,
+        method: 'GET',
+        uri: 'api/code/posts/{post}/comments',
+        action: 'PostController@postComments',
+        description: 'Получаю ответ с данными всех комментариев конкретного поста.'
+      }, {
+        id: 16,
+        method: 'DELETE',
+        uri: 'api/code/posts/{post}',
+        action: 'PostController@destroy',
+        description: 'Посылаю запрос на удаление конкретного поста.'
+      }, {
+        id: 17,
+        method: 'POST',
+        uri: 'api/code/comments',
+        action: 'CommentController@store',
+        description: 'Посылаю запрос на создание нового комментария.'
+      }, {
+        id: 18,
+        method: 'DELETE',
+        uri: 'api/code/comments/{comment}',
+        action: 'CommentController@destroy',
+        description: 'Посылаю запрос на удаление конкретного комемнтария.'
+      }, {
+        id: 19,
+        method: 'POST',
+        uri: 'api/code/votes',
+        action: 'VoteController@store',
+        description: 'Посылаю запрос на создание или обновление конкретной оценки.'
+      }, {
+        id: 20,
+        method: 'POST',
+        uri: 'api/code/votes/delete',
+        action: 'VoteController@destroy',
+        description: 'Посылаю запрос на удаление конкретной оценки.'
+      }]
+    };
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ErrorPages/NotFound.vue?vue&type=script&lang=js&":
 /*!******************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ErrorPages/NotFound.vue?vue&type=script&lang=js& ***!
@@ -41229,6 +41405,266 @@ var render = function() {
     ],
     1
   )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Docs/ApiDocs.vue?vue&type=template&id=1a7bcaec&scoped=true&":
+/*!***************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Docs/ApiDocs.vue?vue&type=template&id=1a7bcaec&scoped=true& ***!
+  \***************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("v-simple-table", {
+    attrs: { "fixed-header": "", height: "690px" },
+    scopedSlots: _vm._u([
+      {
+        key: "default",
+        fn: function() {
+          return [
+            _c("thead", [
+              _c("tr", [
+                _c("th", { staticClass: "text-left" }, [_vm._v("Метод")]),
+                _vm._v(" "),
+                _c("th", { staticClass: "text-left" }, [_vm._v("URI")]),
+                _vm._v(" "),
+                _c("th", { staticClass: "text-left" }, [_vm._v("Действие")]),
+                _vm._v(" "),
+                _c("th", { staticClass: "text-left" }, [_vm._v("Описание")])
+              ])
+            ]),
+            _vm._v(" "),
+            _c(
+              "tbody",
+              _vm._l(_vm.docs, function(item) {
+                return _c(
+                  "tr",
+                  { key: item.id },
+                  [
+                    item.method === "GET"
+                      ? [
+                          _c(
+                            "td",
+                            {
+                              staticStyle: {
+                                "background-color": "#55ca89",
+                                color: "#fff3cd",
+                                "font-size": "1rem"
+                              }
+                            },
+                            [_vm._v(_vm._s(item.method))]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "td",
+                            {
+                              staticStyle: {
+                                "background-color": "rgba(85,202,137,0.53)",
+                                color: "#15252a",
+                                "font-size": "1rem"
+                              }
+                            },
+                            [_vm._v(_vm._s(item.uri))]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "td",
+                            {
+                              staticStyle: {
+                                "background-color": "rgba(85,202,137,0.53)",
+                                color: "#15252a",
+                                "font-size": "1rem"
+                              }
+                            },
+                            [_vm._v(_vm._s(item.action))]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "td",
+                            {
+                              staticStyle: {
+                                "background-color": "rgba(85,202,137,0.53)",
+                                color: "#15252a",
+                                "font-size": "1rem"
+                              }
+                            },
+                            [_vm._v(_vm._s(item.description))]
+                          )
+                        ]
+                      : item.method === "POST"
+                      ? [
+                          _c(
+                            "td",
+                            {
+                              staticStyle: {
+                                "background-color": "#646aca",
+                                color: "#fff3cd",
+                                "font-size": "1rem"
+                              }
+                            },
+                            [_vm._v(_vm._s(item.method))]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "td",
+                            {
+                              staticStyle: {
+                                "background-color": "rgba(100,106,202,0.51)",
+                                color: "#15252a",
+                                "font-size": "1rem"
+                              }
+                            },
+                            [_vm._v(_vm._s(item.uri))]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "td",
+                            {
+                              staticStyle: {
+                                "background-color": "rgba(100,106,202,0.51)",
+                                color: "#15252a",
+                                "font-size": "1rem"
+                              }
+                            },
+                            [_vm._v(_vm._s(item.action))]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "td",
+                            {
+                              staticStyle: {
+                                "background-color": "rgba(100,106,202,0.51)",
+                                color: "#15252a",
+                                "font-size": "1rem"
+                              }
+                            },
+                            [_vm._v(_vm._s(item.description))]
+                          )
+                        ]
+                      : item.method === "PUT|PATCH"
+                      ? [
+                          _c(
+                            "td",
+                            {
+                              staticStyle: {
+                                "background-color": "#a3a642",
+                                color: "#fff3cd",
+                                "font-size": "1rem"
+                              }
+                            },
+                            [_vm._v(_vm._s(item.method))]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "td",
+                            {
+                              staticStyle: {
+                                "background-color": "rgba(163,166,66,0.51)",
+                                color: "#15252a",
+                                "font-size": "1rem"
+                              }
+                            },
+                            [_vm._v(_vm._s(item.uri))]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "td",
+                            {
+                              staticStyle: {
+                                "background-color": "rgba(163,166,66,0.51)",
+                                color: "#15252a",
+                                "font-size": "1rem"
+                              }
+                            },
+                            [_vm._v(_vm._s(item.action))]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "td",
+                            {
+                              staticStyle: {
+                                "background-color": "rgba(163,166,66,0.51)",
+                                color: "#15252a",
+                                "font-size": "1rem"
+                              }
+                            },
+                            [_vm._v(_vm._s(item.description))]
+                          )
+                        ]
+                      : [
+                          _c(
+                            "td",
+                            {
+                              staticStyle: {
+                                "background-color": "#904a51",
+                                color: "#fff3cd",
+                                "font-size": "1rem"
+                              }
+                            },
+                            [_vm._v(_vm._s(item.method))]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "td",
+                            {
+                              staticStyle: {
+                                "background-color": "rgba(144,74,81,0.5)",
+                                color: "#15252a",
+                                "font-size": "1rem"
+                              }
+                            },
+                            [_vm._v(_vm._s(item.uri))]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "td",
+                            {
+                              staticStyle: {
+                                "background-color": "rgba(144,74,81,0.5)",
+                                color: "#15252a",
+                                "font-size": "1rem"
+                              }
+                            },
+                            [_vm._v(_vm._s(item.action))]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "td",
+                            {
+                              staticStyle: {
+                                "background-color": "rgba(144,74,81,0.5)",
+                                color: "#15252a",
+                                "font-size": "1rem"
+                              }
+                            },
+                            [_vm._v(_vm._s(item.description))]
+                          )
+                        ]
+                  ],
+                  2
+                )
+              }),
+              0
+            )
+          ]
+        },
+        proxy: true
+      }
+    ])
+  })
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -98049,6 +98485,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/Docs/ApiDocs.vue":
+/*!**************************************************!*\
+  !*** ./resources/js/components/Docs/ApiDocs.vue ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ApiDocs_vue_vue_type_template_id_1a7bcaec_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ApiDocs.vue?vue&type=template&id=1a7bcaec&scoped=true& */ "./resources/js/components/Docs/ApiDocs.vue?vue&type=template&id=1a7bcaec&scoped=true&");
+/* harmony import */ var _ApiDocs_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ApiDocs.vue?vue&type=script&lang=js& */ "./resources/js/components/Docs/ApiDocs.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _ApiDocs_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ApiDocs_vue_vue_type_template_id_1a7bcaec_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ApiDocs_vue_vue_type_template_id_1a7bcaec_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "1a7bcaec",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Docs/ApiDocs.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Docs/ApiDocs.vue?vue&type=script&lang=js&":
+/*!***************************************************************************!*\
+  !*** ./resources/js/components/Docs/ApiDocs.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ApiDocs_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./ApiDocs.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Docs/ApiDocs.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ApiDocs_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Docs/ApiDocs.vue?vue&type=template&id=1a7bcaec&scoped=true&":
+/*!*********************************************************************************************!*\
+  !*** ./resources/js/components/Docs/ApiDocs.vue?vue&type=template&id=1a7bcaec&scoped=true& ***!
+  \*********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ApiDocs_vue_vue_type_template_id_1a7bcaec_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./ApiDocs.vue?vue&type=template&id=1a7bcaec&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Docs/ApiDocs.vue?vue&type=template&id=1a7bcaec&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ApiDocs_vue_vue_type_template_id_1a7bcaec_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ApiDocs_vue_vue_type_template_id_1a7bcaec_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/ErrorPages/NotFound.vue":
 /*!*********************************************************!*\
   !*** ./resources/js/components/ErrorPages/NotFound.vue ***!
@@ -99148,6 +99653,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Layouts_BaseLayout__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../components/Layouts/BaseLayout */ "./resources/js/components/Layouts/BaseLayout.vue");
 /* harmony import */ var _middleware_auth__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./middleware/auth */ "./resources/js/router/middleware/auth.js");
 /* harmony import */ var _middleware_guest__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./middleware/guest */ "./resources/js/router/middleware/guest.js");
+/* harmony import */ var _components_Docs_ApiDocs__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../components/Docs/ApiDocs */ "./resources/js/components/Docs/ApiDocs.vue");
 // Auth Layouts
 
 
@@ -99171,6 +99677,8 @@ __webpack_require__.r(__webpack_exports__);
 
  // Middleware
 
+
+ // Api View
 
 
 var routes = [{
@@ -99260,6 +99768,9 @@ var routes = [{
     component: _components_Auth_ResetPassword__WEBPACK_IMPORTED_MODULE_5__["default"],
     props: true
   }]
+}, {
+  path: '/docs',
+  component: _components_Docs_ApiDocs__WEBPACK_IMPORTED_MODULE_20__["default"]
 }, {
   path: '*',
   name: 'notfound',
