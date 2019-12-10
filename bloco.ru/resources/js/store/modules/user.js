@@ -99,7 +99,7 @@ export default {
 
             if (context.getters.AUTH_TOKEN !== null) {
                 return new Promise((resolve, reject) => {
-                    axios.post('http://localhost:8000/api/logout')
+                    axios.post('/api/logout')
                         .then(response => {
                             context.commit('UNSET_AUTH');
                             delete axios.defaults.headers.common['Authorization'];

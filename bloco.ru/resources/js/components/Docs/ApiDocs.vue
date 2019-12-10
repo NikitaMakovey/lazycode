@@ -12,28 +12,28 @@
             <tbody>
             <tr v-for="item in docs" :key="item.id">
                 <template v-if="item.method === 'GET'">
-                    <td style="background-color: #55ca89; color: #fff3cd; font-size: 1rem">{{ item.method }}</td>
-                    <td style="background-color: rgba(85,202,137,0.53); color: #15252a; font-size: 1rem">{{ item.uri }}</td>
-                    <td style="background-color: rgba(85,202,137,0.53); color: #15252a; font-size: 1rem">{{ item.action }}</td>
-                    <td style="background-color: rgba(85,202,137,0.53); color: #15252a; font-size: 1rem">{{ item.description }}</td>
+                    <td class="getStyle">{{ item.method }}</td>
+                    <td class="getStyleInfo">{{ item.uri }}</td>
+                    <td class="getStyleInfo">{{ item.action }}</td>
+                    <td class="getStyleInfo">{{ item.description }}</td>
                 </template>
                 <template v-else-if="item.method === 'POST'">
-                    <td style="background-color: #646aca; color: #fff3cd; font-size: 1rem">{{ item.method }}</td>
-                    <td style="background-color: rgba(100,106,202,0.51); color: #15252a; font-size: 1rem">{{ item.uri }}</td>
-                    <td style="background-color: rgba(100,106,202,0.51); color: #15252a; font-size: 1rem">{{ item.action }}</td>
-                    <td style="background-color: rgba(100,106,202,0.51); color: #15252a; font-size: 1rem">{{ item.description }}</td>
+                    <td class="postStyle">{{ item.method }}</td>
+                    <td class="postStyleInfo">{{ item.uri }}</td>
+                    <td class="postStyleInfo">{{ item.action }}</td>
+                    <td class="postStyleInfo">{{ item.description }}</td>
                 </template>
                 <template v-else-if="item.method === 'PUT|PATCH'">
-                    <td style="background-color: #a3a642; color: #fff3cd; font-size: 1rem">{{ item.method }}</td>
-                    <td style="background-color: rgba(163,166,66,0.51); color: #15252a; font-size: 1rem">{{ item.uri }}</td>
-                    <td style="background-color: rgba(163,166,66,0.51); color: #15252a; font-size: 1rem">{{ item.action }}</td>
-                    <td style="background-color: rgba(163,166,66,0.51); color: #15252a; font-size: 1rem">{{ item.description }}</td>
+                    <td class="putStyle">{{ item.method }}</td>
+                    <td class="putStyleInfo">{{ item.uri }}</td>
+                    <td class="putStyleInfo">{{ item.action }}</td>
+                    <td class="putStyleInfo">{{ item.description }}</td>
                 </template>
                 <template v-else>
-                    <td style="background-color: #904a51; color: #fff3cd; font-size: 1rem">{{ item.method }}</td>
-                    <td style="background-color: rgba(144,74,81,0.5); color: #15252a; font-size: 1rem">{{ item.uri }}</td>
-                    <td style="background-color: rgba(144,74,81,0.5); color: #15252a; font-size: 1rem">{{ item.action }}</td>
-                    <td style="background-color: rgba(144,74,81,0.5); color: #15252a; font-size: 1rem">{{ item.description }}</td>
+                    <td class="deleteStyle">{{ item.method }}</td>
+                    <td class="deleteStyleInfo">{{ item.uri }}</td>
+                    <td class="deleteStyleInfo">{{ item.action }}</td>
+                    <td class="deleteStyleInfo">{{ item.description }}</td>
                 </template>
             </tr>
             </tbody>
@@ -186,5 +186,44 @@
 </script>
 
 <style scoped>
-
+    .getStyle {
+        background-color: #55ca89;
+        color: #fff3cd;
+        font-size: 1rem
+    }
+    .getStyleInfo {
+        background-color: rgba(85,202,137,0.53);
+        color: #15252a;
+        font-size: 1rem
+    }
+    .postStyle {
+        background-color: #646aca;
+        color: #fff3cd;
+        font-size: 1rem
+    }
+    .postStyleInfo {
+        background-color: rgba(100,106,202,0.51);
+        color: #15252a;
+        font-size: 1rem
+    }
+    .putStyle {
+        background-color: #a3a642;
+        color: #fff3cd;
+        font-size: 1rem
+    }
+    .putStyleInfo {
+        background-color: rgba(163,166,66,0.51);
+        color: #15252a;
+        font-size: 1rem
+    }
+    .deleteStyle {
+        background-color: #904a51;
+        color: #fff3cd;
+        font-size: 1rem
+    }
+    .deleteStyleInfo {
+        background-color: rgba(144,74,81,0.5);
+        color: #15252a;
+        font-size: 1rem
+    }
 </style>

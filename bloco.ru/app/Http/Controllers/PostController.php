@@ -26,7 +26,6 @@ class PostController extends Controller
                             u.id            AS user_id,
                             u.username      AS username,
                             u.image         AS user_image,
-                            u.username      AS author,
                             c.name          AS category,
                             COUNT(cm.post_id)
                                             AS count_comments,
@@ -69,7 +68,7 @@ class PostController extends Controller
             'body' => $request['body']
         ]);
 
-        return response($post, 201);
+        return response(['Successfully created!'], 201);
     }
 
     /**
@@ -89,7 +88,6 @@ class PostController extends Controller
                             u.id            AS user_id,
                             u.username      AS username,
                             u.image         AS user_image,
-                            u.username      AS author,
                             c.name          AS category,
                             COUNT(cm.post_id)
                                             AS count_comments,
@@ -113,7 +111,7 @@ class PostController extends Controller
      * Update the specified post in storage.
      *
      * @param Request $request
-     * @param int $id
+     * @param integer $id
      * @return \Illuminate\Http\Response
      * @throws \Illuminate\Validation\ValidationException
      */
@@ -122,7 +120,6 @@ class PostController extends Controller
         $this->validate($request, [
             'title' => 'required|string|max:300|min:5',
             'category_id' => 'required|integer',
-            'author_id' => 'required|integer',
             'body' => 'required|min:10',
         ]);
 
@@ -130,12 +127,11 @@ class PostController extends Controller
 
         $post->title = $request['title'];
         $post->category_id = $request['category_id'];
-        $post->author_id = $request['author_id'];
         $post->body = $request['body'];
 
         $post->save();
 
-        return response($post, 200);
+        return response(['Successfully updated!'], 200);
     }
 
     /**
@@ -148,7 +144,7 @@ class PostController extends Controller
     {
          $post = Post::findOrFail($id);
          $post->delete();
-         return response($post, 200);
+         return response(['Successfully deleted!'], 200);
     }
 
     /**

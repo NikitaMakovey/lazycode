@@ -4,20 +4,24 @@
             <header class="user-header">
                 <div style="display: block">
                     <div class="user-image" style="display: inline-block">
-                        <img :src="this.user.image" alt="" class="user-icon">
+                        <img :src="USERS[0].user_image" alt="" class="user-icon">
                     </div>
                     <div class="user-points" style="display: inline-block"></div>
                 </div>
                 <div style="display: block">
                     <div class="user-name" style="display: inline-block">
-                        <span>{{ this.user.name }} </span>
+                        <span>{{ USERS[0].name }} </span>
                     </div>
                     <div class="user-username" style="display: inline-block">
                         <router-link :to="{ name: 'user', params : { id: this.$route.params.id }}"
                                      class="user-username-link vue-link">
-                            @{{ this.user.username }}
+                            @{{ USERS[0].username }}
                         </router-link>
                     </div>
+                </div>
+                <div style="display: block">
+                    <span>{{ USERS[0].specialization }} </span>
+                    <span><i class="fas fa-splotch"></i> {{ USERS[0].rating }}</span>
                 </div>
             </header>
             <div class="user-info">
@@ -48,7 +52,13 @@
                     <hr class="hr-user">
                 </div>
                 <div class="view-space">
-                    <router-view></router-view>
+                    <template>
+                        <div class="user-about">
+                            <span>
+                                {{ USERS[0].about }}
+                            </span>
+                        </div>
+                    </template>
                 </div>
             </div>
         </div>
@@ -56,24 +66,14 @@
 </template>
 
 <script>
-    export default {
-        data() {
-            return {
-                user : []
-            }
-        },
-        components: {
+    import {mapGetters} from 'vuex';
 
-        },
-        methods: {
-            loadUser() {
-                let id_ = this.$route.params.id;
-                let apiRoute = "/api/lazycode/users/" + id_;
-                axios.get(apiRoute).then(({data}) => (this.user = data));
-            }
-        },
+    export default {
         mounted() {
-            this.loadUser();
+            this.$store.dispatch('GET_USER', this.$route.params.id);
+        },
+        computed: {
+            ...mapGetters(['USERS'])
         }
     }
 </script>

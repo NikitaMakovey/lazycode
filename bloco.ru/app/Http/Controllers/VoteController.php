@@ -85,6 +85,9 @@ class VoteController extends Controller
         $vote = Vote::where('type_id', $request['type_id'])
                     ->where('source_id', $request['source_id'])
                     ->where('user_id', $request['user_id']);
+        if (!count($vote->get())) {
+            return response(['Not found resource.'], 422);
+        }
         $vote->delete();
         return response(['Successfully deleted'], 200);
     }

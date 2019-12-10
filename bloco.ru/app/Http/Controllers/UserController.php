@@ -56,7 +56,7 @@ class UserController extends Controller
             'password' => Hash::make($request['password'])
         ]);
 
-        return response($user, 201);
+        return response(['Successfully created!'], 201);
     }
 
     /**
@@ -103,7 +103,7 @@ class UserController extends Controller
             'about' => 'nullable',
         ]);
 
-        $user = User::find($id);
+        $user = User::findOrFail($id);
 
         if ($request['name']) $user->name = $request['name'];
         if ($request['specialization']) $user->specialization = $request['specialization'];
@@ -112,7 +112,7 @@ class UserController extends Controller
 
         $user->save();
 
-        return response($user, 200);
+        return response(['Successfully updated!'], 200);
     }
 
     /**
@@ -125,7 +125,7 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
         $user->delete();
-        return response($user, 200);
+        return response(['Successfully deleted!'], 200);
     }
 
     /**

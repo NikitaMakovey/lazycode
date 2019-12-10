@@ -37,7 +37,7 @@ class CategoryController extends Controller
             'name' => $request['name']
         ]);
 
-        return response($category, 201);
+        return response(['Successfully created!'], 201);
     }
 
     /**
@@ -96,7 +96,7 @@ class CategoryController extends Controller
         $category->name = $request['name'];
         $category->save();
 
-        return response($category, 200);
+        return response(['Successfully updated!'], 200);
     }
 
     /**
@@ -109,6 +109,6 @@ class CategoryController extends Controller
     {
         $category = Category::findOrFail($id);
         $category->delete();
-        return response($category, 200);
+        return response(['Successfully deleted!'], 200);
     }
 }

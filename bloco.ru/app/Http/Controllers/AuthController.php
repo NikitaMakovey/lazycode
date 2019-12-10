@@ -75,7 +75,6 @@ class AuthController extends Controller
     public function logout(Request $request)
     {
         $request->user()->token()->revoke();
-        $response = ['answer' => 'Вы успешно вышли из системы!'];
-        return response($response, 200);
+        return response(['Вы успешно вышли из системы!'], 200);
     }
 }

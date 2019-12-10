@@ -16,10 +16,10 @@
                 <hr>
             </div>
             <div class="users-list">
-                <ul class="user-area" v-for="user in searchUsers" :key="user.id">
+                <ul class="user-area" v-for="user in USERS" :key="user.user_id">
                     <li class="user-content">
                         <div class="user-info-data">
-                            <router-link :to="{ name: 'user', params: { id: user.id }}" class="vue-link">
+                            <router-link :to="{ name: 'user', params: { id: user.user_id }}" class="vue-link">
                                 <img :src="user.user_image" alt="" class="user-icon-item" style="display: inline-block">
                             </router-link>
                             <div class="user-text-data" style="display: inline-block">
@@ -28,7 +28,7 @@
                                         <span>{{ user.name }}</span>
                                     </div>
                                     <div class="user-username" style="display: inline-block">
-                                        <router-link :to="{ name: 'user', params: { id: user.id }}" class="user-username-link">
+                                        <router-link :to="{ name: 'user', params: { id: user.user_id }}" class="user-username-link">
                                             @{{ user.username }}
                                         </router-link>
                                     </div>
@@ -47,29 +47,26 @@
 </template>
 
 <script>
+    import {mapGetters} from 'vuex';
+
     export default {
         data() {
             return {
                 keyword : '',
-                users : []
             }
         },
-        methods: {
-            loadUsers() {
-                axios.get("api/lazycode/users").then(({data}) => (this.users = data))
-            }
-        },
-        created() {
-            this.loadUsers();
+        mounted() {
+            this.$store.dispatch('GET_USERS');
         },
         computed: {
-            searchUsers() {
-                return this.users.filter(
+            ...mapGetters(['USERS']),
+            /*searchUsers() {
+                return this.USERS.filter(
                     (user) => {
                         return user.username.toLowerCase().includes(this.keyword.toLowerCase());
                     }
                 );
-            }
+            }*/
         }
     }
 </script>

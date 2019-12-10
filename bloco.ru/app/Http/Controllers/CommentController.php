@@ -39,7 +39,7 @@ class CommentController extends Controller
             'body' => $request['body']
         ]);
 
-        return response($comment, 201);
+        return response(['Successfully created!'], 201);
     }
 
     /**
@@ -64,6 +64,6 @@ class CommentController extends Controller
     {
         $comment = Comment::findOrFail($id);
         $comment->delete();
-        return response($comment, 200);
+        return response(['Successfully deleted!'], 200);
     }
 }

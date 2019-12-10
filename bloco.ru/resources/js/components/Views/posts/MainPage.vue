@@ -10,7 +10,7 @@
                 <hr>
             </div>
             <div class="posts-list">
-                <ul class="post-area" v-for="post in posts" :key="post.post_id">
+                <ul class="post-area" v-for="post in POSTS" :key="post.post_id">
                     <li class="post-space">
                         <article class="post-item">
                             <header class="post-metadata">
@@ -39,6 +39,9 @@
                             <div class="post-body">
                                 <div v-html="post.post_body" class="post-text"></div>
                                 <div>
+                                    <span>{{ post.created_at }}</span>
+                                </div>
+                                <div>
                                     <span>{{ post.rating }} <i class="fas fa-splotch"></i></span>
                                     <span>{{ post.count_comments }} <i class="fas fa-comment"></i></span>
                                 </div>
@@ -59,21 +62,14 @@
 </template>
 
 <script>
-    import axios from 'axios';
+    import {mapGetters} from 'vuex';
 
     export default {
-        data() {
-            return {
-                posts : {},
-            }
+        mounted() {
+            this.$store.dispatch('GET_POSTS');
         },
-        methods: {
-            loadPosts() {
-                axios.get("/api/lazycode/posts").then(({data}) => (this.posts = data));
-            }
-        },
-        created() {
-            this.loadPosts();
+        computed: {
+            ...mapGetters(['POSTS'])
         }
     }
 </script>
