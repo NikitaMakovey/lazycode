@@ -1,22 +1,5 @@
-<!DOCTYPE html>
-<!--
-This is a starter template page. Use this page to start your new project from
-scratch. This page gets rid of all links and provides the needed markup only.
--->
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>Lazycode | Admin</title>
-
-    <link rel="stylesheet" href="/css/main.css">
-</head>
-<body class="hold-transition sidebar-mini">
-<div class="wrapper" id="app">
+<template>
+<div class="wrapper">
 
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -66,7 +49,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </div>
                 <div class="info">
                     <a href="#" class="d-block">
-                        {{ Auth::user()->username }}
+                        <!--{{ Auth::user()->username }}-->
                     </a>
                 </div>
             </div>
@@ -136,7 +119,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </a>
 
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            @csrf
+
                         </form>
                     </li>
 
@@ -170,8 +153,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
     </footer>
 </div>
 <!-- ./wrapper -->
+</template>
 
-<script src="/js/app.js"></script>
+<script>
+    export default {
+        name: "MainComponent"
+    }
+</script>
 
-</body>
-</html>
+<style scoped>
+
+</style>
