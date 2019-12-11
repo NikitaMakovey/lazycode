@@ -60,13 +60,13 @@
         },
         computed: {
             ...mapGetters(['USERS']),
-            /*searchUsers() {
-                return this.USERS.filter(
+            searchUsers() {
+                return USERS.filter(
                     (user) => {
                         return user.username.toLowerCase().includes(this.keyword.toLowerCase());
                     }
                 );
-            }*/
+            }
         }
     }
 </script>

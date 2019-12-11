@@ -55,7 +55,7 @@
                 form: new Form({
                     title: '',
                     category_id: '',
-                    author_id: 14,
+                    author_id: this.$store.getters.USER_ID,
                     body: ''
                 })
             }
@@ -65,7 +65,8 @@
         },
         methods: {
             createPost() {
-                this.form.post('/api/lazycode/posts').then(() => (this.$router.push({path: '/'})));
+                this.$store.dispatch('SET_POST', this.form)
+                .then(() => (this.$router.push({path: '/'})));
             }
         }
     };

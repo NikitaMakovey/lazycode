@@ -42,8 +42,15 @@
                                     <span>{{ post.created_at }}</span>
                                 </div>
                                 <div>
-                                    <span>{{ post.rating }} <i class="fas fa-splotch"></i></span>
-                                    <span>{{ post.count_comments }} <i class="fas fa-comment"></i></span>
+                                    <v-btn text icon>
+                                        <v-icon>mdi-thumb-up</v-icon>
+                                    </v-btn>
+                                    <span> {{ post.rating }} </span>
+                                    <v-btn text icon>
+                                        <v-icon>mdi-thumb-down</v-icon>
+                                    </v-btn>
+                                    <span> | {{ post.count_comments }}</span>
+                                    <v-icon>mdi-message-text</v-icon>
                                 </div>
                                 <router-link class="vue-link-button" :to="{ name: 'post', params: { id: post.post_id }}">
                                     <button type="button" class="btn user-button">
@@ -73,3 +80,12 @@
         }
     }
 </script>
+
+<style scoped>
+    .code_up {
+        color: #34ff8d;
+    }
+    .code_down {
+        color: #a94442;
+    }
+</style>

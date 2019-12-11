@@ -7,6 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 class Vote extends Model
 {
     /**
+     * @var null
+     */
+    protected $primaryKey = null;
+
+    /**
+     * @var bool
+     */
+    public $incrementing = false;
+
+    /**
      * @var array
      */
     protected $fillable = [

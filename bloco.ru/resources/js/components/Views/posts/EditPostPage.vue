@@ -40,7 +40,7 @@
                     </div>
                     <button type="submit" class="btn btn-primary">Отредактировать</button>
                 </form>
-                <button v-on:click="deletePost" class="btn btn-danger">Уничтожить безвозвратно</button>
+                <button @click="deletePost" class="btn btn-danger">Уничтожить безвозвратно</button>
             </div>
         </div>
     </div>
@@ -48,6 +48,7 @@
 
 <script>
     import Editor from '@tinymce/tinymce-vue';
+    import {mapGetters} from 'vuex';
 
     export default {
         name: "EditPostPage",
@@ -67,24 +68,22 @@
         },
         methods: {
             updatePost() {
-                let patchRoute = "/api/lazycode/posts/" + this.post_id;
-                this.form.patch(patchRoute, this.form).then(() => (this.$router.push({ path: '/' })));
+                this.$store.dispatch('UPDATE_POST', {data: this.form, id: this.post_id})
+                .then(() => (this.$router.push({ path: '/' })));
             },
             deletePost() {
-                let deleteRoute = "/api/lazycode/posts/" + this.post_id;
-                axios.delete(deleteRoute).then(() => (this.$router.push({ path: '/' })));
+                //wtf?
+                this.$store.dispatch('DELETE_POST', this.post_id)
+                .then(() => (this.$router.push({ path: '/' })));
             }
         },
         mounted() {
-            let id = this.$route.params.id;
-            this.post_id = id;
-            let getRoute = "/api/lazycode/posts/" + id;
-            axios.get(getRoute).then(function ({data}) {
-                this.form.title = data.title;
-                this.form.category_id = data.title;
-                this.form.author_id = data.author_id;
-                this.form.body = data.body;
-            });
+            this.$store.dispatch('GET_POST', this.$route.params.id);
+            this.post_id = this.$route.params.id;
+        },
+        computed: {
+            ...mapGetters(['POSTS'])
+            // TODO: POSTS[0] into this.form
         }
     };
 </script>

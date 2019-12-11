@@ -44,6 +44,5 @@ Route::group(['prefix' => 'code'], function () {
 
     Route::get('votes', 'VoteController@index');
     Route::post('votes', 'VoteController@store');
-    Route::post('votes/delete', 'VoteController@destroy');
 });
 

@@ -137,7 +137,7 @@ class PostController extends Controller
     /**
      * Remove the specified post from storage.
      *
-     * @param int $id
+     * @param integer $id
      * @return \Illuminate\Http\Response
      */
     public function destroy(int $id)

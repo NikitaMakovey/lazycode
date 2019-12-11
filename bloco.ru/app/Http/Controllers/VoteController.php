@@ -41,54 +41,29 @@ class VoteController extends Controller
         $vote = Vote::where('type_id', $request['type_id'])
                     ->where('source_id', $request['source_id'])
                     ->where('user_id', $request['user_id'])
-                    ->get();
+                    ->first();
 
-        //return response(count($vote), 200);
-
-        if (!count($vote)) {
-            DB::insert(
-                "INSERT INTO votes (type_id, source_id, user_id, direct_id, vote, created_at, updated_at)
-                    VALUES (?, ?, ?, ?, ?, current_timestamp, current_timestamp) 
-                    ON CONFLICT (type_id, source_id, user_id) DO NOTHING",
-                [
-                    $request['type_id'],
-                    $request['source_id'],
-                    $request['user_id'],
-                    $request['direct_id'],
-                    $request['vote']
-                ]);
-
-            return response(['Successfully created!'], 201);
-        } else {
-            DB::update(
-                "UPDATE votes SET vote = ? AND updated_at = current_timestamp
-                    WHERE type_id = ? AND source_id = ? AND user_id = ?",
-                [
-                    $request['vote'],
-                    $request['type_id'],
-                    $request['source_id'],
-                    $request['user_id']
-                ]);
-
+        if ($vote && $vote->vote == $request['vote']) {
+            Vote::where('type_id', $request['type_id'])
+                ->where('source_id', $request['source_id'])
+                ->where('user_id', $request['user_id'])
+                ->delete();
+            return response(['Successfully deleted!'], 200);
+        } else if ($vote) {
+            Vote::where('type_id', $request['type_id'])
+                ->where('source_id', $request['source_id'])
+                ->where('user_id', $request['user_id'])
+                ->update(['vote' => $request['vote']]);
             return response(['Successfully updated!'], 200);
+        } else {
+            Vote::create([
+                'type_id' => $request['type_id'],
+                'source_id' => $request['source_id'],
+                'user_id' => $request['user_id'],
+                'direct_id' => $request['direct_id'],
+                'vote' => $request['vote']
+            ]);
+            return response(['Successfully created!'], 201);
         }
-    }
-
-    /**
-     * Remove the specified vote from storage.
-     *
-     * @param Request $request
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Request $request)
-    {
-        $vote = Vote::where('type_id', $request['type_id'])
-                    ->where('source_id', $request['source_id'])
-                    ->where('user_id', $request['user_id']);
-        if (!count($vote->get())) {
-            return response(['Not found resource.'], 422);
-        }
-        $vote->delete();
-        return response(['Successfully deleted'], 200);
     }
 }

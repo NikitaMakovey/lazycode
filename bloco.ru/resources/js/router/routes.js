@@ -1,15 +1,16 @@
-
+// Components
+import SkeletonComponent from '../components/BaseComponents/SkeletonComponent';
 
 // Auth Layouts
-import AuthLayout from "../components/Layouts/AuthLayout";
-import Register from "../components/Auth/Register";
-import Login from "../components/Auth/Login";
-import Logout from "../components/Auth/Logout";
-import ResetEmail from "../components/Auth/ResetEmail";
-import ResetPassword from "../components/Auth/ResetPassword";
+import AuthLayout from "../components/BaseComponents/AuthLayout";
+import Register from "../components/AuthComponents/Register";
+import Login from "../components/AuthComponents/Login";
+import Logout from "../components/AuthComponents/Logout";
+import ResetEmail from "../components/AuthComponents/ResetEmail";
+import ResetPassword from "../components/AuthComponents/ResetPassword";
 
 // NotFound Component
-import NotFound from "../components/ErrorPages/NotFound";
+import NotFound from "../components/ErrorComponents/NotFound";
 
 // Main Views
 import Main from "../components/Views/posts/MainPage";
@@ -24,14 +25,14 @@ import UserComments from '../components/Views/users/profile/UserComments';
 import EditUserPage from "../components/Views/users/EditUserPage";
 
 // NavBar Layout
-import BaseLayout from "../components/Layouts/BaseLayout";
+import BaseLayout from "../components/BaseComponents/BaseLayout";
 
 // Middleware
 import auth from './middleware/auth';
 import guest from './middleware/guest';
 
 // Api View
-import ApiDocs from "../components/Docs/ApiDocs";
+import ApiDocs from "../components/DocsComponents/ApiDocs";
 
 const routes = [
     { path: '/', component: BaseLayout,

@@ -42,6 +42,8 @@
 </template>
 
 <script>
+    import {mapGetters} from 'vuex';
+
     export default {
         name: "EditUserPage",
         data() {
@@ -58,16 +60,16 @@
         },
         methods: {
             updateUser() {
-                let patchRoute = "/api/lazycode/users/" + this.user_id;
-                this.form.patch(patchRoute, this.form)
+                this.$store.dispatch('UPDATE_USER', { data: this.form, id: this.$route.params.id})
                     .then(() => (this.$router.push({name: 'user', params: { id: this.user_id }})));
             }
         },
         mounted() {
-            let id = this.$route.params.id;
-            this.user_id = id;
-            let getRoute = "/api/lazycode/users/" + id;
-            axios.get(getRoute).then(({data}) => (this.user = data));
+            this.$store.dispatch('GET_USER', this.$route.params.id);
+            this.user_id = this.$route.params.id;
+        },
+        computed: {
+            ...mapGetters(['USERS'])
         }
     }
 </script>

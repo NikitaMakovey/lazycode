@@ -171,13 +171,6 @@
                         uri: 'api/code/votes',
                         action: 'VoteController@store',
                         description: 'Посылаю запрос на создание или обновление конкретной оценки.'
-                    },
-                    {
-                        id: 20,
-                        method: 'POST',
-                        uri: 'api/code/votes/delete',
-                        action: 'VoteController@destroy',
-                        description: 'Посылаю запрос на удаление конкретной оценки.'
                     }
                 ]
             }

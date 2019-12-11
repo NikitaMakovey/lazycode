@@ -69,10 +69,10 @@ export default {
                     });
             });
         },
-        UPDATE_POST(context, data, id) {
+        UPDATE_POST(context, data) {
             return new Promise((resolve, reject) => {
-                let uri = '/api/code/posts/' + id;
-                axios.put(uri, data)
+                let uri = '/api/code/posts/' + data.id;
+                axios.put(uri, data.data)
                     .then(({data}) => {
                         resolve(data);
                     })
