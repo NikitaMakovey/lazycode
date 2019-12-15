@@ -45682,7 +45682,7 @@ readers do not read off random characters that represent icons */
     color: #88bfa5;
 }
 
-.meta-category {
+.meta--category {
     font-size: 1rem;
     color: #6f9d88 !important;
 }
@@ -45702,5 +45702,20 @@ readers do not read off random characters that represent icons */
 .username-item-link {
     font-size: 1.2rem;
     color: #88bfa5 !important;
+}
+
+.route__style {
+    text-decoration: none !important;
+}
+.route__style:hover {
+    text-decoration: none !important;
+}
+
+.v-btn--active {
+
+}
+
+.v-list-item--active {
+
 }
 

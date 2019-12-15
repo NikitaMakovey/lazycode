@@ -5,6 +5,7 @@ import users from './modules/users';
 import posts from './modules/posts';
 import comments from './modules/comments';
 import votes from './modules/votes';
+import categories from "./modules/categories";
 
 Vue.use(Vuex);
 
@@ -18,6 +19,7 @@ export const store = new Vuex.Store({
         users,
         posts,
         comments,
-        votes
+        votes,
+        categories
     }
 });

@@ -1,5 +1,7 @@
 // Components
 import SkeletonComponent from '../components/BaseComponents/SkeletonComponent';
+import PostsMainComponent from "../components/PostComponents/MainComponent";
+import PostComponent from "../components/PostComponents/PostComponent";
 
 // Auth Layouts
 import AuthLayout from "../components/BaseComponents/AuthLayout";
@@ -35,9 +37,10 @@ import guest from './middleware/guest';
 import ApiDocs from "../components/DocsComponents/ApiDocs";
 
 const routes = [
-    { path: '/', component: BaseLayout,
+    { path: '/', component: SkeletonComponent,
         children: [
-            { path: '', name: 'main', component: Main },
+            { path: '', name: 'main', component: PostsMainComponent },
+
             { path: 'posts/create', name: 'posts.create', component:  CreatePostPage, meta: { middleware: [ auth ] } },
             { path: 'posts/:id/edit', name: 'posts.edit', component:  EditPostPage, meta: { middleware: [ auth ] } },
             { path: 'posts/:id', name: 'post', component: Post },
