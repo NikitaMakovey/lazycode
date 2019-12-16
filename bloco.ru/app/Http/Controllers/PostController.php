@@ -157,6 +157,7 @@ class PostController extends Controller
     {
         $comments = DB::select(
             "SELECT
+                            c.id            AS id,
                             c.created_at    AS created_at,
                             u.id            AS user_id,
                             u.username      AS username,

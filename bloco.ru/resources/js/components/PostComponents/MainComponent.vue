@@ -77,7 +77,7 @@
                         </v-row>
                     </v-col>
                     <v-col cols="12">
-                        <v-row v-html="post.post_body" class=""></v-row>
+                        <v-row v-html="post.post_body" class="post-body--html"></v-row>
                     </v-col>
                     <v-col cols="12">
                         <v-row>

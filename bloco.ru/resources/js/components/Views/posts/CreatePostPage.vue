@@ -38,7 +38,9 @@
                         </editor>
                         <has-error :form="form" field="body"></has-error>
                     </div>
-                    <button type="submit" class="btn btn-primary">Запостить</button>
+                    <v-btn type="submit" class="route__style" dark outline color="#50575B">
+                        Запостить
+                    </v-btn>
                 </form>
             </div>
         </div>

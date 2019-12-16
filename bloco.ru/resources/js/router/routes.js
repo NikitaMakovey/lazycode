@@ -40,10 +40,10 @@ const routes = [
     { path: '/', component: SkeletonComponent,
         children: [
             { path: '', name: 'main', component: PostsMainComponent },
+            { path: 'posts/:id', name: 'post', component: PostComponent },
 
             { path: 'posts/create', name: 'posts.create', component:  CreatePostPage, meta: { middleware: [ auth ] } },
             { path: 'posts/:id/edit', name: 'posts.edit', component:  EditPostPage, meta: { middleware: [ auth ] } },
-            { path: 'posts/:id', name: 'post', component: Post },
             { path: 'users', name: 'users', component: IndexUserPage },
             { path: 'users/:id', name: 'user', component: User,
                 children: [
