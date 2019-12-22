@@ -26,10 +26,14 @@
                 <v-col cols="12" class="mb-0">
                     <v-row>
                         <p class="title">
-                            <router-link class="" :to="{ name: 'post', params: { id: POSTS[0].post_id }}">
-                                {{ POSTS[0].post_title }}
-                            </router-link>
+                            {{ POSTS[0].post_title }}
                         </p>
+                        <v-btn text icon class="route__style"
+                               :to="{ name: 'posts.edit', params: { id: POSTS[0].post_id } }"
+                               v-if="POSTS[0].user_id == this.$store.getters.USER_ID"
+                        >
+                            <v-icon>mdi-fountain-pen-tip</v-icon>
+                        </v-btn>
                     </v-row>
                 </v-col>
                 <v-col cols="12" class="ma-0">

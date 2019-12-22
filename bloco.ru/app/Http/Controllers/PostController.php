@@ -89,6 +89,7 @@ class PostController extends Controller
                             u.username      AS username,
                             u.image         AS user_image,
                             c.name          AS category,
+                            c.id            AS category_id,
                             COUNT(cm.post_id)
                                             AS count_comments,
                             RATING(1, p.id)
@@ -102,7 +103,7 @@ class PostController extends Controller
                     JOIN categories c
                             ON p.category_id = c.id
                     WHERE p.id = ?
-                    GROUP BY p.id, u.id, c.name", [$id]);
+                    GROUP BY p.id, u.id, c.id", [$id]);
 
         return response($post, 200);
     }

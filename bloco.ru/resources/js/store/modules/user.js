@@ -24,6 +24,22 @@ export default {
         ABOUT: state => { return state.about },
     },
     mutations: {
+        UPDATE_USER_DATA: (state, data) => {
+            localStorage.removeItem('name');
+            localStorage.removeItem('specialization');
+            localStorage.removeItem('image');
+            localStorage.removeItem('about');
+
+            localStorage.setItem('name', data.name);
+            localStorage.setItem('specialization', data.specialization);
+            localStorage.setItem('image', data.image);
+            localStorage.setItem('about', data.about);
+
+            state.name = data.name;
+            state.specialization = data.specialization;
+            state.image = data.image;
+            state.about = data.about;
+        },
         SET_USER: (state, data) => {
             localStorage.setItem('user_id', data.id);
             localStorage.setItem('username', data.username);

@@ -63,7 +63,7 @@
                     <v-col cols="12" class="mb-0">
                         <v-row>
                             <p class="title">
-                                <router-link class="" :to="{ name: 'post', params: { id: post.post_id }}">
+                                <router-link class="route__style" :to="{ name: 'post', params: { id: post.post_id }}">
                                     {{ post.post_title }}
                                 </router-link>
                             </p>
@@ -81,7 +81,7 @@
                     </v-col>
                     <v-col cols="12">
                         <v-row>
-                            <v-btn class="route__style" dark outline color="#50575B"
+                            <v-btn class="route__style" dark outlined color="#50575B"
                                    :to="{ name: 'post', params: { id: post.post_id } }" exact
                             >
                                 Читать весь пост
@@ -155,8 +155,7 @@
             this.$store.dispatch('GET_CATEGORIES');
         },
         computed: {
-            ...mapGetters(['POSTS']),
-            ...mapGetters(['CATEGORIES']),
+            ...mapGetters(['POSTS', 'CATEGORIES']),
             /**
              * @return {string}
              */

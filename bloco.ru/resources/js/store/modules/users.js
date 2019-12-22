@@ -79,8 +79,9 @@ export default {
             return new Promise((resolve, reject) => {
                 let uri = '/api/code/users/' + data.id;
                 axios.put(uri, data.data)
-                    .then(({data}) => {
-                        resolve(data);
+                    .then(({update_data}) => {
+                        context.commit('UPDATE_USER_DATA', data.data);
+                        resolve(update_data);
                     })
                     .catch(error => {
                         reject(error);

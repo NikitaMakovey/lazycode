@@ -2,44 +2,6 @@
     <v-app id="inspire">
         <v-navigation-drawer v-model="drawer" app temporary>
             <v-list dense>
-                <template v-if="isAuth">
-                    <v-list-item
-                        :to="{ name: 'user', params: { id: userId } }"
-                        class="route__style"
-                        exact
-                    >
-                        <v-list-item-content>
-                            <v-list-item-title>
-                                <v-icon left small>{{ items[0].icon }}</v-icon>
-                                <span>{{ items[0].text }}</span>
-                            </v-list-item-title>
-                        </v-list-item-content>
-                    </v-list-item>
-                    <v-list-item
-                        :to="{ name: 'users.edit', params: { id: userId } }"
-                        class="route__style"
-                        exact
-                    >
-                        <v-list-item-content>
-                            <v-list-item-title>
-                                <v-icon left small>{{ items[1].icon }}</v-icon>
-                                <span>{{ items[1].text }}</span>
-                            </v-list-item-title>
-                        </v-list-item-content>
-                    </v-list-item>
-                    <v-list-item
-                        :to="{ name: 'posts.create' }"
-                        class="route__style"
-                        exact
-                    >
-                        <v-list-item-content>
-                            <v-list-item-title>
-                                <v-icon left small>{{ items[2].icon }}</v-icon>
-                                <span>{{ items[2].text }}</span>
-                            </v-list-item-title>
-                        </v-list-item-content>
-                    </v-list-item>
-                </template>
                 <template>
                     <v-list-item
                         :to="{ name: 'main' }"
@@ -48,7 +10,7 @@
                     >
                         <v-list-item-content>
                             <v-list-item-title>
-                                <v-icon left small>{{ items[3].icon }}</v-icon>
+                                <v-icon left small>mdi-script</v-icon>
                                 <span>{{ items[3].text }}</span>
                             </v-list-item-title>
                         </v-list-item-content>
@@ -60,15 +22,64 @@
                     >
                         <v-list-item-content>
                             <v-list-item-title>
-                                <v-icon left small>{{ items[4].icon }}</v-icon>
+                                <v-icon left small>mdi-script</v-icon>
                                 <span>{{ items[4].text }}</span>
+                            </v-list-item-title>
+                        </v-list-item-content>
+                    </v-list-item>
+                </template>
+                <template v-if="isAuth">
+                    <v-list-item
+                        :to="{ name: 'user', params: { id: userId } }"
+                        class="route__style"
+                        exact
+                    >
+                        <v-list-item-content>
+                            <v-list-item-title>
+                                <v-icon left small>mdi-script</v-icon>
+                                <span>{{ items[0].text }}</span>
+                            </v-list-item-title>
+                        </v-list-item-content>
+                    </v-list-item>
+                    <v-list-item
+                        :to="{ name: 'users.edit', params: { id: userId } }"
+                        class="route__style"
+                        exact
+                    >
+                        <v-list-item-content>
+                            <v-list-item-title>
+                                <v-icon left small>mdi-script</v-icon>
+                                <span>{{ items[1].text }}</span>
+                            </v-list-item-title>
+                        </v-list-item-content>
+                    </v-list-item>
+                    <v-list-item
+                        :to="{ name: 'posts.create' }"
+                        class="route__style"
+                        exact
+                    >
+                        <v-list-item-content>
+                            <v-list-item-title>
+                                <v-icon left small>mdi-script</v-icon>
+                                <span>{{ items[2].text }}</span>
+                            </v-list-item-title>
+                        </v-list-item-content>
+                    </v-list-item>
+                    <v-list-item
+                        :to="{ name: 'posts.create' }"
+                        class="route__style"
+                        exact
+                    >
+                        <v-list-item-content>
+                            <v-list-item-title>
+                                <v-icon left small>mdi-script</v-icon>
+                                <span>{{ items[5].text }}</span>
                             </v-list-item-title>
                         </v-list-item-content>
                     </v-list-item>
                 </template>
             </v-list>
         </v-navigation-drawer>
-
         <v-app-bar app color="#393E41" dark>
             <v-toolbar-title style="width: 300px" class="ml-0 pl-3">
                 <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
@@ -84,7 +95,11 @@
             </v-text-field>
             <v-spacer></v-spacer>
             <template v-if="isAuth">
-                <v-btn text color="#50575B #F6F7EB--text" class="route__style" @click="logout">Выйти</v-btn>
+                <v-btn text color="#50575B #F6F7EB--text"
+                       class="route__style" :to="{ name: 'user', params: { id: userId } }" exact
+                >
+                    {{ username }}
+                </v-btn>
                 <v-btn icon large class="route__style" :to="{ name: 'user', params: { id: userId } }" exact>
                     <v-avatar size="32px" item>
                         <v-img :src="userImage" alt="#UI">
@@ -117,6 +132,7 @@
         },
         data () {
             return {
+                activeClass: 'route--active',
                 drawer: null,
                 items: [
                     { icon: 'fas fa-user', text: 'Профиль',
@@ -129,6 +145,7 @@
                         route: "{ name: 'posts' }" },
                     { icon: 'fas fa-users', text: 'Все пользователи',
                         route: "{ name: 'users' }" },
+                    { icon: '-', text: 'Выход', route: "-"}
                 ]
             }
         },
