@@ -33,13 +33,13 @@ class CommentController extends Controller
             'body' => 'required|min:10',
         ]);
 
-        Comment::create([
+        $comment = Comment::create([
             'post_id' => $request['post_id'],
             'author_id' => $request['author_id'],
             'body' => $request['body']
         ]);
 
-        return response(['Successfully created!'], 201);
+        return response($comment, 201);
     }
 
     /**

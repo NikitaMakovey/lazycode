@@ -2769,8 +2769,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -3133,11 +3131,23 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      category: null,
       form: new Form({
         title: '',
         category_id: '',
@@ -3153,11 +3163,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     createPost: function createPost() {
       var _this = this;
 
-      this.$store.dispatch('SET_POST', this.form).then(function () {
-        return _this.$router.push({
-          path: '/'
+      if (this.category) {
+        var categories_ = this.CATEGORIES;
+        this.form.category_id = categories_.find(function (x) {
+          return x.name === _this.category;
+        }).id;
+        this.$store.dispatch('SET_POST', this.form).then(function () {
+          return _this.$router.push({
+            path: '/'
+          });
         });
-      });
+      }
     }
   },
   mounted: function mounted() {
@@ -3240,16 +3256,27 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      category: localStorage.getItem('P_CATEGORY'),
       form: new Form({
-        title: this.$store.getters.POSTS[0].post_title,
-        category_id: this.$store.getters.POSTS[0].category_id,
+        title: localStorage.getItem('P_TITLE'),
+        category_id: localStorage.getItem('P_CATEGORY_ID'),
         author_id: this.$store.getters.USER_ID,
-        body: this.$store.getters.POSTS[0].post_body
+        body: localStorage.getItem('P_BODY')
       })
     };
   },
@@ -3260,6 +3287,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     updatePost: function updatePost() {
       var _this = this;
 
+      var categories_ = this.CATEGORIES;
+      this.form.category_id = categories_.find(function (x) {
+        return x.name === _this.category;
+      }).id;
       this.$store.dispatch('UPDATE_POST', {
         data: this.form,
         id: this.$route.params.id
@@ -3282,14 +3313,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   mounted: function mounted() {
     this.$store.dispatch('GET_CATEGORIES');
   },
-  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapGetters"])(['CATEGORIES']), {
-    /**
-     * @return {string}
-     */
-    ACTIVE_MODE: function ACTIVE_MODE() {
-      return this.$store.state.categories[this.$store.getters.POSTS[0].category_id].name;
-    }
-  })
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapGetters"])(['CATEGORIES']))
 });
 
 /***/ }),
@@ -3310,6 +3334,9 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
 //
 //
 //
@@ -3612,8 +3639,45 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      current_comment: null
+    };
+  },
   methods: {
     voteClick: function voteClick(typeId, sourceId, directId, voteValue) {
       var data = {
@@ -3624,6 +3688,27 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         vote: voteValue
       };
       this.$store.dispatch('SET_VOTE', data);
+    },
+    postComment: function postComment() {
+      if (this.current_comment) {
+        var data = {
+          post_id: this.$route.params.id,
+          author_id: this.$store.getters.USER_ID,
+          body: this.current_comment
+        };
+        var udata = {
+          username: this.$store.getters.USERNAME,
+          user_image: this.$store.getters.IMAGE
+        };
+        this.current_comment = '';
+        this.$store.dispatch('SET_COMMENT', {
+          data: data,
+          udata: udata
+        });
+      }
+    },
+    deleteComment: function deleteComment(id) {
+      this.$store.dispatch('DELETE_COMMENT', id);
     }
   },
   mounted: function mounted() {
@@ -3644,6 +3729,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
 //
 //
 //
@@ -3800,6 +3889,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
@@ -3819,6 +3910,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
 //
 //
 //
@@ -3926,6 +4019,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     posts: Array
@@ -3952,6 +4048,15 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -8585,7 +8690,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.profile--text[data-v-02cc68ef] {\n    color: #393E41 !important;\n}\n.edit--button[data-v-02cc68ef] {\n    height: 2rem;\n    width: 2rem;\n}\n.edit--icon[data-v-02cc68ef] {\n    font-size: 1rem;\n}\n", ""]);
+exports.push([module.i, "\n.profile--text[data-v-02cc68ef] {\n}\n.edit--button[data-v-02cc68ef] {\n    height: 2rem;\n    width: 2rem;\n}\n.edit--icon[data-v-02cc68ef] {\n    font-size: 1rem;\n}\n", ""]);
 
 // exports
 
@@ -42065,7 +42170,7 @@ var render = function() {
                           "v-list-item-title",
                           [
                             _c("v-icon", { attrs: { left: "", small: "" } }, [
-                              _vm._v("mdi-script")
+                              _vm._v("mdi-script-outline")
                             ]),
                             _vm._v(" "),
                             _c("span", [_vm._v(_vm._s(_vm.items[4].text))])
@@ -42137,7 +42242,7 @@ var render = function() {
                                 _c(
                                   "v-icon",
                                   { attrs: { left: "", small: "" } },
-                                  [_vm._v("mdi-script")]
+                                  [_vm._v("mdi-script-outline")]
                                 ),
                                 _vm._v(" "),
                                 _c("span", [_vm._v(_vm._s(_vm.items[1].text))])
@@ -42183,10 +42288,7 @@ var render = function() {
                     _vm._v(" "),
                     _c(
                       "v-list-item",
-                      {
-                        staticClass: "route__style",
-                        attrs: { to: { name: "posts.create" }, exact: "" }
-                      },
+                      { on: { click: _vm.logout } },
                       [
                         _c(
                           "v-list-item-content",
@@ -42197,7 +42299,7 @@ var render = function() {
                                 _c(
                                   "v-icon",
                                   { attrs: { left: "", small: "" } },
-                                  [_vm._v("mdi-script")]
+                                  [_vm._v("mdi-script-outline")]
                                 ),
                                 _vm._v(" "),
                                 _c("span", [_vm._v(_vm._s(_vm.items[5].text))])
@@ -42640,7 +42742,9 @@ var render = function() {
         { attrs: { cols: "10" } },
         [
           _c("v-row", { attrs: { justify: "center" } }, [
-            _c("p", { staticClass: "display-2" }, [_vm._v("СОЗДАНИЕ ПОСТА")])
+            _c("p", { staticClass: "display-2 no-route-link--color" }, [
+              _vm._v("СОЗДАНИЕ ПОСТА")
+            ])
           ]),
           _vm._v(" "),
           _c("v-divider"),
@@ -42660,6 +42764,10 @@ var render = function() {
                 "div",
                 { staticClass: "form-group" },
                 [
+                  _c("label", { attrs: { for: "selectTitleCreatePost" } }, [
+                    _vm._v("Заголовок статьи")
+                  ]),
+                  _vm._v(" "),
                   _c("input", {
                     directives: [
                       {
@@ -42669,12 +42777,14 @@ var render = function() {
                         expression: "form.title"
                       }
                     ],
-                    staticClass: "form-control",
+                    staticClass: "form-control title no-route-link--color",
                     class: { "is-invalid": _vm.form.errors.has("title") },
                     attrs: {
                       type: "text",
                       name: "title",
-                      placeholder: "Заголовок статьи"
+                      id: "selectTitleCreatePost",
+                      placeholder:
+                        "The addled anchor awkwardly endures the seashell."
                     },
                     domProps: { value: _vm.form.title },
                     on: {
@@ -42692,56 +42802,79 @@ var render = function() {
                 1
               ),
               _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "form-group" },
-                [
-                  _c("input", {
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "selectCategoryCreatePost" } }, [
+                  _vm._v("Категория поста")
+                ]),
+                _vm._v(" "),
+                _c(
+                  "select",
+                  {
                     directives: [
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.form.category_id,
-                        expression: "form.category_id"
+                        value: _vm.category,
+                        expression: "category"
                       }
                     ],
-                    staticClass: "form-control",
-                    class: { "is-invalid": _vm.form.errors.has("category_id") },
-                    attrs: {
-                      type: "number",
-                      name: "category_id",
-                      placeholder: "Категория"
-                    },
-                    domProps: { value: _vm.form.category_id },
+                    staticClass: "form-control subtitle-1 no-route-link--color",
+                    attrs: { id: "selectCategoryCreatePost" },
                     on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.form, "category_id", $event.target.value)
+                      change: function($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function(o) {
+                            return o.selected
+                          })
+                          .map(function(o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.category = $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
                       }
                     }
+                  },
+                  _vm._l(_vm.CATEGORIES, function(category_) {
+                    return _c(
+                      "option",
+                      {
+                        key: category_.id,
+                        staticClass: "subtitle-1 no-route-link--color",
+                        domProps: { value: category_.name }
+                      },
+                      [
+                        _vm._v(
+                          "\n                        " +
+                            _vm._s(category_.name) +
+                            "\n                    "
+                        )
+                      ]
+                    )
                   }),
-                  _vm._v(" "),
-                  _c("has-error", {
-                    attrs: { form: _vm.form, field: "category_id" }
-                  })
-                ],
-                1
-              ),
+                  0
+                )
+              ]),
               _vm._v(" "),
               _c(
                 "div",
                 { staticClass: "form-group" },
                 [
+                  _c("label", { attrs: { for: "selectBodyCreatePost" } }, [
+                    _vm._v("Текст статьи")
+                  ]),
+                  _vm._v(" "),
                   _c("editor", {
-                    staticClass: "form-control",
+                    staticClass: "form-control no-route-link--color",
                     class: { "is-invalid": _vm.form.errors.has("body") },
                     attrs: {
                       name: "body",
+                      id: "selectBodyCreatePost",
                       "api-key":
                         "29hv0shfon7y1i3ayspbk71bs3dy13lj3kxesuslq7ll3wfw",
-                      initialValue: "<p>Текст статьи</p>",
+                      initialValue:
+                        "<p>Melted chickpeas can be made cored by covering with peppermint tea.</p>",
                       init: {
                         height: 1000,
                         menubar: false,
@@ -42827,7 +42960,7 @@ var render = function() {
         { attrs: { cols: "10" } },
         [
           _c("v-row", { attrs: { justify: "center" } }, [
-            _c("p", { staticClass: "display-2" }, [
+            _c("p", { staticClass: "display-2 no-route-link--color" }, [
               _vm._v("РЕДАКТИРОВАНИЕ ПОСТА")
             ])
           ]),
@@ -42849,6 +42982,10 @@ var render = function() {
                 "div",
                 { staticClass: "form-group" },
                 [
+                  _c("label", { attrs: { for: "selectTitleEditPost" } }, [
+                    _vm._v("Заголовок статьи")
+                  ]),
+                  _vm._v(" "),
                   _c("input", {
                     directives: [
                       {
@@ -42858,12 +42995,12 @@ var render = function() {
                         expression: "form.title"
                       }
                     ],
-                    staticClass: "form-control",
+                    staticClass: "form-control title no-route-link--color",
                     class: { "is-invalid": _vm.form.errors.has("title") },
                     attrs: {
                       type: "text",
                       name: "title",
-                      placeholder: "Заголовок статьи"
+                      id: "selectTitleEditPost"
                     },
                     domProps: { value: _vm.form.title },
                     on: {
@@ -42881,49 +43018,75 @@ var render = function() {
                 1
               ),
               _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "form-group" },
-                [
-                  _c("input", {
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "selectCategoryEditPost" } }, [
+                  _vm._v("Категория поста")
+                ]),
+                _vm._v(" "),
+                _c(
+                  "select",
+                  {
                     directives: [
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.form.category_id,
-                        expression: "form.category_id"
+                        value: _vm.category,
+                        expression: "category"
                       }
                     ],
-                    staticClass: "form-control",
-                    class: { "is-invalid": _vm.form.errors.has("category_id") },
-                    attrs: { type: "number", name: "category_id" },
-                    domProps: { value: _vm.form.category_id },
+                    staticClass: "form-control subtitle-1 no-route-link--color",
+                    attrs: { id: "selectCategoryEditPost" },
                     on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.form, "category_id", $event.target.value)
+                      change: function($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function(o) {
+                            return o.selected
+                          })
+                          .map(function(o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.category = $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
                       }
                     }
+                  },
+                  _vm._l(_vm.CATEGORIES, function(category_) {
+                    return _c(
+                      "option",
+                      {
+                        key: category_.id,
+                        staticClass: "subtitle-1 no-route-link--color",
+                        domProps: { value: category_.name }
+                      },
+                      [
+                        _vm._v(
+                          "\n                        " +
+                            _vm._s(category_.name) +
+                            "\n                    "
+                        )
+                      ]
+                    )
                   }),
-                  _vm._v(" "),
-                  _c("has-error", {
-                    attrs: { form: _vm.form, field: "category_id" }
-                  })
-                ],
-                1
-              ),
+                  0
+                )
+              ]),
               _vm._v(" "),
               _c(
                 "div",
                 { staticClass: "form-group" },
                 [
+                  _c("label", { attrs: { for: "selectBodyEditPost" } }, [
+                    _vm._v("Текст статьи")
+                  ]),
+                  _vm._v(" "),
                   _c("editor", {
-                    staticClass: "form-control",
+                    staticClass: "form-control no-route-link--color",
                     class: { "is-invalid": _vm.form.errors.has("body") },
                     attrs: {
                       name: "body",
+                      id: "selectBodyEditPost",
                       "api-key":
                         "29hv0shfon7y1i3ayspbk71bs3dy13lj3kxesuslq7ll3wfw",
                       init: {
@@ -43162,7 +43325,8 @@ var render = function() {
                                 _c(
                                   "router-link",
                                   {
-                                    staticClass: "route__style",
+                                    staticClass:
+                                      "route__style route-link--color",
                                     attrs: {
                                       to: {
                                         name: "user",
@@ -43190,17 +43354,17 @@ var render = function() {
                     _vm._v(" "),
                     _c(
                       "v-col",
-                      { staticClass: "mb-0", attrs: { cols: "12" } },
+                      { staticClass: "mb-0 py-0", attrs: { cols: "12" } },
                       [
-                        _c("v-row", [
+                        _c("v-row", { staticClass: "py-0 my-0" }, [
                           _c(
                             "p",
-                            { staticClass: "title" },
+                            { staticClass: "title my-1" },
                             [
                               _c(
                                 "router-link",
                                 {
-                                  staticClass: "route__style",
+                                  staticClass: "route__style route-link--color",
                                   attrs: {
                                     to: {
                                       name: "post",
@@ -43226,13 +43390,29 @@ var render = function() {
                     _vm._v(" "),
                     _c(
                       "v-col",
-                      { staticClass: "ma-0", attrs: { cols: "12" } },
+                      { staticClass: "ma-0 py-0", attrs: { cols: "12" } },
                       [
-                        _c("v-row", [
-                          _c("div", [
-                            _c("span", {}, [_vm._v(_vm._s(post.category))])
-                          ])
-                        ])
+                        _c(
+                          "v-row",
+                          { staticClass: "my-0 py-0" },
+                          [
+                            _c(
+                              "v-chip",
+                              {
+                                staticClass: "ma-0 subtitle-1",
+                                attrs: { color: "#50575B", dark: "" }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                            " +
+                                    _vm._s(post.category) +
+                                    "\n                        "
+                                )
+                              ]
+                            )
+                          ],
+                          1
+                        )
                       ],
                       1
                     ),
@@ -43482,7 +43662,7 @@ var render = function() {
                           _c(
                             "router-link",
                             {
-                              staticClass: "route__style",
+                              staticClass: "route__style route-link--color",
                               attrs: {
                                 to: {
                                   name: "user",
@@ -43510,18 +43690,23 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "v-col",
-                { staticClass: "mb-0", attrs: { cols: "12" } },
+                { staticClass: "mb-0 py-0", attrs: { cols: "12" } },
                 [
                   _c(
                     "v-row",
+                    { staticClass: "my-0 py-0" },
                     [
-                      _c("p", { staticClass: "title" }, [
-                        _vm._v(
-                          "\n                        " +
-                            _vm._s(_vm.POSTS[0].post_title) +
-                            "\n                    "
-                        )
-                      ]),
+                      _c(
+                        "p",
+                        { staticClass: "title no-route-link--color my-1" },
+                        [
+                          _vm._v(
+                            "\n                        " +
+                              _vm._s(_vm.POSTS[0].post_title) +
+                              "\n                    "
+                          )
+                        ]
+                      ),
                       _vm._v(" "),
                       _vm.POSTS[0].user_id == this.$store.getters.USER_ID
                         ? _c(
@@ -43550,13 +43735,29 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "v-col",
-                { staticClass: "ma-0", attrs: { cols: "12" } },
+                { staticClass: "ma-0 py-0", attrs: { cols: "12" } },
                 [
-                  _c("v-row", [
-                    _c("div", [
-                      _c("span", {}, [_vm._v(_vm._s(_vm.POSTS[0].category))])
-                    ])
-                  ])
+                  _c(
+                    "v-row",
+                    { staticClass: "py-0 my-0" },
+                    [
+                      _c(
+                        "v-chip",
+                        {
+                          staticClass: "ma-0 subtitle-1",
+                          attrs: { color: "#50575B", dark: "" }
+                        },
+                        [
+                          _vm._v(
+                            "\n                        " +
+                              _vm._s(_vm.POSTS[0].category) +
+                              "\n                    "
+                          )
+                        ]
+                      )
+                    ],
+                    1
+                  )
                 ],
                 1
               ),
@@ -43671,6 +43872,98 @@ var render = function() {
                 1
               ),
               _vm._v(" "),
+              this.$store.getters.USER_ID
+                ? _c(
+                    "v-col",
+                    {
+                      staticClass: "comment--input pa-0",
+                      attrs: { cols: "12" }
+                    },
+                    [
+                      _c(
+                        "v-form",
+                        {
+                          on: {
+                            submit: function($event) {
+                              $event.preventDefault()
+                              return _vm.postComment($event)
+                            }
+                          }
+                        },
+                        [
+                          _c(
+                            "v-container",
+                            { staticClass: "py-0", attrs: { fluid: "" } },
+                            [
+                              _c(
+                                "v-row",
+                                [
+                                  _c(
+                                    "v-col",
+                                    {
+                                      staticClass: "pa-0",
+                                      attrs: { cols: "12" }
+                                    },
+                                    [
+                                      _c("v-textarea", {
+                                        attrs: { color: "teal" },
+                                        scopedSlots: _vm._u(
+                                          [
+                                            {
+                                              key: "label",
+                                              fn: function() {
+                                                return [
+                                                  _c("div", [
+                                                    _vm._v(
+                                                      "\n                                            Ваш комментарий\n                                        "
+                                                    )
+                                                  ])
+                                                ]
+                                              },
+                                              proxy: true
+                                            }
+                                          ],
+                                          null,
+                                          false,
+                                          1886449570
+                                        ),
+                                        model: {
+                                          value: _vm.current_comment,
+                                          callback: function($$v) {
+                                            _vm.current_comment = $$v
+                                          },
+                                          expression: "current_comment"
+                                        }
+                                      }),
+                                      _vm._v(" "),
+                                      _c(
+                                        "v-btn",
+                                        {
+                                          attrs: {
+                                            dark: "",
+                                            color: "#50575B",
+                                            type: "submit"
+                                          }
+                                        },
+                                        [_vm._v("Отправить")]
+                                      )
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                : _vm._e(),
+              _vm._v(" "),
               _vm._l(_vm.POST_COMMENTS, function(comment) {
                 return _c(
                   "v-col",
@@ -43682,10 +43975,7 @@ var render = function() {
                   [
                     _c(
                       "v-row",
-                      {
-                        staticClass: "pa-2 mb-0",
-                        staticStyle: { border: "2px solid #537d7b" }
-                      },
+                      { staticClass: "pa-0 mb-0" },
                       [
                         _c(
                           "v-col",
@@ -43732,7 +44022,8 @@ var render = function() {
                                     _c(
                                       "router-link",
                                       {
-                                        staticClass: "route__style",
+                                        staticClass:
+                                          "route__style route-link--color",
                                         attrs: {
                                           to: {
                                             name: "user",
@@ -43762,19 +44053,39 @@ var render = function() {
                           "v-col",
                           { attrs: { cols: "12" } },
                           [
-                            _c("v-row", {
-                              staticClass: "post-body--html",
-                              domProps: {
-                                innerHTML: _vm._s(comment.comment_body)
-                              }
-                            })
+                            _c(
+                              "v-row",
+                              { staticClass: "post-body--html" },
+                              [
+                                _c("span", { staticClass: "subtitle-1" }, [
+                                  _vm._v(_vm._s(comment.comment_body))
+                                ]),
+                                _vm._v(" "),
+                                comment.user_id == _vm.$store.getters.USER_ID
+                                  ? _c(
+                                      "v-btn",
+                                      {
+                                        attrs: { text: "", icon: "" },
+                                        on: {
+                                          click: function($event) {
+                                            return _vm.deleteComment(comment.id)
+                                          }
+                                        }
+                                      },
+                                      [_c("v-icon", [_vm._v("mdi-trash-can")])],
+                                      1
+                                    )
+                                  : _vm._e()
+                              ],
+                              1
+                            )
                           ],
                           1
                         ),
                         _vm._v(" "),
                         _c(
                           "v-col",
-                          { attrs: { cols: "12" } },
+                          { staticClass: "py-0", attrs: { cols: "12" } },
                           [
                             _c(
                               "v-row",
@@ -43841,7 +44152,9 @@ var render = function() {
                         )
                       ],
                       1
-                    )
+                    ),
+                    _vm._v(" "),
+                    _c("v-divider", { staticClass: "ma-0" })
                   ],
                   1
                 )
@@ -43890,7 +44203,7 @@ var render = function() {
         { attrs: { cols: "8" } },
         [
           _c("v-row", { attrs: { justify: "center" } }, [
-            _c("p", { staticClass: "display-2" }, [
+            _c("p", { staticClass: "display-2 no-route-link--color" }, [
               _vm._v("РЕДАКТИРОВАНИЕ ПРОФИЛЯ")
             ])
           ]),
@@ -43940,7 +44253,8 @@ var render = function() {
                           expression: "form.image"
                         }
                       ],
-                      staticClass: "form-control section--input",
+                      staticClass:
+                        "form-control section--input no-route-link--color",
                       class: { "is-invalid": _vm.form.errors.has("image") },
                       attrs: {
                         type: "text",
@@ -43962,11 +44276,15 @@ var render = function() {
                       attrs: { form: _vm.form, field: "image" }
                     }),
                     _vm._v(" "),
-                    _c("span", { staticClass: "subtitle-1" }, [
-                      _vm._v(
-                        "\n                        Вставьте ссылку на изображение, которое хотите видеть в профиле.\n                    "
-                      )
-                    ])
+                    _c(
+                      "span",
+                      { staticClass: "subtitle-1 no-route-link--color" },
+                      [
+                        _vm._v(
+                          "\n                        Вставьте ссылку на изображение, которое хотите видеть в профиле.\n                    "
+                        )
+                      ]
+                    )
                   ],
                   1
                 )
@@ -43985,7 +44303,7 @@ var render = function() {
                         expression: "form.name"
                       }
                     ],
-                    staticClass: "form-control",
+                    staticClass: "form-control no-route-link--color",
                     class: { "is-invalid": _vm.form.errors.has("name") },
                     attrs: {
                       type: "text",
@@ -44005,11 +44323,15 @@ var render = function() {
                   _vm._v(" "),
                   _c("has-error", { attrs: { form: _vm.form, field: "name" } }),
                   _vm._v(" "),
-                  _c("span", { staticClass: "subtitle-1" }, [
-                    _vm._v(
-                      "\n                    Укажите ваши имя и фамилию, чтобы другие пользователи смогли узнать, как вас зовут\n                "
-                    )
-                  ])
+                  _c(
+                    "span",
+                    { staticClass: "subtitle-1 no-route-link--color" },
+                    [
+                      _vm._v(
+                        "\n                    Укажите ваши имя и фамилию, чтобы другие пользователи смогли узнать, как вас зовут\n                "
+                      )
+                    ]
+                  )
                 ],
                 1
               ),
@@ -44027,7 +44349,7 @@ var render = function() {
                         expression: "form.specialization"
                       }
                     ],
-                    staticClass: "form-control",
+                    staticClass: "form-control no-route-link--color",
                     class: {
                       "is-invalid": _vm.form.errors.has("specialization")
                     },
@@ -44055,11 +44377,15 @@ var render = function() {
                     attrs: { form: _vm.form, field: "specialization" }
                   }),
                   _vm._v(" "),
-                  _c("span", { staticClass: "subtitle-1" }, [
-                    _vm._v(
-                      "\n                    Укажите свою специализацию. Например: Веб разработчик\n                "
-                    )
-                  ])
+                  _c(
+                    "span",
+                    { staticClass: "subtitle-1 no-route-link--color" },
+                    [
+                      _vm._v(
+                        "\n                    Укажите свою специализацию. Например: Веб разработчик\n                "
+                      )
+                    ]
+                  )
                 ],
                 1
               ),
@@ -44077,7 +44403,7 @@ var render = function() {
                         expression: "form.about"
                       }
                     ],
-                    staticClass: "form-control",
+                    staticClass: "form-control no-route-link--color",
                     class: { "is-invalid": _vm.form.errors.has("about") },
                     attrs: {
                       type: "text",
@@ -44099,11 +44425,15 @@ var render = function() {
                     attrs: { form: _vm.form, field: "about" }
                   }),
                   _vm._v(" "),
-                  _c("span", { staticClass: "subtitle-1" }, [
-                    _vm._v(
-                      "\n                    Расскажите о себе. Например:\n                    Back-end веб разработчик, проживаю и работаю в Германии,\n                    рассказываю о своей работе и как адаптироваться не в родной стране.\n                "
-                    )
-                  ])
+                  _c(
+                    "span",
+                    { staticClass: "subtitle-1 no-route-link--color" },
+                    [
+                      _vm._v(
+                        "\n                    Расскажите о себе. Например:\n                    Back-end веб разработчик, проживаю и работаю в Германии,\n                    рассказываю о своей работе и как адаптироваться не в родной стране.\n                "
+                      )
+                    ]
+                  )
                 ],
                 1
               ),
@@ -44164,7 +44494,9 @@ var render = function() {
         { attrs: { cols: "10" } },
         [
           _c("v-row", { staticClass: "pa-2 ma-0" }, [
-            _c("p", { staticClass: "display-1" }, [_vm._v("Пользователи")])
+            _c("p", { staticClass: "display-1 no-route-link--color" }, [
+              _vm._v("Пользователи")
+            ])
           ]),
           _vm._v(" "),
           _c("v-divider"),
@@ -44214,18 +44546,18 @@ var render = function() {
                           1
                         ),
                         _vm._v(" "),
-                        _c("span", { staticClass: "title" }, [
+                        _c("span", { staticClass: "title ml-2 teal--color" }, [
                           _vm._v(_vm._s(user.name))
                         ]),
                         _vm._v(" "),
                         _c(
                           "span",
-                          { staticClass: "title" },
+                          { staticClass: "title ml-1" },
                           [
                             _c(
                               "router-link",
                               {
-                                staticClass: "route__style",
+                                staticClass: "route__style route-link--color",
                                 attrs: {
                                   to: {
                                     name: "user",
@@ -44256,12 +44588,19 @@ var render = function() {
                           "v-row",
                           { attrs: { justify: "end" } },
                           [
-                            _c("p", { staticClass: "title mt-3 mr-2" }, [
-                              _vm._v(
-                                _vm._s(user.rating > 0 ? "+" : "") +
-                                  _vm._s(user.rating)
-                              )
-                            ]),
+                            _c(
+                              "p",
+                              {
+                                staticClass:
+                                  "title mt-3 mr-2 no-route-link--color"
+                              },
+                              [
+                                _vm._v(
+                                  _vm._s(user.rating > 0 ? "+" : "") +
+                                    _vm._s(user.rating)
+                                )
+                              ]
+                            ),
                             _vm._v(" "),
                             _c("v-icon", [_vm._v("mdi-diamond-stone")])
                           ],
@@ -44325,17 +44664,17 @@ var render = function() {
             [
               _c(
                 "v-col",
-                { staticClass: "mb-0", attrs: { cols: "12" } },
+                { staticClass: "mb-0 py-0", attrs: { cols: "12" } },
                 [
-                  _c("v-row", [
+                  _c("v-row", { staticClass: "py-0 my-0" }, [
                     _c(
                       "p",
-                      { staticClass: "title" },
+                      { staticClass: "title py-0" },
                       [
                         _c(
                           "router-link",
                           {
-                            staticClass: "route__style",
+                            staticClass: "route__style route-link--color",
                             attrs: {
                               to: {
                                 name: "post",
@@ -44362,12 +44701,15 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "v-col",
-                { attrs: { cols: "12" } },
+                { staticClass: "py-0", attrs: { cols: "12" } },
                 [
-                  _c("v-row", {
-                    staticClass: "post-body--html",
-                    domProps: { innerHTML: _vm._s(comment.comment_body) }
-                  })
+                  _c("v-row", { staticClass: "post-body--html" }, [
+                    _c(
+                      "span",
+                      { staticClass: "subtitle-1 no-route-link--color" },
+                      [_vm._v(_vm._s(comment.comment_body))]
+                    )
+                  ])
                 ],
                 1
               ),
@@ -44386,14 +44728,21 @@ var render = function() {
                         1
                       ),
                       _vm._v(" "),
-                      _c("p", { staticClass: "subtitle-2 mt-2 ml-1 mr-1" }, [
-                        _vm._v(
-                          "\n                        " +
-                            _vm._s(comment.rating > 0 ? "+" : "") +
-                            _vm._s(comment.rating) +
-                            "\n                    "
-                        )
-                      ])
+                      _c(
+                        "p",
+                        {
+                          staticClass:
+                            "subtitle-2 mt-2 ml-1 mr-1 no-route-link--color"
+                        },
+                        [
+                          _vm._v(
+                            "\n                        " +
+                              _vm._s(comment.rating > 0 ? "+" : "") +
+                              _vm._s(comment.rating) +
+                              "\n                    "
+                          )
+                        ]
+                      )
                     ],
                     1
                   )
@@ -44404,7 +44753,7 @@ var render = function() {
             1
           ),
           _vm._v(" "),
-          _c("v-divider")
+          _c("v-divider", { staticClass: "my-0" })
         ],
         1
       )
@@ -44439,33 +44788,33 @@ var render = function() {
     _vm._l(_vm.posts, function(post) {
       return _c(
         "v-col",
-        { key: post.post_id, staticClass: "pa-2", attrs: { cols: "12" } },
+        { key: post.post_id, staticClass: "pa-5", attrs: { cols: "12" } },
         [
           _c(
             "v-row",
-            { staticClass: "ma-0" },
             [
               _c(
                 "v-col",
-                { staticClass: "mb-0", attrs: { cols: "12" } },
+                { staticClass: "mb-0 py-0", attrs: { cols: "12" } },
                 [
-                  _c("v-row", [
+                  _c("v-row", { staticClass: "py-0 my-0" }, [
                     _c(
                       "p",
-                      { staticClass: "title" },
+                      { staticClass: "title my-1" },
                       [
                         _c(
                           "router-link",
                           {
+                            staticClass: "route__style route-link--color",
                             attrs: {
                               to: { name: "post", params: { id: post.post_id } }
                             }
                           },
                           [
                             _vm._v(
-                              "\n                        " +
+                              "\n                            " +
                                 _vm._s(post.post_title) +
-                                "\n                    "
+                                "\n                        "
                             )
                           ]
                         )
@@ -44479,18 +44828,36 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "v-col",
-                { staticClass: "ma-0", attrs: { cols: "12" } },
+                { staticClass: "ma-0 py-0", attrs: { cols: "12" } },
                 [
-                  _c("v-row", [
-                    _c("div", [_c("span", {}, [_vm._v(_vm._s(post.category))])])
-                  ])
+                  _c(
+                    "v-row",
+                    { staticClass: "my-0 py-0" },
+                    [
+                      _c(
+                        "v-chip",
+                        {
+                          staticClass: "ma-0 subtitle-1",
+                          attrs: { color: "#50575B", dark: "" }
+                        },
+                        [
+                          _vm._v(
+                            "\n                        " +
+                              _vm._s(post.category) +
+                              "\n                    "
+                          )
+                        ]
+                      )
+                    ],
+                    1
+                  )
                 ],
                 1
               ),
               _vm._v(" "),
               _c(
                 "v-col",
-                { staticClass: "ma-0 pa-4", attrs: { cols: "12" } },
+                { attrs: { cols: "12" } },
                 [
                   _c("v-row", {
                     staticClass: "post-body--html",
@@ -44521,7 +44888,7 @@ var render = function() {
                         },
                         [
                           _vm._v(
-                            "\n                    Читать весь пост\n                "
+                            "\n                        Читать весь пост\n                    "
                           )
                         ]
                       )
@@ -44658,11 +45025,14 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "v-col",
-                { staticClass: "py-0" },
+                { staticClass: "px-1 py-0" },
                 [
                   _c(
                     "v-list-item",
-                    { attrs: { color: "#393E41", dark: "" } },
+                    {
+                      staticClass: "px-0",
+                      attrs: { color: "#393E41", dark: "" }
+                    },
                     [
                       _c(
                         "v-list-item-content",
@@ -44672,7 +45042,9 @@ var render = function() {
                             [
                               _c(
                                 "span",
-                                { staticClass: "title profile--text" },
+                                {
+                                  staticClass: "title profile--text teal--color"
+                                },
                                 [_vm._v(_vm._s(_vm.USERS[0].name))]
                               ),
                               _vm._v(" "),
@@ -44710,14 +45082,28 @@ var render = function() {
                           _vm._v(" "),
                           _c(
                             "v-list-item-subtitle",
-                            { staticClass: "profile--text" },
-                            [_vm._v(_vm._s(_vm.USERS[0].specialization))]
+                            {
+                              staticClass: "profile--text no-route-link--color"
+                            },
+                            [
+                              _vm._v(
+                                "\n                            " +
+                                  _vm._s(_vm.USERS[0].specialization) +
+                                  "\n                        "
+                              )
+                            ]
                           ),
                           _vm._v(" "),
                           _c(
                             "v-list-item-action-text",
-                            { staticClass: "profile--text" },
-                            [_vm._v("@" + _vm._s(_vm.USERS[0].username))]
+                            { staticClass: "profile--text route-link--color" },
+                            [
+                              _vm._v(
+                                "\n                            @" +
+                                  _vm._s(_vm.USERS[0].username) +
+                                  "\n                        "
+                              )
+                            ]
                           )
                         ],
                         1
@@ -44779,7 +45165,8 @@ var render = function() {
                                 _c(
                                   "p",
                                   {
-                                    staticClass: "subtitle-1 profile--text pa-2"
+                                    staticClass:
+                                      "subtitle-1 no-route-link--color pa-2"
                                   },
                                   [_vm._v(_vm._s(_vm.USERS[0].about))]
                                 )
@@ -101162,7 +101549,7 @@ var routes = [{
       middleware: [_middleware_auth__WEBPACK_IMPORTED_MODULE_15__["default"]]
     }
   }, {
-    path: 'posts/create',
+    path: 'post/create',
     name: 'posts.create',
     component: _components_PostComponents_CreateComponent__WEBPACK_IMPORTED_MODULE_4__["default"],
     meta: {
@@ -101334,30 +101721,7 @@ __webpack_require__.r(__webpack_exports__);
   state: {},
   getters: {},
   mutations: {},
-  actions: {
-    SET_COMMENT: function SET_COMMENT(context, data) {
-      return new Promise(function (resolve, reject) {
-        var uri = '/api/code/comments';
-        axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(uri, data).then(function (_ref) {
-          var data = _ref.data;
-          resolve(data);
-        })["catch"](function (error) {
-          reject(error);
-        });
-      });
-    },
-    DELETE_COMMENT: function DELETE_COMMENT(context, id) {
-      return new Promise(function (resolve, reject) {
-        var uri = '/api/code/comments/' + id;
-        axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"](uri).then(function (_ref2) {
-          var data = _ref2.data;
-          resolve(data);
-        })["catch"](function (error) {
-          reject(error);
-        });
-      });
-    }
-  }
+  actions: {}
 });
 
 /***/ }),
@@ -101393,14 +101757,66 @@ __webpack_require__.r(__webpack_exports__);
     },
     SET_POST_COMMENTS: function SET_POST_COMMENTS(state, payload) {
       state.postComments = payload;
+    },
+    SET_POST: function SET_POST(state, payload) {
+      state.posts = payload;
+      localStorage.setItem('P_TITLE', payload[0].post_title);
+      localStorage.setItem('P_CATEGORY_ID', payload[0].category_id);
+      localStorage.setItem('P_CATEGORY', payload[0].category);
+      localStorage.setItem('P_BODY', payload[0].post_body);
+    },
+    ADD_COMMENT: function ADD_COMMENT(state, payload) {
+      var comment = {
+        id: payload.data.id,
+        created_at: Date.now(),
+        user_id: payload.data.author_id,
+        username: payload.udata.username,
+        user_image: payload.udata.user_image,
+        comment_body: payload.data.body,
+        rating: 0
+      };
+      console.log(comment);
+      state.postComments.push(comment);
+    },
+    REMOVE_COMMENT: function REMOVE_COMMENT(state, payload) {
+      state.postComments = state.postComments.filter(function (x) {
+        return x.id !== payload;
+      });
     }
   },
   actions: {
+    SET_COMMENT: function SET_COMMENT(context, data) {
+      return new Promise(function (resolve, reject) {
+        var uri = '/api/code/comments';
+        axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(uri, data.data).then(function (post_data) {
+          console.log(post_data);
+          context.commit('ADD_COMMENT', {
+            data: post_data.data,
+            udata: data.udata
+          });
+          resolve(post_data);
+        })["catch"](function (error) {
+          reject(error);
+        });
+      });
+    },
+    DELETE_COMMENT: function DELETE_COMMENT(context, id) {
+      return new Promise(function (resolve, reject) {
+        context.commit('REMOVE_COMMENT', id);
+        var uri = '/api/code/comments/' + id;
+        axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"](uri).then(function (_ref) {
+          var data = _ref.data;
+          resolve(data);
+        })["catch"](function (error) {
+          reject(error);
+        });
+      });
+    },
     GET_POSTS: function GET_POSTS(context) {
       return new Promise(function (resolve, reject) {
         var uri = '/api/code/posts';
-        axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(uri).then(function (_ref) {
-          var data = _ref.data;
+        axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(uri).then(function (_ref2) {
+          var data = _ref2.data;
           context.commit('SET_POSTS', data);
           resolve(data);
         })["catch"](function (error) {
@@ -101411,9 +101827,9 @@ __webpack_require__.r(__webpack_exports__);
     GET_POST: function GET_POST(context, id) {
       return new Promise(function (resolve, reject) {
         var uri = '/api/code/posts/' + id;
-        axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(uri).then(function (_ref2) {
-          var data = _ref2.data;
-          context.commit('SET_POSTS', data);
+        axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(uri).then(function (_ref3) {
+          var data = _ref3.data;
+          context.commit('SET_POST', data);
           resolve(data);
         })["catch"](function (error) {
           reject(error);
@@ -101423,8 +101839,8 @@ __webpack_require__.r(__webpack_exports__);
     GET_CATEGORY_POSTS: function GET_CATEGORY_POSTS(context, id) {
       return new Promise(function (resolve, reject) {
         var uri = '/api/code/categories/' + id;
-        axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(uri).then(function (_ref3) {
-          var data = _ref3.data;
+        axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(uri).then(function (_ref4) {
+          var data = _ref4.data;
           context.commit('SET_POSTS', data);
           resolve(data);
         })["catch"](function (error) {
@@ -101435,8 +101851,8 @@ __webpack_require__.r(__webpack_exports__);
     SET_POST: function SET_POST(context, data) {
       return new Promise(function (resolve, reject) {
         var uri = '/api/code/posts';
-        axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(uri, data).then(function (_ref4) {
-          var data = _ref4.data;
+        axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(uri, data).then(function (_ref5) {
+          var data = _ref5.data;
           resolve(data);
         })["catch"](function (error) {
           reject(error);
@@ -101446,8 +101862,8 @@ __webpack_require__.r(__webpack_exports__);
     UPDATE_POST: function UPDATE_POST(context, data) {
       return new Promise(function (resolve, reject) {
         var uri = '/api/code/posts/' + data.id;
-        axios__WEBPACK_IMPORTED_MODULE_0___default.a.put(uri, data.data).then(function (_ref5) {
-          var data = _ref5.data;
+        axios__WEBPACK_IMPORTED_MODULE_0___default.a.put(uri, data.data).then(function (_ref6) {
+          var data = _ref6.data;
           resolve(data);
         })["catch"](function (error) {
           reject(error);
@@ -101457,8 +101873,8 @@ __webpack_require__.r(__webpack_exports__);
     GET_POST_COMMENTS: function GET_POST_COMMENTS(context, id) {
       return new Promise(function (resolve, reject) {
         var uri = '/api/code/posts/' + id + '/comments';
-        axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(uri).then(function (_ref6) {
-          var data = _ref6.data;
+        axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(uri).then(function (_ref7) {
+          var data = _ref7.data;
           context.commit('SET_POST_COMMENTS', data);
           resolve(data);
         })["catch"](function (error) {
@@ -101469,8 +101885,8 @@ __webpack_require__.r(__webpack_exports__);
     DELETE_POST: function DELETE_POST(context, id) {
       return new Promise(function (resolve, reject) {
         var uri = '/api/code/posts/' + id;
-        axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"](uri).then(function (_ref7) {
-          var data = _ref7.data;
+        axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"](uri).then(function (_ref8) {
+          var data = _ref8.data;
           resolve(data);
         })["catch"](function (error) {
           reject(error);

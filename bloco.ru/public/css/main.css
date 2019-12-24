@@ -45516,6 +45516,22 @@ readers do not read off random characters that represent icons */
     height: auto !important;
 }
 
+.teal--color {
+    color : #aacaee !important;
+}
+
+.no-route-link--color {
+    color : #50575B !important;
+}
+
+.route-link--color {
+    color : #50575B !important;
+}
+
+.route-link--color:hover {
+    color : #79848a !important;
+}
+
 .user-button {
     color: #3C493F !important;
     text-decoration: none;

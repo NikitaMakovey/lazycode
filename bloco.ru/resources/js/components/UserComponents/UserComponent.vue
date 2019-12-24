@@ -17,14 +17,15 @@
                         <v-img :src="USERS[0].user_image"></v-img>
                     </v-avatar>
                 </v-col>
-                <v-col class="py-0">
+                <v-col class="px-1 py-0">
                     <v-list-item
                         color="#393E41"
                         dark
+                        class="px-0"
                     >
                         <v-list-item-content>
                             <v-list-item-title>
-                                <span class="title profile--text">{{ USERS[0].name }}</span>
+                                <span class="title profile--text teal--color">{{ USERS[0].name }}</span>
                                 <v-btn text icon class="route__style profile--text edit--button"
                                        :to="{ name: 'users.edit', params: { id: this.$store.getters.USER_ID } }"
                                        v-if="this.$route.params.id == this.$store.getters.USER_ID"
@@ -32,8 +33,16 @@
                                     <v-icon class="edit--icon">mdi-fountain-pen-tip</v-icon>
                                 </v-btn>
                             </v-list-item-title>
-                            <v-list-item-subtitle class="profile--text">{{ USERS[0].specialization }}</v-list-item-subtitle>
-                            <v-list-item-action-text class="profile--text">@{{ USERS[0].username }}</v-list-item-action-text>
+                            <v-list-item-subtitle
+                                class="profile--text no-route-link--color"
+                            >
+                                {{ USERS[0].specialization }}
+                            </v-list-item-subtitle>
+                            <v-list-item-action-text
+                                class="profile--text route-link--color"
+                            >
+                                @{{ USERS[0].username }}
+                            </v-list-item-action-text>
                         </v-list-item-content>
                     </v-list-item>
                 </v-col>
@@ -57,7 +66,7 @@
                     >
                         <v-card flat>
                             <template v-if="item === 'О себе'">
-                                <p class="subtitle-1 profile--text pa-2">{{ USERS[0].about }}</p>
+                                <p class="subtitle-1 no-route-link--color pa-2">{{ USERS[0].about }}</p>
                             </template>
                             <template v-else-if="item === 'Посты'">
                                 <post-component :posts="USER_POSTS"></post-component>
@@ -105,7 +114,7 @@
 
 <style scoped>
     .profile--text {
-        color: #393E41 !important;
+
     }
     .edit--button {
         height: 2rem;

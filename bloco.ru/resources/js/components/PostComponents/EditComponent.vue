@@ -3,27 +3,37 @@
         <v-spacer></v-spacer>
         <v-col cols="10">
             <v-row justify="center">
-                <p class="display-2">РЕДАКТИРОВАНИЕ ПОСТА</p>
+                <p class="display-2 no-route-link--color">РЕДАКТИРОВАНИЕ ПОСТА</p>
             </v-row>
             <v-divider></v-divider>
             <form @submit.prevent="updatePost">
                 <div class="form-group">
+                    <label for="selectTitleEditPost">Заголовок статьи</label>
                     <input v-model="form.title" type="text" name="title"
-                           class="form-control" :class="{ 'is-invalid': form.errors.has('title') }"
-                           placeholder="Заголовок статьи"
+                           class="form-control title no-route-link--color"
+                           :class="{ 'is-invalid': form.errors.has('title') }"
+                           id="selectTitleEditPost"
                     >
                     <has-error :form="form" field="title"></has-error>
                 </div>
                 <div class="form-group">
-                    <input v-model="form.category_id" type="number" name="category_id"
-                           class="form-control" :class="{ 'is-invalid': form.errors.has('category_id') }"
+                    <label for="selectCategoryEditPost">Категория поста</label>
+                    <select v-model="category" class="form-control subtitle-1 no-route-link--color"
+                            id="selectCategoryEditPost"
                     >
-                    <has-error :form="form" field="category_id"></has-error>
+                        <option class="subtitle-1 no-route-link--color" v-for="category_ in CATEGORIES"
+                                :value="category_.name" :key="category_.id"
+                        >
+                            {{ category_.name }}
+                        </option>
+                    </select>
                 </div>
                 <div class="form-group">
+                    <label for="selectBodyEditPost">Текст статьи</label>
                     <editor
-                        v-model="form.body" name="body"
-                        class="form-control" :class="{ 'is-invalid': form.errors.has('body') }"
+                        v-model="form.body" name="body" id="selectBodyEditPost"
+                        class="form-control no-route-link--color"
+                        :class="{ 'is-invalid': form.errors.has('body') }"
                         api-key="29hv0shfon7y1i3ayspbk71bs3dy13lj3kxesuslq7ll3wfw"
                         :init="{
                                      height: 1000,
@@ -60,11 +70,12 @@
     export default {
         data() {
             return {
+                category: localStorage.getItem('P_CATEGORY'),
                 form: new Form({
-                    title: this.$store.getters.POSTS[0].post_title,
-                    category_id: this.$store.getters.POSTS[0].category_id,
+                    title: localStorage.getItem('P_TITLE'),
+                    category_id: localStorage.getItem('P_CATEGORY_ID'),
                     author_id: this.$store.getters.USER_ID,
-                    body: this.$store.getters.POSTS[0].post_body
+                    body: localStorage.getItem('P_BODY')
                 })
             }
         },
@@ -73,6 +84,8 @@
         },
         methods: {
             updatePost() {
+                let categories_ = this.CATEGORIES;
+                this.form.category_id = categories_.find(x => x.name === this.category).id;
                 this.$store.dispatch('UPDATE_POST', {data: this.form, id: this.$route.params.id })
                     .then(() => (this.$router.push({ path: '/' })));
             },
@@ -85,11 +98,7 @@
             this.$store.dispatch('GET_CATEGORIES');
         },
         computed: {
-            ...mapGetters(['CATEGORIES']),
-            /**
-             * @return {string}
-             */
-            ACTIVE_MODE() { return this.$store.state.categories[this.$store.getters.POSTS[0].category_id].name }
+            ...mapGetters(['CATEGORIES'])
         }
     };
 </script>

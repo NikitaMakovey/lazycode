@@ -32,7 +32,7 @@ const routes = [
             { path: '', name: 'main', component: PostsMainComponent },
             { path: 'posts/:id', name: 'post', component: PostComponent },
             { path: 'posts/:id/edit', name: 'posts.edit', component:  EditPostComponent, meta: { middleware: [ auth ] } },
-            { path: 'posts/create', name: 'posts.create', component:  CreatePostComponent, meta: { middleware: [ auth ] } },
+            { path: 'post/create', name: 'posts.create', component:  CreatePostComponent, meta: { middleware: [ auth ] } },
             { path: 'users', name: 'users', component: UsersMainComponent },
             { path: 'users/:id', name: 'user', component: UserComponent},
             { path: '/users/:id/edit', name: 'users.edit', component: EditUserComponent, meta: { middleware: [ auth ] } }

@@ -22,7 +22,7 @@
                     >
                         <v-list-item-content>
                             <v-list-item-title>
-                                <v-icon left small>mdi-script</v-icon>
+                                <v-icon left small>mdi-script-outline</v-icon>
                                 <span>{{ items[4].text }}</span>
                             </v-list-item-title>
                         </v-list-item-content>
@@ -48,7 +48,7 @@
                     >
                         <v-list-item-content>
                             <v-list-item-title>
-                                <v-icon left small>mdi-script</v-icon>
+                                <v-icon left small>mdi-script-outline</v-icon>
                                 <span>{{ items[1].text }}</span>
                             </v-list-item-title>
                         </v-list-item-content>
@@ -66,13 +66,11 @@
                         </v-list-item-content>
                     </v-list-item>
                     <v-list-item
-                        :to="{ name: 'posts.create' }"
-                        class="route__style"
-                        exact
+                        @click="logout"
                     >
                         <v-list-item-content>
                             <v-list-item-title>
-                                <v-icon left small>mdi-script</v-icon>
+                                <v-icon left small>mdi-script-outline</v-icon>
                                 <span>{{ items[5].text }}</span>
                             </v-list-item-title>
                         </v-list-item-content>

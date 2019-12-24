@@ -15,7 +15,7 @@
                         </v-btn>
                         <span>
                             <router-link :to="{ name: 'user', params: { id: POSTS[0].user_id }}"
-                                         class="route__style"
+                                         class="route__style route-link--color"
                             >
                                 @{{ POSTS[0].username }}
                             </router-link>
@@ -23,9 +23,9 @@
                         <!--<span>{{ post.created_at }}</span>-->
                     </v-row>
                 </v-col>
-                <v-col cols="12" class="mb-0">
-                    <v-row>
-                        <p class="title">
+                <v-col cols="12" class="mb-0 py-0">
+                    <v-row class="my-0 py-0">
+                        <p class="title no-route-link--color my-1">
                             {{ POSTS[0].post_title }}
                         </p>
                         <v-btn text icon class="route__style"
@@ -36,11 +36,14 @@
                         </v-btn>
                     </v-row>
                 </v-col>
-                <v-col cols="12" class="ma-0">
-                    <v-row>
-                        <div>
-                            <span class="">{{ POSTS[0].category }}</span>
-                        </div>
+                <v-col cols="12" class="ma-0 py-0">
+                    <v-row class="py-0 my-0">
+                        <v-chip
+                            class="ma-0 subtitle-1"
+                            color="#50575B" dark
+                        >
+                            {{ POSTS[0].category }}
+                        </v-chip>
                     </v-row>
                 </v-col>
                 <v-col cols="12">
@@ -69,10 +72,31 @@
                         </v-card>
                     </v-row>
                 </v-col>
+                <v-col cols="12" class="comment--input pa-0" v-if="this.$store.getters.USER_ID">
+                    <v-form @submit.prevent="postComment">
+                        <v-container fluid class="py-0">
+                            <v-row>
+                                <v-col cols="12" class="pa-0">
+                                    <v-textarea
+                                        v-model="current_comment"
+                                        color="teal"
+                                    >
+                                        <template v-slot:label>
+                                            <div>
+                                                Ваш комментарий
+                                            </div>
+                                        </template>
+                                    </v-textarea>
+                                    <v-btn dark color="#50575B" type="submit">Отправить</v-btn>
+                                </v-col>
+                            </v-row>
+                        </v-container>
+                    </v-form>
+                </v-col>
                 <v-col cols="12" class="comments--aria"
                        v-for="comment in POST_COMMENTS" :key="comment.id"
                 >
-                    <v-row style="border: 2px solid #537d7b" class="pa-2 mb-0">
+                    <v-row class="pa-0 mb-0">
                         <v-col cols="12" class="mb-0">
                             <v-row>
                                 <v-btn icon small class="route__style mr-2"
@@ -85,7 +109,7 @@
                                 </v-btn>
                                 <span>
                                 <router-link :to="{ name: 'user', params: { id: comment.user_id }}"
-                                             class="route__style"
+                                             class="route__style route-link--color"
                                 >
                                     @{{ comment.username }}
                                 </router-link>
@@ -94,9 +118,16 @@
                             </v-row>
                         </v-col>
                         <v-col cols="12">
-                            <v-row v-html="comment.comment_body" class="post-body--html"></v-row>
+                            <v-row class="post-body--html">
+                                <span class="subtitle-1">{{ comment.comment_body }}</span>
+                                <v-btn text icon @click="deleteComment(comment.id)"
+                                       v-if="comment.user_id == $store.getters.USER_ID"
+                                >
+                                    <v-icon>mdi-trash-can</v-icon>
+                                </v-btn>
+                            </v-row>
                         </v-col>
-                        <v-col cols="12">
+                        <v-col cols="12" class="py-0">
                             <v-row>
                                 <v-btn text icon @click="voteClick(2, comment.id, comment.user_id, true)">
                                     <v-icon>mdi-arrow-up-bold</v-icon>
@@ -110,6 +141,7 @@
                             </v-row>
                         </v-col>
                     </v-row>
+                    <v-divider class="ma-0"></v-divider>
                 </v-col>
             </v-row>
         </v-col>
@@ -121,6 +153,11 @@
     import {mapGetters} from 'vuex';
 
     export default {
+        data() {
+            return {
+                current_comment: null
+            }
+        },
         methods: {
             voteClick: function (typeId, sourceId, directId, voteValue) {
                 let data = {
@@ -131,6 +168,24 @@
                     vote : voteValue
                 };
                 this.$store.dispatch('SET_VOTE', data);
+            },
+            postComment: function () {
+                if (this.current_comment) {
+                    let data = {
+                        post_id: this.$route.params.id,
+                        author_id: this.$store.getters.USER_ID,
+                        body: this.current_comment
+                    };
+                    let udata = {
+                        username : this.$store.getters.USERNAME,
+                        user_image : this.$store.getters.IMAGE,
+                    };
+                    this.current_comment = '';
+                    this.$store.dispatch('SET_COMMENT', { data : data, udata : udata });
+                }
+            },
+            deleteComment: function (id) {
+                this.$store.dispatch('DELETE_COMMENT', id);
             }
         },
         mounted() {

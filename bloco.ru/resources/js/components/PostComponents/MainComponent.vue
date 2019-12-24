@@ -52,7 +52,7 @@
                             </v-btn>
                             <span>
                                 <router-link :to="{ name: 'user', params: { id: post.user_id }}"
-                                             class="route__style"
+                                             class="route__style route-link--color"
                                 >
                                     @{{ post.username }}
                                 </router-link>
@@ -60,20 +60,23 @@
                             <!--<span>{{ post.created_at }}</span>-->
                         </v-row>
                     </v-col>
-                    <v-col cols="12" class="mb-0">
-                        <v-row>
-                            <p class="title">
-                                <router-link class="route__style" :to="{ name: 'post', params: { id: post.post_id }}">
+                    <v-col cols="12" class="mb-0 py-0">
+                        <v-row class="py-0 my-0">
+                            <p class="title my-1">
+                                <router-link class="route__style route-link--color" :to="{ name: 'post', params: { id: post.post_id }}">
                                     {{ post.post_title }}
                                 </router-link>
                             </p>
                         </v-row>
                     </v-col>
-                    <v-col cols="12" class="ma-0">
-                        <v-row>
-                            <div>
-                                <span class="">{{ post.category }}</span>
-                            </div>
+                    <v-col cols="12" class="ma-0 py-0">
+                        <v-row class="my-0 py-0">
+                            <v-chip
+                                class="ma-0 subtitle-1"
+                                color="#50575B" dark
+                            >
+                                {{ post.category }}
+                            </v-chip>
                         </v-row>
                     </v-col>
                     <v-col cols="12">

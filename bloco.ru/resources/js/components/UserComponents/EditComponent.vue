@@ -3,7 +3,7 @@
         <v-spacer></v-spacer>
         <v-col cols="8">
             <v-row justify="center">
-                <p class="display-2">РЕДАКТИРОВАНИЕ ПРОФИЛЯ</p>
+                <p class="display-2 no-route-link--color">РЕДАКТИРОВАНИЕ ПРОФИЛЯ</p>
             </v-row>
             <v-divider></v-divider>
             <form @submit.prevent="updateUser">
@@ -16,11 +16,12 @@
                     </div>
                     <div class="section--image-item">
                         <input v-model="form.image" type="text" name="image"
-                               class="form-control section--input" :class="{ 'is-invalid': form.errors.has('image') }"
+                               class="form-control section--input no-route-link--color"
+                               :class="{ 'is-invalid': form.errors.has('image') }"
                                placeholder="Изображение профиля"
                         >
                         <has-error :form="form" field="image"></has-error>
-                        <span class="subtitle-1">
+                        <span class="subtitle-1 no-route-link--color">
                             Вставьте ссылку на изображение, которое хотите видеть в профиле.
                         </span>
                     </div>
@@ -28,32 +29,35 @@
 
                 <div class="form-group">
                     <input v-model="form.name" type="text" name="name"
-                           class="form-control" :class="{ 'is-invalid': form.errors.has('name') }"
+                           class="form-control no-route-link--color"
+                           :class="{ 'is-invalid': form.errors.has('name') }"
                            placeholder="Настоящее имя">
                     <has-error :form="form" field="name"></has-error>
-                    <span class="subtitle-1">
+                    <span class="subtitle-1 no-route-link--color">
                         Укажите ваши имя и фамилию, чтобы другие пользователи смогли узнать, как вас зовут
                     </span>
                 </div>
 
                 <div class="form-group">
                     <input v-model="form.specialization" type="text" name="specialization"
-                           class="form-control" :class="{ 'is-invalid': form.errors.has('specialization') }"
+                           class="form-control no-route-link--color"
+                           :class="{ 'is-invalid': form.errors.has('specialization') }"
                            placeholder="Специализация"
                     >
                     <has-error :form="form" field="specialization"></has-error>
-                    <span class="subtitle-1">
+                    <span class="subtitle-1 no-route-link--color">
                         Укажите свою специализацию. Например: Веб разработчик
                     </span>
                 </div>
 
                 <div class="form-group">
                     <textarea v-model="form.about" type="text" name="about"
-                              class="form-control" :class="{ 'is-invalid': form.errors.has('about') }"
+                              class="form-control no-route-link--color"
+                              :class="{ 'is-invalid': form.errors.has('about') }"
                               placeholder="О себе">
                     </textarea>
                     <has-error :form="form" field="about"></has-error>
-                    <span class="subtitle-1">
+                    <span class="subtitle-1 no-route-link--color">
                         Расскажите о себе. Например:
                         Back-end веб разработчик, проживаю и работаю в Германии,
                         рассказываю о своей работе и как адаптироваться не в родной стране.
