@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCommentsTable extends Migration
+class CreatePostTagTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,21 +13,20 @@ class CreateCommentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('comments', function (Blueprint $table) {
+        Schema::create('post_tag', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('post_id')->index();
-            $table->bigInteger('author_id')->index();
-            $table->text('body');
-            $table->timestamp('created_at')->useCurrent();
+            $table->bigInteger('tag_id')->index();
+            $table->unique(array('post_id', 'tag_id'));
             $table
                 ->foreign('post_id')
                 ->references('id')
                 ->on('posts')
                 ->onDelete('CASCADE');
             $table
-                ->foreign('author_id')
+                ->foreign('tag_id')
                 ->references('id')
-                ->on('users')
+                ->on('tags')
                 ->onDelete('CASCADE');
         });
     }
@@ -39,14 +38,15 @@ class CreateCommentsTable extends Migration
      */
     public function down()
     {
-        Schema::table('comments', function (Blueprint $table) {
-            $table->dropForeign(array('post_id'));
-            $table->dropForeign(array('author_id'));
-            $table->dropIndex(array('post_id'));
-            $table->dropIndex(array('author_id'));
+        Schema::table('post_tag', function (Blueprint $table) {
             $table->dropPrimary('id');
-            $table->dropColumn(array('id', 'post_id', 'author_id', 'body', 'created_at'));
+            $table->dropForeign(array('post_id'));
+            $table->dropIndex(array('post_id'));
+            $table->dropForeign(array('tag_id'));
+            $table->dropIndex(array('tag_id'));
+            $table->dropUnique(array('post_id', 'tag_id'));
+            $table->dropColumn(array('id', 'post_id', 'tag_id'));
         });
-        Schema::dropIfExists('comments');
+        Schema::dropIfExists('post_tag');
     }
 }

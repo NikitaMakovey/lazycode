@@ -1,6 +1,6 @@
 <template>
-    <v-app id="inspire">
-        <v-navigation-drawer v-model="drawer" app temporary>
+    <v-app id="inspire" class="pa-0">
+        <v-navigation-drawer v-model="drawer" app temporary class="responsive-header--navbar">
             <v-list dense>
                 <template>
                     <v-list-item
@@ -10,8 +10,8 @@
                     >
                         <v-list-item-content>
                             <v-list-item-title>
-                                <v-icon left small>mdi-script</v-icon>
-                                <span>{{ items[3].text }}</span>
+                                <v-icon left small class="responsive-header--text">mdi-script</v-icon>
+                                <span class="responsive-header--text">{{ items[3].text }}</span>
                             </v-list-item-title>
                         </v-list-item-content>
                     </v-list-item>
@@ -22,8 +22,8 @@
                     >
                         <v-list-item-content>
                             <v-list-item-title>
-                                <v-icon left small>mdi-script-outline</v-icon>
-                                <span>{{ items[4].text }}</span>
+                                <v-icon left small class="responsive-header--text">mdi-script-outline</v-icon>
+                                <span class="responsive-header--text">{{ items[4].text }}</span>
                             </v-list-item-title>
                         </v-list-item-content>
                     </v-list-item>
@@ -36,8 +36,8 @@
                     >
                         <v-list-item-content>
                             <v-list-item-title>
-                                <v-icon left small>mdi-script</v-icon>
-                                <span>{{ items[0].text }}</span>
+                                <v-icon left small class="responsive-header--text">mdi-script</v-icon>
+                                <span class="responsive-header--text">{{ items[0].text }}</span>
                             </v-list-item-title>
                         </v-list-item-content>
                     </v-list-item>
@@ -48,8 +48,8 @@
                     >
                         <v-list-item-content>
                             <v-list-item-title>
-                                <v-icon left small>mdi-script-outline</v-icon>
-                                <span>{{ items[1].text }}</span>
+                                <v-icon left small class="responsive-header--text">mdi-script-outline</v-icon>
+                                <span class="responsive-header--text">{{ items[1].text }}</span>
                             </v-list-item-title>
                         </v-list-item-content>
                     </v-list-item>
@@ -60,8 +60,8 @@
                     >
                         <v-list-item-content>
                             <v-list-item-title>
-                                <v-icon left small>mdi-script</v-icon>
-                                <span>{{ items[2].text }}</span>
+                                <v-icon left small class="responsive-header--text">mdi-script</v-icon>
+                                <span class="responsive-header--text">{{ items[2].text }}</span>
                             </v-list-item-title>
                         </v-list-item-content>
                     </v-list-item>
@@ -70,8 +70,8 @@
                     >
                         <v-list-item-content>
                             <v-list-item-title>
-                                <v-icon left small>mdi-script-outline</v-icon>
-                                <span>{{ items[5].text }}</span>
+                                <v-icon left small class="responsive-header--text">mdi-script-outline</v-icon>
+                                <span class="responsive-header--text">{{ items[5].text }}</span>
                             </v-list-item-title>
                         </v-list-item-content>
                     </v-list-item>
@@ -80,8 +80,10 @@
         </v-navigation-drawer>
         <v-app-bar app color="#393E41" dark>
             <v-toolbar-title style="width: 300px" class="ml-0 pl-3">
-                <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
-                <span class="hidden-sm-and-down">Lazy<span class="font-weight-light">code</span></span>
+                <v-app-bar-nav-icon @click.stop="drawer = !drawer" class="responsive-header--image"></v-app-bar-nav-icon>
+                <span class="hidden-sm-and-down responsive-header--text">
+                    Lazy<span class="font-weight-light responsive-header--text">code</span>
+                </span>
             </v-toolbar-title>
             <v-text-field
                 flat
@@ -89,25 +91,30 @@
                 hide-details
                 prepend-inner-icon="mdi-file-document-box-search-outline"
                 label="Поиск"
-                class="hidden-sm-and-down">
+                class="hidden-sm-and-down responsive-header--text">
             </v-text-field>
             <v-spacer></v-spacer>
             <template v-if="isAuth">
                 <v-btn text color="#50575B #F6F7EB--text"
-                       class="route__style" :to="{ name: 'user', params: { id: userId } }" exact
+                       class="route__style responsive-header--text"
+                       :to="{ name: 'user', params: { id: userId } }" exact
                 >
                     {{ username }}
                 </v-btn>
                 <v-btn icon large class="route__style" :to="{ name: 'user', params: { id: userId } }" exact>
                     <v-avatar size="32px" item>
-                        <v-img :src="userImage" alt="#UI">
+                        <v-img :src="userImage" alt="#UI" class="responsive-header--image">
                         </v-img>
                     </v-avatar>
                 </v-btn>
             </template>
             <template v-else>
-                <v-btn text color="#50575B #F6F7EB--text" class="route__style" :to="{ name: 'auth.login' }">Войти</v-btn>
-                <v-btn text color="#50575B #F6F7EB--text" class="route__style" :to="{ name: 'auth.register' }">Зарегистрироваться</v-btn>
+                <v-btn text color="#50575B #F6F7EB--text"
+                       class="route__style responsive-header--text"
+                       :to="{ name: 'auth.login' }"
+                >
+                    Войти
+                </v-btn>
             </template>
         </v-app-bar>
         <v-content>
@@ -168,5 +175,16 @@
 </script>
 
 <style scoped>
-
+    @media (min-width : 1905px) {
+        .responsive-header--text {
+            font-size : 2rem !important;
+        }
+        .responsive-header--image {
+            height : 52px !important;
+            width : 52px !important;
+        }
+        .responsive-header--navbar {
+            width : 512px !important;
+        }
+    }
 </style>

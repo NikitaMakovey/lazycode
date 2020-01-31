@@ -42,4 +42,18 @@ class Post extends Model
     {
         return $this->hasMany('App\Comment', 'post_id', 'id');
     }
+
+    /**
+     * @param int $source_id
+     * @param int $type_id
+     * @return mixed
+     */
+    public function rating(int $source_id, int $type_id)
+    {
+        $vote = Vote::selectRaw('SUM(CASE WHEN vote = TRUE THEN 1 WHEN vote = FALSE THEN -1 ELSE 0 END)')
+            ->where('source_id', $source_id)
+            ->where('type_id', $type_id)
+            ->first();
+        return $vote;
+    }
 }

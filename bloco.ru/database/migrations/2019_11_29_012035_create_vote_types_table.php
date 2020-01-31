@@ -26,6 +26,11 @@ class CreateVoteTypesTable extends Migration
      */
     public function down()
     {
+        Schema::table('vote_types', function (Blueprint $table) {
+            $table->dropUnique(array('type'));
+            $table->dropPrimary('id');
+            $table->dropColumn(array('id', 'type'));
+        });
         Schema::dropIfExists('vote_types');
     }
 }

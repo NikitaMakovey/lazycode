@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('specialization')->default('Пользователь');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
+            $table->boolean('admin_verified_is')->nullable();
             $table->string('password');
             $table->string('image')->default('/img/man.png');
             $table->text('about')->nullable();
@@ -36,6 +37,22 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropUnique(array('username'));
+            $table->dropUnique(array('email'));
+            $table->dropPrimary('id');
+            $table->dropTimestamps();
+            $table->dropRememberToken();
+            $table->dropColumn(
+                array(
+                    'id', 'name', 'username',
+                    'is_admin', 'specialization',
+                    'email', 'email_verified_at',
+                    'admin_verified_is', 'password',
+                    'image', 'about'
+                    )
+            );
+        });
         Schema::dropIfExists('users');
     }
 }

@@ -32,7 +32,9 @@
         "@tinymce/tinymce-vue": "^3.0.1",
         "admin-lte": "^3.0.0",
         "vform": "^1.0.1",
+        "vue-responsive-text": "^0.1.4",
         "vue-router": "^3.1.3",
+        "vue-window-size": "^0.2.5",
         "vuelidate": "^0.7.4",
         "vuex": "^3.1.2"
     }

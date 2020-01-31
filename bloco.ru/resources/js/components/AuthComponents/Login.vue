@@ -17,10 +17,13 @@
                             name="password" type="password" required autocomplete="new-password"/>
                     </v-card-text>
                     <v-card-actions>
-                        <v-btn type="submit" style="background-color: #393E41; color: #F6F7EB !important;">Войти</v-btn>
+                        <v-btn class="mr-1" type="submit" style="background-color: #393E41; color: #F6F7EB !important;">Войти</v-btn>
                         <v-spacer/>
-                        <router-link :to="{ name: 'auth.email' }" class="vue-link">
+                        <router-link :to="{ name: 'auth.email' }" class="route__style route-link--color mr-1">
                             Забыли пароль?
+                        </router-link>
+                        <router-link :to="{ name: 'auth.register' }" class="route__style route-link--color">
+                            Нет аккаунта?
                         </router-link>
                     </v-card-actions>
                 </v-form>

@@ -17,6 +17,9 @@ class PostController extends Controller
      */
     public function index()
     {
+        //$posts = Post::all();
+        //$v = (new \App\Post)->rating(5, 1);
+        //return response([$v->sum], 200);
         $posts = DB::select(
             "SELECT
                             p.id            AS post_id,
@@ -42,7 +45,6 @@ class PostController extends Controller
                     GROUP BY p.id, u.id, c.name
                     ORDER BY rating DESC");
         return response($posts, 200);
-
     }
 
     /**

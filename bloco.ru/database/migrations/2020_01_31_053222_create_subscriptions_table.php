@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCommentsTable extends Migration
+class CreateSubscriptionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,15 @@ class CreateCommentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('comments', function (Blueprint $table) {
+        Schema::create('subscriptions', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('post_id')->index();
+            $table->bigInteger('user_id')->index();
             $table->bigInteger('author_id')->index();
-            $table->text('body');
-            $table->timestamp('created_at')->useCurrent();
+            $table->unique(array('user_id', 'author_id'));
             $table
-                ->foreign('post_id')
+                ->foreign('user_id')
                 ->references('id')
-                ->on('posts')
+                ->on('users')
                 ->onDelete('CASCADE');
             $table
                 ->foreign('author_id')
@@ -39,14 +38,15 @@ class CreateCommentsTable extends Migration
      */
     public function down()
     {
-        Schema::table('comments', function (Blueprint $table) {
-            $table->dropForeign(array('post_id'));
-            $table->dropForeign(array('author_id'));
-            $table->dropIndex(array('post_id'));
-            $table->dropIndex(array('author_id'));
+        Schema::table('subscriptions', function (Blueprint $table) {
             $table->dropPrimary('id');
-            $table->dropColumn(array('id', 'post_id', 'author_id', 'body', 'created_at'));
+            $table->dropForeign(array('user_id'));
+            $table->dropIndex(array('user_id'));
+            $table->dropForeign(array('author_id'));
+            $table->dropIndex(array('author_id'));
+            $table->dropUnique(array('user_id', 'author_id'));
+            $table->dropColumn(array('id', 'user_id', 'author_id'));
         });
-        Schema::dropIfExists('comments');
+        Schema::dropIfExists('subscriptions');
     }
 }
