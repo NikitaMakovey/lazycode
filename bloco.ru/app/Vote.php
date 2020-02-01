@@ -7,27 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Vote extends Model
 {
     /**
-     * @var null
-     */
-    protected $primaryKey = null;
-
-    /**
-     * @var bool
-     */
-    public $incrementing = false;
-
-    /**
      * @var array
      */
     protected $fillable = [
         'type_id', 'source_id', 'user_id', 'direct_id', 'vote'
-    ];
-
-    /**
-     * @var array
-     */
-    protected $casts = [
-        'vote' => 'boolean'
     ];
 
     /**
@@ -37,7 +20,7 @@ class Vote extends Model
      */
     public function to_user()
     {
-        return $this->belongsTo('App\User', 'direct_id', 'id');
+        return $this->belongsTo(User::class, 'direct_id', 'id');
     }
 
     /**
@@ -47,6 +30,6 @@ class Vote extends Model
      */
     public function from_user()
     {
-        return $this->belongsTo('App\User', 'user_id', 'id');
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 }

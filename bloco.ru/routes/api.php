@@ -4,45 +4,46 @@ use Illuminate\Http\Request;
 
 Route::group(['middleware' => ['json.response']], function () {
 
-    Route::middleware('auth:api')->get('/user', function (Request $request) {
-        return $request->user();
+    Route::post('/login', 'AuthController@login');
+    Route::post('/register', 'AuthController@register');
+
+    Route::group(['middleware' => ['auth:api']], function () {
+        Route::get('/logout', 'AuthController@logout');
+        Route::get('/user', 'AuthController@user');
+
+        Route::group(['prefix' => 'edit'], function () {
+            Route::put('main', 'EditController@main');
+            Route::put('image', 'EditController@image');
+            Route::put('email', 'EditController@email');
+            Route::put('bio', 'EditController@bio');
+        });
+
+        Route::group(['prefix' => 'v1'], function () {
+            Route::post('posts', 'PostController@store');
+            Route::delete('posts/{id}', 'PostController@destroy');
+            Route::put('posts/{id}', 'PostController@update');
+
+            Route::post('comments', 'CommentController@store');
+            Route::delete('comments/{id}', 'CommentController@destroy');
+
+            Route::post('votes', 'VoteController@store');
+        });
     });
 
-    // public routes
-    Route::post('/login', 'AuthController@login')->name('login.api');
-    Route::post('/register', 'AuthController@register')->name('register.api');
+    Route::group(['prefix' => 'v1'], function () {
+        Route::get('categories', 'CategoryController@index');
+        Route::get('categories/{slug}', 'CategoryController@show');
+        Route::post('categories', 'CategoryController@store');
+        Route::delete('categories/{id}', 'CategoryController@destroy');
 
-    // private routes
-    Route::middleware('auth:api')->group(function () {
-        Route::post('/logout', 'AuthController@logout')->name('logout.api');
+        Route::get('posts', 'PostController@index');
+        Route::get('posts/{id}', 'PostController@show');
+
+        Route::get('comments', 'CommentController@index');
+
+        Route::get('users', 'UserController@index');
+        Route::get('users/{id}', 'UserController@show');
+        Route::get('users/{id}/posts', 'UserController@posts');
+        Route::get('users/{id}/comments', 'UserController@comments');
     });
 });
-
-//Route::post('password/email', 'AuthController@sendResetLinkEmail');
-//Route::post('password/reset', 'AuthController@reset');
-
-Route::group(['prefix' => 'code'], function () {
-    Route::apiResources([
-        'posts' => 'PostController',
-        'users' => 'UserController',
-    ]);
-    Route::get('posts/{post}/comments', 'PostController@postComments');
-
-    Route::get('users/{user}/posts', 'UserController@userPosts');
-    Route::get('users/{user}/comments', 'UserController@userComments');
-
-    Route::get('categories', 'CategoryController@index');
-    Route::get('categories/{category}', 'CategoryController@show');
-    Route::post('categories', 'CategoryController@store');
-    Route::put('categories/{category}', 'CategoryController@update');
-    Route::delete('categories/{category}', 'CategoryController@destroy');
-
-    Route::get('comments', 'CommentController@index');
-    Route::post('comments', 'CommentController@store');
-    Route::get('comments/{comment}', 'CommentController@show');
-    Route::delete('comments/{comment}', 'CommentController@destroy');
-
-    Route::get('votes', 'VoteController@index');
-    Route::post('votes', 'VoteController@store');
-});
-

@@ -19,7 +19,7 @@ class CreateVotesTable extends Migration
             $table->bigInteger('source_id');
             $table->bigInteger('user_id');
             $table->bigInteger('direct_id')->index();
-            $table->boolean('vote');
+            $table->integer('vote');
             $table->timestamps();
             $table->unique(['type_id', 'source_id', 'user_id']);
             $table

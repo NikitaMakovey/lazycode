@@ -15,7 +15,11 @@ class CommentController extends Controller
     public function index()
     {
         $comments = Comment::all();
-        return response($comments, 200);
+        $response = array(
+            'message' => 'Информация о всех комментариях.',
+            'comments' => $comments
+        );
+        return response($response, 200);
     }
 
     /**
@@ -27,43 +31,67 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
+        $user = $request->user();
+        if ($user == null) {
+            $response = array(
+                'message' => 'Пользователь не аутентифицирован.'
+            );
+            return response($response, 401);
+        }
         $this->validate($request, [
-            'post_id' => 'required|integer',
-            'author_id' => 'required|integer',
-            'body' => 'required|min:10',
+            'post_id' => array(
+                'required',
+                'integer'
+            ),
+            'body' => array(
+                'required',
+                'min:5'
+            )
         ]);
 
         $comment = Comment::create([
             'post_id' => $request['post_id'],
-            'author_id' => $request['author_id'],
+            'author_id' => $user->id,
             'body' => $request['body']
         ]);
 
-        return response($comment, 201);
-    }
+        $response = array(
+            'message' => 'Комментарий со следующим содержанием - \'' . $request['body'] . '\' - успешно создан!',
+            'comment' => $comment
+        );
 
-    /**
-     * Display the specified comment.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show(int $id)
-    {
-        $comment = Comment::findOrFail($id);
-        return response($comment, 200);
+        return response($response, 201);
     }
 
     /**
      * Remove the specified comment from storage.
      *
+     * @param Request $request
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(int $id)
+    public function destroy(Request $request, int $id)
     {
+        $user = $request->user();
+        if ($user == null) {
+            $response = array(
+                'message' => 'Пользователь не аутентифицирован.'
+            );
+            return response($response, 401);
+        }
+
         $comment = Comment::findOrFail($id);
-        $comment->delete();
-        return response(['Successfully deleted!'], 200);
+        if ($comment->author_id == $user->id) {
+            $response = array(
+                'message' => 'Комментарий со следующим содержанием - \'' . $comment->body . '\' - успешно удалён!'
+            );
+            $comment->delete();
+            return response($response, 200);
+        }
+
+        $response = array(
+            'message' => 'Доступ к комментарию ограничен.'
+        );
+        return response($response, 403);
     }
 }

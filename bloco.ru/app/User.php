@@ -17,7 +17,10 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'username', 'email', 'password', 'about', 'image', 'specialization'
+        'name', 'username', 'email',
+        'password', 'about', 'image',
+        'specialization', 'is_admin',
+        'admin_verified_is'
     ];
 
     /**
@@ -45,7 +48,7 @@ class User extends Authenticatable
      */
     public function posts()
     {
-        return $this->hasMany('App\Post', 'author_id', 'id');
+        return $this->hasMany(Post::class, 'author_id', 'id');
     }
 
     /**
@@ -55,7 +58,7 @@ class User extends Authenticatable
      */
     public function to_votes()
     {
-        return $this->hasMany('App\Vote', 'direct_id', 'id');
+        return $this->hasMany(Vote::class, 'direct_id', 'id');
     }
 
     /**
@@ -65,7 +68,7 @@ class User extends Authenticatable
      */
     public function from_votes()
     {
-        return $this->hasMany('App\Vote', 'user_id', 'id');
+        return $this->hasMany(Vote::class, 'user_id', 'id');
     }
 
     /**
@@ -75,6 +78,6 @@ class User extends Authenticatable
      */
     public function comments()
     {
-        return $this->hasMany('App\Comment', 'author_id', 'id');
+        return $this->hasMany(Comment::class, 'author_id', 'id');
     }
 }

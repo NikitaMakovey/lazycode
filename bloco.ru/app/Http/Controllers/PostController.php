@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Post;
-use App\User;
-use Illuminate\Database\Query\JoinClause;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
@@ -17,34 +16,34 @@ class PostController extends Controller
      */
     public function index()
     {
-        //$posts = Post::all();
-        //$v = (new \App\Post)->rating(5, 1);
-        //return response([$v->sum], 200);
-        $posts = DB::select(
-            "SELECT
-                            p.id            AS post_id,
-                            p.title         AS post_title,
-                            p.body          AS post_body,
-                            p.created_at    AS created_at,
-                            u.id            AS user_id,
-                            u.username      AS username,
-                            u.image         AS user_image,
-                            c.name          AS category,
-                            COUNT(cm.post_id)
-                                            AS count_comments,
-                            RATING(1, p.id)
-                                            AS rating
-                    FROM
-                            posts p
-                    LEFT JOIN comments cm
-                            ON p.id = cm.post_id
-                    JOIN users u
-                            ON p.author_id = u.id
-                    JOIN categories c
-                            ON p.category_id = c.id
-                    GROUP BY p.id, u.id, c.name
-                    ORDER BY rating DESC");
-        return response($posts, 200);
+        $posts = DB::table('posts')
+            ->join('users', 'posts.author_id', '=', 'users.id')
+            ->join('categories', 'posts.category_id', '=', 'categories.id')
+            ->where(array(
+                'posts.post_verified_is' => true
+            ))
+            ->select(array(
+                'posts.id',
+                'posts.author_id',
+                'posts.title',
+                'posts.image',
+                'posts.body',
+                'posts.created_at',
+                'users.username',
+                'categories.name',
+                'categories.slug'
+            ))
+            ->selectRaw(
+                'users.image AS user_image'
+            )
+            ->orderBy('posts.created_at', 'DESC')
+            ->get();
+
+        $response = array(
+            'message' => 'Информация о всех постах.',
+            'posts' => $posts
+        );
+        return response($response, 200);
     }
 
     /**
@@ -56,21 +55,48 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        $user = $request->user();
+        if ($user == null) {
+            $response = array(
+                'message' => 'Пользователь не аутентифицирован.'
+            );
+            return response($response, 401);
+        }
         $this->validate($request, [
-            'title' => 'required|string|max:300|min:5',
-            'category_id' => 'required|integer',
-            'author_id' => 'required|integer',
-            'body' => 'required|min:10',
+            'title' => array(
+                'required',
+                'string',
+                'max:300',
+                'min:5'
+            ),
+            'category_id' => array(
+                'required',
+                'integer'
+            ),
+            'body' => array(
+                'required',
+                'min:10'
+            ),
+            'image' => array(
+                'required',
+                'string',
+                'max:300'
+            )
         ]);
 
         $post = Post::create([
             'title' => $request['title'],
             'category_id' => $request['category_id'],
-            'author_id' => $request['author_id'],
-            'body' => $request['body']
+            'author_id' => $user->id,
+            'body' => $request['body'],
+            'image' => $request['image']
         ]);
 
-        return response(['Successfully created!'], 201);
+        $response = array(
+            'message' => 'Статья с заголовком \'' . $request['title'] . '\' успешно создан!',
+            'post' => $post
+        );
+        return response($response, 201);
     }
 
     /**
@@ -81,33 +107,41 @@ class PostController extends Controller
      */
     public function show(int $id)
     {
-        $post = DB::select(
-            "SELECT
-                            p.id            AS post_id,
-                            p.title         AS post_title,
-                            p.body          AS post_body,
-                            p.created_at    AS created_at,
-                            u.id            AS user_id,
-                            u.username      AS username,
-                            u.image         AS user_image,
-                            c.name          AS category,
-                            c.id            AS category_id,
-                            COUNT(cm.post_id)
-                                            AS count_comments,
-                            RATING(1, p.id)
-                                            AS rating
-                    FROM
-                            posts p
-                    LEFT JOIN comments cm
-                            ON p.id = cm.post_id
-                    JOIN users u
-                            ON p.author_id = u.id
-                    JOIN categories c
-                            ON p.category_id = c.id
-                    WHERE p.id = ?
-                    GROUP BY p.id, u.id, c.id", [$id]);
+        $post = DB::table('posts')
+            ->join('users', 'posts.author_id', '=', 'users.id')
+            ->join('categories', 'posts.category_id', '=', 'categories.id')
+            ->where(array(
+                'posts.post_verified_is' => true,
+                'posts.id' => $id
+            ))
+            ->select(array(
+                'posts.id',
+                'posts.author_id',
+                'posts.title',
+                'posts.image',
+                'posts.body',
+                'posts.created_at',
+                'users.username',
+                'categories.name'
+            ))
+            ->selectRaw(
+                'users.image AS user_image'
+            )
+            ->first();
+        $comments = $this->getPostComments($id);
 
-        return response($post, 200);
+        if ($post) {
+            $response = array(
+                'message' => 'Информация о статье \'' . $post->title . '\'.',
+                'post' => $post,
+                'comments' => $comments
+            );
+            return response($response, 200);
+        }
+        $response = array(
+            'message' => 'Информация о статье не найдена.'
+        );
+        return response($response, 404);
     }
 
     /**
@@ -120,62 +154,118 @@ class PostController extends Controller
      */
     public function update(Request $request, int $id)
     {
+        $user = $request->user();
+        if ($user == null) {
+            $response = array(
+                'message' => 'Пользователь не аутентифицирован.'
+            );
+            return response($response, 401);
+        }
         $this->validate($request, [
-            'title' => 'required|string|max:300|min:5',
-            'category_id' => 'required|integer',
-            'body' => 'required|min:10',
+            'title' => array(
+                'required',
+                'string',
+                'max:300',
+                'min:5'
+            ),
+            'body' => array(
+                'required',
+                'min:10'
+            ),
         ]);
 
         $post = Post::findOrFail($id);
+        if ($post->author_id == $user->id) {
+            $post->title = $request['title'];
+            $post->body = $request['body'];
+            $post->save();
 
-        $post->title = $request['title'];
-        $post->category_id = $request['category_id'];
-        $post->body = $request['body'];
-
-        $post->save();
-
-        return response(['Successfully updated!'], 200);
+            $response = array(
+                'message' => 'Информация о статье \'' . $post->title . '\' обновлена успешно!',
+                'post' => $post
+            );
+            return response($response, 200);
+        }
+        $response = array(
+            'message' => 'Доступ к статье \'' . $post->title . '\' ограничен.'
+        );
+        return response($response, 403);
     }
 
     /**
      * Remove the specified post from storage.
      *
+     * @param Request $request
      * @param integer $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(int $id)
+    public function destroy(Request $request, int $id)
     {
-         $post = Post::findOrFail($id);
-         $post->delete();
-         return response(['Successfully deleted!'], 200);
+        $user = $request->user();
+        if ($user == null) {
+            $response = array(
+                'message' => 'Пользователь не аутентифицирован.'
+            );
+            return response($response, 401);
+        }
+
+        $post = Post::findOrFail($id);
+        if ($post->author_id == $user->id) {
+            $response = array(
+                'message' => 'Информация о статье \'' . $post->title . '\' успешно удалена.'
+            );
+            $post->delete();
+            return response($response, 200);
+        }
+
+        $response = array(
+            'message' => 'Доступ к статье \'' . $post->title . '\' ограничен.'
+        );
+        return response($response, 403);
     }
 
     /**
      * Display all comments of the post.
      *
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return Collection
      */
-    public function postComments(int $id)
+    public function getPostComments(int $id) : Collection
     {
-        $comments = DB::select(
-            "SELECT
-                            c.id            AS id,
-                            c.created_at    AS created_at,
-                            u.id            AS user_id,
-                            u.username      AS username,
-                            u.image         AS user_image,
-                            c.body          AS comment_body,
-                            RATING(2, c.id)
-                                            AS rating
-                    FROM
-                            comments c
-                    JOIN posts p
-                            ON p.id = c.post_id
-                    JOIN users u
-                            ON c.author_id = u.id
-                    WHERE p.id = ?
-                    ORDER BY c.created_at", [$id]);
-        return response($comments, 200);
+        $comments = DB::table('comments')
+            ->join('posts', 'comments.post_id', '=', 'posts.id')
+            ->join('users', 'comments.author_id', '=', 'users.id')
+            ->where(array(
+                'posts.id' => $id
+            ))
+            ->select(array(
+                'comments.id',
+                'comments.created_at',
+                'comments.body',
+                'users.username',
+                'users.image',
+            ))
+            ->selectRaw('users.id AS user_id')
+            ->orderBy('comments.created_at', 'DESC')
+            ->get();
+
+        return $comments;
+    }
+
+    /**
+     * @param int $id
+     * @return integer
+     */
+    public function votes(int $id) : int
+    {
+        $votes = DB::table('votes')
+            ->join('vote_types', 'votes.type_id', '=', 'vote_types.id')
+            ->where(array(
+                'vote_types.type' => 'post',
+                'votes.source_id' => $id
+            ))
+            ->sum('votes.vote');
+
+        return $votes;
     }
 }

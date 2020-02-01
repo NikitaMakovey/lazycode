@@ -19,4 +19,12 @@ class Tag extends Model
      * @var bool
      */
     public $timestamps = false;
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function posts()
+    {
+        return $this->belongsToMany(Post::class, 'post_tag', 'tag_id', 'post_id');
+    }
 }

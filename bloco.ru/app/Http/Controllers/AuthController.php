@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -14,22 +16,45 @@ class AuthController extends Controller
      *
      * @param Request $request
      * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function login(Request $request)
     {
+        $this->validate($request, [
+            'email' => 'required|string|email|max:255',
+            'password' => 'required|string|min:8',
+            'remember_me' => 'boolean'
+        ]);
+
         $user = User::where('email', $request['email'])->first();
 
         if ($user) {
             if (Hash::check($request['password'], $user->password)) {
-                $token = $user->createToken('vmzImL5RrH61OmETEmZZsMabDoQsEi9xjn2tRsIA')->accessToken;
-                $response = ['token' => $token, 'data' => $user];
+
+                $tokenResult = $user->createToken(env('PASSPORT_CLIENT_SECRET'));
+                $token = $tokenResult->token;
+
+                if ($request['remember_me']) {
+                    $token->expires_at = Carbon::now()->addMinutes(30);
+                }
+
+                $token->save();
+
+                $response = array(
+                    'access_token' => 'Bearer ' . $tokenResult->accessToken,
+                    'expires_at' => Carbon::parse(
+                        $tokenResult->token->expires_at
+                    )->toDateTimeString(),
+                    'now_datetime' => date('Y-m-d h:i:s'),
+                    'user' => $user
+                );
                 return response($response, 200);
             } else {
-                $response = "Неверный пароль.";
-                return response($response, 422);
+                $response = array('message' => 'Неверный пароль.');
+                return response($response, 401);
             }
         } else {
-            $response = 'Неверные или несуществующие данные.';
+            $response = array('message' => 'Неверный email или пароль.');
             return response($response, 422);
         }
     }
@@ -39,30 +64,46 @@ class AuthController extends Controller
      *
      * @param Request $request
      * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function register(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'name' => ['required', 'string', 'max:255'],
-            'username' => ['required', 'string', 'max:255', 'unique:users'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8'],
-        ]);
+        $this->validate($request, array(
+            'name' => array(
+                'required',
+                'string',
+                'max:255'
+            ),
+            'username' => array(
+                'required',
+                'string',
+                'max:255',
+                'alpha_dash',
+                'unique:users'
+            ),
+            'email' => array(
+                'required',
+                'string',
+                'max:255',
+                'email',
+                'unique:users'
+            ),
+            'password' => array(
+                'required',
+                'string',
+                'confirmed',
+                'min:8'
+            )
+        ));
 
-        if ($validator->fails()) {
-            return response(['errors'=>$validator->errors()->all()], 422);
-        }
-
-        $user = User::create([
+        User::create([
             'name' => $request['name'],
             'username' => $request['username'],
             'email' => $request['email'],
             'password' => Hash::make($request['password']),
         ]);
 
-        $token = $user->createToken('vmzImL5RrH61OmETEmZZsMabDoQsEi9xjn2tRsIA')->accessToken;
-        $response = ['token' => $token, 'data' => $user];
-
+        $response = array('message' => 'Регистрация прошла успешно!');
         return response($response, 201);
     }
 
@@ -75,6 +116,16 @@ class AuthController extends Controller
     public function logout(Request $request)
     {
         $request->user()->token()->revoke();
-        return response(['Вы успешно вышли из системы!'], 200);
+        $response = array('message' => 'Успешно выполнен выход с платформы!');
+        return response($response, 200);
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function user(Request $request)
+    {
+        return response($request->user(), 200);
     }
 }

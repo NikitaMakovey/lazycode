@@ -12,7 +12,7 @@ class Category extends Model
      * @var array
      */
     protected $fillable = [
-        'name'
+        'name', 'slug'
     ];
 
     /**
@@ -27,6 +27,6 @@ class Category extends Model
      */
     public function posts()
     {
-        return $this->hasMany('App\Post', 'category_id', 'id');
+        return $this->hasMany(Post::class, 'category_id', 'id');
     }
 }
