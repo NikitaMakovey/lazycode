@@ -44,7 +44,7 @@ class CategoryController extends Controller
         ]);
 
         $response = array(
-            'message' => 'Категория с наименованием \'' . $request['name'] . '\' успешно создан!',
+            'message' => 'Категория с наименованием \'' . $category->name . '\' успешно создан!',
             'category' => $category
         );
         return response($response, 201);

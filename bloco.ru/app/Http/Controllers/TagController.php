@@ -14,72 +14,57 @@ class TagController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $tags = Tag::all();
+        $response = array(
+            'message' => 'Информация о всех тегах.',
+            'tags' => $tags
+        );
+        return response($response, 200);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function store(Request $request)
     {
-        //
-    }
+        $this->validate($request, array(
+            'name' => array(
+                'required',
+                'string',
+                'max:255',
+                'unique:tags'
+            )
+        ));
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Tag  $tag
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Tag $tag)
-    {
-        //
-    }
+        $tag = Tag::create([
+            'name' => $request['name']
+        ]);
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Tag  $tag
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Tag $tag)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Tag  $tag
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Tag $tag)
-    {
-        //
+        $response = array(
+            'message' => 'Тег с наименованием \'' . $tag->name . '\' успешно создан!',
+            'category' => $tag
+        );
+        return response($response, 201);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Tag  $tag
+     * @param  integer  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Tag $tag)
+    public function destroy(int $id)
     {
-        //
+        $tag = Tag::findOrFail($id);
+
+        $response = array(
+            'message' => 'Тег \''. $tag->name . '\' удалён успешно!'
+        );
+        $tag->delete();
+        return response($response, 200);
     }
 }

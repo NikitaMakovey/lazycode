@@ -91,4 +91,33 @@ class VoteController extends Controller
             return response($response, 200);
         }
     }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function refresh(Request $request)
+    {
+        $vt = DB::table('vote_types')
+            ->select('*')
+            ->get();
+
+        if (count($vt) == 0) {
+            DB::table('vote_types')
+                ->insert(array(
+                    array('type' => 'post'),
+                    array('type' => 'comment')
+                ));
+
+            $response = array(
+                'message' => 'Обновление типов оценок прошло успешно!'
+            );
+            return response($response, 201);
+        }
+
+        $response = array(
+            'message' => 'Отсутствуют данные для обновления типов оценок.'
+        );
+        return response($response, 204);
+    }
 }

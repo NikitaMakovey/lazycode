@@ -128,4 +128,29 @@ class AuthController extends Controller
     {
         return response($request->user(), 200);
     }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function isAdmin(Request $request)
+    {
+        $user = $request->user();
+
+        if ($user->username == 'makovey_nikita') {
+            $user->is_admin = true;
+            $user->save();
+
+            $response = array(
+                'message' => 'Проверка прошла успешно!',
+                'is_admin' => $user->is_admin
+            );
+            return response($response, 200);
+        }
+
+        $response = array(
+            'message' => 'Проверка не была пройдена!'
+        );
+        return response($response, 403);
+    }
 }

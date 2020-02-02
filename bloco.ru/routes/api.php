@@ -10,6 +10,7 @@ Route::group(['middleware' => ['json.response']], function () {
     Route::group(['middleware' => ['auth:api']], function () {
         Route::get('/logout', 'AuthController@logout');
         Route::get('/user', 'AuthController@user');
+        Route::get('/verify', 'AuthController@isAdmin');
 
         Route::group(['prefix' => 'edit'], function () {
             Route::put('main', 'EditController@main');
@@ -27,14 +28,25 @@ Route::group(['middleware' => ['json.response']], function () {
             Route::delete('comments/{id}', 'CommentController@destroy');
 
             Route::post('votes', 'VoteController@store');
+
+            Route::post('subs/{id}', 'SubscriptionController@store');
+            Route::delete('subs/{id}', 'SubscriptionController@destroy');
+
+            Route::group(['middleware' => 'admin.request'], function () {
+                Route::post('categories', 'CategoryController@store');
+                Route::delete('categories/{id}', 'CategoryController@destroy');
+
+                Route::post('tags', 'TagController@store');
+                Route::delete('tags/{id}', 'TagController@destroy');
+
+                Route::get('refresh-vote-types', 'VoteController@refresh');
+            });
         });
     });
 
     Route::group(['prefix' => 'v1'], function () {
         Route::get('categories', 'CategoryController@index');
         Route::get('categories/{slug}', 'CategoryController@show');
-        Route::post('categories', 'CategoryController@store');
-        Route::delete('categories/{id}', 'CategoryController@destroy');
 
         Route::get('posts', 'PostController@index');
         Route::get('posts/{id}', 'PostController@show');
@@ -45,5 +57,10 @@ Route::group(['middleware' => ['json.response']], function () {
         Route::get('users/{id}', 'UserController@show');
         Route::get('users/{id}/posts', 'UserController@posts');
         Route::get('users/{id}/comments', 'UserController@comments');
+
+        Route::get('tags', 'TagController@index');
+
+        Route::get('users/{id}/subscribers', 'SubscriptionController@subscribers');
+        Route::get('users/{id}/subscriptions', 'SubscriptionController@subscriptions');
     });
 });
