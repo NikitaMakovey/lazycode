@@ -24,41 +24,27 @@ export default {
         ABOUT: state => { return state.about },
     },
     mutations: {
-        UPDATE_USER_DATA: (state, data) => {
-            localStorage.removeItem('name');
-            localStorage.removeItem('specialization');
-            localStorage.removeItem('image');
-            localStorage.removeItem('about');
-
-            localStorage.setItem('name', data.name);
-            localStorage.setItem('specialization', data.specialization);
-            localStorage.setItem('image', data.image);
-            localStorage.setItem('about', data.about);
-
-            state.name = data.name;
-            state.specialization = data.specialization;
-            state.image = data.image;
-            state.about = data.about;
-        },
         SET_USER: (state, data) => {
-            localStorage.setItem('user_id', data.id);
-            localStorage.setItem('username', data.username);
-            localStorage.setItem('name', data.name);
-            localStorage.setItem('is_admin', data.is_admin);
-            localStorage.setItem('specialization', data.specialization);
-            localStorage.setItem('email', data.email);
-            localStorage.setItem('image', data.image);
-            localStorage.setItem('about', data.about);
-            state.user_id = data.id;
-            state.username = data.username;
-            state.name = data.name;
-            state.is_admin = data.is_admin;
-            state.specialization = data.specialization;
-            state.email = data.email;
-            state.image = data.image;
-            state.about = data.about;
+            localStorage.setItem('user_id', data.user.id);
+            localStorage.setItem('username', data.user.username);
+            localStorage.setItem('name', data.user.name);
+            localStorage.setItem('is_admin', data.user.is_admin);
+            localStorage.setItem('specialization', data.user.specialization);
+            localStorage.setItem('email', data.user.email);
+            localStorage.setItem('image', data.user.image);
+            localStorage.setItem('about', data.user.about);
+            localStorage.setItem('access_token', data.access_token);
+            state.authToken = data.access_token;
+            state.user_id = data.user.id;
+            state.username = data.user.username;
+            state.name = data.user.name;
+            state.is_admin = data.user.is_admin;
+            state.specialization = data.user.specialization;
+            state.email = data.user.email;
+            state.image = data.user.image;
+            state.about = data.user.about;
         },
-        UNSET_AUTH: (state) => {
+        UNSET_USER: (state) => {
             localStorage.removeItem('access_token');
             localStorage.removeItem('user_id');
             localStorage.removeItem('username');
@@ -78,46 +64,22 @@ export default {
             state.image = null;
             state.about = null;
         },
-        SET_TOKEN: (state, token) => {
-            localStorage.setItem('access_token', token);
-            state.authToken = token;
-        }
     },
     actions: {
-        SIGN_UP(context, payload) {
-            return new Promise((resolve, reject) => {
-                axios.post('/api/register', payload)
-                    .then(response => {
-                        const token = response.data.token;
-                        const user_data = response.data.data;
-                        context.commit('SET_TOKEN', token);
-                        context.commit('SET_USER', user_data);
-                        resolve(response);
-                    })
-                    .catch(error => { reject(error) });
+        LOGIN_USER(context, payload) {
+            return new Promise(resolve => {
+                context.commit('SET_USER', payload);
+                resolve(payload);
             });
         },
-        SIGN_IN(context, payload) {
-            return new Promise((resolve, reject) => {
-                axios.post('/api/login', payload)
-                    .then(response => {
-                        const token = response.data.token;
-                        const user_data = response.data.data;
-                        context.commit('SET_TOKEN', token);
-                        context.commit('SET_USER', user_data);
-                        resolve(response);
-                    })
-                    .catch(error => { reject(error) });
-            });
-        },
-        SIGN_OUT(context) {
-            axios.defaults.headers.common['Authorization'] = 'Bearer ' + context.getters.AUTH_TOKEN;
+        LOGOUT_USER(context) {
+            axios.defaults.headers.common['Authorization'] = context.getters.AUTH_TOKEN;
 
             if (context.getters.AUTH_TOKEN !== null) {
                 return new Promise((resolve, reject) => {
-                    axios.post('/api/logout')
+                    axios.get('/api/logout')
                         .then(response => {
-                            context.commit('UNSET_AUTH');
+                            context.commit('UNSET_USER');
                             delete axios.defaults.headers.common['Authorization'];
                             resolve(response);
                         })
@@ -130,8 +92,5 @@ export default {
         RESET_EMAIL(context, payload) {
 
         },
-        RESET_PASSWORD(context, payload) {
-
-        }
     }
 }

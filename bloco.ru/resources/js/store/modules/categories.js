@@ -15,11 +15,11 @@ export default {
     actions: {
         GET_CATEGORIES(context) {
             return new Promise((resolve, reject) => {
-                let uri = '/api/code/categories';
+                let uri = '/api/v1/categories';
                 axios.get(uri)
                     .then(({data}) => {
-                        context.commit('SET_CATEGORIES', data);
-                        resolve(data);
+                        context.commit('SET_CATEGORIES', data.categories);
+                        resolve(data.categories);
                     })
                     .catch(error => {
                         reject(error);

@@ -37,7 +37,7 @@ class PostController extends Controller
                 'users.image AS user_image'
             )
             ->orderBy('posts.created_at', 'DESC')
-            ->get();
+            ->paginate(6);
 
         $response = array(
             'message' => 'Информация о всех постах.',

@@ -1,190 +1,212 @@
 <template>
-    <v-app id="inspire" class="pa-0">
-        <v-navigation-drawer v-model="drawer" app temporary class="responsive-header--navbar">
-            <v-list dense>
-                <template>
-                    <v-list-item
-                        :to="{ name: 'main' }"
-                        class="route__style"
-                        exact
+    <div>
+        <header>
+            <div class="collapse bg-dark" id="navbarHeader">
+                <div class="container container-block">
+                    <div class="row">
+                        <div class="col-sm-9 col-md-9 col-lg-9 col-xl-9 py-4 legend-block">
+                            <p class="text-white title">О нас</p>
+                            <p class="text-muted title">
+                                {{ legend_text }}
+                            </p>
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3 py-4 ma-0 list-container">
+                            <ul class="list-unstyled">
+                                <li>
+                                    <router-link to="/" class="text-white">
+                                        <span class="list-element-text">Все посты</span>
+                                    </router-link>
+                                </li>
+                                <li>
+                                    <router-link to="/users" class="text-white">
+                                        <span class="list-element-text">Все пользователи</span>
+                                    </router-link>
+                                </li>
+                                <li>
+                                    <router-link to="/search" class="text-white">
+                                        <span class="list-element-text">Поиск</span>
+                                    </router-link>
+                                </li>
+                                <template v-if="ACCESS_TOKEN">
+                                    <li>
+                                        <router-link to="/user" class="text-white">
+                                            <span class="list-element-text">Мой профиль</span>
+                                        </router-link>
+                                    </li>
+                                    <li>
+                                        <router-link to="/user/home" class="text-white">
+                                            <span class="list-element-text">Мой дом</span>
+                                        </router-link>
+                                    </li>
+                                    <li>
+                                        <router-link to="/user/edit" class="text-white">
+                                            <span class="list-element-text">Мой гараж</span>
+                                        </router-link>
+                                    </li>
+                                    <li>
+                                        <router-link to="/post/create" class="text-white">
+                                            <span class="list-element-text">Написать статью</span>
+                                        </router-link>
+                                    </li>
+                                    <template v-if="IS_ADMIN == true">
+                                        <li>
+                                            <router-link to="/admin" class="text-white">
+                                                <span class="list-element-text">Каморка админа</span>
+                                            </router-link>
+                                        </li>
+                                    </template>
+                                    <li @click="logout">
+                                        <span class="list-element-text text-white pa-0 ma-0">Выйти</span>
+                                    </li>
+                                </template>
+                                <template v-else>
+                                    <li>
+                                        <router-link to="/auth/login" class="text-white">
+                                            <span class="list-element-text">Войти</span>
+                                        </router-link>
+                                    </li>
+                                </template>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="navbar navbar-dark bg-dark box-shadow navbar-container">
+                <div class="container d-flex justify-content-between pa-sm-2 pa-md-2 pa-lg-2 pa-xl-2">
+                    <router-link :to="{ name: 'main' }" class="navbar-brand d-flex align-items-center">
+                        <strong>lazy&#60;code&#47;&#62;</strong>
+                    </router-link>
+                    <button
+                        class="navbar-toggler" type="button"
+                        data-toggle="collapse" data-target="#navbarHeader"
+                        aria-controls="navbarHeader" aria-expanded="false"
+                        aria-label="Toggle navigation"
                     >
-                        <v-list-item-content>
-                            <v-list-item-title>
-                                <v-icon left small class="responsive-header--text">mdi-script</v-icon>
-                                <span class="responsive-header--text">{{ items[3].text }}</span>
-                            </v-list-item-title>
-                        </v-list-item-content>
-                    </v-list-item>
-                    <v-list-item
-                        :to="{ name: 'users' }"
-                        class="route__style"
-                        exact
-                    >
-                        <v-list-item-content>
-                            <v-list-item-title>
-                                <v-icon left small class="responsive-header--text">mdi-script-outline</v-icon>
-                                <span class="responsive-header--text">{{ items[4].text }}</span>
-                            </v-list-item-title>
-                        </v-list-item-content>
-                    </v-list-item>
-                </template>
-                <template v-if="isAuth">
-                    <v-list-item
-                        :to="{ name: 'user', params: { id: userId } }"
-                        class="route__style"
-                        exact
-                    >
-                        <v-list-item-content>
-                            <v-list-item-title>
-                                <v-icon left small class="responsive-header--text">mdi-script</v-icon>
-                                <span class="responsive-header--text">{{ items[0].text }}</span>
-                            </v-list-item-title>
-                        </v-list-item-content>
-                    </v-list-item>
-                    <v-list-item
-                        :to="{ name: 'users.edit', params: { id: userId } }"
-                        class="route__style"
-                        exact
-                    >
-                        <v-list-item-content>
-                            <v-list-item-title>
-                                <v-icon left small class="responsive-header--text">mdi-script-outline</v-icon>
-                                <span class="responsive-header--text">{{ items[1].text }}</span>
-                            </v-list-item-title>
-                        </v-list-item-content>
-                    </v-list-item>
-                    <v-list-item
-                        :to="{ name: 'posts.create' }"
-                        class="route__style"
-                        exact
-                    >
-                        <v-list-item-content>
-                            <v-list-item-title>
-                                <v-icon left small class="responsive-header--text">mdi-script</v-icon>
-                                <span class="responsive-header--text">{{ items[2].text }}</span>
-                            </v-list-item-title>
-                        </v-list-item-content>
-                    </v-list-item>
-                    <v-list-item
-                        @click="logout"
-                    >
-                        <v-list-item-content>
-                            <v-list-item-title>
-                                <v-icon left small class="responsive-header--text">mdi-script-outline</v-icon>
-                                <span class="responsive-header--text">{{ items[5].text }}</span>
-                            </v-list-item-title>
-                        </v-list-item-content>
-                    </v-list-item>
-                </template>
-            </v-list>
-        </v-navigation-drawer>
-        <v-app-bar app color="#393E41" dark>
-            <v-toolbar-title style="width: 300px" class="ml-0 pl-3">
-                <v-app-bar-nav-icon @click.stop="drawer = !drawer" class="responsive-header--image"></v-app-bar-nav-icon>
-                <span class="hidden-sm-and-down responsive-header--text">
-                    Lazy<span class="font-weight-light responsive-header--text">code</span>
-                </span>
-            </v-toolbar-title>
-            <v-text-field
-                flat
-                solo-inverted
-                hide-details
-                prepend-inner-icon="mdi-file-document-box-search-outline"
-                label="Поиск"
-                class="hidden-sm-and-down responsive-header--text">
-            </v-text-field>
-            <v-spacer></v-spacer>
-            <template v-if="isAuth">
-                <v-btn text color="#50575B #F6F7EB--text"
-                       class="route__style responsive-header--text"
-                       :to="{ name: 'user', params: { id: userId } }" exact
-                >
-                    {{ username }}
-                </v-btn>
-                <v-btn icon large class="route__style" :to="{ name: 'user', params: { id: userId } }" exact>
-                    <v-avatar size="32px" item>
-                        <v-img :src="userImage" alt="#UI" class="responsive-header--image">
-                        </v-img>
-                    </v-avatar>
-                </v-btn>
-            </template>
-            <template v-else>
-                <v-btn text color="#50575B #F6F7EB--text"
-                       class="route__style responsive-header--text"
-                       :to="{ name: 'auth.login' }"
-                >
-                    Войти
-                </v-btn>
-            </template>
-        </v-app-bar>
-        <v-content>
-            <v-container fluid fill-height>
-                <v-layout>
-                    <router-view></router-view>
-                </v-layout>
-            </v-container>
-        </v-content>
-        <footer-component></footer-component>
-    </v-app>
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <main role="main">
+            <router-view></router-view>
+        </main>
+
+        <footer class="text-muted bg-dark">
+            <div class="container">
+                <p class="title basic-footer">{{ new Date().getFullYear() }} &copy; lazy&#60;code&#47;&#62;</p>
+            </div>
+        </footer>
+    </div>
 </template>
 
 <script>
-    import FooterComponent from "./FooterComponent";
-
     export default {
-        components: {
-            FooterComponent
-        },
         data () {
             return {
-                activeClass: 'route--active',
-                drawer: null,
-                items: [
-                    { icon: 'fas fa-user', text: 'Профиль',
-                        route: "{ name: 'user', params: { id: USER_ID } }" },
-                    { icon: 'fas fa-user-cog', text: 'Настройки профиля',
-                        route: "{ name: 'users.edit', params: { id: USER_ID } }" },
-                    { icon: 'fas fa-pencil-alt', text: 'Запостить',
-                        route: "{ name: 'posts.create' }" },
-                    { icon: 'fas fa-book-open', text: 'Все посты',
-                        route: "{ name: 'posts' }" },
-                    { icon: 'fas fa-users', text: 'Все пользователи',
-                        route: "{ name: 'users' }" },
-                    { icon: '-', text: 'Выход', route: "-"}
-                ]
+                legend_text : "lazy<code/> - не просто платформа для создания " +
+                    "статей и их просмотра - это социальная сеть для тех, кому интересны естественные " +
+                    "науки, IT, инженерия, физика и многие другие темы. Присоединяйся к нам - стань частью " +
+                    "дружной и интеллектуальной команды."
             }
         },
         methods: {
             logout() {
-                this.$store.dispatch('SIGN_OUT').then(() => { this.$router.push({ name: 'main' }) });
+                this.$store.dispatch('LOGOUT_USER')
+                    .then(() => { this.$router.push({ name: 'main' }) });
             }
         },
         computed: {
-            userImage() { return this.$store.getters.IMAGE },
-            username() { return this.$store.getters.USERNAME },
-            userId() { return this.$store.getters.USER_ID },
-            isAuth() { return this.$store.getters.AUTH_TOKEN },
+            IS_ADMIN() { return this.$store.getters.IS_ADMIN },
+            ID() { return this.$store.getters.USER_ID },
+            ACCESS_TOKEN() { return this.$store.getters.AUTH_TOKEN },
             csrfToken() { return document.head.querySelector('meta[name="csrf-token"]').getAttribute('content') }
         },
         mounted() {
-            console.log(this.$store.getters.AUTH_TOKEN);
-            console.log(this.$store.getters.USERNAME);
-            console.log(this.$store.getters.USER_ID);
+
         }
     }
 </script>
 
 <style scoped>
-    @media (min-width : 1905px) {
-        .responsive-header--text {
-            font-size : 2rem !important;
+    @media screen and (max-width: 600px) {
+        .legend-block {
+            display: none;
         }
-        .responsive-header--image {
-            height : 52px !important;
-            width : 52px !important;
+        .text-muted {
+            font-size: 1rem !important;
         }
-        .responsive-header--navbar {
-            width : 512px !important;
+        .list-container {
+            padding: 0 !important;
         }
+        .list-unstyled {
+            padding-left: 30px;
+            margin-bottom: 0;
+        }
+        .list-element-text {
+            font-size: 1rem !important;
+            font-weight: bold;
+        }
+        .container-block {
+            border-bottom: 1px solid #8EC5FC;
+        }
+    }
+    @media screen and (min-width: 601px) and (max-width: 960px) {
+        .text-muted {
+            font-size: 1rem !important;
+        }
+        .list-unstyled {
+            padding-left: 18px;
+            margin-bottom: 0;
+        }
+        .list-element-text {
+            font-size: 1rem !important;
+            font-weight: bold;
+        }
+    }
+    @media screen and (min-width: 961px) and (max-width: 1264px) {
+        .text-muted {
+            font-size: 1rem !important;
+        }
+        .list-unstyled {
+            padding-left: 18px;
+            margin-bottom: 0;
+        }
+        .list-element-text {
+            font-size: 1rem !important;
+            font-weight: bold;
+        }
+    }
+    @media screen and (min-width: 1265px) {
+        .text-muted {
+            font-size: 1rem !important;
+        }
+        .list-unstyled {
+            padding-left: 18px;
+            margin-bottom: 0;
+        }
+        .list-element-text {
+            font-size: 1rem !important;
+            font-weight: bold;
+        }
+    }
+    * {
+        text-decoration: none !important;
+    }
+    .text-white:hover {
+        color: #E0C3FC !important;
+    }
+    main {
+        min-height: 1000px;
+        background-color: #8EC5FC;
+        background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+    }
+    @media screen and (min-height: 1200px) {
+        main {
+            min-height: 1800px;
+        }
+    }
+    .basic-footer {
+        color: #8EC5FC;
     }
 </style>

@@ -50,11 +50,18 @@ class AuthController extends Controller
                 );
                 return response($response, 200);
             } else {
-                $response = array('message' => 'Неверный пароль.');
+                $response = array(
+                    'message' => 'Неверный пароль.',
+                    'errors' => array(
+                        'password' => 'Неверный пароль'
+                    )
+                );
                 return response($response, 401);
             }
         } else {
-            $response = array('message' => 'Неверный email или пароль.');
+            $response = array(
+                'message' => 'Неверный email или пароль.'
+            );
             return response($response, 422);
         }
     }

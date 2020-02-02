@@ -7,7 +7,6 @@
                     bottom
                     origin="center center"
                     transition="scale-transition"
-                    class="cat-menu"
                 >
                     <template v-slot:activator="{ on }">
                         <v-btn
@@ -15,7 +14,7 @@
                             dark
                             v-on="on"
                             color="#50575B"
-                            class="responsive--text cat-text"
+                            class="responsive--text"
                         >
                             {{ ACTIVE_MODE }}
                         </v-btn>
@@ -24,18 +23,19 @@
                     <v-list>
                         <v-list-item
                             to="/"
-                            class="route__style cat-text"
+                            class="route__style"
                         >
-                            <v-list-item-title class="responsive--text cat-text">Все статьи</v-list-item-title>
+                            <v-list-item-title class="responsive--text">Все статьи</v-list-item-title>
                         </v-list-item>
                         <v-list-item
                             v-for="item in CATEGORIES"
                             :key="item.slug"
                             :to="{ name: 'category', params: { slug: item.slug } }"
-                            class="route__style cat-text"
+                            class="route__style"
+                            @click="setCategory(item.name)"
                             exact
                         >
-                            <v-list-item-title class="responsive--text cat-text">{{ item.name }}</v-list-item-title>
+                            <v-list-item-title class="responsive--text">{{ item.name }}</v-list-item-title>
                         </v-list-item>
                     </v-list>
                 </v-menu>
@@ -44,7 +44,7 @@
             <div class="album py-5">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-6" v-for="post in posts.data" :key="post.id">
+                        <div class="col-md-6" v-for="post in posts" :key="post.id">
                             <div class="card mb-6 box-shadow">
                                 <div class="card-image-container">
                                     <router-link
@@ -67,7 +67,7 @@
                                     </router-link>
                                     <p class="card-text topic-color">
                                         <v-chip
-                                            class="mx-0 mt-2 route__style cat-chip"
+                                            class="mx-0 mt-2 route__style"
                                             color="#8EC5FC"
                                             :to="{ name: 'category', params: { slug: post.slug } }"
                                         >
@@ -78,11 +78,11 @@
                                         <v-row>
                                             <v-card class="px-2 py-0" outlined>
                                                 <v-card-actions>
-                                                    <v-btn text icon disabled>
+                                                    <v-btn text icon>
                                                         <v-icon class="responsive--text">mdi-star-four-points</v-icon>
                                                     </v-btn>
                                                     <p class="subtitle-2 mt-3 ml-1 mr-1 responsive--text">+53</p>
-                                                    <v-btn icon text disabled>
+                                                    <v-btn icon>
                                                         <v-icon class="responsive--text">mdi-message-text</v-icon>
                                                     </v-btn>
                                                     <p class="subtitle-2 mt-3 ml-1 mr-1 responsive--text">12</p>
@@ -121,25 +121,36 @@
     export default {
         data() {
             return {
-                activeMode: "Все посты",
+                activeMode: '',
                 posts: {}
             }
         },
         methods: {
+            setCategory(name) {
+                this.activeMode = name;
+                axios.get('/api/v1/categories/' + this.$route.params.slug)
+                    .then(({data}) => {
+                        this.posts = data.posts;
+                    });
+            },
             getResults(page = 1) {
-                axios.get('/api/v1/posts?page=' + page)
+                axios.get('/api/v1/categories/' + this.$route.params.slug + '?page=' + page)
                     .then(({data}) => {
                         this.posts = data.posts;
                     });
             },
         },
         mounted() {
-            axios.get('/api/v1/posts')
+            console.log(this.$route.params.slug);
+            axios.get('/api/v1/categories/' + this.$route.params.slug)
                 .then(({data}) => {
                     this.posts = data.posts;
                 });
             this.getResults();
-            this.$store.dispatch('GET_CATEGORIES');
+            this.$store.dispatch('GET_CATEGORIES')
+                .then((data) => {
+                    this.activeMode = (data).find(x => x.slug === this.$route.params.slug).name;
+                })
         },
         computed: {
             ...mapGetters(['CATEGORIES']),
@@ -159,41 +170,6 @@
         justify-content: center;
         align-items: center;
         border-bottom: 1px solid #E0C3FC;
-        background-color: #8EC5FC;
-        background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
-    }
-
-    .cat-menu {
-        margin-left: 2rem !important;
-    }
-
-    .cat-text {
-        font-size: 1rem !important;
-    }
-
-    .text-muted {
-        font-size: 1rem;
-    }
-    .card-img-top:hover {
-        opacity: 75%;
-    }
-
-    .card-text {
-        font-size: 1.2rem;
-        color: #000 !important;
-    }
-
-    .card-text:hover {
-        color: #8EC5FC !important;
-    }
-
-    .cat-chip {
-        font-size: 1rem;
-        color: #000 !important;
-    }
-
-    .cat-chip:hover {
-        background-color: #E0C3FC !important;
     }
 
     img {

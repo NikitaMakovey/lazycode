@@ -14,8 +14,16 @@ window.Form = Form;
 Vue.component(HasError.name, HasError);
 Vue.component(AlertError.name, AlertError);
 
+Vue.component('pagination', require('laravel-vue-pagination'));
+
 Vue.use(VueRouter);
-Vue.use(Vuelidate);
+
+const moment = require('moment');
+require('moment/locale/ru');
+
+Vue.use(require('vue-moment'), {
+    moment
+});
 
 export const app = new Vue({
     el: '#app',

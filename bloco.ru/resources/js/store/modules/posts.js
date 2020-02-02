@@ -70,10 +70,10 @@ export default {
         },
         GET_POSTS(context) {
             return new Promise((resolve, reject) => {
-                let uri = '/api/code/posts';
+                let uri = '/api/v1/posts';
                 axios.get(uri)
                     .then(({data}) => {
-                        context.commit('SET_POSTS', data);
+                        context.commit('SET_POSTS', data.posts);
                         resolve(data);
                     })
                     .catch(error => {

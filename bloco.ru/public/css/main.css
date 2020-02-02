@@ -45732,4 +45732,8 @@ readers do not read off random characters that represent icons */
     color: #88bfa5 !important;
 }
 
+.v-label {
+    margin: 0;
+}
+
 
