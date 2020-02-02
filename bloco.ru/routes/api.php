@@ -40,6 +40,9 @@ Route::group(['middleware' => ['json.response']], function () {
                 Route::delete('tags/{id}', 'TagController@destroy');
 
                 Route::get('refresh-vote-types', 'VoteController@refresh');
+
+                Route::get('confirm/{id}', 'AdminController@confirm');
+                Route::get('reject/{id}', 'AdminController@reject');
             });
         });
     });

@@ -60,9 +60,33 @@ class CategoryController extends Controller
     {
         $category = Category::where('slug', $slug)->first();
         if ($category) {
+            $posts = DB::table('posts')
+                ->join('users', 'posts.author_id', '=', 'users.id')
+                ->join('categories', 'posts.category_id', '=', 'categories.id')
+                ->where(array(
+                    'posts.post_verified_is' => true,
+                    'categories.name' => $category->name
+                ))
+                ->select(array(
+                    'posts.id',
+                    'posts.author_id',
+                    'posts.title',
+                    'posts.image',
+                    'posts.body',
+                    'posts.created_at',
+                    'users.username',
+                    'categories.name',
+                    'categories.slug'
+                ))
+                ->selectRaw(
+                    'users.image AS user_image'
+                )
+                ->orderBy('posts.created_at', 'DESC')
+                ->get();
+
             $response = array(
-                'message' => 'Информация о категории \'' . $category->name . '\'.',
-                'category' => $category
+                'message' => 'Информация о всех постах категории \'' . $category->name . '\'.',
+                'posts' => $posts
             );
             return response($response, 200);
         }
