@@ -7,12 +7,13 @@ import Vuelidate from "vuelidate";
 import { store } from "./store";
 import router from "./router/index";
 import App from "./Index";
-import { Form, HasError, AlertError } from 'vform';
+import { Form, HasError, AlertError, AlertErrors } from 'vform';
 
 window.Form = Form;
 
 Vue.component(HasError.name, HasError);
 Vue.component(AlertError.name, AlertError);
+Vue.component(AlertErrors.name, AlertErrors);
 
 Vue.component('pagination', require('laravel-vue-pagination'));
 

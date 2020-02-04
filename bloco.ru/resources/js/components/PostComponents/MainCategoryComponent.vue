@@ -1,5 +1,5 @@
 <template>
-    <v-row class="xs-container">
+    <v-row class="xs-container ma-0">
         <v-spacer></v-spacer>
         <v-col cols="12" sm="11" md="11" lg="9" xl="6" class="xs-content-container">
             <v-row class="xs-container">
@@ -44,7 +44,7 @@
             <v-divider class="ma-xs-0"></v-divider>
             <div class="album py-0">
                 <div class="container row ma-0">
-                    <div class="col-md-8 ma-0 row pa-0">
+                    <div class="col-md-8 col-sm-8 ma-0 row pa-0">
                         <div
                             class="col-md-12 col-12 "
                             v-for="post in posts.data" :key="post.id"
@@ -101,7 +101,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4 ma-0 pa-0 xs-cat-top-container">
+                    <div class="col-md-4 col-sm-4 ma-0 pa-0 xs-cat-top-container">
 
                         <div class="card mt-3 box-shadow">
                             <div class="card-body pa-0">
@@ -111,10 +111,10 @@
                                     </v-subheader>
 
                                     <v-list-item
-                                        v-for="item in CATEGORIES"
+                                        v-for="item in RATING"
                                         :key="item.id"
                                         :to="{ name: 'category', params: { slug: item.slug } }"
-                                        v-if="item.cat_count > 1"
+                                        v-if="item.cat_count > 0"
                                         @click="setCategory(item.name)"
                                     >
                                         <v-list-item-content>
@@ -187,10 +187,11 @@
             this.$store.dispatch('GET_CATEGORIES')
                 .then((data) => {
                     this.activeMode = (data).find(x => x.slug === this.$route.params.slug).name;
-                })
+                });
+            this.$store.dispatch('GET_RATING');
         },
         computed: {
-            ...mapGetters(['CATEGORIES']),
+            ...mapGetters(['CATEGORIES', 'RATING']),
             /**
              * @return {string}
              */
@@ -200,6 +201,9 @@
 </script>
 
 <style scoped>
+    .card-image-container {
+        height: auto !important;
+    }
     .cat-text {
         text-transform: uppercase;
     }
@@ -217,13 +221,13 @@
 
     @media screen and (max-width: 400px) {
         .card-image-container {
-            max-height: 9rem !important;
+            max-height: 11rem !important;
         }
     }
 
     @media screen and (min-width: 401px) and (max-width: 600px) {
         .card-image-container {
-            max-height: 11rem !important;
+            max-height: 15rem !important;
         }
     }
 
@@ -246,6 +250,9 @@
         }
         .cat-active-text {
             margin: 0.4rem !important;
+            overflow: inherit !important;
+            word-wrap: break-word;
+            white-space: inherit !important;
         }
         .card-text {
             font-size: 1rem !important;
@@ -266,7 +273,8 @@
             padding: 0 !important;
         }
         .card-image-container {
-            max-height: 13rem !important;
+            height: auto !important;
+            max-height: 15rem !important;
         }
         .cat-header-text {
             font-size: 0.9rem;
@@ -274,7 +282,7 @@
             color: #8EC5FC;
         }
         .cat-item-text {
-            font-size: 0.7rem;
+            font-size: 0.8rem;
             word-wrap: break-word;
             overflow: inherit !important;
             text-overflow: inherit !important;
@@ -302,7 +310,7 @@
 
     @media screen and (min-width: 961px) and (max-width: 1264px) {
         .card-image-container {
-            max-height: 15rem !important;
+            max-height: 20rem !important;
         }
         .xs-container {
             margin: 0 !important;

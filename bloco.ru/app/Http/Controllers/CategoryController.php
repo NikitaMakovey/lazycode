@@ -17,6 +17,17 @@ class CategoryController extends Controller
      */
     public function index()
     {
+        $categories = Category::all();
+
+        $response = array(
+            'message' => 'Информация о всех категориях.',
+            'categories' => $categories
+        );
+        return response($response, 200);
+    }
+
+    public function rating()
+    {
         $categories = DB::table('categories')
             ->join('posts', 'posts.category_id', '=', 'categories.id')
             ->select(array(
@@ -30,9 +41,11 @@ class CategoryController extends Controller
             ))
             ->groupBy(array('categories.id'))
             ->orderBy('cat_count', 'DESC')
+            ->limit(6)
             ->get();
+
         $response = array(
-            'message' => 'Информация о всех категориях.',
+            'message' => 'Информация о всех популярных категориях.',
             'categories' => $categories
         );
         return response($response, 200);

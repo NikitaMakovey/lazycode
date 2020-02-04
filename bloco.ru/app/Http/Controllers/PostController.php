@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
@@ -81,6 +82,10 @@ class PostController extends Controller
                 'required',
                 'string',
                 'max:300'
+            ),
+            'tags' => array(
+                'required',
+                'array'
             )
         ]);
 
@@ -92,11 +97,109 @@ class PostController extends Controller
             'image' => $request['image']
         ]);
 
+        $this->insert_tags($request['tags'], $post->id);
+
         $response = array(
             'message' => 'Статья с заголовком \'' . $request['title'] . '\' успешно создан!',
             'post' => $post
         );
         return response($response, 201);
+    }
+
+    /**
+     * Store a newly created post in storage.
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function draft(Request $request)
+    {
+        $user = $request->user();
+        if ($user == null) {
+            $response = array(
+                'message' => 'Пользователь не аутентифицирован.'
+            );
+            return response($response, 401);
+        }
+        $this->validate($request, [
+            'title' => array(
+                'required',
+                'string',
+                'max:300',
+                'min:5'
+            ),
+            'category_id' => array(
+                'required',
+                'integer'
+            ),
+            'body' => array(
+                'required',
+                'min:10'
+            ),
+            'image' => array(
+                'required',
+                'string',
+                'max:300'
+            ),
+            'tags' => array(
+                'nullable',
+                'array'
+            )
+        ]);
+
+        $post = Post::create([
+            'title' => $request['title'],
+            'category_id' => $request['category_id'],
+            'author_id' => $user->id,
+            'body' => $request['body'],
+            'image' => $request['image']
+        ]);
+        $post->created_at = null;
+        $post->save();
+
+        $this->insert_tags($request['tags'], $post->id);
+
+        $response = array(
+            'message' => 'Статья с заголовком \'' . $request['title'] . '\' успешно занесён в черновик!',
+            'post' => $post
+        );
+        return response($response, 201);
+    }
+
+    /**
+     * @param array $tags
+     * @param int $id
+     */
+    private function insert_tags(array $tags, int $id)
+    {
+        for ($i = 0; $i < count($tags); $i++) {
+            $tag = DB::table('tags')
+                ->where(array(
+                    'name' => strtoupper($tags[$i])
+                ))
+                ->first();
+            if (!$tag) {
+                $tag = Tag::create([
+                    'name' => strtoupper($tags[$i])
+                ]);
+            }
+
+            $ex = DB::table('post_tag')
+                ->where(array(
+                    'post_id' => $id,
+                    'tag_id' => $tag->id
+                ))
+                ->first();
+
+            if (!$ex) {
+                DB::table('post_tag')
+                    ->insert(array(
+                        'post_id' => $id,
+                        'tag_id' => $tag->id
+                    ));
+            }
+        }
     }
 
     /**

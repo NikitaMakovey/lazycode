@@ -21,6 +21,7 @@ Route::group(['middleware' => ['json.response']], function () {
 
         Route::group(['prefix' => 'v1'], function () {
             Route::post('posts', 'PostController@store');
+            Route::post('draft', 'PostController@draft');
             Route::delete('posts/{id}', 'PostController@destroy');
             Route::put('posts/{id}', 'PostController@update');
 
@@ -49,6 +50,7 @@ Route::group(['middleware' => ['json.response']], function () {
 
     Route::group(['prefix' => 'v1'], function () {
         Route::get('categories', 'CategoryController@index');
+        Route::get('rating', 'CategoryController@rating');
         Route::get('categories/{slug}', 'CategoryController@show');
 
         Route::get('posts', 'PostController@index');

@@ -119,7 +119,7 @@
         computed: {
             IS_ADMIN() { return this.$store.getters.IS_ADMIN },
             ID() { return this.$store.getters.USER_ID },
-            ACCESS_TOKEN() { return this.$store.getters.AUTH_TOKEN },
+            ACCESS_TOKEN() { return this.$store.getters.ACCESS_TOKEN },
             csrfToken() { return document.head.querySelector('meta[name="csrf-token"]').getAttribute('content') }
         },
         mounted() {

@@ -13,7 +13,7 @@ export default {
         about: localStorage.getItem('about') || null
     },
     getters: {
-        AUTH_TOKEN: state => { return state.authToken },
+        ACCESS_TOKEN: state => { return state.authToken },
         USER_ID: state => { return state.user_id },
         USERNAME: state => { return state.username },
         NAME: state => { return state.name },
@@ -73,9 +73,9 @@ export default {
             });
         },
         LOGOUT_USER(context) {
-            axios.defaults.headers.common['Authorization'] = context.getters.AUTH_TOKEN;
+            axios.defaults.headers.common['Authorization'] = context.getters.ACCESS_TOKEN;
 
-            if (context.getters.AUTH_TOKEN !== null) {
+            if (context.getters.ACCESS_TOKEN !== null) {
                 return new Promise((resolve, reject) => {
                     axios.get('/api/logout')
                         .then(response => {
