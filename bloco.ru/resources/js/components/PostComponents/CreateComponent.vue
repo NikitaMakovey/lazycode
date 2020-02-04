@@ -1,33 +1,39 @@
 <template>
     <v-row>
         <v-spacer></v-spacer>
-        <v-col cols="10">
+        <v-col cols="12" sm="11" md="11" lg="9" xl="6">
             <v-row justify="center">
-                <p class="display-2 no-route-link--color">СОЗДАНИЕ ПОСТА</p>
+                <p class="display-2 no-route-link--color">СОЗДАНИЕ СТАТЬИ</p>
             </v-row>
             <v-divider></v-divider>
-            <form @submit.prevent="createPost">
+            <form @submit.prevent="createPost" @cancel.prevent="sendToDraft">
                 <div class="form-group">
                     <label for="selectTitleCreatePost">Заголовок статьи</label>
                     <input v-model="form.title" type="text" name="title"
                            class="form-control title no-route-link--color"
                            :class="{ 'is-invalid': form.errors.has('title') }"
-                           id="selectTitleCreatePost" placeholder="The addled anchor awkwardly endures the seashell."
+                           id="selectTitleCreatePost"
+                           placeholder="Здесь вам необходимо написать заголовок Вашей статьи."
                     >
                     <has-error :form="form" field="title"></has-error>
                 </div>
                 <div class="form-group">
-                    <label for="selectCategoryCreatePost">Категория поста</label>
-                    <select v-model="category" class="form-control subtitle-1 no-route-link--color"
-                            id="selectCategoryCreatePost"
-                    >
-                        <option class="subtitle-1 no-route-link--color"
-                                v-for="category_ in CATEGORIES"
-                                :value="category_.name" :key="category_.id"
-                        >
-                            {{ category_.name }}
-                        </option>
-                    </select>
+                    <label for="selectBodyCreatePost">Категория статьи</label>
+                    <v-select
+                        v-model="category"
+                        :items="CATEGORIES"
+                        item-text="name"
+                        item-value="id"
+                        return-object
+                        single-line
+                        placeholder="Выберите категорию"
+                        :class="{ 'is-invalid': form.errors.has('category_id') }"
+                        name="category_id"
+                    ></v-select>
+                    <has-error :form="form" field="category_id"></has-error>
+                </div>
+                <div class="form-group">
+                    
                 </div>
                 <div class="form-group">
                     <label for="selectBodyCreatePost">Текст статьи</label>
@@ -53,9 +59,18 @@
                     </editor>
                     <has-error :form="form" field="body"></has-error>
                 </div>
-                <v-btn type="submit" class="route__style" dark outlined color="#50575B">
-                    Запостить
-                </v-btn>
+                <div>
+                    <div class="btn-form-container">
+                        <v-btn type="submit" class="route__style" dark color="#50575B">
+                            ОТПРАВИТЬ НА ПРОВЕРКУ
+                        </v-btn>
+                    </div>
+                    <div class="btn-form-container">
+                        <v-btn type="cancel" class="route__style" dark outlined color="#50575B">
+                            В ЧЕРНОВИК
+                        </v-btn>
+                    </div>
+                </div>
             </form>
         </v-col>
         <v-spacer></v-spacer>
@@ -69,11 +84,11 @@
     export default {
         data() {
             return {
-                category: null,
+                category: { id: 0, name: 'Выберите категорию', slug: 'vibirite', cat_count: 0 },
                 form: new Form({
                     title: '',
                     category_id: '',
-                    author_id: this.$store.getters.USER_ID,
+                    image: '',
                     body: ''
                 })
             }
@@ -101,5 +116,7 @@
 </script>
 
 <style scoped>
-
+    .btn-form-container {
+        display: inline-block;
+    }
 </style>

@@ -17,7 +17,20 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
+        $categories = DB::table('categories')
+            ->join('posts', 'posts.category_id', '=', 'categories.id')
+            ->select(array(
+                'categories.id',
+                'categories.name',
+                'categories.slug'
+            ))
+            ->selectRaw('COUNT(posts.category_id) AS cat_count')
+            ->where(array(
+                'posts.post_verified_is' => true
+            ))
+            ->groupBy(array('categories.id'))
+            ->orderBy('cat_count', 'DESC')
+            ->get();
         $response = array(
             'message' => 'Информация о всех категориях.',
             'categories' => $categories
@@ -82,7 +95,7 @@ class CategoryController extends Controller
                     'users.image AS user_image'
                 )
                 ->orderBy('posts.created_at', 'DESC')
-                ->get();
+                ->paginate(6);
 
             $response = array(
                 'message' => 'Информация о всех постах категории \'' . $category->name . '\'.',
