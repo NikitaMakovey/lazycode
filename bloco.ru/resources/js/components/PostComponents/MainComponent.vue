@@ -83,11 +83,13 @@
                                                 <v-card-actions>
                                                     <v-btn text icon disabled class="ml-3 mr-4">
                                                         <v-icon class="responsive--text">mdi-star-four-points</v-icon>
-                                                        <span>+53</span>
+                                                        <span>
+                                                            {{ post.sum_votes > 0 ? "+" : "" }}{{ post.sum_votes == null ? 0 : post.sum_votes }}
+                                                        </span>
                                                     </v-btn>
                                                     <v-btn icon text disabled class="ml-4 mr-3">
                                                         <v-icon class="responsive--text">mdi-message-text</v-icon>
-                                                        <span>12</span>
+                                                        <span>{{ post.count_comments }}</span>
                                                     </v-btn>
                                                 </v-card-actions>
                                             </v-card>
@@ -101,7 +103,6 @@
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-4 ma-0 pa-0 xs-cat-top-container">
-
                         <div class="card mt-3 box-shadow">
                             <div class="card-body pa-0">
                                 <v-list subheader>
@@ -129,7 +130,6 @@
                                 </v-list>
                             </div>
                         </div>
-
                     </div>
                     <div class="pa-0 ma-0">
                         <div class="pa-0 ma-0">

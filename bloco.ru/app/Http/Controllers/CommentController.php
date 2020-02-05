@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Comment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CommentController extends Controller
 {
@@ -44,8 +45,7 @@ class CommentController extends Controller
                 'integer'
             ),
             'body' => array(
-                'required',
-                'min:5'
+                'required'
             )
         ]);
 
@@ -55,9 +55,31 @@ class CommentController extends Controller
             'body' => $request['body']
         ]);
 
+        $comment_ = DB::table('comments')
+            ->join('users', 'comments.author_id', '=', 'users.id')
+            ->where(array(
+                'comments.id' => $comment->id
+            ))
+            ->select(array(
+                'comments.id',
+                'comments.created_at',
+                'comments.body',
+                'comments.author_id',
+                'users.username',
+                'users.image',
+                'users.name',
+            ))
+            ->selectRaw(
+                '0 AS sum_votes'
+            )
+            ->selectRaw(
+                '0 AS code'
+            )
+            ->first();
+
         $response = array(
             'message' => 'Комментарий со следующим содержанием - \'' . $request['body'] . '\' - успешно создан!',
-            'comment' => $comment
+            'comment' => $comment_
         );
 
         return response($response, 201);

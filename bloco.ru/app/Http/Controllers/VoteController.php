@@ -67,26 +67,41 @@ class VoteController extends Controller
                 ]);
             }
 
+            $sum_votes = Vote::where('type_id', $request['type_id'])
+                ->where('source_id', $request['source_id'])
+                ->sum('vote');
+
             $response = array(
                 'message' => 'Запрос выполнен успешно - оценка поставлена.',
-                'code' => $vote->vote
+                'code' => $vote->vote,
+                'sum_votes' => $sum_votes
             );
             return response($response, 201);
         } else if ($vote && $vote->vote == $request['vote']) {
             $vote->delete();
 
+            $sum_votes = Vote::where('type_id', $request['type_id'])
+                ->where('source_id', $request['source_id'])
+                ->sum('vote');
+
             $response = array(
                 'message' => 'Запрос выполнен успешно - оценка снята.',
-                'code' => 0
+                'code' => 0,
+                'sum_votes' => $sum_votes
             );
             return response($response, 200);
         } else {
             $vote->vote = $request['vote'];
             $vote->save();
 
+            $sum_votes = Vote::where('type_id', $request['type_id'])
+                ->where('source_id', $request['source_id'])
+                ->sum('vote');
+
             $response = array(
                 'message' => 'Запрос выполнен успешно - оценка обновлена.',
-                'code' => (int)$vote->vote
+                'code' => (int)$vote->vote,
+                'sum_votes' => $sum_votes
             );
             return response($response, 200);
         }

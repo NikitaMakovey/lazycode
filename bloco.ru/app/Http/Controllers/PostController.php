@@ -37,6 +37,12 @@ class PostController extends Controller
             ->selectRaw(
                 'users.image AS user_image'
             )
+            ->selectRaw(
+                '(SELECT COUNT(*) FROM comments WHERE comments.post_id = posts.id)  AS count_comments'
+            )
+            ->selectRaw(
+                '(SELECT SUM(votes.vote) FROM votes WHERE source_id = posts.id AND type_id = 1) AS sum_votes'
+            )
             ->orderBy('posts.created_at', 'DESC')
             ->paginate(6);
 
@@ -203,12 +209,97 @@ class PostController extends Controller
     }
 
     /**
+     * @param Request $request
+     * @param int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function auth_show(Request $request, int $id)
+    {
+        $user = $request->user();
+        if ($user == null) {
+            $response = array(
+                'message' => 'Пользователь не аутентифицирован.'
+            );
+            return response($response, 401);
+        }
+
+        $post = $this->getPost($id);
+        $comments = $this->getAuthPostComments($id, $user->id);
+        $tags = $this->getPostTags($id);
+        $clicked = $this->getVoteStatus($id, $user->id);
+
+        if ($post) {
+            $response = array(
+                'message' => 'Информация о статье \'' . $post->title . '\'.',
+                'post' => $post,
+                'tags' => $tags,
+                'comments' => $comments,
+                'clicked' => $clicked
+            );
+            return response($response, 200);
+        }
+        $response = array(
+            'message' => 'Информация о статье не найдена.'
+        );
+        return response($response, 404);
+    }
+
+    /**
+     * @param int $post_id
+     * @param int $user_id
+     * @return int
+     */
+    private function getVoteStatus(int $post_id, int $user_id) : int
+    {
+        $vote = DB::table('votes')
+            ->where(array(
+                'type_id' => 1,
+                'source_id' => $post_id,
+                'user_id' => $user_id
+            ))
+            ->select(array(
+                'vote'
+            ))
+            ->first();
+
+        if ($vote) {
+            return $vote->vote;
+        }
+        return 0;
+    }
+
+    /**
      * Display the specified post.
      *
      * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show(int $id)
+    {
+        $post = $this->getPost($id);
+        $comments = $this->getPostComments($id);
+        $tags = $this->getPostTags($id);
+
+        if ($post) {
+            $response = array(
+                'message' => 'Информация о статье \'' . $post->title . '\'.',
+                'post' => $post,
+                'tags' => $tags,
+                'comments' => $comments
+            );
+            return response($response, 200);
+        }
+        $response = array(
+            'message' => 'Информация о статье не найдена.'
+        );
+        return response($response, 404);
+    }
+
+    /**
+     * @param int $id
+     * @return \Illuminate\Database\Eloquent\Model|\Illuminate\Database\Query\Builder|object|null
+     */
+    private function getPost(int $id)
     {
         $post = DB::table('posts')
             ->join('users', 'posts.author_id', '=', 'users.id')
@@ -225,26 +316,21 @@ class PostController extends Controller
                 'posts.body',
                 'posts.created_at',
                 'users.username',
-                'categories.name'
+                'categories.name',
+                'categories.slug'
             ))
             ->selectRaw(
                 'users.image AS user_image'
             )
+            ->selectRaw(
+                '(SELECT COUNT(*) FROM comments WHERE comments.post_id = posts.id)  AS count_comments'
+            )
+            ->selectRaw(
+                '(SELECT SUM(votes.vote) FROM votes WHERE source_id = posts.id AND type_id = 1) AS sum_votes'
+            )
             ->first();
-        $comments = $this->getPostComments($id);
 
-        if ($post) {
-            $response = array(
-                'message' => 'Информация о статье \'' . $post->title . '\'.',
-                'post' => $post,
-                'comments' => $comments
-            );
-            return response($response, 200);
-        }
-        $response = array(
-            'message' => 'Информация о статье не найдена.'
-        );
-        return response($response, 404);
+        return $post;
     }
 
     /**
@@ -345,14 +431,77 @@ class PostController extends Controller
                 'comments.id',
                 'comments.created_at',
                 'comments.body',
+                'comments.author_id',
                 'users.username',
                 'users.image',
+                'users.name',
             ))
-            ->selectRaw('users.id AS user_id')
+            ->selectRaw(
+                '(SELECT SUM(vote) FROM votes WHERE source_id = comments.id AND type_id = 2) AS sum_votes'
+            )
+            ->selectRaw(
+                '0 AS code'
+            )
             ->orderBy('comments.created_at', 'DESC')
             ->get();
 
         return $comments;
+    }
+
+    /**
+     * @param int $post_id
+     * @param int $user_id
+     * @return Collection
+     */
+    public function getAuthPostComments(int $post_id, int $user_id) : Collection
+    {
+        $comments = DB::table('comments')
+            ->join('posts', 'comments.post_id', '=', 'posts.id')
+            ->join('users', 'comments.author_id', '=', 'users.id')
+            ->where(array(
+                'posts.id' => $post_id
+            ))
+            ->select(array(
+                'comments.id',
+                'comments.created_at',
+                'comments.body',
+                'comments.author_id',
+                'users.username',
+                'users.image',
+                'users.name',
+            ))
+            ->selectRaw(
+                '(SELECT SUM(vote) FROM votes WHERE source_id = comments.id AND type_id = 2) AS sum_votes'
+            )
+            ->selectRaw(
+                '(SELECT votes.vote FROM votes 
+                WHERE source_id = comments.id AND type_id = 2 AND user_id = ?) 
+                AS code', [$user_id]
+            )
+            ->orderBy('comments.created_at', 'DESC')
+            ->get();
+
+        return $comments;
+    }
+
+    /**
+     * @param int $id
+     * @return Collection
+     */
+    public function getPostTags(int $id) : Collection
+    {
+        $tags = DB::table('post_tag')
+            ->join('tags', 'post_tag.tag_id', '=', 'tags.id')
+            ->where(array(
+                'post_tag.post_id' => $id
+            ))
+            ->select(array(
+                'tags.id',
+                'tags.name'
+            ))
+            ->get();
+
+        return $tags;
     }
 
     /**

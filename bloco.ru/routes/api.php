@@ -20,6 +20,7 @@ Route::group(['middleware' => ['json.response']], function () {
         });
 
         Route::group(['prefix' => 'v1'], function () {
+            Route::get('auth-posts/{id}', 'PostController@auth_show');
             Route::post('posts', 'PostController@store');
             Route::post('draft', 'PostController@draft');
             Route::delete('posts/{id}', 'PostController@destroy');

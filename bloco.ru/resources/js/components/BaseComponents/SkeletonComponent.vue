@@ -118,7 +118,7 @@
         },
         computed: {
             IS_ADMIN() { return this.$store.getters.IS_ADMIN },
-            ID() { return this.$store.getters.USER_ID },
+            ID() { return this.$store.getters.ID },
             ACCESS_TOKEN() { return this.$store.getters.ACCESS_TOKEN },
             csrfToken() { return document.head.querySelector('meta[name="csrf-token"]').getAttribute('content') }
         },

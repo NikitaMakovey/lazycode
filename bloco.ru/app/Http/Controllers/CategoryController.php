@@ -107,6 +107,12 @@ class CategoryController extends Controller
                 ->selectRaw(
                     'users.image AS user_image'
                 )
+                ->selectRaw(
+                    '(SELECT COUNT(*) FROM comments WHERE comments.post_id = posts.id)  AS count_comments'
+                )
+                ->selectRaw(
+                    '(SELECT SUM(votes.vote) FROM votes WHERE source_id = posts.id AND type_id = 1) AS sum_votes'
+                )
                 ->orderBy('posts.created_at', 'DESC')
                 ->paginate(6);
 
