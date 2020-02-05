@@ -1,11 +1,10 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import auth from './modules/auth';
 import user from './modules/user';
-import users from './modules/users';
-import posts from './modules/posts';
-import comments from './modules/comments';
-import votes from './modules/votes';
-import categories from "./modules/categories";
+import post from './modules/post';
+import comment from './modules/comment';
+import category from "./modules/category";
 
 Vue.use(Vuex);
 
@@ -15,11 +14,10 @@ export const store = new Vuex.Store({
     mutations: {},
     actions: {},
     modules: {
+        auth,
         user,
-        users,
-        posts,
-        comments,
-        votes,
-        categories
+        post,
+        comment,
+        category
     }
 });

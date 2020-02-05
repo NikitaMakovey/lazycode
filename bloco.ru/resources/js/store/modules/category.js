@@ -2,19 +2,19 @@ import axios from 'axios';
 
 export default {
     state: {
-        categories: null,
-        rating: null
+        CATEGORIES: null,
+        RATING: null
     },
     getters: {
-        CATEGORIES: state => { return state.categories },
-        RATING: state => { return state.rating }
+        CATEGORIES: state => { return state.CATEGORIES },
+        RATING: state => { return state.RATING }
     },
     mutations: {
         SET_CATEGORIES: (state, payload) => {
-            state.categories = payload;
+            state.CATEGORIES = payload;
         },
         SET_RATING: (state, payload) => {
-            state.rating = payload;
+            state.RATING = payload;
         }
     },
     actions: {
