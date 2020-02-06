@@ -164,6 +164,7 @@ class PostController extends Controller
         $post->created_at = null;
         $post->save();
 
+        $this->delete_tags($post->id);
         $this->insert_tags($request['tags'], $post->id);
 
         $response = array(
@@ -206,6 +207,120 @@ class PostController extends Controller
                     ));
             }
         }
+    }
+
+    /**
+     * @param int $id
+     */
+    private function delete_tags(int $id)
+    {
+        DB::table('post_tag')
+            ->where(array(
+                'post_id' => $id
+            ))
+            ->delete();
+    }
+
+    /**
+     * Store a newly created post in storage.
+     *
+     * @param Request $request
+     * @param int $id
+     * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function update_draft(Request $request, int $id)
+    {
+        $user = $request->user();
+        if ($user == null) {
+            $response = array(
+                'message' => 'Пользователь не аутентифицирован.'
+            );
+            return response($response, 401);
+        }
+        $this->validate($request, [
+            'title' => array(
+                'required',
+                'string',
+                'max:300',
+                'min:5'
+            ),
+            'category_id' => array(
+                'required',
+                'integer'
+            ),
+            'body' => array(
+                'required',
+                'min:10'
+            ),
+            'image' => array(
+                'required',
+                'string',
+                'max:300'
+            ),
+            'tags' => array(
+                'nullable',
+                'array'
+            )
+        ]);
+
+
+        $post = Post::findOrFail($id);
+        if ($post->author_id === $user->id) {
+
+            $post->title = $request['title'];
+            $post->category_id = $request['category_id'];
+            $post->body = $request['body'];
+            $post->image = $request['image'];
+            $post->created_at = null;
+            $post->save();
+
+            $this->delete_tags($post->id);
+            $this->insert_tags($request['tags'], $post->id);
+
+            $response = array(
+                'message' => 'Черновик с заголовком \'' . $request['title'] . '\' успешно обновлён!',
+                'post' => $post
+            );
+            return response($response, 200);
+        }
+
+        $response = array(
+            'message' => 'Доступ запрещён.'
+        );
+        return response($response, 403);
+    }
+
+    /**
+     * @param Request $request
+     * @param int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function delete_draft(Request $request, int $id)
+    {
+        $user = $request->user();
+        if ($user == null) {
+            $response = array(
+                'message' => 'Пользователь не аутентифицирован.'
+            );
+            return response($response, 401);
+        }
+
+        $post = Post::findOrFail($id);
+        if ($post->author_id === $user->id) {
+            $this->delete_tags($post->id);
+            $post->delete();
+
+            $response = array(
+                'message' => 'Черновик успешно удалён!',
+            );
+            return response($response, 200);
+        }
+
+        $response = array(
+            'message' => 'Доступ запрещён.'
+        );
+        return response($response, 403);
     }
 
     /**
@@ -296,6 +411,51 @@ class PostController extends Controller
     }
 
     /**
+     * Display the specified post.
+     *
+     * @param int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(int $id)
+    {
+        $post = $this->getEditPost($id);
+        $tags = $this->getPostTags($id);
+
+        if ($post) {
+            $response = array(
+                'message' => 'Информация о статье \'' . $post->title . '\'.',
+                'post' => $post,
+                'tags' => $tags
+            );
+            return response($response, 200);
+        }
+        $response = array(
+            'message' => 'Информация о статье не найдена.'
+        );
+        return response($response, 404);
+    }
+
+    private function getEditPost(int $id)
+    {
+        $post = DB::table('posts')
+            ->join('categories', 'posts.category_id', '=', 'categories.id')
+            ->where(array(
+                'posts.id' => $id
+            ))
+            ->select(array(
+                'posts.id',
+                'posts.author_id',
+                'posts.title',
+                'posts.image',
+                'posts.body',
+                'categories.name',
+                'categories.id AS category_id'
+            ))
+            ->first();
+
+        return $post;
+    }
+    /**
      * @param int $id
      * @return \Illuminate\Database\Eloquent\Model|\Illuminate\Database\Query\Builder|object|null
      */
@@ -351,12 +511,6 @@ class PostController extends Controller
             return response($response, 401);
         }
         $this->validate($request, [
-            'title' => array(
-                'required',
-                'string',
-                'max:300',
-                'min:5'
-            ),
             'body' => array(
                 'required',
                 'min:10'
@@ -365,7 +519,6 @@ class PostController extends Controller
 
         $post = Post::findOrFail($id);
         if ($post->author_id == $user->id) {
-            $post->title = $request['title'];
             $post->body = $request['body'];
             $post->save();
 

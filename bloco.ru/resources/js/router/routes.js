@@ -4,6 +4,7 @@ import PostsMainComponent from "../components/PostComponents/MainComponent";
 import MainCategoryComponent from "../components/PostComponents/MainCategoryComponent"
 import PostComponent from "../components/PostComponents/PostComponent";
 import EditPostComponent from "../components/PostComponents/EditComponent";
+import DraftPostComponent from "../components/PostComponents/DraftComponent";
 import CreatePostComponent from "../components/PostComponents/CreateComponent";
 import UsersMainComponent from "../components/UserComponents/MainComponent";
 import UserComponent from "../components/UserComponents/UserComponent";
@@ -44,13 +45,21 @@ import EmailEditComponent from "../components/UserComponents/EditComponents/Emai
 import PhotoEditComponent from "../components/UserComponents/EditComponents/PhotoEditComponent";
 import AboutEditComponent from "../components/UserComponents/EditComponents/AboutEditComponent";
 
+//
+import HomeComponent from "../components/UserComponents/HomeComponent";
+import PublishComponent from "../components/UserComponents/HomeComponents/PublishComponent";
+import ProcessComponent from "../components/UserComponents/HomeComponents/ProcessComponent";
+import RejectComponent from "../components/UserComponents/HomeComponents/RejectComponent";
+import DraftComponent from "../components/UserComponents/HomeComponents/DraftComponent";
+
 const routes = [
     { path: '/', component: SkeletonComponent,
         children: [
             { path: '', name: 'main', component: PostsMainComponent },
             { path: 'categories/:slug', name: 'category', component: MainCategoryComponent },
             { path: 'posts/:id', name: 'post', component: PostComponent },
-            { path: 'posts/:id/edit', name: 'posts.edit', component:  EditPostComponent, meta: { middleware: [ auth ] } },
+            { path: 'posts/:id/edit', name: 'post.edit', component:  EditPostComponent, meta: { middleware: [ auth ] } },
+            { path: 'posts/:id/draft', name: 'post.draft', component:  DraftPostComponent, meta: { middleware: [ auth ] } },
             { path: 'post/create', name: 'posts.create', component:  CreatePostComponent, meta: { middleware: [ auth ] } },
             { path: 'users', name: 'users', component: UsersMainComponent },
             { path: 'users/:id/', name: 'user', component: UserComponent,
@@ -73,6 +82,14 @@ const routes = [
                     { path: 'email', name: 'edit.email', component: EmailEditComponent, meta: { middleware: [ auth ] } },
                     { path: 'photo', name: 'edit.photo', component: PhotoEditComponent, meta: { middleware: [ auth ] } },
                     { path: 'about', name: 'edit.about', component: AboutEditComponent, meta: { middleware: [ auth ] } },
+                ]
+            },
+            { path: 'home/', name: 'me.edit', component: HomeComponent,
+                children: [
+                    { path: 'publish', name: 'home.publish', component: PublishComponent, meta: { middleware: [ auth ] } },
+                    { path: 'process', name: 'home.process', component: ProcessComponent, meta: { middleware: [ auth ] } },
+                    { path: 'reject', name: 'home.reject', component: RejectComponent, meta: { middleware: [ auth ] } },
+                    { path: 'draft', name: 'home.draft', component: DraftComponent, meta: { middleware: [ auth ] } },
                 ]
             },
         ]

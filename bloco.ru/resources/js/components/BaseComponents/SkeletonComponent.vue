@@ -34,7 +34,7 @@
                                         </router-link>
                                     </li>
                                     <li>
-                                        <router-link to="/user/home" class="text-white">
+                                        <router-link to="/home/publish" class="text-white">
                                             <span class="list-element-text">Мой дом</span>
                                         </router-link>
                                     </li>

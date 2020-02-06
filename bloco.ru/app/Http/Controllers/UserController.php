@@ -23,8 +23,17 @@ class UserController extends Controller
                 'users.name',
                 'users.image'
             )
-            ->orderBy('users.created_at')
-            ->get();
+            ->selectRaw(
+                'CASE WHEN (
+                        (SELECT SUM(vote) FROM votes WHERE direct_id = users.id)
+                    ) IS NULL 
+                    THEN 0 
+                    ELSE (SELECT SUM(vote) FROM votes WHERE direct_id = users.id) 
+                END
+                    AS sum_votes'
+            )
+            ->orderBy('sum_votes', 'DESC')
+            ->paginate(10);
 
         $response = array(
             'message' => 'Информация о всех пользователях.',
@@ -122,4 +131,187 @@ class UserController extends Controller
         );
         return response($response, 200);
     }
+
+    /**
+     * Display all posts of the user.
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function publish(Request $request)
+    {
+        $user = $request->user();
+        if ($user == null) {
+            $response = array(
+                'message' => 'Пользователь не аутентифицирован.'
+            );
+            return response($response, 401);
+        }
+
+        $posts = DB::table('posts')
+            ->join('categories', 'categories.id', '=', 'posts.category_id')
+            ->where(array(
+                'posts.author_id' => $user->id,
+                'posts.post_verified_is' => true
+            ))
+            ->select(
+                'posts.id',
+                'posts.title',
+                'posts.image',
+                'posts.body',
+                'posts.created_at',
+                'categories.name',
+                'categories.slug'
+            )
+            ->selectRaw(
+                '(SELECT COUNT(*) FROM comments WHERE comments.post_id = posts.id)  AS count_comments'
+            )
+            ->selectRaw(
+                '(SELECT SUM(votes.vote) FROM votes WHERE source_id = posts.id AND type_id = 1) AS sum_votes'
+            )
+            ->orderBy('posts.created_at', 'DESC')
+            ->paginate(6);
+
+        $response = array(
+            'message' => 'Информация о всех статьях пользователя c ID: ' . $user->id . '.',
+            'posts' => $posts
+        );
+        return response($response, 200);
+    }
+
+    /**
+     * Display all posts of the user.
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function process(Request $request)
+    {
+        $user = $request->user();
+        if ($user == null) {
+            $response = array(
+                'message' => 'Пользователь не аутентифицирован.'
+            );
+            return response($response, 401);
+        }
+
+        $posts = DB::table('posts')
+            ->join('categories', 'categories.id', '=', 'posts.category_id')
+            ->where(array(
+                'posts.author_id' => $user->id,
+                'posts.post_verified_is' => null
+            ))
+            ->whereRaw(
+                'posts.created_at IS NOT NULL'
+            )
+            ->select(
+                'posts.id',
+                'posts.title',
+                'posts.image',
+                'posts.body',
+                'posts.created_at',
+                'categories.name',
+                'categories.slug'
+            )
+            ->orderBy('posts.created_at', 'DESC')
+            ->paginate(6);
+
+        $response = array(
+            'message' => 'Информация о всех статьях пользователя c ID: ' . $user->id . '.',
+            'posts' => $posts
+        );
+        return response($response, 200);
+    }
+
+    /**
+     * Display all posts of the user.
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function reject(Request $request)
+    {
+        $user = $request->user();
+        if ($user == null) {
+            $response = array(
+                'message' => 'Пользователь не аутентифицирован.'
+            );
+            return response($response, 401);
+        }
+
+        $posts = DB::table('posts')
+            ->join('categories', 'categories.id', '=', 'posts.category_id')
+            ->where(array(
+                'posts.author_id' => $user->id,
+                'posts.post_verified_is' => false
+            ))
+            ->select(
+                'posts.id',
+                'posts.title',
+                'posts.image',
+                'posts.body',
+                'posts.created_at',
+                'categories.name',
+                'categories.slug'
+            )
+            ->selectRaw(
+                '(SELECT COUNT(*) FROM comments WHERE comments.post_id = posts.id)  AS count_comments'
+            )
+            ->selectRaw(
+                '(SELECT SUM(votes.vote) FROM votes WHERE source_id = posts.id AND type_id = 1) AS sum_votes'
+            )
+            ->orderBy('posts.created_at', 'DESC')
+            ->paginate(6);
+
+        $response = array(
+            'message' => 'Информация о всех статьях пользователя c ID: ' . $user->id . '.',
+            'posts' => $posts
+        );
+        return response($response, 200);
+    }
+
+    /**
+     * Display all posts of the user.
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function draft(Request $request)
+    {
+        $user = $request->user();
+        if ($user == null) {
+            $response = array(
+                'message' => 'Пользователь не аутентифицирован.'
+            );
+            return response($response, 401);
+        }
+
+        $posts = DB::table('posts')
+            ->join('categories', 'categories.id', '=', 'posts.category_id')
+            ->where(array(
+                'posts.author_id' => $user->id,
+                'posts.post_verified_is' => null
+            ))
+            ->whereRaw(
+                'posts.created_at IS NULL'
+            )
+            ->select(
+                'posts.id',
+                'posts.title',
+                'posts.image',
+                'posts.body',
+                'posts.updated_at',
+                'categories.name',
+                'categories.slug'
+            )
+            ->orderBy('posts.updated_at', 'DESC')
+            ->paginate(6);
+
+        $response = array(
+            'message' => 'Информация о всех статьях пользователя c ID: ' . $user->id . '.',
+            'posts' => $posts
+        );
+        return response($response, 200);
+    }
+
 }

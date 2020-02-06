@@ -19,12 +19,21 @@ Route::group(['middleware' => ['json.response']], function () {
             Route::put('bio', 'EditController@bio');
         });
 
+        Route::group(['prefix' => 'user'], function () {
+            Route::get('publish', 'UserController@publish');
+            Route::get('process', 'UserController@process');
+            Route::get('reject', 'UserController@reject');
+            Route::get('draft', 'UserController@draft');
+        });
+
         Route::group(['prefix' => 'v1'], function () {
             Route::get('auth-posts/{id}', 'PostController@auth_show');
             Route::post('posts', 'PostController@store');
             Route::post('draft', 'PostController@draft');
             Route::delete('posts/{id}', 'PostController@destroy');
+            Route::delete('draft/{id}', 'PostController@delete_draft');
             Route::put('posts/{id}', 'PostController@update');
+            Route::put('draft/{id}', 'PostController@update_draft');
 
             Route::post('comments', 'CommentController@store');
             Route::delete('comments/{id}', 'CommentController@destroy');
@@ -57,6 +66,7 @@ Route::group(['middleware' => ['json.response']], function () {
 
         Route::get('posts', 'PostController@index');
         Route::get('posts/{id}', 'PostController@show');
+        Route::get('edit-posts/{id}', 'PostController@edit');
 
         Route::get('comments', 'CommentController@index');
 
