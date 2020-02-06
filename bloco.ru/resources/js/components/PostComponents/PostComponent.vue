@@ -1,10 +1,10 @@
 <template>
-    <v-row>
+    <v-row class="ma-0 pa-0">
         <v-spacer></v-spacer>
         <v-col cols="12" sm="10" md="10" lg="9" xl="7" class="post-bg pa-2">
-            <v-row class="pa-4">
-                <v-col cols="12" class="mb-1">
-                    <v-row class="my-0">
+            <v-row class="pa-0 ma-0">
+                <v-col cols="12" class="mb-0">
+                    <v-row class="ma-0">
                         <v-btn icon small class="route__style mr-2"
                                :to="{ name: 'user.about', params: { id: POST.author_id } }" exact
                         >
@@ -20,11 +20,13 @@
                                 @{{ POST.username }}
                             </router-link>
                         </span>
-                        <span class="mx-1">{{ $moment(POST.created_at).format("LL") }}</span>
                     </v-row>
                 </v-col>
+                <v-col cols="12" class="ma-0 pt-0">
+                    <span>{{ $moment(POST.created_at).format("LL") }}</span>
+                </v-col>
                 <v-col cols="12" class="mb-1 py-0">
-                    <v-row class="py-0 my-0">
+                    <v-row class="py-0 ma-0">
                         <p class="title no-route-link--color mr-1 my-0">
                             {{ POST.title }}
                         </p>
@@ -37,7 +39,7 @@
                     </v-row>
                 </v-col>
                 <v-col cols="12" class="mb-1 py-0">
-                    <v-row class="py-0 my-0">
+                    <v-row class="py-0 ma-0">
                         <v-chip
                             class="ma-0 subtitle-1"
                             color="#50575B" dark
@@ -51,16 +53,16 @@
                     <v-img :src="POST.image" style="height: auto; max-width: 100%"></v-img>
                 </v-col>
                 <v-col cols="12">
-                    <v-row v-html="POST.body" class="post-body--html"></v-row>
+                    <v-row v-html="POST.body" class="post-body--html mx-0"></v-row>
                 </v-col>
                 <v-col cols="12">
-                    <v-row>
+                    <v-row class="mx-0">
                         <div>
                             <strong class="title">Теги: </strong>
                             <template v-for="tag in POST_TAGS">
                                 <v-chip
-                                    class="my-0 mx-1 subtitle-1"
-                                    color="#50325B" dark
+                                    class="my-1 mx-1 subtitle-1"
+                                    color="#937666" dark small
                                 >
                                     {{ tag.name }}
                                 </v-chip>
@@ -69,7 +71,7 @@
                     </v-row>
                 </v-col>
                 <v-col cols="12">
-                    <v-row>
+                    <v-row class="mx-0">
                         <v-card class="px-2 py-0" outlined>
                             <v-card-actions>
                                 <v-btn text icon @click="voteClick(1, POST.id, 1)"
@@ -98,7 +100,7 @@
                 <v-col cols="12" class="comment--input pa-0" v-if="$store.getters.ID">
                     <v-form @submit.prevent="postComment">
                         <v-container fluid class="py-0">
-                            <v-row>
+                            <v-row class="mx-0">
                                 <v-col cols="12" class="pa-0">
                                     <v-textarea
                                         v-model="current_comment"
@@ -116,12 +118,12 @@
                         </v-container>
                     </v-form>
                 </v-col>
-                <v-col cols="12" class="comments--aria"
+                <v-col cols="12" class="comments--aria mt-2"
                        v-for="comment in POST_COMMENTS" :key="comment.id"
                 >
-                    <v-row class="mb-0 pa-2">
-                        <v-col cols="12" class="mb-0">
-                            <v-row>
+                    <v-row class="mb-0 pa-0 mx-0">
+                        <v-col cols="12" class="mb-0 pa-0">
+                            <v-row class="mx-0">
                                 <v-btn icon small class="route__style mr-2"
                                        :to="{ name: 'user', params: { id: comment.author_id } }" exact
                                 >
@@ -137,21 +139,18 @@
                                         @{{ comment.username }}
                                     </router-link>
                                 </span>
-                                <span class="ml-2">{{ $moment(comment.created_at).format("LLL") }}</span>
                             </v-row>
                         </v-col>
-                        <v-col cols="12">
-                            <v-row class="post-body--html">
+                        <v-col cols="12" class="px-0">
+                            <span>{{ $moment(comment.created_at).format("LL") }}</span>
+                        </v-col>
+                        <v-col cols="12" class="pa-0">
+                            <v-row class="post-body--html mx-0">
                                 <span class="subtitle-1">{{ comment.body }}</span>
-                                <v-btn text icon @click="deleteComment(comment.id)"
-                                       v-if="comment.author_id == $store.getters.ID"
-                                >
-                                    <v-icon>mdi-trash-can</v-icon>
-                                </v-btn>
                             </v-row>
                         </v-col>
-                        <v-col cols="12" class="py-0">
-                            <v-row>
+                        <v-col cols="12" class="pa-0">
+                            <v-row class="mx-0">
                                 <v-btn text icon @click="voteClick(2, comment.id, 1)">
                                     <v-icon :class="comment.code == 1 ? upClass : defaultClass">mdi-arrow-up-bold</v-icon>
                                 </v-btn>
@@ -160,6 +159,11 @@
                                 </p>
                                 <v-btn text icon @click="voteClick(2, comment.id, -1)">
                                     <v-icon :class="comment.code == -1 ? downClass : defaultClass">mdi-arrow-down-bold</v-icon>
+                                </v-btn>
+                                <v-btn text icon @click="deleteComment(comment.id)"
+                                       v-if="comment.author_id == $store.getters.ID"
+                                >
+                                    <v-icon>mdi-trash-can</v-icon>
                                 </v-btn>
                             </v-row>
                         </v-col>

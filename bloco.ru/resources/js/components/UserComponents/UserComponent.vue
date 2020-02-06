@@ -1,8 +1,8 @@
 <template>
-    <v-row>
+    <v-row class="xs-content-container">
         <v-spacer></v-spacer>
-        <v-col cols="10" class="pa-0 ma-0">
-            <v-card>
+        <v-col cols="12" sm="10" md="9" lg="8" xl="8" class="pa-0 ma-0">
+            <v-card class="xs-card-container">
                 <v-col
                     align-self="start"
                     class="pa-0"
@@ -25,19 +25,8 @@
                     >
                         <v-list-item-content>
                             <v-list-item-title>
-                                <span class="title profile--text teal--color">{{ USER.name }}</span>
-                                <v-btn text icon class="route__style profile--text edit--button"
-                                       :to="{ name: 'users.edit', params: { id: $store.getters.ID } }"
-                                       v-if="$route.params.id == $store.getters.ID"
-                                >
-                                    <v-icon class="edit--icon">mdi-fountain-pen-tip</v-icon>
-                                </v-btn>
+                                <span class="title teal--color">{{ USER.name }}</span>
                             </v-list-item-title>
-                            <v-list-item-subtitle
-                                class="profile--text no-route-link--color"
-                            >
-                                {{ USER.specialization }}
-                            </v-list-item-subtitle>
                             <v-list-item-action-text
                                 class="profile--text route-link--color"
                             >
@@ -109,6 +98,82 @@
 </script>
 
 <style scoped>
+    .profile--text {
+        font-size: 1.2rem !important;
+    }
+    @media screen and (max-width: 599px) {
+        .divider-right {
+            border-right: none !important;
+            border-bottom: 1px solid gray;
+        }
+        .xs-content-container {
+            margin: 0;
+            padding: 0;
+        }
+        .xs-card-container {
+            margin: 0 !important;
+            border-radius: 0 !important;
+        }
+        .xs__display-none {
+            display: none;
+        }
+        .xs__display-block {
+            display: block;
+        }
+        .edit-title {
+            font-size: 1.5rem !important;
+        }
+    }
+    /* --- */
+
+    @media screen and (min-width: 600px) and (max-width: 959px) {
+        .xs-content-container {
+            margin: 0;
+        }
+        .xs__display-none {
+            display: block;
+        }
+        .xs__display-block {
+            display: none;
+        }
+        .edit-title {
+            font-size: 1.5rem !important;
+        }
+    }
+    /* --- */
+
+    @media screen and (min-width: 960px) and (max-width: 1263px) {
+        .xs-content-container {
+            margin: 0;
+        }
+        .xs__display-none {
+            display: block;
+        }
+        .xs__display-block {
+            display: none;
+        }
+        .edit-title {
+            font-size: 1.5rem !important;
+        }
+    }
+    /* --- */
+
+    @media screen and (min-width: 1264px) {
+        .xs-content-container {
+            margin: 0;
+        }
+        .xs__display-none {
+            display: block;
+        }
+        .xs__display-block {
+            display: none;
+        }
+        .edit-title {
+            font-size: 1.5rem !important;
+        }
+    }
+    /* --- */
+
     .profile--text {
 
     }

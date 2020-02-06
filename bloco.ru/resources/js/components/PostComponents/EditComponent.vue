@@ -1,13 +1,13 @@
 <template>
-    <v-row>
+    <v-row class="ma-0">
         <v-spacer></v-spacer>
-        <v-col cols="12" sm="11" md="11" lg="9" xl="6">
-            <v-row justify="center" class="mt-2">
+        <v-col cols="12" sm="11" md="11" lg="9" xl="6" class="px-1">
+            <v-row justify="center" class="mt-2 mx-0">
                 <p class="display-2 no-route-link--color">РЕДАКТИРОВАНИЕ СТАТЬИ</p>
             </v-row>
             <v-col cols=12 class="ma-0 pa-0">
-                <v-row justify="center" class="mt-2">
-                    <p class="title">{{ form.title }}</p>
+                <v-row justify="center" class="ma-0 px-1">
+                    <p class="title ma-0">{{ form.title }}</p>
                 </v-row>
             </v-col>
             <v-divider></v-divider>
@@ -22,7 +22,7 @@
                                 :class="{ 'is-invalid': form.errors.has('body') }"
                                 api-key="29hv0shfon7y1i3ayspbk71bs3dy13lj3kxesuslq7ll3wfw"
                                 :init="{
-                                         height: 800,
+                                         height: 600,
                                          menubar: false,
                                          plugins: [
                                            'advlist autolink lists link image charmap print preview anchor',
@@ -98,6 +98,24 @@
 </script>
 
 <style scoped>
+    .ma-0 {
+        margin: 0 !important;
+    }
+
+    @media screen and (max-width: 400px) {
+        .display-2 {
+            font-size: 1.4rem !important;
+            margin: 0 !important;
+        }
+    }
+
+    @media screen and (min-width: 401px) and (max-width: 599px) {
+        .display-2 {
+            font-size: 1.7rem !important;
+            margin: 0 !important;
+        }
+    }
+
     .btn-form-container {
         display: inline-block;
     }

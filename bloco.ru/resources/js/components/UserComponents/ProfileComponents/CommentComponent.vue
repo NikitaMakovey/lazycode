@@ -1,13 +1,13 @@
 <template>
     <div>
         <div class="album py-0">
-            <div class="container row ma-0">
+            <div class="container row ma-0 pa-0">
                 <div class="col-md-12 col-sm-12 ma-0 row pa-0 col-12">
                     <div
-                        class="col-md-12 col-12 "
+                        class="col-md-12 col-12 pa-0"
                         v-for="comment in comments.data" :key="comment.id"
                     >
-                        <div class="card mb-2 box-shadow">
+                        <div class="card mb-3 box-shadow">
                             <div class="card-body">
                                 <router-link
                                     :to="{ name: 'post', params: { id: comment.id } }" exact

@@ -1,15 +1,15 @@
 <template>
-    <v-row>
+    <v-row class="ma-0">
         <v-spacer></v-spacer>
-        <v-col cols="12" sm="11" md="11" lg="9" xl="6">
-            <v-row justify="center" class="mt-2">
+        <v-col cols="12" sm="11" md="11" lg="9" xl="6" class="px-1">
+            <v-row justify="center" class="mt-2 mx-0">
                 <p class="display-2 no-route-link--color">СОЗДАНИЕ СТАТЬИ</p>
             </v-row>
             <v-divider></v-divider>
             <form @submit.prevent="createPost">
                 <div class="form-group ma-0">
-                    <v-row>
-                        <v-col cols="7">
+                    <v-row class="mx-0">
+                        <v-col cols="12" sm="12" md="7" lg="7" xl="7" class="px-0 res__pr">
                             <div class="title mb-1">Заголовок статьи</div>
                             <textarea v-model="form.title" type="text" name="title"
                                    class="form-control title no-route-link--color"
@@ -19,7 +19,7 @@
                             </textarea>
                             <has-error :form="form" field="title"></has-error>
                         </v-col>
-                        <v-col cols="5">
+                        <v-col cols="12" sm="12" md="5" lg="5" xl="5" class="px-0 res__pl">
                             <div class="title mb-1">Категория статьи</div>
                             <v-select
                                 solo
@@ -39,15 +39,18 @@
                     </v-row>
                 </div>
                 <div class="form-group ma-0">
-                    <v-row>
-                        <v-col cols="7">
+                    <v-row class="mx-0">
+                        <v-col cols="12" sm="12" md="7" lg="7" xl="7" class="px-0 res__pr">
                             <div class="title mb-1">Изображение статьи</div>
                             <div class="subheading">Так будет выглядеть ваше изображение:</div>
-                            <v-img
-                                :src="form.image === '' ?
-                            'https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png' :
-                            form.image"
-                                aspect-ratio="1.6" contain></v-img>
+                            <div class="card-image-container mb-1">
+                                <img
+                                    :src="form.image === '' ?
+                                'https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png' :
+                                form.image"
+                                 alt="#image" class="card-img-top"
+                                />
+                            </div>
                             <input v-model="form.image" type="text" name="image"
                                    class="form-control title no-route-link--color"
                                    :class="{ 'is-invalid': form.errors.has('image') }"
@@ -55,7 +58,7 @@
                             >
                             <has-error :form="form" field="image"></has-error>
                         </v-col>
-                        <v-col cols="5">
+                        <v-col cols="12" sm="12" md="5" lg="5" xl="5" class="px-0 res__pl tags__display-md">
                             <div class="title mb-1">Теги</div>
                             <div class="subheading mb-1">Примеры: ethereum, c++, postgres и тд.</div>
                             <v-combobox
@@ -108,6 +111,36 @@
                                    }">
                         </editor>
                         <has-error :form="form" field="body"></has-error>
+                    </v-col>
+                </div>
+                <div class="form-group my-0 tags__display-xs">
+                    <v-col cols="12" sm="12" md="5" lg="5" xl="5" class="px-0 res__pl">
+                        <div class="title mb-1">Теги</div>
+                        <div class="subheading mb-1">Примеры: ethereum, c++, postgres и тд.</div>
+                        <v-combobox
+                            v-model="form.tags"
+                            :items="form.tags"
+                            class="form-control"
+                            :class="{ 'is-invalid': form.errors.has('tags') }"
+                            chips
+                            clearable
+                            label="Напиши тег и нажми Далее (Enter)"
+                            multiple
+                            solo
+                        >
+                            <template v-slot:selection="{ attrs, item, select, selected }">
+                                <v-chip
+                                    v-bind="attrs"
+                                    :input-value="selected"
+                                    close
+                                    @click="select"
+                                    @click:close="remove(item)"
+                                >
+                                    <strong>{{ item }}</strong>&nbsp;
+                                </v-chip>
+                            </template>
+                        </v-combobox>
+                        <has-error :form="form" field="tags"></has-error>
                     </v-col>
                 </div>
                 <div>
@@ -200,6 +233,61 @@
 </script>
 
 <style scoped>
+    .tags__display-xs {
+        height: 300px;
+    }
+    @media screen and (max-width: 599px) {
+        .display-2 {
+            font-size: 1.7rem !important;
+            margin: 0 !important;
+        }
+    }
+
+    @media screen and (max-width: 959px) {
+        .tags__display-xs {
+            display: block !important;
+        }
+        .tags__display-md {
+            display: none !important;
+        }
+    }
+
+    @media screen and (min-width: 960px) {
+        .tags__display-xs {
+            display: none !important;
+        }
+        .tags__display-md {
+            display: block !important;
+        }
+    }
+
+    @media screen and (min-width: 960px) {
+        .tags__display-xs {
+            height: auto;
+        }
+        .res__pr {
+            padding-right: 1rem !important;
+        }
+        .res__pl {
+            padding-left: 1rem !important;
+        }
+    }
+    /* --- */
+    .card-image-container {
+        height: auto !important;
+        max-height: 320px;
+        overflow: hidden;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        border-bottom: 1px solid #E0C3FC;
+        background-color: #8EC5FC;
+        background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+    }
+    img {
+        height: auto;
+        width: 100%;
+    }
     .btn-form-container {
         display: inline-block;
     }

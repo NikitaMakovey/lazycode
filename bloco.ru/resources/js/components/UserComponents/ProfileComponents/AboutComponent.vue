@@ -1,7 +1,10 @@
 <template>
     <div>
         <template v-if="$store.getters.USER.about != null">
-            <p class="title">
+            <p class="title my-0">
+                Я - {{ $store.getters.USER.specialization }}.
+            </p>
+            <p class="title mt-0">
                 {{ $store.getters.USER.about }}
             </p>
         </template>
@@ -20,5 +23,7 @@
 </script>
 
 <style scoped>
-
+    .title {
+        font-size: 1.2rem !important;
+    }
 </style>

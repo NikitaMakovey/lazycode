@@ -1,98 +1,95 @@
 <template>
-    <div class="album">
-        <v-container
-            id="scroll-target"
-            style="max-height: 94vh"
-            class="overflow-y-auto"
-        >
-            <div class="row" style="height: 94vh">
-                <v-col cols="12">
-                    <v-row class="pa-1">
-                        <p class="display-1">Склад статей</p>
-                    </v-row>
-                    <v-col cols="12" class="ma-0 pa-0"
-                    >
-                        <v-row class="ma-0 pa-0">
-                            <div
-                                class="col-md-6 col-6 pa-1"
-                                v-for="post in posts" :key="post.id"
+    <div class="album py-0">
+        <div class="container row ma-0 pa-0">
+            <div class="col-md-12 col-sm-12 ma-0 row pa-0 col-12">
+                <div
+                    class="col-md-6 col-sm-12 col-lg-6 col-xl-6 col-12 pa-0"
+                    v-for="post in posts.data" :key="post.id"
+                >
+                    <div class="card mb-2 mx-1 pa-1 box-shadow">
+                        <div class="card-image-container">
+                            <router-link
+                                :to="{ name: 'admin.post', params: { id: post.id } }" exact
+                                class="route__style"
                             >
-                                <div class="card mb-2 box-shadow">
-                                    <div class="card-image-container">
-                                        <router-link
-                                            :to="{ name: 'admin.post', params: { id: post.id } }" exact
-                                            class="route__style"
-                                        >
-                                            <img class="card-img-top" :src="post.image"
-                                                 alt="Card image cap"
-                                            >
-                                        </router-link>
-                                    </div>
-                                    <div class="card-body">
-                                        <router-link
-                                            :to="{ name: 'admin.post', params: { id: post.id } }" exact
-                                            class="route__style mb-4"
-                                        >
-                                            <p class="card-text">
-                                                {{ post.title }}
-                                            </p>
-                                        </router-link>
-                                        <p class="card-text topic-color">
-                                            <v-chip
-                                                class="mx-0 mt-2 route__style cat-chip"
-                                                color="#8EC5FC"
-                                                :to="{ name: 'category', params: { slug: post.slug } }"
-                                            >
-                                                {{ post.name }}
-                                            </v-chip>
-                                        </p>
-                                        <div class="my-1">
-                                            <small class="text-muted">{{ $moment(post.created_at).format("LL") }}</small>
-                                        </div>
-                                        <div class="my-1">
-                                            <template v-if="post.post_verified_is == true">
-                                                <v-chip
-                                                    class="mx-0 mt-2 route__style cat-chip"
-                                                    color="#1ACA4C"
-                                                    @click="reject(post.id)"
-                                                >
-                                                    Заблокировать
-                                                </v-chip>
-                                            </template>
-                                            <template v-else-if="post.post_verified_is == false">
-                                                <v-chip
-                                                    class="mx-0 mt-2 route__style cat-chip"
-                                                    color="#8E41F5"
-                                                    @click="confirm(post.id)"
-                                                >
-                                                    Разблокировать
-                                                </v-chip>
-                                            </template>
-                                            <template v-else>
-                                                <v-chip
-                                                    class="mx-0 mt-2 route__style cat-chip"
-                                                    color="#8E41F5"
-                                                    @click="confirm(post.id)"
-                                                >
-                                                    Одобрить
-                                                </v-chip>
-                                                <v-chip
-                                                    class="mx-0 mt-2 route__style cat-chip"
-                                                    color="#1ACA4C"
-                                                    @click="reject(post.id)"
-                                                >
-                                                    Отказать
-                                                </v-chip>
-                                            </template>
-                                        </div>
-                                    </div>
-                                </div>
+                                <img class="card-img-top" :src="post.image"
+                                     alt="Card image cap"
+                                >
+                            </router-link>
+                        </div>
+                        <div class="card-body">
+                            <router-link
+                                :to="{ name: 'admin.post', params: { id: post.id } }" exact
+                                class="route__style mb-4"
+                            >
+                                <p class="card-text">
+                                    {{ post.title }}
+                                </p>
+                            </router-link>
+                            <p class="card-text topic-color">
+                                <v-chip
+                                    class="mx-0 mt-2 route__style cat-chip"
+                                    color="#8EC5FC"
+                                    :to="{ name: 'category', params: { slug: post.slug } }"
+                                >
+                                    {{ post.name }}
+                                </v-chip>
+                            </p>
+                            <div class="my-1">
+                                <small class="text-muted">{{ $moment(post.created_at).format("LL") }}</small>
                             </div>
-                        </v-row>
-                    </v-col>
-                </v-col>
+                            <div class="my-1">
+                                <template v-if="post.post_verified_is == true">
+                                    <v-chip
+                                        class="mx-0 mt-2 route__style cat-chip"
+                                        color="#ED4455"
+                                        @click="reject(post.id)"
+                                    >
+                                        Заблокировать
+                                    </v-chip>
+                                </template>
+                                <template v-else-if="post.post_verified_is == false">
+                                    <v-chip
+                                        class="mx-0 mt-2 route__style cat-chip"
+                                        color="#F0C987"
+                                        @click="confirm(post.id)"
+                                    >
+                                        Разблокировать
+                                    </v-chip>
+                                </template>
+                                <template v-else>
+                                    <v-chip
+                                        class="mx-0 mt-2 route__style cat-chip"
+                                        color="#89BD9E"
+                                        @click="confirm(post.id)"
+                                    >
+                                        Одобрить
+                                    </v-chip>
+                                    <v-chip
+                                        class="mx-0 mt-2 route__style cat-chip"
+                                        color="#DB4C40"
+                                        @click="reject(post.id)"
+                                    >
+                                        Отказать
+                                    </v-chip>
+                                </template>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </v-container>
+            <div class="pa-0 ma-0">
+                <div class="pa-0 ma-0">
+                    <pagination
+                        :limit="1"
+                        size="large"
+                        align="center"
+                        :data="posts"
+                        @pagination-change-page="getResults"
+                    ></pagination>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -102,10 +99,23 @@
     export default {
         data() {
             return {
-                posts: []
+                posts: {}
             }
         },
         methods : {
+            getResults(page = 1) {
+                let token = this.$store.getters.ACCESS_TOKEN;
+                let config = {
+                    headers: {
+                        Authorization: token
+                    }
+                };
+                let url = '/api/v1/admin/posts?page=' + page;
+                axios.get(url, config)
+                    .then(({data}) => {
+                        this.posts = data.posts;
+                    });
+            },
             confirm(id) {
                 let token = this.$store.getters.ACCESS_TOKEN;
                 let config = {
@@ -115,9 +125,9 @@
                 };
                 let url = '/api/v1/confirm/' + id;
                 axios.get(url, config).then(() => {
-                    for (let i = 0; i < this.posts.length; i++) {
-                        if (this.posts[i].id == id) {
-                            this.posts[i].post_verified_is = true;
+                    for (let i = 0; i < this.posts.data.length; i++) {
+                        if (this.posts.data[i].id == id) {
+                            this.posts.data[i].post_verified_is = true;
                             break;
                         }
                     }
@@ -132,9 +142,9 @@
                 };
                 let url = '/api/v1/reject/' + id;
                 axios.get(url, config).then(() => {
-                    for (let i = 0; i < this.posts.length; i++) {
-                        if (this.posts[i].id == id) {
-                            this.posts[i].post_verified_is = false;
+                    for (let i = 0; i < this.posts.data.length; i++) {
+                        if (this.posts.data[i].id == id) {
+                            this.posts.data[i].post_verified_is = false;
                             break;
                         }
                     }
@@ -178,28 +188,6 @@
     }
 
     @media screen and (max-width: 599px) {
-        .xs-cat-top-container {
-            display: none;
-        }
-        .xs-content-container {
-            padding: 0;
-        }
-        .xs-container {
-            margin: 0;
-            padding: 0;
-        }
-        .ma-xs-0 {
-            margin: 0 !important;
-        }
-        .cat-text {
-            font-size: 0.8rem !important;
-        }
-        .cat-active-text {
-            margin: 0.4rem !important;
-            overflow: inherit !important;
-            word-wrap: break-word;
-            white-space: inherit !important;
-        }
         .card-text {
             font-size: 1rem !important;
         }
@@ -212,38 +200,15 @@
     }
 
     @media screen and (min-width: 600px) and (max-width: 960px) {
-        .xs-container {
-            margin: 0 !important;
-        }
         .container {
             padding: 0 !important;
         }
         .card-image-container {
             height: auto !important;
-            max-height: 15rem !important;
+            max-height: 20rem !important;
         }
-        .cat-header-text {
-            font-size: 0.9rem;
-            font-weight: bold;
-            color: #8EC5FC;
-        }
-        .cat-item-text {
-            font-size: 0.8rem;
-            word-wrap: break-word;
-            overflow: inherit !important;
-            text-overflow: inherit !important;
-            white-space: inherit !important;
-        }
-        .cat-icon-text {
-            font-weight: bold;
-        }
+
         .card-text {
-            font-size: 1rem !important;
-        }
-        .cat-active-text {
-            margin: 0.4rem !important;
-        }
-        .cat-text {
             font-size: 1rem !important;
         }
         .cat-chip {
@@ -258,53 +223,15 @@
         .card-image-container {
             max-height: 20rem !important;
         }
-        .xs-container {
-            margin: 0 !important;
-        }
         .container {
             padding: 0 !important;
-        }
-        .cat-header-text {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #8EC5FC;
-        }
-        .cat-item-text {
-            font-size: 1rem;
-        }
-        .cat-icon-text {
-            font-weight: bold;
-        }
-        .cat-active-text {
-            margin: 0.4rem !important;
-        }
-        .cat-text {
-            font-size: 1rem !important;
         }
     }
 
     @media screen and (min-width: 1265px) {
         .card-image-container {
-            max-height: 18rem !important;
+            max-height: 20rem !important;
         }
-        .cat-header-text {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #8EC5FC;
-        }
-        .cat-item-text {
-            font-size: 1rem;
-        }
-        .cat-icon-text {
-            font-weight: bold;
-        }
-        .cat-active-text {
-            margin: 0.4rem !important;
-        }
-        .cat-text {
-            font-size: 1rem !important;
-        }
-
     }
 
     .card-image-container {
@@ -343,10 +270,5 @@
     img {
         height: auto;
         width: 100%;
-    }
-    @media (min-width : 1905px) {
-        .responsive--text {
-            font-size : 2rem !important;
-        }
     }
 </style>

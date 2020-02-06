@@ -1,15 +1,15 @@
 <template>
     <v-row>
         <v-col cols="12" lg="12" class="pa-0 ma-0">
-            <v-card class="data-height pl-1">
+            <v-card class="pl-1">
                 <v-col cols="12">
                     <v-row>
-                        <v-col cols="12" sm="3" md="3" class="pa-2 item-group-height divider-right">
+                        <v-col cols="12" sm="4" md="4" lg="3" xl="2" class="pa-2 item-group-height divider-right">
                             <v-list rounded>
                                 <v-subheader class="list-subheader">КАМОРКА АДМИНА</v-subheader>
                                 <v-list-item-group class="mt-1">
                                     <v-list-item
-                                        :to="{ name: '#' }"
+                                        :to="{ name: 'admin' }"
                                         exact
                                         class="my-1"
                                     >
@@ -34,7 +34,7 @@
                                 </v-list-item-group>
                             </v-list>
                         </v-col>
-                        <v-col cols="12" sm="9" md="9" class="pa-2">
+                        <v-col cols="12" sm="8" md="8" lg="9" xl="10" class="pa-2">
                             <router-view></router-view>
                         </v-col>
                     </v-row>
@@ -66,7 +66,12 @@
     .divider-right {
         border-right: 1px solid gray;
     }
-    @media screen and (max-width: 700px) {
+    @media screen and (min-width: 600px) and (max-width: 850px) {
+        .list-subheader {
+            height: 4.2rem !important;
+        }
+    }
+    @media screen and (max-width: 599px) {
         .divider-right {
             border-right: none;
             border-bottom: 1px solid gray;
@@ -83,12 +88,6 @@
     }
     * {
         text-decoration: none !important;
-    }
-    .data-height {
-        height: 100vh;
-    }
-    .item-group-height {
-        height: 96vh;
     }
     @media screen and (max-width: 700px) {
     }

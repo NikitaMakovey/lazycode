@@ -465,7 +465,6 @@ class PostController extends Controller
             ->join('users', 'posts.author_id', '=', 'users.id')
             ->join('categories', 'posts.category_id', '=', 'categories.id')
             ->where(array(
-                'posts.post_verified_is' => true,
                 'posts.id' => $id
             ))
             ->select(array(

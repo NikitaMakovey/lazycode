@@ -1,13 +1,13 @@
 <template>
     <div>
         <div class="album py-0">
-            <div class="container row ma-0">
+            <div class="container row ma-0 pa-0">
                 <div class="col-md-12 col-sm-12 ma-0 row pa-0 col-12">
                     <div
-                        class="col-md-12 col-12 "
+                        class="col-md-12 col-12 pa-0"
                         v-for="post in posts.data" :key="post.id"
                     >
-                        <div class="card mb-2 box-shadow">
+                        <div class="card mb-3 box-shadow">
                             <div class="card-image-container">
                                 <router-link
                                     :to="{ name: 'post', params: { id: post.id } }" exact
@@ -114,16 +114,6 @@
     .card-image-container {
         height: auto !important;
     }
-    .cat-text {
-        text-transform: uppercase;
-    }
-    .cat-item-text {
-        text-transform: uppercase;
-        word-wrap: break-word;
-        overflow: inherit !important;
-        text-overflow: inherit !important;
-        white-space: inherit !important;
-    }
 
     * {
         text-decoration: none !important;
@@ -142,28 +132,6 @@
     }
 
     @media screen and (max-width: 599px) {
-        .xs-cat-top-container {
-            display: none;
-        }
-        .xs-content-container {
-            padding: 0;
-        }
-        .xs-container {
-            margin: 0;
-            padding: 0;
-        }
-        .ma-xs-0 {
-            margin: 0 !important;
-        }
-        .cat-text {
-            font-size: 0.8rem !important;
-        }
-        .cat-active-text {
-            margin: 0.4rem !important;
-            overflow: inherit !important;
-            word-wrap: break-word;
-            white-space: inherit !important;
-        }
         .card-text {
             font-size: 1rem !important;
         }
@@ -176,38 +144,7 @@
     }
 
     @media screen and (min-width: 600px) and (max-width: 960px) {
-        .xs-container {
-            margin: 0 !important;
-        }
-        .container {
-            padding: 0 !important;
-        }
-        .card-image-container {
-            height: auto !important;
-            max-height: 15rem !important;
-        }
-        .cat-header-text {
-            font-size: 0.9rem;
-            font-weight: bold;
-            color: #8EC5FC;
-        }
-        .cat-item-text {
-            font-size: 0.8rem;
-            word-wrap: break-word;
-            overflow: inherit !important;
-            text-overflow: inherit !important;
-            white-space: inherit !important;
-        }
-        .cat-icon-text {
-            font-weight: bold;
-        }
         .card-text {
-            font-size: 1rem !important;
-        }
-        .cat-active-text {
-            margin: 0.4rem !important;
-        }
-        .cat-text {
             font-size: 1rem !important;
         }
         .cat-chip {
@@ -216,56 +153,21 @@
         .text-muted {
             font-size: 0.8rem !important;
         }
+        .card-image-container {
+            max-height: 17rem !important;
+        }
     }
 
     @media screen and (min-width: 961px) and (max-width: 1264px) {
         .card-image-container {
             max-height: 20rem !important;
         }
-        .xs-container {
-            margin: 0 !important;
-        }
-        .container {
-            padding: 0 !important;
-        }
-        .cat-header-text {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #8EC5FC;
-        }
-        .cat-item-text {
-            font-size: 1rem;
-        }
-        .cat-icon-text {
-            font-weight: bold;
-        }
-        .cat-active-text {
-            margin: 0.4rem !important;
-        }
-        .cat-text {
-            font-size: 1rem !important;
-        }
     }
 
     @media screen and (min-width: 1265px) {
-        .cat-header-text {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #8EC5FC;
+        .card-image-container {
+            max-height: 26rem !important;
         }
-        .cat-item-text {
-            font-size: 1rem;
-        }
-        .cat-icon-text {
-            font-weight: bold;
-        }
-        .cat-active-text {
-            margin: 0.4rem !important;
-        }
-        .cat-text {
-            font-size: 1rem !important;
-        }
-
     }
 
     .card-image-container {
