@@ -20,7 +20,7 @@ export default {
         IMAGE: state => { return state.IMAGE },
     },
     mutations: {
-        SET_USER: (state, data) => {
+        SET_AUTH: (state, data) => {
             localStorage.setItem('ACCESS_TOKEN', data.access_token);
             localStorage.setItem('EXPIRES_AT', data.expires_at);
             localStorage.setItem('ID', data.user.id);
@@ -36,7 +36,7 @@ export default {
             state.IS_ADMIN = data.user.is_admin;
             state.IMAGE = data.user.image;
         },
-        UNSET_USER: (state) => {
+        UNSET_AUTH: (state) => {
             localStorage.removeItem('ACCESS_TOKEN');
             localStorage.removeItem('EXPIRES_AT');
             localStorage.removeItem('ID');
@@ -56,7 +56,7 @@ export default {
     actions: {
         LOGIN_USER(context, payload) {
             return new Promise(resolve => {
-                context.commit('SET_USER', payload);
+                context.commit('SET_AUTH', payload);
                 resolve(payload);
             });
         },
@@ -67,14 +67,18 @@ export default {
                 return new Promise((resolve, reject) => {
                     axios.get('/api/logout')
                         .then(response => {
-                            context.commit('UNSET_USER');
+                            context.commit('UNSET_AUTH');
                             delete axios.defaults.headers.common['Authorization'];
                             resolve(response);
                         })
                         .catch(error => {
+                            context.commit('UNSET_AUTH');
+                            delete axios.defaults.headers.common['Authorization'];
                             reject(error)
                         });
                 });
+            } else {
+                context.commit('UNSET_AUTH');
             }
         },
         RESET_EMAIL(context, payload) {

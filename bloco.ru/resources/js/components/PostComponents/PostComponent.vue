@@ -6,7 +6,7 @@
                 <v-col cols="12" class="mb-1">
                     <v-row class="my-0">
                         <v-btn icon small class="route__style mr-2"
-                               :to="{ name: 'user', params: { id: POST.author_id } }" exact
+                               :to="{ name: 'user.about', params: { id: POST.author_id } }" exact
                         >
                             <v-avatar size="32px" item>
                                 <v-img :src="POST.user_image" alt="#UI">
@@ -14,7 +14,7 @@
                             </v-avatar>
                         </v-btn>
                         <span class="mx-1">
-                            <router-link :to="{ name: 'user', params: { id: POST.author_id }}"
+                            <router-link :to="{ name: 'user.about', params: { id: POST.author_id }}"
                                          class="route__style route-link--color"
                             >
                                 @{{ POST.username }}
@@ -253,7 +253,7 @@
             }
         },
         mounted() {
-            if (this.$store.getters.ACCESS_TOKEN) {
+            if (this.$store.getters.ACCESS_TOKEN != undefined && this.$store.getters.ACCESS_TOKEN != null) {
                 let token = this.$store.getters.ACCESS_TOKEN;
                 let config = {
                     headers: {

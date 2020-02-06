@@ -1,166 +1,95 @@
 <template>
-<div class="wrapper">
-
-    <!-- Navbar -->
-    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-        <!-- Left navbar links -->
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
-            </li>
-        </ul>
-
-        <!-- SEARCH FORM -->
-        <form class="form-inline ml-3">
-            <div class="input-group input-group-sm">
-                <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-                <div class="input-group-append">
-                    <button class="btn btn-navbar" type="submit">
-                        <i class="fas fa-search"></i>
-                    </button>
-                </div>
-            </div>
-        </form>
-
-    </nav>
-    <!-- /.navbar -->
-
-    <!-- Main Sidebar Container -->
-    <aside class="main-sidebar sidebar-dark-primary elevation-4">
-
-        <!-- Sidebar -->
-        <div class="sidebar">
-
-            <!-- Brand Logo -->
-            <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                <div class="image">
-                    <img src="./img/logo.png" alt="LazucodeAdmin Logo" class="brand-image img-circle elevation-3"
-                         style="opacity: .8">
-                </div>
-                <div class="info">
-                    <span class="brand-text font-weight-light" style="font-size: 18px; color: #5a7b8c">LazycodeAdmin</span>
-                </div>
-            </div>
-
-            <!-- Sidebar user panel (optional) -->
-            <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                <div class="image">
-                    <img src="./img/man.png" class="img-circle elevation-2" alt="Admin Image">
-                </div>
-                <div class="info">
-                    <a href="#" class="d-block">
-                        <!--{{ Auth::user()->username }}-->
-                    </a>
-                </div>
-            </div>
-
-            <!-- Sidebar Menu -->
-            <nav class="mt-2">
-                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                    <!-- Add icons to the links using the .nav-icon class
-                         with font-awesome or any other icon font library -->
-
-                    <!-- Profile -->
-                    <li class="nav-item">
-                        <a href="{{ url('/') }}" class="nav-link">
-                            <i class="nav-icon fas fa-user-circle cyan"></i>
-                            <p>Главная страница</p>
-                        </a>
-                    </li>
-                    <!-- Database -->
-                    <li class="nav-item has-treeview">
-                        <a href="#" class="nav-link">
-                            <i class="fas fa-database nav-icon teal"></i>
-                            <p>
-                                База данных
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <router-link to="/admin/users" class="nav-link">
-                                    <i class="fas fa-users nav-icon purple"></i>
-                                    <p>Users</p>
-                                </router-link>
-                            </li>
-                            <li class="nav-item">
-                                <router-link to="/admin/categories" class="nav-link">
-                                    <i class="fas fa-splotch nav-icon purple"></i>
-                                    <p>Categories</p>
-                                </router-link>
-                            </li>
-                            <li class="nav-item">
-                                <router-link to="/admin/posts" class="nav-link">
-                                    <i class="fas fa-list-alt nav-icon purple"></i>
-                                    <p>Posts</p>
-                                </router-link>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="fas fa-comments nav-icon purple"></i>
-                                    <p>Comments</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="fas fa-thumbs-up nav-icon purple"></i>
-                                    <p>Votes</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <!-- Log out -->
-                    <li class="nav-item">
-                        <a class="nav-link dropdown-item" href="{{ route('logout') }}"
-                           onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                            <i class="nav-icon fas fa-power-off red"></i>
-                            <p>{{ __('Выйти') }}</p>
-                        </a>
-
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-
-                        </form>
-                    </li>
-
-                </ul>
-            </nav>
-            <!-- /.sidebar-menu -->
-        </div>
-        <!-- /.sidebar -->
-    </aside>
-
-    <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
-        <!-- Main content -->
-        <div class="content">
-            <div class="container-fluid">
-                <router-view></router-view>
-            </div><!-- /.container-fluid -->
-        </div>
-        <!-- /.content -->
-    </div>
-    <!-- /.content-wrapper -->
-
-    <!-- Main Footer -->
-    <footer class="main-footer">
-        <!-- To the right -->
-        <div class="float-right d-none d-sm-inline">
-            Anything you want
-        </div>
-        <!-- Default to the left -->
-        <strong>Copyright &copy; 2014-2019 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
-    </footer>
-</div>
-<!-- ./wrapper -->
+    <v-row>
+        <v-col cols="12" lg="12" class="pa-0 ma-0">
+            <v-card class="data-height pl-1">
+                <v-col cols="12">
+                    <v-row>
+                        <v-col cols="12" sm="3" md="3" class="pa-2 item-group-height divider-right">
+                            <v-list rounded>
+                                <v-subheader class="list-subheader">КАМОРКА АДМИНА</v-subheader>
+                                <v-list-item-group class="mt-1">
+                                    <v-list-item
+                                        :to="{ name: '#' }"
+                                        exact
+                                        class="my-1"
+                                    >
+                                        <v-list-item-icon class="mr-1">
+                                            <v-icon>mdi-badminton</v-icon>
+                                        </v-list-item-icon>
+                                        <v-list-item-content>
+                                            <v-list-item-title v-text="item"></v-list-item-title>
+                                        </v-list-item-content>
+                                    </v-list-item>
+                                    <v-list-item
+                                        :to="{ name: 'main' }"
+                                        exact
+                                    >
+                                        <v-list-item-icon class="mr-1">
+                                            <v-icon>mdi-exit-run</v-icon>
+                                        </v-list-item-icon>
+                                        <v-list-item-content>
+                                            <v-list-item-title>ВЫХОД</v-list-item-title>
+                                        </v-list-item-content>
+                                    </v-list-item>
+                                </v-list-item-group>
+                            </v-list>
+                        </v-col>
+                        <v-col cols="12" sm="9" md="9" class="pa-2">
+                            <router-view></router-view>
+                        </v-col>
+                    </v-row>
+                </v-col>
+            </v-card>
+        </v-col>
+    </v-row>
 </template>
 
 <script>
+    import {mapGetters} from 'vuex';
+
     export default {
-        name: "MainComponent"
+        data() {
+            return {
+                item: 'КЛАДОВКА'
+            }
+        },
+        mounted() {
+
+        },
+        computed: {
+
+        }
     }
 </script>
 
 <style scoped>
-
+    .divider-right {
+        border-right: 1px solid gray;
+    }
+    @media screen and (max-width: 700px) {
+        .divider-right {
+            border-right: none;
+            border-bottom: 1px solid gray;
+        }
+        .item-group-height {
+            height: auto !important;
+        }
+    }
+    .list-subheader {
+        font-size: 1.5rem;
+        background-color: #1d2124;
+        color: #f7efd5;
+        border-radius: 1.6rem;
+    }
+    * {
+        text-decoration: none !important;
+    }
+    .data-height {
+        height: 100vh;
+    }
+    .item-group-height {
+        height: 96vh;
+    }
+    @media screen and (max-width: 700px) {
+    }
 </style>

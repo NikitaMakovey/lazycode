@@ -73,8 +73,14 @@ class UserController extends Controller
                 'categories.name',
                 'categories.slug'
             )
+            ->selectRaw(
+                '(SELECT COUNT(*) FROM comments WHERE comments.post_id = posts.id)  AS count_comments'
+            )
+            ->selectRaw(
+                '(SELECT SUM(votes.vote) FROM votes WHERE source_id = posts.id AND type_id = 1) AS sum_votes'
+            )
             ->orderBy('posts.created_at', 'DESC')
-            ->get();
+            ->paginate(6);
 
         $response = array(
             'message' => 'Информация о всех статьях пользователя c ID: ' . $id . '.',
@@ -101,13 +107,17 @@ class UserController extends Controller
                 'posts.id',
                 'posts.title',
                 'comments.id AS comment_id',
-                'comments.body'
+                'comments.body',
+                'comments.created_at'
+            )
+            ->selectRaw(
+                '(SELECT SUM(vote) FROM votes WHERE source_id = comments.id AND type_id = 2) AS sum_votes'
             )
             ->orderBy('comments.created_at', 'DESC')
-            ->get();
+            ->paginate(6);
 
         $response = array(
-            'message' => 'Информация о всех статьях пользователя c ID: ' . $id . '.',
+            'message' => 'Информация о всех комментариях пользователя c ID: ' . $id . '.',
             'comments' => $comments
         );
         return response($response, 200);

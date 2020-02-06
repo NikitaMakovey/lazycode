@@ -87,8 +87,16 @@ export default {
                         context.commit('SET_CLICKED', data.clicked);
                         resolve(data);
                     })
-                    .catch(error => {
-                        reject(error);
+                    .catch(() => {
+                        let uri = '/api/v1/posts/' + payload.id;
+                        axios.get(uri)
+                            .then(({data}) => {
+                                context.commit('SET_POST', data);
+                                resolve(data);
+                            })
+                            .catch(error => {
+                                reject(error);
+                            });
                     });
             });
         },

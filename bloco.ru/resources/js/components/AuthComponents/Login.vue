@@ -70,9 +70,10 @@
         methods: {
             loginSubmit() {
                 let url = '/api/login';
+                const Router = this.$router;
                 this.form.post(url).then(({data}) => {
                     this.$store.dispatch('LOGIN_USER', data)
-                        .then(() => { this.$router.push('/')});
+                        .then(() => { setTimeout(function() { Router.push('/') }, 1000) });
                 });
             }
         },

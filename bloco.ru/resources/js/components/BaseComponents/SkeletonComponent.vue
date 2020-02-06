@@ -29,7 +29,7 @@
                                 </li>
                                 <template v-if="ACCESS_TOKEN">
                                     <li>
-                                        <router-link to="/user" class="text-white">
+                                        <router-link :to="{ name: 'user.about', params: { id: ID } }" class="text-white">
                                             <span class="list-element-text">Мой профиль</span>
                                         </router-link>
                                     </li>
@@ -48,9 +48,9 @@
                                             <span class="list-element-text">Написать статью</span>
                                         </router-link>
                                     </li>
-                                    <template v-if="IS_ADMIN == true">
+                                    <template v-if="IS_ADMIN ==='true'">
                                         <li>
-                                            <router-link to="/admin" class="text-white">
+                                            <router-link :to="{ name: 'admin' }" class="text-white">
                                                 <span class="list-element-text">Каморка админа</span>
                                             </router-link>
                                         </li>

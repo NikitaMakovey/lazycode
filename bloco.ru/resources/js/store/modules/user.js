@@ -13,7 +13,7 @@ export default {
     },
     mutations: {
         SET_USER: (state, payload) => {
-            state.USER = payload;
+            state.USER = payload.user;
         },
         SET_USER_POSTS: (state, payload) => {
             state.USER_POSTS = payload;
@@ -28,7 +28,8 @@ export default {
                 let uri = '/api/v1/users/' + id;
                 axios.get(uri)
                     .then(({data}) => {
-                        context.commit('SET_USER', data.user);
+                        console.log(data);
+                        context.commit('SET_USER', data);
                         resolve(data);
                     })
                     .catch(error => {
@@ -40,7 +41,7 @@ export default {
             return new Promise((resolve, reject) => {
                 let uri = '/api/v1/users/' + id + '/posts';
                 axios.get(uri)
-                    .then(({data}) => {
+                    .then((data) => {
                         context.commit('SET_USER_POSTS', data.posts);
                         resolve(data);
                     })
@@ -53,8 +54,8 @@ export default {
             return new Promise((resolve, reject) => {
                 let uri = '/api/v1/users/' + id + '/comments';
                 axios.get(uri)
-                    .then(({data}) => {
-                        context.commit('SET_USER_COMMENTS', data.comments);
+                    .then((data) => {
+                        context.commit('SET_USER_COMMENTS', data.data.comments);
                         resolve(data);
                     })
                     .catch(error => {

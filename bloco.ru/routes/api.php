@@ -45,6 +45,7 @@ Route::group(['middleware' => ['json.response']], function () {
 
                 Route::get('confirm/{id}', 'AdminController@confirm');
                 Route::get('reject/{id}', 'AdminController@reject');
+                Route::get('admin/posts', 'AdminController@index');
             });
         });
     });

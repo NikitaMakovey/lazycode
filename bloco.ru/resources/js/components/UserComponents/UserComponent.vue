@@ -14,7 +14,7 @@
                         size="164"
                         tile
                     >
-                        <v-img :src="USERS[0].user_image"></v-img>
+                        <v-img :src="USER.image"></v-img>
                     </v-avatar>
                 </v-col>
                 <v-col class="px-1 py-0">
@@ -25,10 +25,10 @@
                     >
                         <v-list-item-content>
                             <v-list-item-title>
-                                <span class="title profile--text teal--color">{{ USERS[0].name }}</span>
+                                <span class="title profile--text teal--color">{{ USER.name }}</span>
                                 <v-btn text icon class="route__style profile--text edit--button"
-                                       :to="{ name: 'users.edit', params: { id: this.$store.getters.USER_ID } }"
-                                       v-if="this.$route.params.id == this.$store.getters.USER_ID"
+                                       :to="{ name: 'users.edit', params: { id: $store.getters.ID } }"
+                                       v-if="$route.params.id == $store.getters.ID"
                                 >
                                     <v-icon class="edit--icon">mdi-fountain-pen-tip</v-icon>
                                 </v-btn>
@@ -36,12 +36,12 @@
                             <v-list-item-subtitle
                                 class="profile--text no-route-link--color"
                             >
-                                {{ USERS[0].specialization }}
+                                {{ USER.specialization }}
                             </v-list-item-subtitle>
                             <v-list-item-action-text
                                 class="profile--text route-link--color"
                             >
-                                @{{ USERS[0].username }}
+                                @{{ USER.username }}
                             </v-list-item-action-text>
                         </v-list-item-content>
                     </v-list-item>
@@ -54,29 +54,17 @@
                 >
                     <v-tab
                         v-for="item in items"
-                        :key="item"
+                        :key="item.name"
+                        :to="{ name: item.route }"
                     >
-                        {{ item }}
+                        {{ item.name }}
                     </v-tab>
                 </v-tabs>
-                <v-tabs-items v-model="tab">
-                    <v-tab-item
-                        v-for="item in items"
-                        :key="item"
-                    >
-                        <v-card flat>
-                            <template v-if="item === 'О себе'">
-                                <p class="subtitle-1 no-route-link--color pa-2">{{ USERS[0].about }}</p>
-                            </template>
-                            <template v-else-if="item === 'Посты'">
-                                <post-component :posts="USER_POSTS"></post-component>
-                            </template>
-                            <template v-else>
-                                <comment-component :comments="USER_COMMENTS"></comment-component>
-                            </template>
-                        </v-card>
-                    </v-tab-item>
-                </v-tabs-items>
+                <v-col cols="12">
+                    <v-card flat>
+                        <router-view></router-view>
+                    </v-card>
+                </v-col>
             </v-card>
         </v-col>
         <v-spacer></v-spacer>
@@ -85,29 +73,37 @@
 
 <script>
     import {mapGetters} from 'vuex';
-    import PostComponent from "./ProfileComponents/PostComponent";
-    import CommentComponent from "./ProfileComponents/CommentComponent";
 
     export default {
         data () {
             return {
                 tab: null,
-                items: [
-                    'О себе', 'Посты', 'Комментарии'
+                items: this.$route.name.substring(0, 2) === 'me' ? [
+                    { name: 'О себе', route: 'me.about' },
+                    { name: 'Статьи', route: 'me.posts' },
+                    { name: 'Комментарии', route: 'me.comments' }
+                ] : [
+                    { name: 'О себе', route: 'user.about' },
+                    { name: 'Статьи', route: 'user.posts' },
+                    { name: 'Комментарии', route: 'user.comments' }
                 ]
             }
         },
-        components: {
-            'post-component' : PostComponent,
-            'comment-component' : CommentComponent
+        methods: {
+            updateRouter(val){
+                console.log(val);
+                this.$router.push(val)
+            }
         },
         mounted() {
-            this.$store.dispatch('GET_USER', this.$route.params.id);
-            this.$store.dispatch('GET_USER_POSTS', this.$route.params.id);
-            this.$store.dispatch('GET_USER_COMMENTS', this.$route.params.id);
+            if (this.$route.name.substring(0, 2) === 'me') {
+                this.$store.dispatch('GET_USER', this.$store.getters.ID);
+            } else {
+                this.$store.dispatch('GET_USER', this.$route.params.id);
+            }
         },
         computed: {
-            ...mapGetters(['USERS', 'USER_COMMENTS', 'USER_POSTS'])
+            ...mapGetters(['USER'])
         }
     }
 </script>

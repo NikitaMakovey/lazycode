@@ -19,12 +19,24 @@ import ResetPassword from "../components/AuthComponents/ResetPassword";
 // NotFound Component
 import NotFound from "../components/ErrorComponents/NotFound";
 
+// Admin
+import AdminComponent from "../components/AdminComponents/MainComponent";
+import ItemsComponent from "../components/AdminComponents/ItemsComponent";
+import ItemComponent from "../components/AdminComponents/ItemComponent";
+
 // Middleware
 import auth from './middleware/auth';
 import guest from './middleware/guest';
+import admin from './middleware/admin';
+import user from './middleware/user';
 
 // Api View
 import ApiDocs from "../components/DocsComponents/ApiDocs";
+
+//
+import AboutComponent from "../components/UserComponents/ProfileComponents/AboutComponent";
+import UserPostComponent from "../components/UserComponents/ProfileComponents/PostComponent"
+import UserCommentComponent from "../components/UserComponents/ProfileComponents/CommentComponent"
 
 const routes = [
     { path: '/', component: SkeletonComponent,
@@ -35,7 +47,20 @@ const routes = [
             { path: 'posts/:id/edit', name: 'posts.edit', component:  EditPostComponent, meta: { middleware: [ auth ] } },
             { path: 'post/create', name: 'posts.create', component:  CreatePostComponent, meta: { middleware: [ auth ] } },
             { path: 'users', name: 'users', component: UsersMainComponent },
-            { path: 'users/:id', name: 'user', component: UserComponent},
+            { path: 'users/:id/', name: 'user', component: UserComponent,
+                children: [
+                    { path: 'about', name: 'user.about', component: AboutComponent, meta: { middleware: [ user ] } },
+                    { path: 'posts', name: 'user.posts', component: UserPostComponent, meta: { middleware: [ user ] } },
+                    { path: 'comments', name: 'user.comments', component: UserCommentComponent, meta: { middleware: [ user ] } },
+                ]
+            },
+            { path: 'user/', name: 'me', component: UserComponent,
+                children: [
+                    { path: 'about', name: 'me.about', component: AboutComponent, meta: { middleware: [ auth ] } },
+                    { path: 'posts', name: 'me.posts', component: UserPostComponent, meta: { middleware: [ auth ] } },
+                    { path: 'comments', name: 'me.comments', component: UserCommentComponent, meta: { middleware: [ auth ] } },
+                ]
+            },
             { path: '/users/:id/edit', name: 'users.edit', component: EditUserComponent, meta: { middleware: [ auth ] } }
         ]
     },
@@ -48,6 +73,15 @@ const routes = [
         ]
     },
     { path: '/docs', component: ApiDocs },
+    {
+        path: '/admin',
+        component: AdminComponent,
+        meta: { middleware: [ auth, admin ] },
+        children: [
+            { path: '', name: 'admin', component: ItemsComponent, meta: { middleware: [ auth, admin ] } },
+            { path: 'posts/:id', name: 'admin.post', component: ItemComponent, meta: { middleware: [ auth, admin ] } },
+        ]
+    },
     { path: '*', name: 'notfound', component: NotFound }
 ];
 
