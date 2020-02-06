@@ -22,11 +22,13 @@
                                         <span class="list-element-text">Все пользователи</span>
                                     </router-link>
                                 </li>
+                                <!--
                                 <li>
                                     <router-link to="/search" class="text-white">
                                         <span class="list-element-text">Поиск</span>
                                     </router-link>
                                 </li>
+                                -->
                                 <template v-if="ACCESS_TOKEN">
                                     <li>
                                         <router-link :to="{ name: 'user.about', params: { id: ID } }" class="text-white">

@@ -116,13 +116,15 @@
                             ОТПРАВИТЬ НА ПРОВЕРКУ
                         </v-btn>
                     </div>
-                    <div class="btn-form-container">
-                        <v-btn type="cancel" @click="sendToDraft" class="route__style" dark outlined color="#50575B">
-                            В ЧЕРНОВИК
-                        </v-btn>
-                    </div>
                 </div>
             </form>
+            <div class="mt-1">
+                <div class="btn-form-container">
+                    <v-btn type="cancel" @click="sendToDraft" class="route__style" dark outlined color="#50575B">
+                        В ЧЕРНОВИК
+                    </v-btn>
+                </div>
+            </div>
         </v-col>
         <v-spacer></v-spacer>
     </v-row>

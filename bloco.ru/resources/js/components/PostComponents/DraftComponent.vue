@@ -122,13 +122,15 @@
                                 ОТПРАВИТЬ НА ПРОВЕРКУ
                             </v-btn>
                         </div>
-                        <div class="btn-form-container">
-                            <v-btn type="cancel" @click="updateDraft" class="route__style" dark outlined color="#50575B">
-                                СОХРАНИТЬ
-                            </v-btn>
-                        </div>
                     </div>
                 </form>
+                <div class="mt-1">
+                    <div class="btn-form-container">
+                        <v-btn type="cancel" @click="updateDraft" class="route__style" dark outlined color="#50575B">
+                            СОХРАНИТЬ
+                        </v-btn>
+                    </div>
+                </div>
             </template>
             <template v-else>
                 <v-row justify="center" class="mt-2">
