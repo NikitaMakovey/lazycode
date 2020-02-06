@@ -52,8 +52,25 @@ export default {
             state.IS_ADMIN = null;
             state.IMAGE = null;
         },
+        UPDATE_USER: (state, data) => {
+            localStorage.removeItem('USERNAME');
+            localStorage.removeItem('NAME');
+            localStorage.removeItem('IMAGE');
+            localStorage.setItem('USERNAME', data.username);
+            localStorage.setItem('NAME', data.name);
+            localStorage.setItem('IMAGE', data.image);
+            state.USERNAME = data.username;
+            state.NAME = data.name;
+            state.IMAGE = data.image;
+        }
     },
     actions: {
+        UPDATE_USER(context, payload) {
+            return new Promise(resolve => {
+                context.commit('UPDATE_USER', payload);
+                resolve(payload);
+            });
+        },
         LOGIN_USER(context, payload) {
             return new Promise(resolve => {
                 context.commit('SET_AUTH', payload);

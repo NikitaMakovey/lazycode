@@ -39,7 +39,7 @@
                                         </router-link>
                                     </li>
                                     <li>
-                                        <router-link to="/user/edit" class="text-white">
+                                        <router-link to="/settings/main" class="text-white">
                                             <span class="list-element-text">Мой гараж</span>
                                         </router-link>
                                     </li>

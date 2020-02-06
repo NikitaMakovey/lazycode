@@ -38,6 +38,12 @@ import AboutComponent from "../components/UserComponents/ProfileComponents/About
 import UserPostComponent from "../components/UserComponents/ProfileComponents/PostComponent"
 import UserCommentComponent from "../components/UserComponents/ProfileComponents/CommentComponent"
 
+//
+import MainEditComponent from "../components/UserComponents/EditComponents/MainEditComponent";
+import EmailEditComponent from "../components/UserComponents/EditComponents/EmailEditComponent";
+import PhotoEditComponent from "../components/UserComponents/EditComponents/PhotoEditComponent";
+import AboutEditComponent from "../components/UserComponents/EditComponents/AboutEditComponent";
+
 const routes = [
     { path: '/', component: SkeletonComponent,
         children: [
@@ -61,7 +67,14 @@ const routes = [
                     { path: 'comments', name: 'me.comments', component: UserCommentComponent, meta: { middleware: [ auth ] } },
                 ]
             },
-            { path: '/users/:id/edit', name: 'users.edit', component: EditUserComponent, meta: { middleware: [ auth ] } }
+            { path: 'settings/', name: 'me.edit', component: EditUserComponent,
+                children: [
+                    { path: 'main', name: 'edit.info', component: MainEditComponent, meta: { middleware: [ auth ] } },
+                    { path: 'email', name: 'edit.email', component: EmailEditComponent, meta: { middleware: [ auth ] } },
+                    { path: 'photo', name: 'edit.photo', component: PhotoEditComponent, meta: { middleware: [ auth ] } },
+                    { path: 'about', name: 'edit.about', component: AboutEditComponent, meta: { middleware: [ auth ] } },
+                ]
+            },
         ]
     },
     { path: '/auth', component: AuthLayout,
