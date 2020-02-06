@@ -1,15 +1,17 @@
 <template>
-    <v-row>
+    <v-row class="xs-content-container">
         <v-spacer></v-spacer>
-        <v-col cols="10" lg="8" class="pa-0 ma-0">
-            <v-card
-                class="my-2"
-            >
-                <v-col
-                    cols="12"
-                >
+        <v-col cols="12" sm="11" md="10" lg="8" xl="6" class="pa-0 ma-0">
+            <v-card class="my-2 xs-card-container">
+                <v-col cols="12">
                     <v-row>
                         <v-col cols="12" sm="4" md="4" class="pa-1 divider-right">
+                            <div class="xs__display-block">
+                                <v-col cols="12" class="py-0">
+                                    <p class="edit-title">Мой дом</p>
+                                </v-col>
+                                <v-divider></v-divider>
+                            </div>
                             <v-list rounded>
                                 <v-list-item-group v-model="item" color="primary">
                                     <v-list-item
@@ -29,15 +31,13 @@
                             </v-list>
                         </v-col>
                         <v-col cols="12" sm="8" md="8" class="pa-2">
-                            <v-col
-                                cols="12 py-0"
-                            >
-                                <p class="edit-title">Мой дом</p>
-                            </v-col>
-                            <v-divider></v-divider>
-                            <v-col
-                                cols="12 py-0"
-                            >
+                            <div class="xs__display-none">
+                                <v-col cols="12" class="py-0">
+                                    <p class="edit-title">Мой дом</p>
+                                </v-col>
+                                <v-divider></v-divider>
+                            </div>
+                            <v-col cols="12" class="py-0">
                                 <router-view></router-view>
                             </v-col>
                         </v-col>
@@ -69,6 +69,79 @@
 </script>
 
 <style scoped>
+    @media screen and (max-width: 599px) {
+        .divider-right {
+            border-right: none !important;
+            border-bottom: 1px solid gray;
+        }
+        .xs-content-container {
+            margin: 0;
+            padding: 0;
+        }
+        .xs-card-container {
+            margin: 0 !important;
+            border-radius: 0 !important;
+        }
+        .xs__display-none {
+            display: none;
+        }
+        .xs__display-block {
+            display: block;
+        }
+        .edit-title {
+            font-size: 1.5rem !important;
+        }
+    }
+    /* --- */
+
+    @media screen and (min-width: 600px) and (max-width: 959px) {
+        .xs-content-container {
+            margin: 0;
+        }
+        .xs__display-none {
+            display: block;
+        }
+        .xs__display-block {
+            display: none;
+        }
+        .edit-title {
+            font-size: 1.5rem !important;
+        }
+    }
+    /* --- */
+
+    @media screen and (min-width: 960px) and (max-width: 1263px) {
+        .xs-content-container {
+            margin: 0;
+        }
+        .xs__display-none {
+            display: block;
+        }
+        .xs__display-block {
+            display: none;
+        }
+        .edit-title {
+            font-size: 1.5rem !important;
+        }
+    }
+    /* --- */
+
+    @media screen and (min-width: 1264px) {
+        .xs-content-container {
+            margin: 0;
+        }
+        .xs__display-none {
+            display: block;
+        }
+        .xs__display-block {
+            display: none;
+        }
+        .edit-title {
+            font-size: 1.5rem !important;
+        }
+    }
+    /* --- */
+
     * {
         text-decoration: none !important;
     }
@@ -77,15 +150,6 @@
     }
     .divider-right {
         border-right: 1px solid gray;
-    }
-    @media screen and (max-width: 700px) {
-        .edit-title {
-            font-size: 1rem;
-        }
-        .divider-right {
-            border-right: none;
-            border-bottom: 1px solid gray;
-        }
     }
     @media screen and (min-width: 2000px) {
         .edit-title {

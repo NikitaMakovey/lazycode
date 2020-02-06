@@ -9,24 +9,26 @@
         <div>
             <form @submit.prevent="sendPhoto">
                 <div class="form-row">
-                    <div class="form-group col-md-5">
+                    <div class="form-group col-md-8 col-12 col-sm-10 col-lg-6 col-xl-6">
                         <v-avatar
                             color="grey"
-                            size="218"
+                            size="260"
                             tile
                         >
                             <v-img :src="form.image" alt="Фото профиля"></v-img>
                         </v-avatar>
-                        <label for="image" class="link-field">
-                            URL фотографии профиля
-                        </label>
-                        <input
-                            v-model="form.image" name="image"
-                            type="text" class="form-control"
-                            id="image" placeholder="URL фотографии профиля"
-                            :class="{ 'is-invalid': form.errors.has('image') }"
-                        >
-                        <has-error :form="form" field="image"></has-error>
+                        <v-col cols="12" class="mx-0 pa-0">
+                            <label for="image" class="link-field">
+                                URL фотографии профиля
+                            </label>
+                            <input
+                                v-model="form.image" name="image"
+                                type="text" class="form-control"
+                                id="image" placeholder="URL фотографии профиля"
+                                :class="{ 'is-invalid': form.errors.has('image') }"
+                            >
+                            <has-error :form="form" field="image"></has-error>
+                        </v-col>
                     </div>
                 </div>
                 <button type="submit" class="btn btn-dark">Изменить</button>
@@ -78,13 +80,33 @@
 </script>
 
 <style scoped>
+    @media screen and (max-width: 599px) {
+
+    }
+    /* --- */
+
+    @media screen and (min-width: 600px) and (max-width: 959px) {
+
+    }
+    /* --- */
+
+    @media screen and (min-width: 960px) and (max-width: 1263px) {
+
+    }
+    /* --- */
+
+    @media screen and (min-width: 1264px) {
+
+    }
+    /* --- */
+
     .message-text {
         color: lightcoral;
         font-size: 1rem;
         font-weight: bold;
     }
     .header-text {
-        font-size: 1.4rem;
+        font-size: 1.5rem;
         color: #b4aff1;
     }
 </style>

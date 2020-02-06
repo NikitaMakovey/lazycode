@@ -30,8 +30,10 @@ Route::group(['middleware' => ['json.response']], function () {
             Route::get('auth-posts/{id}', 'PostController@auth_show');
             Route::post('posts', 'PostController@store');
             Route::post('draft', 'PostController@draft');
-            Route::get('posts/{id}', 'PostController@destroy');
-            Route::get('draft/{id}', 'PostController@delete_draft');
+
+            Route::delete('posts/{id}', 'PostController@destroy');
+            Route::delete('draft/{id}', 'PostController@delete_draft');
+
             Route::put('posts/{id}', 'PostController@update');
             Route::put('draft/{id}', 'PostController@update_draft');
 

@@ -9,7 +9,7 @@
         <div>
             <form @submit.prevent="sendBio">
                 <div class="form-row">
-                    <div class="form-group col-md-12">
+                    <div class="form-group col-12">
                         <label for="specialization">Специализация</label>
                         <input
                             v-model="form.specialization" name="specialization"
@@ -19,7 +19,7 @@
                         >
                         <has-error :form="form" field="specialization"></has-error>
                     </div>
-                    <div class="form-group col-md-12">
+                    <div class="form-group col-12">
                         <label for="about">Био</label>
                         <textarea
                             v-model="form.about" name="about"
@@ -91,7 +91,7 @@
         font-weight: bold;
     }
     .header-text {
-        font-size: 1.4rem;
+        font-size: 1.5rem;
         color: #b4aff1;
     }
 </style>

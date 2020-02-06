@@ -9,7 +9,7 @@
         <div>
             <form @submit.prevent="sendEmail">
                 <div class="form-row">
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-7 col-12 col-sm-10 col-lg-6 col-xl-6">
                         <label for="email">E-mail</label>
                         <input
                             v-model="form.email" name="email"
@@ -75,7 +75,7 @@
         font-weight: bold;
     }
     .header-text {
-        font-size: 1.4rem;
+        font-size: 1.5rem;
         color: #b4aff1;
     }
 </style>

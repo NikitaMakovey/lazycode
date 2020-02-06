@@ -198,15 +198,13 @@
     .text-white:hover {
         color: #E0C3FC !important;
     }
+    .basic-footer {
+        font-size: 1rem !important;
+    }
     main {
-        min-height: 1000px;
+        min-height: 90vh;
         background-color: #8EC5FC;
         background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
-    }
-    @media screen and (min-height: 1200px) {
-        main {
-            min-height: 1800px;
-        }
     }
     .basic-footer {
         color: #8EC5FC;

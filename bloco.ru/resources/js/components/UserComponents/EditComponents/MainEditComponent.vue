@@ -9,7 +9,7 @@
         <div>
             <form @submit.prevent="sendMain">
                 <div class="form-row">
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-7 col-12 col-sm-10 col-lg-6 col-xl-6">
                         <label for="name">Имя</label>
                         <input
                             v-model="form.name" name="name"
@@ -21,7 +21,7 @@
                     </div>
                 </div>
                 <div class="form-row">
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-7 col-12 col-sm-10 col-lg-6 col-xl-6">
                         <label for="username">Никнейм</label>
                         <input
                             v-model="form.username" name="username"
@@ -83,13 +83,33 @@
 </script>
 
 <style scoped>
+    @media screen and (max-width: 599px) {
+
+    }
+    /* --- */
+
+    @media screen and (min-width: 600px) and (max-width: 959px) {
+
+    }
+    /* --- */
+
+    @media screen and (min-width: 960px) and (max-width: 1263px) {
+
+    }
+    /* --- */
+
+    @media screen and (min-width: 1264px) {
+
+    }
+    /* --- */
+
     .message-text {
         color: lightcoral;
         font-size: 1rem;
         font-weight: bold;
     }
     .header-text {
-        font-size: 1.4rem;
+        font-size: 1.5rem;
         color: #b4aff1;
     }
 </style>
