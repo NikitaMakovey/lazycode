@@ -59,6 +59,7 @@
                     { text: 'E-mail', icon: 'mdi-email-edit', route: 'edit.email' },
                     { text: 'Фотография', icon: 'mdi-file-image', route: 'edit.photo' },
                     { text: 'О себе', icon: 'mdi-worker', route: 'edit.about' },
+                    { text: 'Подтверждение E-mail', icon: 'mdi-account-star', route: 'edit.confirm' },
                 ]
             }
         },

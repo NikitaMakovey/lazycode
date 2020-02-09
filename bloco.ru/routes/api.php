@@ -11,6 +11,8 @@ Route::group(['middleware' => ['json.response']], function () {
         Route::get('/logout', 'AuthController@logout');
         Route::get('/user', 'AuthController@user');
         Route::get('/verify', 'AuthController@isAdmin');
+        Route::get('/email/confirm', 'MailController@sendConfirmationEmail');
+        Route::post('/email/confirm', 'AuthController@confirmEmail');
 
         Route::group(['prefix' => 'edit'], function () {
             Route::put('main', 'EditController@main');

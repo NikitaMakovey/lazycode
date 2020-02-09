@@ -160,4 +160,43 @@ class AuthController extends Controller
         );
         return response($response, 403);
     }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function confirmEmail(Request $request)
+    {
+        $user = $request->user();
+        if ($user == null) {
+            $response = array(
+                'message' => 'Not Auth'
+            );
+            return response($response, 401);
+        }
+
+        $this->validate($request, [
+            'code' => array(
+                'required'
+            )
+        ]);
+
+        $code = str_replace("%2F", "/", $request['code']);
+        $str_code = '$2y$10$' . $code;
+
+        if (Hash::check($user->email, $str_code)) {
+            $user->email_verified_at = date('Y-m-d h:i:s');
+            $user->save();
+            $response = array(
+                'message' => 'Аккаунт подтверждён!'
+            );
+            return response($response, 200);
+        }
+
+        $response = array(
+            'message' => 'Аккаунт не подтверждён!'
+        );
+        return response($response, 403);
+    }
 }

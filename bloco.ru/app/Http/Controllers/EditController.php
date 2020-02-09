@@ -115,6 +115,9 @@ class EditController extends Controller
             )
         ));
 
+        if ($user->email != $request['email']) {
+            $user->email_verified_at = null;
+        }
         $user->email = $request['email'];
         $user->save();
 

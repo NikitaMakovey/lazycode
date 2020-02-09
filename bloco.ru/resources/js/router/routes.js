@@ -51,6 +51,8 @@ import PublishComponent from "../components/UserComponents/HomeComponents/Publis
 import ProcessComponent from "../components/UserComponents/HomeComponents/ProcessComponent";
 import RejectComponent from "../components/UserComponents/HomeComponents/RejectComponent";
 import DraftComponent from "../components/UserComponents/HomeComponents/DraftComponent";
+import ConfirmationComponent from "../components/UserComponents/EditComponents/ConfirmationComponent";
+import ConfirmEmailComponent from "../components/UserComponents/ConfirmEmailComponent";
 
 const routes = [
     { path: '/', component: SkeletonComponent,
@@ -80,6 +82,7 @@ const routes = [
                 children: [
                     { path: 'main', name: 'edit.info', component: MainEditComponent, meta: { middleware: [ auth ] } },
                     { path: 'email', name: 'edit.email', component: EmailEditComponent, meta: { middleware: [ auth ] } },
+                    { path: 'confirm', name: 'edit.confirm', component: ConfirmationComponent, meta: { middleware: [ auth ] } },
                     { path: 'photo', name: 'edit.photo', component: PhotoEditComponent, meta: { middleware: [ auth ] } },
                     { path: 'about', name: 'edit.about', component: AboutEditComponent, meta: { middleware: [ auth ] } },
                 ]
@@ -103,6 +106,7 @@ const routes = [
         ]
     },
     { path: '/docs', component: ApiDocs },
+    { path: '/confirm/:code', name: 'config.email', component: ConfirmEmailComponent },
     {
         path: '/admin',
         component: AdminComponent,

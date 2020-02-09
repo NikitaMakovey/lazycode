@@ -45,7 +45,7 @@
                         </v-row>
                     </div>
                     <div class="form-group ma-0">
-                        <v-row class="mx-0">
+                        <v-row class="mx-0 res__row">
                             <v-col cols="12" sm="12" md="7" lg="7" xl="7" class="px-0 res__pr">
                                 <div class="title mb-1">Изображение статьи</div>
                                 <div class="subheading">Так будет выглядеть ваше изображение:</div>
@@ -62,13 +62,13 @@
                                 >
                                 <has-error :form="form" field="image"></has-error>
                             </v-col>
-                            <v-col cols="12" sm="12" md="5" lg="5" xl="5" class="px-0 res__pl tags__display-md">
+                            <v-col cols="12" sm="12" md="5" lg="5" xl="5" class="px-0 res__pl res__container tags__display-md">
                                 <div class="title mb-1">Теги</div>
                                 <div class="subheading mb-1">Примеры: ethereum, c++, postgres и тд.</div>
                                 <v-combobox
                                     v-model="form.tags"
                                     :items="form.tags"
-                                    class="form-control"
+                                    class="form-control res__combobox"
                                     :class="{ 'is-invalid': form.errors.has('tags') }"
                                     chips
                                     clearable
@@ -117,14 +117,14 @@
                             <has-error :form="form" field="body"></has-error>
                         </v-col>
                     </div>
-                    <div class="form-group ma-0">
-                        <v-col cols="12" sm="12" md="5" lg="5" xl="5" class="px-0 res__pl tags__display-xs">
+                    <div class="form-group ma-0 tags__display-xs">
+                        <v-col cols="12" sm="12" md="5" lg="5" xl="5" class="px-0 res__pl res__container">
                             <div class="title mb-1">Теги</div>
                             <div class="subheading mb-1">Примеры: ethereum, c++, postgres и тд.</div>
                             <v-combobox
                                 v-model="form.tags"
                                 :items="form.tags"
-                                class="form-control"
+                                class="form-control res__combobox"
                                 :class="{ 'is-invalid': form.errors.has('tags') }"
                                 chips
                                 clearable
@@ -210,10 +210,11 @@
                             Authorization: token
                         }
                     };
-                    let url_ = 'api/v1/draft/' + this.$route.params.id;
-                    axios.delete(url_, config);
-                    this.form.post(url, config)
-                        .then(() => { this.$router.push('/') });
+                    let url_ = '/api/v1/draft/' + this.$route.params.id;
+                    axios.delete(url_, config).then(() => {
+                        this.form.post(url, config)
+                            .then(() => { this.$router.push('/') });
+                    });
                 } else {
                     this.form.errors.set('category_id', 'Не выбрана категория');
                 }
@@ -263,8 +264,15 @@
         margin: 0 !important;
     }
 
-    .tags__display-xs {
-        height: 300px;
+    .res__row {
+        min-height: auto;
+    }
+    .res__container {
+        min-height: auto;
+        height: auto;
+    }
+    .res__combobox {
+        height: auto;
     }
 
     @media screen and (max-width: 959px) {
