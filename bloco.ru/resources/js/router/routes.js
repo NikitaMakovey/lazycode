@@ -101,11 +101,11 @@ const routes = [
         children: [
             { path: 'register', name: 'auth.register', component: Register, meta: { middleware: [ guest ] } },
             { path: 'login', name: 'auth.login', component: Login, meta: { middleware: [ guest ] } },
-            { path: 'password/email', name: 'auth.email', component: ResetEmail },
-            { path: 'password/reset/:token', component: ResetPassword, props: true },
+            { path: 'reset/email', name: 'auth.email', component: ResetEmail },
         ]
     },
     { path: '/docs', component: ApiDocs },
+    { path: '/reset/:code/p/:token', name: 'reset.password', component: ResetPassword },
     { path: '/confirm/:code', name: 'config.email', component: ConfirmEmailComponent },
     {
         path: '/admin',

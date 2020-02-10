@@ -9,9 +9,18 @@
                         <v-spacer/>
                     </v-toolbar>
                     <v-card-text>
-                        <v-text-field
-                            id="email" label="Ваша почта" v-model="email"
-                            name="login" type="text" required autocomplete="email"/>
+                        <div class="form-group">
+                            <p style="font-size: 1rem; color: #393E41">{{ message }}</p>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Ваш e-mail</label>
+                            <input
+                                v-model="form.email" type="email" name="email" id="email"
+                                class="form-control" :class="{ 'is-invalid': form.errors.has('email') }"
+                                required autocomplete="email"
+                            >
+                            <has-error :form="form" field="email"></has-error>
+                        </div>
                     </v-card-text>
                     <v-card-actions>
                         <v-btn type="submit" class="mr-1 submit-auth-button">Отправить</v-btn>
@@ -28,15 +37,18 @@
         name: 'ResetEmail',
         data() {
             return {
-                email: '',
-                message: '',
-                status: 'success',
-                show: false
+                form: new Form({
+                    email: ''
+                }),
+                message: ''
             }
         },
         methods: {
             resetEmailSubmit() {
-                console.log(document.head.querySelector('meta[name="csrf-token"]').getAttribute('content'));
+                let url = '/api/reset/email';
+                this.form.post(url).then(({data}) => {
+                    this.message = data.message;
+                });
             }
         },
         computed: {

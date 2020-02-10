@@ -7,6 +7,11 @@ Route::group(['middleware' => ['json.response']], function () {
     Route::post('/login', 'AuthController@login');
     Route::post('/register', 'AuthController@register');
 
+    Route::group(['prefix' => 'reset'], function () {
+        Route::post('email', 'MailController@sendResetEmail');
+        Route::post('password', 'AuthController@reset');
+    });
+
     Route::group(['middleware' => ['auth:api']], function () {
         Route::get('/logout', 'AuthController@logout');
         Route::get('/user', 'AuthController@user');

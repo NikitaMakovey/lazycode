@@ -10,7 +10,7 @@
                     </v-toolbar>
                     <v-card-text>
                         <div class="form-group">
-                            <label for="email">Ваша почта</label>
+                            <label for="email">Ваш e-mail</label>
                             <input
                                 v-model="form.email" type="email" name="email" id="email"
                                 class="form-control" :class="{ 'is-invalid': form.errors.has('email') }"

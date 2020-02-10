@@ -34,10 +34,10 @@ class ResetPasswordMailBuilder extends Mailable
     public function build()
     {
         return $this
-            ->from(env('MAIL_USERNAME'))
+            ->from('info.lazy.codes@gmail.com')
             ->subject('Смена пароля Lazycode аккаунта')
-            ->view('mail.reset.password')
-            ->text('mail.reset.password.text')
+            ->view('mail.reset_password')
+            ->text('mail.reset_password_text')
             ->with('data', $this->data);
     }
 }

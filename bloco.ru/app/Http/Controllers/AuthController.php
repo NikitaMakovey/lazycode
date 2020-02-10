@@ -199,4 +199,57 @@ class AuthController extends Controller
         );
         return response($response, 403);
     }
+
+    public function reset(Request $request)
+    {
+        $this->validate($request, [
+            'password' => array(
+                'required',
+                'string',
+                'min:8',
+                'confirmed'
+            ),
+            'code' => array(
+                'required',
+                'string'
+            ),
+            'token' => array(
+                'required',
+                'string'
+            )
+        ]);
+
+        $code = '$2y$10$' . str_replace("%2F", "/", $request['code']);
+        $token = str_replace("%2F", "/", $request['token']);
+
+        $records = DB::table('password_resets')
+            ->where(array(
+                'token' => $token
+            ))
+            ->get();
+
+        foreach ($records as $record) {
+            if (Hash::check($record->email, $code)) {
+                $user = User::where('email', $record->email)->first();
+                $user->password = Hash::make($request['password']);
+                $user->save();
+
+                DB::table('password_resets')
+                    ->where(array(
+                        'email' => $record->email
+                    ))
+                    ->delete();
+
+                $response = array(
+                    'message' => 'Пароль изменён успешно!'
+                );
+                return response($response, 200);
+            }
+        }
+
+        $response = array(
+            'message' => 403
+        );
+        return response($response, 200);
+    }
 }
