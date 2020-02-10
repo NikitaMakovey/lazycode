@@ -31,7 +31,7 @@
                             {{ POST.title }}
                         </p>
                         <v-btn text icon class="route__style ml-1"
-                               :to="{ name: 'posts.edit', params: { id: POST.id } }"
+                               :to="{ name: 'post.edit', params: { id: POST.id } }"
                                v-if="POST.author_id == $store.getters.ID"
                         >
                             <v-icon>mdi-fountain-pen-tip</v-icon>

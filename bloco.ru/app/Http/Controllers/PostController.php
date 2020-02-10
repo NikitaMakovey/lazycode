@@ -238,6 +238,7 @@ class PostController extends Controller
             );
             return response($response, 401);
         }
+
         $this->validate($request, [
             'title' => array(
                 'required',
@@ -413,19 +414,20 @@ class PostController extends Controller
     /**
      * Display the specified post.
      *
+     * @param Request $request
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(int $id)
+    public function edit(Request $request, int $id)
     {
-        $post = $this->getEditPost($id);
-        $tags = $this->getPostTags($id);
+        $user = $request->user();
 
-        if ($post) {
+        $post = $this->getEditPost($id);
+
+        if ($post && $post->author_id == $user->id) {
             $response = array(
                 'message' => 'Информация о статье \'' . $post->title . '\'.',
-                'post' => $post,
-                'tags' => $tags
+                'post' => $post
             );
             return response($response, 200);
         }
@@ -435,6 +437,34 @@ class PostController extends Controller
         return response($response, 404);
     }
 
+    /**
+     * @param Request $request
+     * @param int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function draft_edit(Request $request, int $id)
+    {
+        $user = $request->user();
+
+        $post = $this->getDraftPost($id);
+
+        if ($post && $post->author_id == $user->id) {
+            $response = array(
+                'message' => 'Информация о черновике \'' . $post->title . '\'.',
+                'post' => $post
+            );
+            return response($response, 200);
+        }
+        $response = array(
+            'message' => 'Информация о черновике не найдена.'
+        );
+        return response($response, 404);
+    }
+
+    /**
+     * @param int $id
+     * @return \Illuminate\Database\Eloquent\Model|\Illuminate\Database\Query\Builder|object|null
+     */
     private function getEditPost(int $id)
     {
         $post = DB::table('posts')
@@ -442,6 +472,9 @@ class PostController extends Controller
             ->where(array(
                 'posts.id' => $id
             ))
+            ->whereRaw(
+                'posts.created_at IS NOT NULL'
+            )
             ->select(array(
                 'posts.id',
                 'posts.author_id',
@@ -455,6 +488,35 @@ class PostController extends Controller
 
         return $post;
     }
+
+    /**
+     * @param int $id
+     * @return \Illuminate\Database\Eloquent\Model|\Illuminate\Database\Query\Builder|object|null
+     */
+    private function getDraftPost(int $id)
+    {
+        $post = DB::table('posts')
+            ->join('categories', 'posts.category_id', '=', 'categories.id')
+            ->where(array(
+                'posts.id' => $id
+            ))
+            ->whereRaw(
+                'posts.created_at IS NULL'
+            )
+            ->select(array(
+                'posts.id',
+                'posts.author_id',
+                'posts.title',
+                'posts.image',
+                'posts.body',
+                'categories.name',
+                'categories.id AS category_id'
+            ))
+            ->first();
+
+        return $post;
+    }
+
     /**
      * @param int $id
      * @return \Illuminate\Database\Eloquent\Model|\Illuminate\Database\Query\Builder|object|null
@@ -509,28 +571,30 @@ class PostController extends Controller
             );
             return response($response, 401);
         }
+
         $this->validate($request, [
             'body' => array(
                 'required',
                 'min:10'
-            ),
+            )
         ]);
 
-        $post = Post::findOrFail($id);
-        if ($post->author_id == $user->id) {
-            $post->body = $request['body'];
-            $post->save();
+        DB::table('edit_posts')
+            ->where(array(
+                'post_id' => $id
+            ))
+            ->delete();
 
-            $response = array(
-                'message' => 'Информация о статье \'' . $post->title . '\' обновлена успешно!',
-                'post' => $post
-            );
-            return response($response, 200);
-        }
+        DB::table('edit_posts')
+            ->insert(array(
+                'post_id' => $id,
+                'body' => $request['body']
+            ));
+
         $response = array(
-            'message' => 'Доступ к статье \'' . $post->title . '\' ограничен.'
+            'message' => 'Информация о статье будет обработана администрацией!'
         );
-        return response($response, 403);
+        return response($response, 200);
     }
 
     /**

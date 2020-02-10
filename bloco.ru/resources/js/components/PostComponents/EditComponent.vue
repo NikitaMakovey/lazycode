@@ -88,7 +88,13 @@
             }
         },
         mounted() {
-            axios.get('/api/v1/edit-posts/' + this.$route.params.id).then(({data}) => {
+            let token = this.$store.getters.ACCESS_TOKEN;
+            let config = {
+                headers: {
+                    Authorization: token
+                }
+            };
+            axios.get('/api/v1/edit-posts/' + this.$route.params.id, config).then(({data}) => {
                 this.form.title = data.post.title;
                 this.form.body = data.post.body;
                 this.form.author_id = data.post.author_id;

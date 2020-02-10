@@ -53,6 +53,8 @@ import RejectComponent from "../components/UserComponents/HomeComponents/RejectC
 import DraftComponent from "../components/UserComponents/HomeComponents/DraftComponent";
 import ConfirmationComponent from "../components/UserComponents/EditComponents/ConfirmationComponent";
 import ConfirmEmailComponent from "../components/UserComponents/ConfirmEmailComponent";
+import EditItemsComponent from "../components/AdminComponents/EditItemsComponent";
+import EditItemComponent from "../components/AdminComponents/EditItemComponent";
 
 const routes = [
     { path: '/', component: SkeletonComponent,
@@ -114,6 +116,8 @@ const routes = [
         children: [
             { path: '', name: 'admin', component: ItemsComponent, meta: { middleware: [ auth, admin ] } },
             { path: 'posts/:id', name: 'admin.post', component: ItemComponent, meta: { middleware: [ auth, admin ] } },
+            { path: 'edits', name: 'admin.edits', component: EditItemsComponent, meta: { middleware: [ auth, admin ] } },
+            { path: 'edits/:id', name: 'admin.edit', component: EditItemComponent, meta: { middleware: [ auth, admin ] } },
         ]
     },
     { path: '*', name: 'notfound', component: NotFound }

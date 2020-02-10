@@ -21,6 +21,18 @@
                                         </v-list-item-content>
                                     </v-list-item>
                                     <v-list-item
+                                        :to="{ name: 'admin.edits' }"
+                                        exact
+                                        class="my-1"
+                                    >
+                                        <v-list-item-icon class="mr-1">
+                                            <v-icon>mdi-star</v-icon>
+                                        </v-list-item-icon>
+                                        <v-list-item-content>
+                                            <v-list-item-title v-text="item_"></v-list-item-title>
+                                        </v-list-item-content>
+                                    </v-list-item>
+                                    <v-list-item
                                         :to="{ name: 'main' }"
                                         exact
                                     >
@@ -50,7 +62,8 @@
     export default {
         data() {
             return {
-                item: 'КЛАДОВКА'
+                item: 'КЛАДОВКА',
+                item_: 'ШЛИФОВНЯ',
             }
         },
         mounted() {

@@ -34,6 +34,9 @@ Route::group(['middleware' => ['json.response']], function () {
         });
 
         Route::group(['prefix' => 'v1'], function () {
+            Route::get('edit-posts/{id}', 'PostController@edit');
+            Route::get('draft-posts/{id}', 'PostController@draft_edit');
+
             Route::get('auth-posts/{id}', 'PostController@auth_show');
             Route::post('posts', 'PostController@store');
             Route::post('draft', 'PostController@draft');
@@ -64,6 +67,11 @@ Route::group(['middleware' => ['json.response']], function () {
                 Route::get('confirm/{id}', 'AdminController@confirm');
                 Route::get('reject/{id}', 'AdminController@reject');
                 Route::get('admin/posts', 'AdminController@index');
+
+                Route::get('admin/edit-posts/{id}', 'AdminController@update');
+                Route::delete('admin/edit-posts/{id}', 'AdminController@destroy');
+                Route::get('admin/edits/{id}', 'AdminController@edit');
+                Route::get('admin/edit-posts', 'AdminController@edit_posts');
             });
         });
     });
@@ -75,7 +83,6 @@ Route::group(['middleware' => ['json.response']], function () {
 
         Route::get('posts', 'PostController@index');
         Route::get('posts/{id}', 'PostController@show');
-        Route::get('edit-posts/{id}', 'PostController@edit');
 
         Route::get('comments', 'CommentController@index');
 
