@@ -54,6 +54,26 @@
                 <v-col cols="12">
                     <v-row v-html="POST.body" class="post-body--html mx-0"></v-row>
                 </v-col>
+                <v-col cols="12">
+                    <div>
+                        <v-chip
+                            class="mx-0 mt-2 route__style cat-chip"
+                            color="#89BD9E"
+                            size="large"
+                            @click="confirm"
+                        >
+                            Одобрить
+                        </v-chip>
+                        <v-chip
+                            class="mx-0 mt-2 route__style cat-chip"
+                            color="#DB4C40"
+                            size="large"
+                            @click="destroy"
+                        >
+                            Отказать
+                        </v-chip>
+                    </div>
+                </v-col>
             </v-row>
         </template>
         <template v-else>
@@ -93,6 +113,32 @@
             axios.get(url, config).then(({data}) => {
                 this.post_ = data.post;
             })
+        },
+        methods: {
+            confirm() {
+                let token = this.$store.getters.ACCESS_TOKEN;
+                let config = {
+                    headers: {
+                        Authorization: token
+                    }
+                };
+                let url = '/api/v1/admin/edit-posts/' + this.$route.params.id;
+                axios.get(url, config).then(() => {
+                    this.$router.back();
+                });
+            },
+            destroy() {
+                let token = this.$store.getters.ACCESS_TOKEN;
+                let config = {
+                    headers: {
+                        Authorization: token
+                    }
+                };
+                let url = '/api/v1/admin/edit-posts/' + this.$route.params.id;
+                axios.delete(url, config).then(() => {
+                    this.$router.back();
+                });
+            }
         },
         computed: {
             POST() { return this.post_ }
