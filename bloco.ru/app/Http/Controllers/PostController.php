@@ -445,13 +445,14 @@ class PostController extends Controller
     public function draft_edit(Request $request, int $id)
     {
         $user = $request->user();
-
+        $tags = $this->getPostTags($id);
         $post = $this->getDraftPost($id);
 
         if ($post && $post->author_id == $user->id) {
             $response = array(
                 'message' => 'Информация о черновике \'' . $post->title . '\'.',
-                'post' => $post
+                'post' => $post,
+                'tags' => $tags
             );
             return response($response, 200);
         }

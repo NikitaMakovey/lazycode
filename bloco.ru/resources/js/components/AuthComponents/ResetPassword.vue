@@ -2,8 +2,8 @@
     <v-app id="inspire" class="auth-background">
         <v-content>
             <v-container class="fill-height" fluid>
-                <v-row align="center" justify="center">
-                    <v-col cols="12" sm="8" md="4">
+                <v-row align="center" justify="center" class="ma-0">
+                    <v-col cols="12" sm="8" md="6" lg="4" xl="2" class="pa-0">
                         <v-card class="elevation-12">
                             <template v-if="message === ''">
                                 <v-form @submit.prevent="resetPasswordSubmit">
@@ -113,7 +113,7 @@
 
 <style scoped>
     .auth-background {
-        background-color: #8EC5FC;
-        background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+        background-color: #4158D0;
+        background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
     }
 </style>

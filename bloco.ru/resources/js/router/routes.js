@@ -31,9 +31,6 @@ import guest from './middleware/guest';
 import admin from './middleware/admin';
 import user from './middleware/user';
 
-// Api View
-import ApiDocs from "../components/DocsComponents/ApiDocs";
-
 //
 import AboutComponent from "../components/UserComponents/ProfileComponents/AboutComponent";
 import UserPostComponent from "../components/UserComponents/ProfileComponents/PostComponent"
@@ -55,6 +52,7 @@ import ConfirmationComponent from "../components/UserComponents/EditComponents/C
 import ConfirmEmailComponent from "../components/UserComponents/ConfirmEmailComponent";
 import EditItemsComponent from "../components/AdminComponents/EditItemsComponent";
 import EditItemComponent from "../components/AdminComponents/EditItemComponent";
+import ComputerGraphicsComponent from "../components/LabComponents/ComputerGraphicsComponent";
 
 const routes = [
     { path: '/', component: SkeletonComponent,
@@ -106,7 +104,6 @@ const routes = [
             { path: 'reset/email', name: 'auth.email', component: ResetEmail },
         ]
     },
-    { path: '/docs', component: ApiDocs },
     { path: '/reset/:code/p/:token', name: 'reset.password', component: ResetPassword },
     { path: '/confirm/:code', name: 'config.email', component: ConfirmEmailComponent },
     {
@@ -120,6 +117,7 @@ const routes = [
             { path: 'edits/:id', name: 'admin.edit', component: EditItemComponent, meta: { middleware: [ auth, admin ] } },
         ]
     },
+    { path: '/labs/graph', name: 'computer_graphics', component: ComputerGraphicsComponent },
     { path: '*', name: 'notfound', component: NotFound }
 ];
 

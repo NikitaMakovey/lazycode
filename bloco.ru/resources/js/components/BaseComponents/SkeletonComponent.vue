@@ -2,81 +2,85 @@
     <div>
         <header>
             <div class="collapse bg-dark" id="navbarHeader">
-                <div class="container container-block">
-                    <div class="row">
-                        <div class="col-sm-9 col-md-9 col-lg-9 col-xl-9 py-4 legend-block">
-                            <p class="text-white title">О нас</p>
-                            <p class="text-muted title">
-                                {{ legend_text }}
-                            </p>
-                        </div>
-                        <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3 py-4 ma-0 list-container">
-                            <ul class="list-unstyled">
-                                <li>
-                                    <router-link to="/" class="text-white">
-                                        <span class="list-element-text">Все посты</span>
-                                    </router-link>
-                                </li>
-                                <li>
-                                    <router-link to="/users" class="text-white">
-                                        <span class="list-element-text">Все пользователи</span>
-                                    </router-link>
-                                </li>
-                                <!--
-                                <li>
-                                    <router-link to="/search" class="text-white">
-                                        <span class="list-element-text">Поиск</span>
-                                    </router-link>
-                                </li>
-                                -->
-                                <template v-if="ACCESS_TOKEN">
-                                    <li>
-                                        <router-link :to="{ name: 'user.about', params: { id: ID } }" class="text-white">
-                                            <span class="list-element-text">Мой профиль</span>
-                                        </router-link>
-                                    </li>
-                                    <li>
-                                        <router-link to="/home/publish" class="text-white">
-                                            <span class="list-element-text">Мой дом</span>
-                                        </router-link>
-                                    </li>
-                                    <li>
-                                        <router-link to="/settings/main" class="text-white">
-                                            <span class="list-element-text">Мой гараж</span>
-                                        </router-link>
-                                    </li>
-                                    <li>
-                                        <router-link to="/post/create" class="text-white">
-                                            <span class="list-element-text">Написать статью</span>
-                                        </router-link>
-                                    </li>
-                                    <template v-if="IS_ADMIN ==='true'">
+                <v-row class="ma-0 pa-0">
+                    <v-spacer></v-spacer>
+                    <v-col cols="10">
+                        <div class="container container-block">
+                            <div class="row">
+                                <div class="col-sm-9 col-md-9 col-lg-9 col-xl-9 py-4 legend-block">
+                                    <p class="text-white title">О нас</p>
+                                    <p class="text-muted title">
+                                        {{ legend_text }}
+                                    </p>
+                                </div>
+                                <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3 py-4 ma-0 list-container">
+                                    <ul class="list-unstyled">
                                         <li>
-                                            <router-link :to="{ name: 'admin' }" class="text-white">
-                                                <span class="list-element-text">Каморка админа</span>
+                                            <router-link to="/" class="text-white">
+                                                <span class="list-element-text">Все посты</span>
                                             </router-link>
                                         </li>
-                                    </template>
-                                    <li @click="logout">
-                                        <span class="list-element-text text-white pa-0 ma-0">Выйти</span>
-                                    </li>
-                                </template>
-                                <template v-else>
-                                    <li>
-                                        <router-link to="/auth/login" class="text-white">
-                                            <span class="list-element-text">Войти</span>
-                                        </router-link>
-                                    </li>
-                                </template>
-                            </ul>
+                                        <li>
+                                            <router-link to="/users" class="text-white">
+                                                <span class="list-element-text">Все пользователи</span>
+                                            </router-link>
+                                        </li>
+                                        <li>
+                                            <router-link to="/labs/graph" class="text-white">
+                                                <span class="list-element-text">Лаборатория</span>
+                                            </router-link>
+                                        </li>
+                                        <template v-if="ACCESS_TOKEN">
+                                            <li>
+                                                <router-link :to="{ name: 'user.about', params: { id: ID } }" class="text-white">
+                                                    <span class="list-element-text">Мой профиль</span>
+                                                </router-link>
+                                            </li>
+                                            <li>
+                                                <router-link to="/home/publish" class="text-white">
+                                                    <span class="list-element-text">Мой дом</span>
+                                                </router-link>
+                                            </li>
+                                            <li>
+                                                <router-link to="/settings/main" class="text-white">
+                                                    <span class="list-element-text">Мой гараж</span>
+                                                </router-link>
+                                            </li>
+                                            <li>
+                                                <router-link to="/post/create" class="text-white">
+                                                    <span class="list-element-text">Написать статью</span>
+                                                </router-link>
+                                            </li>
+                                            <template v-if="IS_ADMIN ==='true'">
+                                                <li>
+                                                    <router-link :to="{ name: 'admin' }" class="text-white">
+                                                        <span class="list-element-text">Каморка админа</span>
+                                                    </router-link>
+                                                </li>
+                                            </template>
+                                            <li @click="logout">
+                                                <span class="list-element-text text-white pa-0 ma-0">Выйти</span>
+                                            </li>
+                                        </template>
+                                        <template v-else>
+                                            <li>
+                                                <router-link to="/auth/login" class="text-white">
+                                                    <span class="list-element-text">Войти</span>
+                                                </router-link>
+                                            </li>
+                                        </template>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
+                    </v-col>
+                    <v-spacer></v-spacer>
+                </v-row>
             </div>
             <div class="navbar navbar-dark bg-dark box-shadow navbar-container">
                 <div class="container d-flex justify-content-between pa-sm-2 pa-md-2 pa-lg-2 pa-xl-2">
                     <router-link :to="{ name: 'main' }" class="navbar-brand d-flex align-items-center">
-                        <strong>lazy&#60;code&#47;&#62;</strong>
+                        <strong>Lazycode</strong>
                     </router-link>
                     <button
                         class="navbar-toggler" type="button"
@@ -96,7 +100,7 @@
 
         <footer class="text-muted bg-dark">
             <div class="container">
-                <p class="title basic-footer">{{ new Date().getFullYear() }} &copy; lazy&#60;code&#47;&#62;</p>
+                <p class="title basic-footer">{{ new Date().getFullYear() }} &copy; Lazycode</p>
             </div>
         </footer>
     </div>
@@ -106,9 +110,9 @@
     export default {
         data () {
             return {
-                legend_text : "lazy<code/> - не просто платформа для создания " +
+                legend_text : "Lazycode - не просто платформа для создания " +
                     "статей и их просмотра - это социальная сеть для тех, кому интересны естественные " +
-                    "науки, IT, инженерия, физика и многие другие темы. Присоединяйся к нам - стань частью " +
+                    "науки, IT, путешествия и многие другие темы. Присоединяйся к нам - стань частью " +
                     "дружной и интеллектуальной команды."
             }
         },
