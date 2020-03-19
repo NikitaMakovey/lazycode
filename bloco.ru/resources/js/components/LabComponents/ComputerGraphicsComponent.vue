@@ -4,9 +4,11 @@
             <v-spacer></v-spacer>
             <v-icon>mdi-minus</v-icon>
             <v-icon>mdi-checkbox-blank-outline</v-icon>
-            <v-icon>mdi-close</v-icon>
+            <router-link to="/">
+                <v-icon>mdi-close</v-icon>
+            </router-link>
         </v-system-bar>
-        <v-system-bar window light>
+        <v-system-bar window light style="overflow-x: scroll">
             <v-menu bottom offset-y>
                 <template v-slot:activator="{ on }">
                     <span
@@ -16,12 +18,10 @@
                     </span>
                 </template>
                 <v-list class="pa-0">
-                    <v-list-item
-                        v-for="(item, index) in file_items"
-                        :key="index"
-                        @click=""
-                    >
-                        <v-list-item-title>{{ item.title }}</v-list-item-title>
+                    <v-list-item>
+                        <v-list-item-title>
+                            <input type="file" @change="loadFile">
+                        </v-list-item-title>
                     </v-list-item>
                 </v-list>
             </v-menu>
@@ -98,14 +98,22 @@
             </span>
             <v-dialog
                 v-model="dialog_about"
-                max-width="290"
+                max-width="600"
             >
                 <v-card>
-                    <v-card-title class="headline">Авторы лаборатории</v-card-title>
+                    <v-card-title class="headline" style="font-size: 1rem !important;">
+                        Система визуализации многоканальных сигналов
+                    </v-card-title>
+                    <v-card-title class="headline" style="color: #6574cd">
+                        Группа: Б8118-01.03.02систпро
+                    </v-card-title>
+                    <v-card-title class="headline" style="color: #a9a9a9">
+                        Состав команды:
+                    </v-card-title>
 
                     <v-card-text>
                         <p class="mb-1">Маковей Никита</p>
-                        <p class="mb-1">Маковей Людмила</p>
+                        <p class="mb-1">Романенкова Людмила</p>
                         <p class="mb-1">Лоншакова Анастасия</p>
                         <p class="mb-1">Ващенко Светлана</p>
                         <p class="mb-1">Гасанова Сабина</p>
@@ -126,25 +134,89 @@
             </v-dialog>
             <v-spacer></v-spacer>
         </v-system-bar>
+        <v-col cols="12">
+            <v-row>
+                <v-col cols="12">
+                    <template v-if="this.$store.getters.CHANNELS !== null">
+                        <v-col cols="12">
+                            <v-subheader>Каналы</v-subheader>
+                            <v-row v-for="(data, index) in this.$store.getters.CHANNELS" :key="index">
+                                <channel-component :channeldata="data" :channelname="'NP' + index"></channel-component>
+                            </v-row>
+                        </v-col>
+                    </template>
+                </v-col>
+            </v-row>
+        </v-col>
     </div>
 </template>
 
 <script>
+    import ChannelComponent from "./ChannelComponents/ChannelComponent";
+
     export default {
         name: "ComputerGraphicsComponent",
+        components: {
+            'channel-component' : ChannelComponent
+        },
         data() {
             return {
-                file_items: [
-                    { title: 'Новый файл' },
-                    { title: 'Открыть' },
-                    { title: 'Сохранить' },
-                    { title: 'Сохранить как' }
-                ],
                 dialog_about: false,
                 dialog: false,
                 notifications: false,
                 sound: true,
                 widgets: false,
+            }
+        },
+        methods: {
+            loadFile: function (e) {
+                const file = e.target.files[0];
+
+                let file__type = file.type;
+                let file__name = file.name;
+
+                if (file__type === "text/plain") {
+                    this.readFile(file);
+                }
+            },
+            readFile: function (file) {
+                let CHANNELS = null;
+                const reader = new FileReader();
+                const store = this.$store;
+                const vm = this;
+                reader.onload = function() {
+                    let cnt = 0;
+                    const DATA = reader.result.split("\n").map(function (d) {
+                        let delta = d.split(" ");
+                        if (cnt < 12) {
+                            if (cnt === 1) {
+                                let count_channels = Number(delta[0]);
+                                if (count_channels > 0 && count_channels !== null) {
+                                    localStorage.setItem('FILE__COUNT_CHANNELS', count_channels);
+                                    CHANNELS = new Array(localStorage.getItem('FILE__COUNT_CHANNELS'));
+                                    for (let i = 0; i < localStorage.getItem('FILE__COUNT_CHANNELS'); i++) {
+                                        CHANNELS[i] = new Array(0);
+                                    }
+                                }
+                            }
+                            if (cnt === 11) {
+                                const CHANNELS_NAMES = d.split(";");
+                            }
+                        } else {
+                            for (let i = 0; i < localStorage.getItem('FILE__COUNT_CHANNELS'); i++) {
+                                CHANNELS[i].push(Number(delta[i]));
+                            }
+                        }
+                        cnt++;
+                    });
+                    store.dispatch('UPDATE_CHANNELS', CHANNELS).then(() => {
+                        vm.drawChannels();
+                    })
+                };
+                reader.readAsText(file);
+            },
+            drawChannels: function() {
+                console.log(this.$store.getters.CHANNELS);
             }
         }
     }
