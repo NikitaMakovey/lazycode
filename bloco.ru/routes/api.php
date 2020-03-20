@@ -19,6 +19,10 @@ Route::group(['middleware' => ['json.response']], function () {
         Route::get('/email/confirm', 'MailController@sendConfirmationEmail');
         Route::post('/email/confirm', 'AuthController@confirmEmail');
 
+        Route::group(['prefix' => 'upload'], function () {
+            Route::post('image', 'FileEntryController@uploadFile');
+        });
+
         Route::group(['prefix' => 'edit'], function () {
             Route::put('main', 'EditController@main');
             Route::put('image', 'EditController@image');

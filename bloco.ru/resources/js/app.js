@@ -8,6 +8,12 @@ import { store } from "./store";
 import router from "./router/index";
 import App from "./Index";
 import { Form, HasError, AlertError, AlertErrors } from 'vform';
+import VueQuillEditor from 'vue-quill-editor';
+
+import 'quill/dist/quill.core.css';
+import 'quill/dist/quill.snow.css';
+
+Vue.use(VueQuillEditor);
 
 window.Form = Form;
 

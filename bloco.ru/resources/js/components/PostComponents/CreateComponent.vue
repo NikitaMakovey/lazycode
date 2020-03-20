@@ -91,6 +91,8 @@
                 <div class="form-group my-0 py-4">
                     <v-col cols="12" class="pa-0">
                         <div class="title mb-1">Текст статьи</div>
+                        <quill-editor style="background-color: #ffffff" v-model="editorData" :options="editorConfig"></quill-editor>
+                        <!--
                         <editor
                             v-model="form.body" name="body"
                             class="form-control no-route-link--color"
@@ -110,6 +112,7 @@
                                        bullist numlist | removeformat | code '
                                    }">
                         </editor>
+                        -->
                         <has-error :form="form" field="body"></has-error>
                     </v-col>
                 </div>
@@ -164,7 +167,6 @@
 </template>
 
 <script>
-    import Editor from '@tinymce/tinymce-vue';
     import {mapGetters} from 'vuex';
 
     export default {
@@ -177,11 +179,24 @@
                     image: '',
                     body: '',
                     tags: []
-                })
+                }),
+                editorData: '<p>Content of the editor.</p>',
+                editorConfig: {
+                    modules: {
+                        toolbar: [
+                            [{ 'font': [] }],
+                            [ 'bold', 'italic', 'underline', 'strike' ],
+                            [{ 'size': [] }],
+                            [{ 'color': [] }, { 'background': [] }],
+                            [{ 'script': 'super' }, { 'script': 'sub' }],
+                            [{ 'header': '1' }, { 'header': '2' }, 'blockquote', 'code-block' ],
+                            [{ 'list': 'ordered' }, { 'list': 'bullet'}, { 'indent': '-1' }, { 'indent': '+1' }],
+                            [{ 'align': [] }, 'image', 'clean' ]
+                        ]
+                    },
+                    theme: 'snow'
+                }
             }
-        },
-        components: {
-            'editor': Editor
         },
         methods: {
             remove (item) {
@@ -189,6 +204,8 @@
                 this.form.tags = [...this.form.tags];
             },
             createPost() {
+                console.log(this.editorData);
+
                 if (this.category.id !== 0) {
                     this.form.category_id = this.category.id;
                     let url = '/api/v1/posts';
