@@ -166,7 +166,6 @@
 </template>
 
 <script>
-    import Editor from '@tinymce/tinymce-vue';
     import {mapGetters} from 'vuex';
     import axios from 'axios';
 
@@ -200,9 +199,6 @@
                     theme: 'snow'
                 }
             }
-        },
-        components: {
-            'editor': Editor
         },
         methods: {
             handleFile () {

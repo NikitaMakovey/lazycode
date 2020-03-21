@@ -42,7 +42,6 @@
 </template>
 
 <script>
-    import Editor from '@tinymce/tinymce-vue';
     import axios from 'axios';
 
     export default {
@@ -71,9 +70,6 @@
                     theme: 'snow'
                 }
             }
-        },
-        components: {
-            'editor': Editor
         },
         methods: {
             updatePost() {
