@@ -16,26 +16,10 @@
                     <div class="form-group my-0 py-4">
                         <v-col cols="12" class="pa-0">
                             <div class="title mb-1">Текст статьи</div>
-                            <editor
-                                v-model="form.body" name="body"
-                                class="form-control no-route-link--color"
-                                :class="{ 'is-invalid': form.errors.has('body') }"
-                                api-key="29hv0shfon7y1i3ayspbk71bs3dy13lj3kxesuslq7ll3wfw"
-                                :init="{
-                                         height: 600,
-                                         menubar: false,
-                                         plugins: [
-                                           'advlist autolink lists link image charmap print preview anchor',
-                                           'searchreplace visualblocks code fullscreen',
-                                           'insertdatetime media table paste code help wordcount'
-                                         ],
-                                         toolbar:
-                                           'formatselect | bold italic backcolor | \
-                                           link image | \
-                                           bullist numlist | removeformat | code '
-                                       }">
-                            </editor>
-                            <has-error :form="form" field="body"></has-error>
+                            <quill-editor
+                                style="background-color: #ffffff"
+                                v-model="form.body" :options="editorConfig"
+                            ></quill-editor>
                         </v-col>
                     </div>
                     <div>
@@ -68,7 +52,24 @@
                     title: '',
                     body: '',
                     author_id: 0
-                })
+                }),
+                editorData: '',
+                editorConfig: {
+                    modules: {
+                        toolbar: [
+                            [{ 'font': [] }],
+                            [ 'bold', 'italic', 'underline', 'strike' ],
+                            [{ 'size': [] }],
+                            [{ 'color': [] }, { 'background': [] }],
+                            [{ 'script': 'super' }, { 'script': 'sub' }],
+                            [{ 'header': '1' }, { 'header': '2' }, 'blockquote', 'code-block' ],
+                            [{ 'list': 'ordered' }, { 'list': 'bullet'}, { 'indent': '-1' }, { 'indent': '+1' }],
+                            [{ 'align': [] }, 'image', 'clean' ]
+                        ]
+                    },
+                    placeholder: 'Место для твоего пера...',
+                    theme: 'snow'
+                }
             }
         },
         components: {

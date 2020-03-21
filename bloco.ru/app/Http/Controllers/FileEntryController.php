@@ -3,33 +3,39 @@
 namespace App\Http\Controllers;
 
 use App\FileEntry;
-use Illuminate\Http\File;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
-use Symfony\Component\Console\Input\Input;
+use Illuminate\Support\Str;
 
 class FileEntryController extends Controller
 {
     public function uploadFile(Request $request)
     {
-        $file = Input::file('file');
-        $filename = $file->getClientOriginalName();
-        $path = Hash::make(time());
+        $file = $request->file('file');
+        $fn = $request->file('file')->getClientOriginalName();
+        $encode_fn = Str::slug($fn, "_");
+        $filename = $this->stringFileName($encode_fn);
 
-        if (
-            Storage::disk('uploads')
-                ->put($path.'/'.$filename, File::get($file))
-        ) {
+        $path = str_replace("/", "_", Hash::make(time()));
+
+        //return response([$file], 200);
+
+        if (Storage::disk('local')->put($path.'/'.$filename, File::get($file))) {
+
+
             $input['filename'] = $filename;
-            $input['mime'] = $file->getClientMimeType();
+            $input['mime'] = $request->file('file')->getClientMimeType();
             $input['path'] = $path;
-            $input['size'] = $file->getClientSize();
+            $input['size'] = $request->file('file')->getClientSize();
             $file = FileEntry::create($input);
+
+            $url = 'http://localhost:8000';
 
             return response(array(
                 'url' =>
-                    'http://lazy.codes/storage/files/uploads/'.$path.'/'.$filename,
+                    $url.'/uploads/'.$path.'/'.$filename,
                 'success' => true,
                 'id' => $file->id
             ), 200);
@@ -38,5 +44,19 @@ class FileEntryController extends Controller
         return response(array(
             'success' => false
         ), 500);
+    }
+
+    private function stringFileName(string $str)
+    {
+        $str_length = mb_strwidth($str);
+        $formats = array("jpeg", "jpg", "png");
+        foreach ($formats as $format) {
+            $pos = strrpos($str, $format, -1);
+            if ($pos && $pos == $str_length - mb_strwidth($format)) {
+                $str_ = substr_replace($str, chr(46), $pos, 0);
+                return $str_;
+            }
+        }
+        return -1;
     }
 }

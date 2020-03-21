@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\File;
 
 Route::group(['middleware' => ['json.response']], function () {
 
@@ -19,7 +21,7 @@ Route::group(['middleware' => ['json.response']], function () {
         Route::get('/email/confirm', 'MailController@sendConfirmationEmail');
         Route::post('/email/confirm', 'AuthController@confirmEmail');
 
-        Route::group(['prefix' => 'upload'], function () {
+        Route::group(['prefix' => 'uploads'], function () {
             Route::post('image', 'FileEntryController@uploadFile');
         });
 

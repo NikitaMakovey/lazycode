@@ -48,19 +48,29 @@
                         <v-row class="mx-0 res__row">
                             <v-col cols="12" sm="12" md="7" lg="7" xl="7" class="px-0 res__pr">
                                 <div class="title mb-1">Изображение статьи</div>
-                                <div class="subheading">Так будет выглядеть ваше изображение:</div>
-                                <div class="card-image-container mb-1">
-                                    <img
-                                        :src="form.image"
-                                        alt="#image" class="card-img-top"
+                                <template v-if="form.image">
+                                    <div class="subheading">Так будет выглядеть ваше изображение:</div>
+                                    <div class="card-image-container mb-1">
+                                        <img
+                                            :src="form.image"
+                                            alt="#image" class="preview card-img-top"
+                                            ref="image_preview"
+                                        />
+                                    </div>
+                                </template>
+
+                                <div class="filezone">
+                                    <input
+                                        type="file" id="file" ref="file"
+                                        multiple v-on:change="handleFile()"
+                                        class="form-control" name="file"
+                                        :class="{ 'is-invalid': form.errors.has('image') }"
                                     />
+                                    <p>
+                                        Перетащите файл сюда <br>или нажмите для поиска
+                                    </p>
+                                    <has-error :form="form" field="file"></has-error>
                                 </div>
-                                <input v-model="form.image" type="text" name="image"
-                                       class="form-control title no-route-link--color"
-                                       :class="{ 'is-invalid': form.errors.has('image') }"
-                                       placeholder="Здесь вам необходимо написать URL изображения."
-                                >
-                                <has-error :form="form" field="image"></has-error>
                             </v-col>
                             <v-col cols="12" sm="12" md="5" lg="5" xl="5" class="px-0 res__pl res__container tags__display-md">
                                 <div class="title mb-1">Теги</div>
@@ -95,26 +105,10 @@
                     <div class="form-group py-4 mb-0">
                         <v-col cols="12" class="pa-0">
                             <div class="title mb-1">Текст статьи</div>
-                            <editor
-                                v-model="form.body" name="body"
-                                class="form-control no-route-link--color"
-                                :class="{ 'is-invalid': form.errors.has('body') }"
-                                api-key="29hv0shfon7y1i3ayspbk71bs3dy13lj3kxesuslq7ll3wfw"
-                                :init="{
-                                         height: 600,
-                                         menubar: false,
-                                         plugins: [
-                                           'advlist autolink lists link image charmap print preview anchor',
-                                           'searchreplace visualblocks code fullscreen',
-                                           'insertdatetime media table paste code help wordcount'
-                                         ],
-                                         toolbar:
-                                           'formatselect | bold italic backcolor | \
-                                           link image | \
-                                           bullist numlist | removeformat | code '
-                                       }">
-                            </editor>
-                            <has-error :form="form" field="body"></has-error>
+                            <quill-editor
+                                style="background-color: #ffffff"
+                                v-model="form.body" :options="editorConfig"
+                            ></quill-editor>
                         </v-col>
                     </div>
                     <div class="form-group ma-0 tags__display-xs">
@@ -153,15 +147,13 @@
                                 ОТПРАВИТЬ НА ПРОВЕРКУ
                             </v-btn>
                         </div>
+                        <div class="btn-form-container">
+                            <v-btn type="cancel" @click="updateDraft" class="route__style" dark outlined color="#50575B">
+                                СОХРАНИТЬ
+                            </v-btn>
+                        </div>
                     </div>
                 </form>
-                <div class="mt-1">
-                    <div class="btn-form-container">
-                        <v-btn type="cancel" @click="updateDraft" class="route__style" dark outlined color="#50575B">
-                            СОХРАНИТЬ
-                        </v-btn>
-                    </div>
-                </div>
             </template>
             <template v-else>
                 <v-row justify="center" class="mt-2">
@@ -189,13 +181,59 @@
                     author_id: '',
                     body: '',
                     tags: []
-                })
+                }),
+                editorData: '',
+                editorConfig: {
+                    modules: {
+                        toolbar: [
+                            [{ 'font': [] }],
+                            [ 'bold', 'italic', 'underline', 'strike' ],
+                            [{ 'size': [] }],
+                            [{ 'color': [] }, { 'background': [] }],
+                            [{ 'script': 'super' }, { 'script': 'sub' }],
+                            [{ 'header': '1' }, { 'header': '2' }, 'blockquote', 'code-block' ],
+                            [{ 'list': 'ordered' }, { 'list': 'bullet'}, { 'indent': '-1' }, { 'indent': '+1' }],
+                            [{ 'align': [] }, 'image', 'clean' ]
+                        ]
+                    },
+                    placeholder: 'Место для твоего пера...',
+                    theme: 'snow'
+                }
             }
         },
         components: {
             'editor': Editor
         },
         methods: {
+            handleFile () {
+                console.log(this.$refs.file.files);
+
+                let formData = new FormData();
+                formData.append('file', this.$refs.file.files[0]);
+
+                let url = '/api/uploads/image';
+                let token = this.$store.getters.ACCESS_TOKEN;
+                let config = {
+                    headers: {
+                        Authorization: token,
+                        'Content-Type': 'multipart/form-data'
+                    }
+                };
+
+                let file__type = this.$refs.file.files[0].type;
+                if (file__type === "image/jpeg" || file__type === "image/png") {
+                    axios.post(url, formData, config)
+                        .then(({data}) => {
+                            this.form.image = data.url;
+                            console.log('success');
+                        })
+                        .catch((error) => {
+                            console.log(error);
+                        });
+                } else {
+                    this.form.image = '';
+                }
+            },
             remove (item) {
                 this.form.tags.splice(this.form.tags.indexOf(item), 1);
                 this.form.tags = [...this.form.tags];
@@ -266,6 +304,32 @@
 </script>
 
 <style scoped>
+    input[type="file"]{
+        opacity: 0;
+        width: 100%;
+        height: 200px;
+        position: absolute;
+        cursor: pointer;
+    }
+    .filezone {
+        outline: 2px dashed grey;
+        outline-offset: -10px;
+        background: #ccc;
+        color: dimgray;
+        padding: 10px 10px;
+        min-height: 200px;
+        position: relative;
+        cursor: pointer;
+    }
+    .filezone:hover {
+        background: #c0c0c0;
+    }
+    .filezone p {
+        font-size: 1.2em;
+        text-align: center;
+        padding: 50px 50px 50px 50px;
+    }
+
     .ma-0 {
         margin: 0 !important;
     }

@@ -9,7 +9,7 @@
         <div>
             <form @submit.prevent="sendPhoto">
                 <div class="form-row">
-                    <div class="form-group col-md-8 col-12 col-sm-10 col-lg-6 col-xl-6">
+                    <div class="form-group col-md-8 col-12 col-sm-10 col-lg-6 col-xl-6 mb-0">
                         <v-avatar
                             color="grey"
                             size="260"
@@ -17,27 +17,31 @@
                         >
                             <v-img :src="form.image" alt="Фото профиля"></v-img>
                         </v-avatar>
-                        <v-col cols="12" class="mx-0 pa-0">
-                            <label for="image" class="link-field">
-                                URL фотографии профиля
-                            </label>
-                            <input
-                                v-model="form.image" name="image"
-                                type="text" class="form-control"
-                                id="image" placeholder="URL фотографии профиля"
-                                :class="{ 'is-invalid': form.errors.has('image') }"
-                            >
-                            <has-error :form="form" field="image"></has-error>
+                        <v-col cols="12" class="mx-0 pa-0 mt-1">
+                            <div class="filezone">
+                                <input
+                                    type="file" id="file" ref="file"
+                                    multiple v-on:change="handleFile()"
+                                    class="form-control" name="file"
+                                    :class="{ 'is-invalid': form.errors.has('image') }"
+                                />
+                                <p>
+                                    Перетащите файл сюда <br>или нажмите для поиска
+                                </p>
+                                <has-error :form="form" field="file"></has-error>
+                            </div>
                         </v-col>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-dark">Изменить</button>
+                <button type="submit" class="btn btn-dark mt-0">Изменить</button>
             </form>
         </div>
     </div>
 </template>
 
 <script>
+    import axios from 'axios';
+
     export default {
         data() {
             return {
@@ -53,6 +57,35 @@
             })
         },
         methods: {
+            handleFile () {
+                console.log(this.$refs.file.files);
+
+                let formData = new FormData();
+                formData.append('file', this.$refs.file.files[0]);
+
+                let url = '/api/uploads/image';
+                let token = this.$store.getters.ACCESS_TOKEN;
+                let config = {
+                    headers: {
+                        Authorization: token,
+                        'Content-Type': 'multipart/form-data'
+                    }
+                };
+
+                let file__type = this.$refs.file.files[0].type;
+                if (file__type === "image/jpeg" || file__type === "image/png") {
+                    axios.post(url, formData, config)
+                        .then(({data}) => {
+                            this.form.image = data.url;
+                            console.log('success');
+                        })
+                        .catch((error) => {
+                            console.log(error);
+                        });
+                } else {
+                    this.form.image = '';
+                }
+            },
             sendPhoto: function () {
                 let token = this.$store.getters.ACCESS_TOKEN;
                 let config = {
@@ -80,6 +113,32 @@
 </script>
 
 <style scoped>
+    input[type="file"]{
+        opacity: 0;
+        width: 100%;
+        height: 100px;
+        position: absolute;
+        cursor: pointer;
+    }
+    .filezone {
+        outline: 2px dashed grey;
+        outline-offset: -10px;
+        background: #ccc;
+        color: dimgray;
+        padding: 10px 10px;
+        min-height: 100px;
+        position: relative;
+        cursor: pointer;
+    }
+    .filezone:hover {
+        background: #c0c0c0;
+    }
+    .filezone p {
+        font-size: 1.2em;
+        text-align: center;
+        padding: 50px 50px 50px 50px;
+    }
+
     @media screen and (max-width: 599px) {
 
     }
