@@ -33,7 +33,7 @@ class UserController extends Controller
                     AS sum_votes'
             )
             ->orderBy('sum_votes', 'DESC')
-            ->paginate(10);
+            ->paginate(12);
 
         $response = array(
             'message' => 'Информация о всех пользователях.',

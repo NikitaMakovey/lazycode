@@ -1,39 +1,29 @@
 <template>
-    <v-row>
+    <v-row class="ma-0">
         <v-spacer></v-spacer>
         <v-col cols="12" sm="10" md="9" lg="8" xl="6">
             <v-row class="pa-4 ma-0">
                 <p class="display-1 no-route-link--color">Пользователи</p>
             </v-row>
             <v-divider class="my-1"></v-divider>
-            <v-col cols="12" v-for="user in users.data" :key="user.id" class="my-0 py-0">
-                <v-row>
-                    <v-col cols="12">
-                        <v-btn icon large class="route__style" :to="{ name: 'user', params: { id: user.id } }" exact>
-                            <v-avatar class="xs-image-content" size="3rem" item>
-                                <v-img :src="user.image" alt="#UI">
-                                </v-img>
-                            </v-avatar>
-                        </v-btn>
-                        <span class="title xs-username-content ml-1 res__content">
-                            <router-link :to="{ name: 'user', params: { id: user.id }}"
-                                         class="route__style route-link--color"
-                            >
-                                @{{ user.username }}
-                            </router-link>
-                        </span>
-                        <div class="inline-block__container xs-name-content">
-                            <span class="title ml-2 mr-2 black--color res__content">{{ user.name }}</span>
+            <div class="row pa-1 ma-0">
+                <div class="col-md-4 col-12 col-sm-6 col-lg-3 col-xl-3" v-for="user in users.data" :key="user.id">
+                    <div class="card mb-2 box-shadow">
+                        <img class="card-img-top" :src="user.image" alt="card image">
+                        <div class="card-body">
+                            <p class="card-text">
+                                <router-link
+                                    :to="{ name: 'user', params: { id: user.id } }"
+                                    class="route__style route-link--color"
+                                >
+                                    @{{ user.username }}
+                                    <b>[{{ user.sum_votes > 0 ? "+" : ""}}{{ user.sum_votes }}]</b>
+                                </router-link>
+                            </p>
                         </div>
-                        <v-btn text icon disabled class="ml-3 mr-0 res__content">
-                            <span>
-                                {{ user.sum_votes > 0 ? "+" : ""}}{{ user.sum_votes }}
-                            </span>
-                            <v-icon class="responsive--text">mdi-diamond-stone</v-icon>
-                        </v-btn>
-                    </v-col>
-                </v-row>
-            </v-col>
+                    </div>
+                </div>
+            </div>
             <div class="pa-0 ma-0">
                 <div class="pa-0 ma-0">
                     <pagination
