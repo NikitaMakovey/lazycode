@@ -4,7 +4,7 @@
             <div class="collapse bg-dark" id="navbarHeader">
                 <v-row class="ma-0 pa-0">
                     <v-spacer></v-spacer>
-                    <v-col cols="10">
+                    <v-col cols="12" sm="11" md="11" lg="9" xl="6">
                         <div class="container container-block">
                             <div class="row">
                                 <div class="col-sm-9 col-md-9 col-lg-9 col-xl-9 py-4 legend-block">
@@ -73,7 +73,10 @@
                 </v-row>
             </div>
             <div class="navbar navbar-dark bg-dark box-shadow navbar-container">
-                <div class="container d-flex justify-content-between pa-sm-2 pa-md-2 pa-lg-2 pa-xl-2">
+                <v-spacer></v-spacer>
+                <div class="container d-flex justify-content-between pa-sm-2 pa-md-2 pa-lg-2 pa-xl-2
+                            col-12 col-sm-11 col-md-11 col-lg-9 col-xl-6"
+                >
                     <router-link :to="{ name: 'main' }" class="navbar-brand d-flex align-items-center">
                         <strong>Lazycode</strong>
                     </router-link>
@@ -86,6 +89,7 @@
                         <span class="navbar-toggler-icon"></span>
                     </button>
                 </div>
+                <v-spacer></v-spacer>
             </div>
         </header>
 
@@ -94,9 +98,17 @@
         </main>
 
         <footer class="text-muted bg-dark">
-            <div class="container">
-                <p class="title basic-footer">{{ new Date().getFullYear() }} &copy; Lazycode</p>
-            </div>
+            <v-row class="ma-0 pa-0">
+                <v-spacer></v-spacer>
+                <div class="center-block
+                            pa-sm-4 pa-md-4 pa-lg-4 pa-xl-4"
+                >
+                    <div>
+                        <p class="title basic-footer ma-0">{{ new Date().getFullYear() }} &copy; Lazycode</p>
+                    </div>
+                </div>
+                <v-spacer></v-spacer>
+            </v-row>
         </footer>
     </div>
 </template>
@@ -202,10 +214,9 @@
     }
     main {
         min-height: 90vh;
-        background-color: #8EC5FC;
-        background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+        background-color: #a6adae;
     }
     .basic-footer {
-        color: #8EC5FC;
+        color: #ecf6f7;
     }
 </style>

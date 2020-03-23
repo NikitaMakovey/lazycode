@@ -280,7 +280,7 @@
         .cat-header-text {
             font-size: 0.9rem;
             font-weight: bold;
-            color: #8EC5FC;
+            color: #79848a;
         }
         .cat-item-text {
             font-size: 0.8rem;
@@ -322,7 +322,7 @@
         .cat-header-text {
             font-size: 1.2rem;
             font-weight: bold;
-            color: #8EC5FC;
+            color: #79848a;
         }
         .cat-item-text {
             font-size: 1rem;
@@ -342,7 +342,7 @@
         .cat-header-text {
             font-size: 1.2rem;
             font-weight: bold;
-            color: #8EC5FC;
+            color: #79848a;
         }
         .cat-item-text {
             font-size: 1rem;
