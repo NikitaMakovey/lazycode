@@ -1,3 +1,2 @@
-# Welcome to Lazy< code /> blog! 
-
+# Welcome to Lazycode!
     
