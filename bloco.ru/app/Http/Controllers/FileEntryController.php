@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\FileEntry;
+use Illuminate\Support\Facades\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
@@ -31,7 +32,7 @@ class FileEntryController extends Controller
             $input['size'] = $request->file('file')->getClientSize();
             $file = FileEntry::create($input);
 
-            $url = 'http://localhost:8000';
+            $url = 'https://lazy.codes';
 
             return response(array(
                 'url' =>
@@ -58,5 +59,22 @@ class FileEntryController extends Controller
             }
         }
         return -1;
+    }
+
+    public function show(Request $request) 
+    {
+        $path = storage_path('app').'/'.$request['folder'].'/'.$request['filename'];
+
+        if (!File::exists($path)) {
+            abort(404);
+        }
+
+        $file = File::get($path);
+        $type = File::mimeType($path);
+
+        $response = Response::make($file, 200);
+        $response->header("Content-Type", $type);
+
+        return $response;
     }
 }
