@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\File;
 
+Route::get('yandex', 'YandexController@index');
+
 Route::group(['middleware' => ['json.response']], function () {
 
     Route::post('/login', 'AuthController@login');

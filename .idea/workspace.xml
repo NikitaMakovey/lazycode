@@ -2,39 +2,222 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4d2935da-1f9e-4348-a12e-628192142797" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/bloco.ru/resources/js/App.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/resources/js/auth.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/resources/js/components/Auth/Login.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/resources/js/components/Auth/Register.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/resources/js/components/Auth/ResetEmail.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/resources/js/components/Auth/ResetPassword.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/resources/js/components/ErrorPages/NotFound.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/resources/js/components/Layouts/AuthLayout.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/resources/js/components/Layouts/HomeLayout.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/resources/js/config/axios.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/resources/js/links.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/resources/js/router.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bloco.ru/resources/js/store/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bloco.ru/app/Http/Controllers/YandexController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bloco.ru/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bloco.ru/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bloco.ru/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/resources/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/components/ExampleComponent.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/components/admin/Categories.vue" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/resources/js/components/Admin/Categories.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/components/admin/Posts.vue" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/resources/js/components/Admin/Posts.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/components/admin/Profile.vue" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/resources/js/components/Admin/Profile.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/components/admin/Users.vue" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/resources/js/components/Admin/Users.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/components/posts/CreatePostPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/resources/js/components/Views/posts/CreatePostPage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/components/posts/EditPostPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/resources/js/components/Views/posts/EditPostPage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/components/posts/MainPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/resources/js/components/Views/posts/MainPage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/components/posts/Post.vue" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/resources/js/components/Views/posts/Post.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/components/users/EditUserPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/resources/js/components/Views/users/EditUserPage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/components/users/IndexUserPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/resources/js/components/Views/users/IndexUserPage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/components/users/User.vue" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/resources/js/components/Views/users/User.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/components/users/profile/UserComments.vue" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/resources/js/components/Views/users/profile/UserComments.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/components/users/profile/UserPosts.vue" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/resources/js/components/Views/users/profile/UserPosts.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/components/users/profile/UserProfile.vue" beforeDir="false" afterPath="$PROJECT_DIR$/bloco.ru/resources/js/components/Views/users/profile/UserProfile.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/.editorconfig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/.env.example" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/.styleci.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/app/Category.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/app/Comment.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/app/Console/Kernel.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/app/Exceptions/Handler.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/app/FileEntry.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/app/Http/Controllers/AdminController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/app/Http/Controllers/Auth/ConfirmPasswordController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/app/Http/Controllers/Auth/ForgotPasswordController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/app/Http/Controllers/Auth/RegisterController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/app/Http/Controllers/Auth/ResetPasswordController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/app/Http/Controllers/Auth/VerificationController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/app/Http/Controllers/AuthController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/app/Http/Controllers/CategoryController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/app/Http/Controllers/CommentController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/app/Http/Controllers/Controller.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/app/Http/Controllers/EditController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/app/Http/Controllers/FileEntryController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/app/Http/Controllers/MailController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/app/Http/Controllers/PostController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/app/Http/Controllers/SubscriptionController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/app/Http/Controllers/TagController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/app/Http/Controllers/UserController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/app/Http/Controllers/ViewController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/app/Http/Controllers/VoteController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/app/Http/Kernel.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/app/Http/Middleware/AdminRequest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/app/Http/Middleware/Authenticate.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/app/Http/Middleware/CheckForMaintenanceMode.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/app/Http/Middleware/EncryptCookies.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/app/Http/Middleware/JsonResponse.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/app/Http/Middleware/RedirectIfAuthenticated.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/app/Http/Middleware/TrimStrings.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/app/Http/Middleware/TrustProxies.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/app/Http/Middleware/VerifyCsrfToken.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/app/Mail/ConfirmationMailBuilder.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/app/Mail/ResetPasswordMailBuilder.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/app/Post.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/app/Providers/AppServiceProvider.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/app/Providers/AuthServiceProvider.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/app/Providers/BroadcastServiceProvider.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/app/Providers/EventServiceProvider.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/app/Providers/RouteServiceProvider.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/app/Subscription.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/app/Tag.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/app/User.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/app/Vote.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/artisan" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/bootstrap/app.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/bootstrap/cache/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/composer.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/composer.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/config/app.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/config/auth.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/config/broadcasting.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/config/cache.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/config/database.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/config/filesystems.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/config/hashing.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/config/logging.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/config/mail.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/config/passport.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/config/queue.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/config/services.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/config/session.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/config/view.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/database/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/database/factories/CategoryFactory.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/database/factories/CommentFactory.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/database/factories/PostFactory.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/database/factories/SubscriptionFactory.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/database/factories/TagFactory.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/database/factories/UserFactory.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/database/factories/VoteFactory.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/database/migrations/2019_08_19_000000_create_failed_jobs_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/database/migrations/2019_11_12_041013_create_categories_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/database/migrations/2019_11_12_041918_create_posts_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/database/migrations/2019_11_29_011944_create_comments_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/database/migrations/2019_11_29_012035_create_vote_types_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/database/migrations/2019_11_29_012053_create_votes_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/database/migrations/2020_01_31_052950_create_tags_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/database/migrations/2020_01_31_053047_create_post_tag_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/database/migrations/2020_01_31_053222_create_subscriptions_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/database/migrations/2020_02_10_103802_create_password_resets_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/database/migrations/2020_02_10_124949_create_edit_posts_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/database/migrations/2020_03_20_053424_create_file_entries_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/database/seeds/DatabaseSeeder.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/phpunit.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/public/.htaccess" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/public/css/app.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/public/css/extra.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/public/css/main.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/public/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/public/fonts/vendor/@fortawesome/fontawesome-free/webfa-brands-400.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/public/fonts/vendor/@fortawesome/fontawesome-free/webfa-brands-400.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/public/fonts/vendor/@fortawesome/fontawesome-free/webfa-brands-400.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/public/fonts/vendor/@fortawesome/fontawesome-free/webfa-brands-400.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/public/fonts/vendor/@fortawesome/fontawesome-free/webfa-brands-400.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/public/fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/public/fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/public/fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/public/fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/public/fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/public/fonts/vendor/summernote/dist/summernote.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/public/fonts/vendor/summernote/dist/summernote.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/public/fonts/vendor/summernote/dist/summernote.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/public/fonts/vendor/summernote/dist/summernote.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/public/img/admin-icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/public/img/admin.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/public/img/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/public/img/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/public/img/man.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/public/img/softtware-engineer.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/public/index.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/public/js/app.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/public/mix-manifest.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/public/robots.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/public/web.config" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/Index.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/app.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/bootstrap.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/components/AdminComponents/EditItemComponent.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/components/AdminComponents/EditItemsComponent.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/components/AdminComponents/ItemComponent.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/components/AdminComponents/ItemsComponent.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/components/AdminComponents/MainComponent.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/components/AuthComponents/Login.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/components/AuthComponents/Register.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/components/AuthComponents/ResetEmail.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/components/AuthComponents/ResetPassword.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/components/BaseComponents/AuthLayout.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/components/BaseComponents/SkeletonComponent.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/components/ErrorComponents/NotFound.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/components/LabComponents/ChannelComponents/ChannelComponent.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/components/LabComponents/ComputerGraphicsComponent.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/components/PostComponents/CreateComponent.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/components/PostComponents/DraftComponent.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/components/PostComponents/EditComponent.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/components/PostComponents/MainCategoryComponent.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/components/PostComponents/MainComponent.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/components/PostComponents/PostComponent.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/components/UserComponents/ConfirmEmailComponent.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/components/UserComponents/EditComponent.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/components/UserComponents/EditComponents/AboutEditComponent.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/components/UserComponents/EditComponents/ConfirmationComponent.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/components/UserComponents/EditComponents/EmailEditComponent.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/components/UserComponents/EditComponents/MainEditComponent.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/components/UserComponents/EditComponents/PhotoEditComponent.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/components/UserComponents/HomeComponent.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/components/UserComponents/HomeComponents/DraftComponent.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/components/UserComponents/HomeComponents/ProcessComponent.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/components/UserComponents/HomeComponents/PublishComponent.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/components/UserComponents/HomeComponents/RejectComponent.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/components/UserComponents/MainComponent.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/components/UserComponents/ProfileComponents/AboutComponent.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/components/UserComponents/ProfileComponents/CommentComponent.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/components/UserComponents/ProfileComponents/PostComponent.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/components/UserComponents/UserComponent.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/config/axios.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/config/vuetify.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/router/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/router/middleware/admin.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/router/middleware/auth.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/router/middleware/guest.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/router/middleware/user.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/router/middlewarePipeline.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/router/routes.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/store/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/store/modules/auth.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/store/modules/category.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/store/modules/comment.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/store/modules/general.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/store/modules/lab.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/store/modules/post.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/js/store/modules/user.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/lang/en/auth.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/lang/en/pagination.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/lang/en/passwords.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/lang/en/validation.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/sass/_variables.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/sass/app.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/views/index.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/views/mail/confirmation_email.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/views/mail/confirmation_email_text.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/views/mail/reset_password.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/resources/views/mail/reset_password_text.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/routes/api.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/routes/channels.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/routes/console.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/routes/web.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/server.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/storage/app/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/storage/app/public/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/storage/framework/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/storage/framework/cache/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/storage/framework/cache/data/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/storage/framework/sessions/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/storage/framework/testing/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/storage/framework/views/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/storage/logs/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/tests/CreatesApplication.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/tests/Feature/ExampleTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/tests/TestCase.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/tests/Unit/ExampleTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloco.ru/webpack.mix.js" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -442,6 +625,8 @@
       <workItem from="1573992239627" duration="4516000" />
       <workItem from="1574037593448" duration="39566000" />
       <workItem from="1574383297254" duration="617000" />
+      <workItem from="1590127756001" duration="470000" />
+      <workItem from="1590534703367" duration="230000" />
     </task>
     <servers />
   </component>
