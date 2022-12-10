@@ -1,2 +1,1 @@
-# Welcome to Lazycode!
-    
+### Lazycode ###
